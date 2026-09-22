@@ -34,6 +34,9 @@
         "innerMargin": {"type": "number", "minimum": 0.05, "maximum": 0.4},
         "maximumOutlierFraction": {"type": "number", "minimum": 0, "maximum": 0.4},
         "maximumChannelMad": {"type": "number", "minimum": 1, "maximum": 40},
+        "maximumCrossEdgeDeviation": {"type": "number", "minimum": 0.01, "maximum": 0.2},
+        "maximumSpatialDeltaE": {"type": "number", "exclusiveMinimum": 0, "maximum": 200},
+        "surfaceMargin": {"type": "number", "minimum": 0, "maximum": 0.4},
         "minimumEdgeConcentration": {"type": "number", "minimum": 0.01, "maximum": 1}
       }
     },
@@ -60,7 +63,8 @@
         "sampleCount": {"type": "integer", "minimum": 0},
         "rejectedFraction": {"type": "number", "minimum": 0, "maximum": 1},
         "channelMad": {"type": "number", "minimum": 0},
-        "nearLimitFraction": {"type": "number", "minimum": 0, "maximum": 1}
+        "nearLimitFraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "spatialDeltaE": {"type": ["number", "null"], "minimum": 0}
       },
       "allOf": [{"if": {"properties": {"isUsable": {"const": false}}}, "then": {"properties": {"lab": {"type": "null"}}}, "else": {"properties": {"lab": {"$ref": "#/$defs/lab"}}}}]
     },
@@ -71,7 +75,8 @@
         "fieldId": {"type": "string", "minLength": 1}, "bounds": {"$ref": "#/$defs/rect"}, "innerBounds": {"$ref": "#/$defs/rect"},
         "measurement": {"$ref": "#/$defs/region"}, "reference": {"anyOf": [{"$ref": "#/$defs/region"}, {"type": "null"}]},
         "deltaE00": {"type": ["number", "null"], "minimum": 0}, "measurementAllowed": {"type": "boolean"},
-        "hint": {"type": ["string", "null"]}, "isNearest": {"type": "boolean"}
+        "hint": {"type": ["string", "null"]}, "isNearest": {"type": "boolean"},
+        "surfaceSpatialDeltaE": {"type": ["number", "null"], "minimum": 0}
       },
       "allOf": [{"if": {"properties": {"measurementAllowed": {"const": false}}}, "then": {"properties": {"deltaE00": {"type": "null"}, "isNearest": {"const": false}}}, "else": {"properties": {"deltaE00": {"type": "number", "minimum": 0}, "measurement": {"properties": {"isUsable": {"const": true}}}, "reference": {"type": "object", "properties": {"isUsable": {"const": true}}}}}}]
     },

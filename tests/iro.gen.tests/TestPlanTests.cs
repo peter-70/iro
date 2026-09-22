@@ -90,7 +90,7 @@ public class TestPlanTests
         if (severity == Severity.None) Assert.Equal(7, analysis.Fields.Count(f => f.MeasurementAllowed));
         if (severity is Severity.Light or Severity.Medium)
         {
-            Assert.Equal(5, analysis.Fields.Count(f => f.MeasurementAllowed));
+            Assert.Equal(severity == Severity.Medium ? 4 : 5, analysis.Fields.Count(f => f.MeasurementAllowed));
             Assert.Contains(analysis.Fields, f => !f.MeasurementAllowed && f.Hint!.Contains("Feldgrenzen"));
         }
     }

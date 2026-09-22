@@ -53,6 +53,8 @@ public sealed record AnalysisOptions
     public double InnerMargin { get; init; } = .18;
     public double MaximumOutlierFraction { get; init; } = .18;
     public double MaximumChannelMad { get; init; } = 12;
+    public double SurfaceMargin { get; init; } = .05;
+    public double MaximumSpatialDeltaE { get; init; } = 2;
     public double MaximumCrossEdgeDeviation { get; init; } = .06;
     public double MinimumEdgeConcentration { get; init; } = .18;
     public void Validate()
@@ -64,6 +66,8 @@ public sealed record AnalysisOptions
             !double.IsFinite(InnerMargin) || InnerMargin is < .05 or > .4 ||
             !double.IsFinite(MaximumOutlierFraction) || MaximumOutlierFraction is < 0 or > .4 ||
             !double.IsFinite(MaximumChannelMad) || MaximumChannelMad is < 1 or > 40 ||
+            !double.IsFinite(SurfaceMargin) || SurfaceMargin < 0 || SurfaceMargin > InnerMargin ||
+            !double.IsFinite(MaximumSpatialDeltaE) || MaximumSpatialDeltaE is <= 0 or > 200 ||
             !double.IsFinite(MaximumCrossEdgeDeviation) || MaximumCrossEdgeDeviation is < .01 or > .2 ||
             !double.IsFinite(MinimumEdgeConcentration) || MinimumEdgeConcentration is < .01 or > 1)
             throw new ArgumentException("Ungültige Analyseparameter oder unbekannte Profilversion.");
@@ -71,9 +75,15 @@ public sealed record AnalysisOptions
 }
 
 public sealed record RegionMeasurement(PixelRect Bounds, bool IsUsable, string? Reason, LabColor? Lab,
-    int SampleCount, double RejectedFraction, double ChannelMad, double NearLimitFraction);
+    int SampleCount, double RejectedFraction, double ChannelMad, double NearLimitFraction)
+{
+    public double? SpatialDeltaE { get; init; }
+}
 public sealed record FieldAnalysis(string FieldId, PixelRect Bounds, PixelRect InnerBounds, RegionMeasurement Measurement,
-    RegionMeasurement? Reference, double? DeltaE00, bool MeasurementAllowed, string? Hint, bool IsNearest);
+    RegionMeasurement? Reference, double? DeltaE00, bool MeasurementAllowed, string? Hint, bool IsNearest)
+{
+    public double? SurfaceSpatialDeltaE { get; init; }
+}
 public sealed record ImageAnalysis(string AnalyzerVersion, AnalysisOptions Options, int Width, int Height,
     AnalysisStatus Status, string Hint, IReadOnlyList<FieldAnalysis> Fields, IReadOnlyList<string> Diagnostics);
 

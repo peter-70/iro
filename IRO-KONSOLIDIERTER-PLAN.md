@@ -1,6 +1,6 @@
 # IRO – Konsolidierter Konzept- und Entwicklungsplan
 
-**Stand:** 22. September 2026 · **Fassung:** 1.23 – Auswertung an die aktuelle Testserie binden  
+**Stand:** 22. September 2026 · **Fassung:** 1.24 – Räumliche Qualitätsprüfung gegen Schatten und Randabfall
 **App:** IRO · **Anzeigename:** Iro · **Dateisystemname:** iro · **Namensraum:** Iro  
 **Vorgesehener Ablageort:** `D:\Source\iro\IRO-KONSOLIDIERTER-PLAN.md`
 
@@ -491,6 +491,7 @@ Qualität umfasst:
 - Zeit: stabile Flächenidentität und plausible Beständigkeit; keine sichere Rangfolge bei instabiler Zuordnung behaupten.
 - Fokus: Feldkanten und verfügbare Kameraangaben; homogene Wand ohne Kanten nicht allein deshalb als unscharf einstufen.
 
+**Technische Weiterentwicklung vom 22. September 2026, Fassung 1.24:** Im Einzelbildversuch prüft Analyse 0.3.0 zusätzlich die räumliche Farbvariation zwischen neun Teilflächen. Sie bewertet das Messinnere, die tatsächliche Referenz und eine größere, nur um 5 % eingerückte Feldinnenfläche. Die vorläufige Sperrgrenze beträgt 2 ΔE00 zwischen robusten Teilflächenfarben; sie ist kein Genauigkeitsversprechen. Farbrechnung und geometrische Referenzwahl bleiben unverändert. Einzelne gestörte Felder werden gesperrt, eine ungeeignete gemeinsame Referenz sperrt ihre Vergleiche. Die Ursache wird als räumliche Uneinheitlichkeit beschrieben; vorhandene konkrete Unschärfehinweise bleiben erhalten. Begründung, Vorher-/Nachher-Zahlen, zusätzliche Sperren zuvor numerisch passender Teilmessungen und offene Grenzen stehen im [Prüfbericht zur räumlichen Flächenprüfung](docs/raeumliche-flaechenpruefung.md). Die offenen Produktentscheidungen zur endgültigen Referenzstrategie und Beleuchtungskorrektur werden damit nicht geschlossen.
 ### 9.3 Abstand, Blickwinkel und weitere Störfaktoren
 
 **Nutzerergänzung:** Zu geringer Abstand, zu großer Abstand und ein zu flacher Blickwinkel gehören ausdrücklich zu den zu prüfenden Störfaktoren. „Zu flach“ bedeutet hier eine stark seitliche, streifende Sicht auf die Messfläche mit perspektivisch zusammengedrückten Feldern; dies ist von einer bloßen Drehung des Streifens innerhalb des Bildes zu unterscheiden. Horizontale und vertikale Streifen bleiben gleichermaßen zulässig.
@@ -1009,3 +1010,5 @@ Dieses Protokoll wird ab Fassung 1.11 fortlaufend geführt. Für die Fassungen 1
 | 22. September 2026 | 1.21 → 1.22 | Konfigurierbare Testpläne mit Falloptionen/Bildanzahlen, kompakter Diagnoseexport und je drei Nah-/Fernstufen ergänzt; Fehlfreigabe geometrisch abweichender Fremdflächen im Einzelbildversuch korrigiert; tatsächliche Hinweise im Bericht erhalten. | Wiederholbare Testserien ohne manuelles Umstellen, kleinere Auswertungsdateien und gezielte Korrektur eines nachgestellten Verdeckungsfehlers. | Ausdrücklicher Nutzerauftrag im laufenden Austausch; neu erzeugte Vergleichsbilder und automatisierte Prüfungen in [Testpläne und Verdeckung](docs/testplaene-und-verdeckung.md). |
 
 | 22. September 2026 | 1.22 → 1.23 | Auswertung und Export an die aktuelle Bildserie gebunden; fehlende Analyse beim Auswerten durchführen; Bildanzahl aus geladenem Testplan anzeigen. | Alte 30 Ergebnisse konnten trotz neu erzeugter 113 Bilder angezeigt werden; der Auswertungsbutton hatte keinen Bezug zur sichtbaren Serie. | Nutzerfehlerbericht mit vier Screenshots; Codeprüfung und vollständiger WPF-Ablauftest mit dem 113-Bilder-Plan, siehe [Prüfbericht](docs/testplaene-und-verdeckung.md). |
+
+| 22. September 2026 | 1.23 → 1.24 | Räumliche Qualitätsprüfung für Felder und Referenz im Einzelbildversuch ergänzt; größere Feldinnenfläche geprüft, Diagnoseparameter und Schema erweitert, Unschärfehinweis erhalten. | Globale Streuung übersah sichtbare Helligkeitsverläufe; acht nominal auffällige Schatten-/Randabfallbilder werden nun gesperrt, alle 17 ungestörten Kontrollen bleiben auswertbar. Zusätzliche Sperren und Grenzen ausdrücklich dokumentiert. | Ausdrücklicher Nutzerauftrag zur Bildanalyseoptimierung; [reproduzierbarer Vorher-/Nachher-Prüfbericht](docs/raeumliche-flaechenpruefung.md), Nutzerbericht mit 113 Bildern und zusätzliche Kern-/Generatorprüfungen. |

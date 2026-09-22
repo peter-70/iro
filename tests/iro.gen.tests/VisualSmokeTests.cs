@@ -115,7 +115,7 @@ public class VisualSmokeTests
                             Assert.StartsWith("Aktuelle Serie · 113 Bilder", ((TextBlock)review.FindName("Summary")).Text);
                             var selectedRows = ((DataGrid)review.FindName("Rows")).Items.Cast<TestRunRow>().ToArray();
                             Assert.Single(selectedRows.Select(r => r.RunId).Distinct());
-                            Assert.All(selectedRows, r => Assert.Equal("0.2.0", r.AnalyzerVersion));
+                            Assert.All(selectedRows, r => Assert.Equal(Iro.Core.Analysis.ImageAnalyzer.Version, r.AnalyzerVersion));
                             Assert.Contains("Bilder insgesamt: 113", TestReviewExport.Create(selectedRows, 1, false));
                             reviewed = true;
                         }

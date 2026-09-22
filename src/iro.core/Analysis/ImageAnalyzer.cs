@@ -2,7 +2,7 @@ namespace Iro.Core.Analysis;
 
 public sealed class ImageAnalyzer : IImageAnalyzer
 {
-    public const string Version = "0.2.0";
+    public const string Version = "0.3.0";
     public ImageAnalysis Analyze(RgbFrame image, AnalysisOptions options, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(image); ArgumentNullException.ThrowIfNull(options); options.Validate();
@@ -32,10 +32,16 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             cancellationToken.ThrowIfCancellationRequested();
             var inner = bounds.Inset(options.InnerMargin);
             var measurement = RegionSampler.Measure(image, inner, options, cancellationToken);
+            // Insets protect the color mean from print/borders, but must not hide a visible
+            // illumination gradient across the larger detected field.
+            var surface = RegionSampler.Measure(image, bounds.Inset(options.SurfaceMargin), options, cancellationToken);
+            if (measurement.IsUsable && surface.SpatialDeltaE > options.MaximumSpatialDeltaE)
+                measurement = measurement with { IsUsable = false, Lab = null,
+                    Reason = "Farbfläche räumlich ungleichmäßig. Gleichmäßigeres Licht und eine einheitliche Fläche verwenden." };
             if (detection.InconsistentFields?.Contains(bounds) == true)
                 measurement = measurement with { IsUsable = false, Lab = null,
                     Reason = "Feldgrenzen passen nicht zum Streifen. Mögliche Verdeckung; Muster vollständig sichtbar halten." };
-            if (measurement.IsUsable && HasBlurredEdges(image, bounds, options.MinimumEdgeConcentration))
+            if (HasBlurredEdges(image, bounds, options.MinimumEdgeConcentration))
                 measurement = measurement with { IsUsable = false, Lab = null, Reason = "Bild unscharf. Kamera ruhig halten und neu fokussieren." };
             RegionMeasurement? reference = shared;
             if (options.ReferenceMode == ReferenceMode.AdjacentPerFieldTrial)
@@ -44,10 +50,10 @@ public sealed class ImageAnalyzer : IImageAnalyzer
                 if (local != null) reference = RegionSampler.Measure(image, local.Value, options, cancellationToken);
             }
             bool allowed = measurement.IsUsable && reference?.IsUsable == true;
-            string? hint = reference == null ? "Zu wenig freie Wandfläche. Muster und Wand vollständig ins Bild nehmen." :
-                !reference.IsUsable ? "Referenzbereich auf eine ausreichend große, gleichmäßige Wandfläche setzen." : measurement.Reason;
+            string? hint = !measurement.IsUsable ? measurement.Reason : reference == null ? "Zu wenig freie Wandfläche. Muster und Wand vollständig ins Bild nehmen." :
+                !reference.IsUsable ? reference.Reason ?? "Referenzbereich auf eine ausreichend große, gleichmäßige Wandfläche setzen." : measurement.Reason;
             fields.Add(new($"detected-{fields.Count + 1}", bounds, inner, measurement, reference,
-                allowed ? ColorMath.DeltaE00(measurement.Lab!.Value, reference!.Lab!.Value) : null, allowed, hint, false));
+                allowed ? ColorMath.DeltaE00(measurement.Lab!.Value, reference!.Lab!.Value) : null, allowed, hint, false) { SurfaceSpatialDeltaE = surface.SpatialDeltaE });
         }
         int valid = fields.Count(f => f.MeasurementAllowed);
         if (valid > 0)
@@ -56,7 +62,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             double minimum = fields.Where(f => f.DeltaE00.HasValue).Min(f => f.DeltaE00!.Value);
             for (int i = 0; i < fields.Count; i++) fields[i] = fields[i] with { IsNearest = fields[i].DeltaE00 == minimum };
         }
-        bool missingReference = fields.All(f => f.Reference?.IsUsable != true);
+        bool missingReference = fields.Any(f => f.Measurement.IsUsable) && fields.All(f => f.Reference?.IsUsable != true);
         return Finish(valid == fields.Count ? AnalysisStatus.Measured : valid > 0 ? AnalysisStatus.PartiallyMeasured : missingReference ? AnalysisStatus.InvalidReference : AnalysisStatus.InvalidFields,
             valid == fields.Count ? "Farbabstand ΔE00 · kleiner = ähnlicher" : valid > 0 ? "Einzelne Messflächen ungeeignet; gültige Felder bleiben auswertbar." : fields[0].Hint ?? "Messung nicht möglich.", fields);
 
