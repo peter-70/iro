@@ -1,0 +1,5 @@
+App-Name: IRO
+App-Displayname: Iro
+Verwendung des Namens auf Windows-IO: iro
+IPA-Transkription: /ˈaɪ.roʊ/
+Eine Android-App: Farbabgleich per Kamera (Delta-E-Vergleich)

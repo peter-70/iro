@@ -1,0 +1,80 @@
+<Window x:Class="IroGen.MainWindow"
+ xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+ xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+ Title="IroGen · Testbilder für Iro" Width="1340" Height="900" MinWidth="1000" MinHeight="650"
+ Background="#F3F5F1" Foreground="#26382F" FontFamily="Segoe UI" FontSize="14">
+ <Grid Margin="24">
+  <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+  <StackPanel Margin="0,0,0,14">
+   <TextBlock Text="IroGen" FontSize="28" FontWeight="SemiBold"/>
+   <WrapPanel Margin="0,10,0,0">
+    <TextBlock Text="Anzahl Bilder" VerticalAlignment="Center" Margin="0,0,8,0"/>
+    <TextBox x:Name="SeriesCount" Text="1" Width="75" Margin="0,0,12,0" TextChanged="SeriesSettings_Changed" AutomationProperties.Name="Anzahl zu erzeugender Bilder"/>
+    <Button x:Name="GenerateButton" Content="Bilder generieren" Click="Generate_Click" Background="#254D3A" Foreground="White"/>
+    <Button x:Name="RandomButton" Content="Neue Zufallsfarben" Click="Random_Click"/>
+    <Button x:Name="ExportButton" Content="Alle speichern" Click="Export_Click" IsEnabled="False"/>
+    <Button x:Name="SendTestsButton" Content="An Iro-Tests senden" Click="SendTests_Click" IsEnabled="False"/>
+    <Button x:Name="PlanLoadButton" Content="Testplan laden" Click="LoadPlan_Click"/>
+    <Button x:Name="ReviewTestsButton" Content="Testergebnisse auswerten" Click="ReviewTests_Click"/>
+    <Button x:Name="CancelButton" Content="Abbrechen" Click="Cancel_Click" IsEnabled="False"/>
+   </WrapPanel>
+   <CheckBox x:Name="CoverRangeCheck" Content="Bei Serien den gesamten Abstandsbereich abdecken: identisch bis extrem verschieden" IsChecked="True" Checked="SeriesSettings_Changed" Unchecked="SeriesSettings_Changed" Margin="0,10,0,0"/>
+   <TextBlock x:Name="ColorModeHint" FontSize="12" Foreground="#647568" TextWrapping="Wrap" Margin="0,4,0,0"/>
+   <StackPanel x:Name="TestBusyIndicator" Visibility="Collapsed" Margin="0,10,0,0" AutomationProperties.Name="Iro-Tests laufen">
+    <TextBlock Text="Iro-Tests laufen …" Margin="0,0,0,4"/>
+    <ProgressBar IsIndeterminate="True" Height="4"/>
+   </StackPanel>
+   <ProgressBar x:Name="GenerationProgress" Height="4" Margin="0,10,0,0"/>
+  </StackPanel>
+  <Grid Grid.Row="1">
+   <Grid.ColumnDefinitions><ColumnDefinition Width="350"/><ColumnDefinition Width="20"/><ColumnDefinition Width="*"/></Grid.ColumnDefinitions>
+   <Border Background="White" CornerRadius="10" BorderBrush="#DFE5DB" BorderThickness="1">
+    <DockPanel>
+     <StackPanel DockPanel.Dock="Bottom" Margin="16,12">
+      <WrapPanel><Button Content="Optionen laden" Click="Load_Click"/><Button Content="Speichern" Click="SaveOptions_Click"/></WrapPanel>
+      <TextBlock Text="Geänderte Optionen mit „Bilder generieren“ anwenden." FontSize="12" TextWrapping="Wrap" Foreground="#647568" Margin="0,10,0,0"/>
+     </StackPanel>
+     <ScrollViewer VerticalScrollBarVisibility="Auto"><StackPanel x:Name="OptionsPanel" Margin="18,8,18,16"/></ScrollViewer>
+    </DockPanel>
+   </Border>
+   <ScrollViewer Grid.Column="2" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+   <Grid MinHeight="480" Height="{Binding ActualHeight, RelativeSource={RelativeSource AncestorType=ScrollViewer}}">
+    <Grid.RowDefinitions><RowDefinition Height="Auto"/><RowDefinition Height="*"/><RowDefinition Height="Auto"/><RowDefinition Height="130"/><RowDefinition Height="Auto"/></Grid.RowDefinitions>
+    <StackPanel Margin="0,0,0,8"><ComboBox x:Name="BatchPicker" DisplayMemberPath="Description" SelectionChanged="BatchPicker_Changed" AutomationProperties.Name="Erzeugtes Bild auswählen"/><TextBlock x:Name="CoverageSummary" FontSize="12" Margin="0,4,0,0"/></StackPanel>
+    <Border Grid.Row="1" Background="#DDE3DA" CornerRadius="10" Padding="16">
+     <Image x:Name="Preview" Stretch="Uniform" AutomationProperties.Name="Vorschau des zuletzt erzeugten Testbilds"/>
+    </Border>
+    <StackPanel Grid.Row="2" Margin="0,8">
+     <TextBlock x:Name="ImageInfo" FontWeight="SemiBold"/>
+     <TextBlock Text="Aufdruck: nominaler Sollabstand ΔE00 zur Wand vor Störungen. Kleiner = ähnlicher." TextWrapping="Wrap" Foreground="#647568" Margin="0,4,0,0"/>
+    </StackPanel>
+    <DataGrid Grid.Row="3" x:Name="Results" AutoGenerateColumns="False" IsReadOnly="True" CanUserAddRows="False" HeadersVisibility="Column" GridLinesVisibility="Horizontal" Background="White" BorderBrush="#DFE5DB">
+     <DataGrid.Columns>
+      <DataGridTextColumn Header="Farbfeld" Binding="{Binding FieldId}" Width="*"/>
+      <DataGridTextColumn Header="sRGB" Binding="{Binding Hex}" Width="75"/>
+      <DataGridTextColumn Header="Soll ΔE00" Binding="{Binding ExpectedText}" Width="85"/>
+      <DataGridTextColumn Header="Ist ΔE00" Binding="{Binding ActualText}" Width="80"/>
+      <DataGridTextColumn Header="Iro-Diagnose (Versuch)" Binding="{Binding AnalysisHint}" Width="2*"/>
+     </DataGrid.Columns>
+    </DataGrid>
+    <TextBlock Grid.Row="4" x:Name="HandoffStatus" TextWrapping="Wrap" Foreground="#647568" FontSize="12" Margin="0,8,0,0"/>
+   </Grid>
+   </ScrollViewer>
+  </Grid>
+  <StackPanel Grid.Row="2">
+   <Border x:Name="TestCompletion" Visibility="Collapsed" Background="#E2EEDF" CornerRadius="8" Padding="12" Margin="0,10,0,0">
+    <StackPanel>
+     <TextBlock x:Name="TestCompletionText" TextWrapping="Wrap" FontWeight="SemiBold" AutomationProperties.LiveSetting="Polite"/>
+     <Button x:Name="OpenTestResultsButton" Content="Testergebnisse in Windows-Explorer anzeigen" Click="OpenTestResults_Click" HorizontalAlignment="Left" Margin="0,8,0,0"/>
+    </StackPanel>
+   </Border>
+  <TextBlock x:Name="Status" Text="Bereit." TextWrapping="Wrap" Margin="0,14,0,0" Foreground="#526458"/>
+ </StackPanel>
+ </Grid>
+</Window>
+
+
+
+
+
+

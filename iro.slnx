@@ -1,0 +1,26 @@
+<Solution>
+  <Folder Name="/iro-gen/">
+    <Project Path="iro-gen/IroGen.csproj" />
+  </Folder>
+  <Folder Name="/src/" />
+  <Folder Name="/src/iro.analysis/">
+    <Project Path="src/iro.analysis/Iro.Analysis.csproj" />
+  </Folder>
+  <Folder Name="/src/iro.app/">
+    <Project Path="src/iro.app/Iro.App.csproj" />
+  </Folder>
+  <Folder Name="/src/iro.core/">
+    <Project Path="src/iro.core/Iro.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/" />
+  <Folder Name="/tests/iro.core.tests/">
+    <Project Path="tests/iro.core.tests/Iro.Core.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tests/iro.gen.tests/">
+    <Project Path="tests/iro.gen.tests/IroGen.Tests.csproj" />
+  </Folder>
+  <Folder Name="/tools/" />
+  <Folder Name="/tools/iro.testgen/">
+    <Project Path="tools/iro.testgen/Iro.TestGen.csproj" />
+  </Folder>
+</Solution>

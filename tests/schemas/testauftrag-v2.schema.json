@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Iro Testauftrag v2 – Eingaben für die lokale Iro-Analyse",
+  "type": "object", "additionalProperties": false,
+  "required": ["formatVersion", "kind", "requestId", "createdAtUtc", "source", "generatorVersion", "batchId", "imageCount", "seriesFile", "status", "analysisAvailable", "note"],
+  "properties": {
+    "formatVersion": {"const": 2}, "kind": {"const": "iro-test-request"},
+    "requestId": {"type": "string", "pattern": "^iro-request-[a-f0-9]{32}$"},
+    "createdAtUtc": {"type": "string", "format": "date-time", "pattern": "Z$"},
+    "source": {"const": "IroGen"},
+    "generatorVersion": {"type": "string", "minLength": 1},
+    "batchId": {"type": "string", "pattern": "^irogen-series-[a-f0-9]{32}$"},
+    "imageCount": {"type": "integer", "minimum": 1, "maximum": 10000},
+    "seriesFile": {"type": "string", "pattern": "^inputs/[A-Za-z0-9_-]+/series[.]json$"},
+    "status": {"const": "pending-analysis"},
+    "analysisAvailable": {"const": true},
+    "note": {"type": "string", "minLength": 1}
+  }
+}
+

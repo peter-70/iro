@@ -1,0 +1,57 @@
+{
+  "formatVersion": 1,
+  "captureId": "beispiel-generator-0001",
+  "description": "Reines Formatbeispiel: identische graue Messflächen; Bilddatei noch nicht erzeugt.",
+  "imageFile": "beispiel-generator-0001.png",
+  "source": "generator",
+  "width": 640,
+  "height": 480,
+  "colorSpace": "sRGB",
+  "createdAtUtc": null,
+  "conditions": {
+    "generator": {
+      "name": "format-example",
+      "version": "1",
+      "seed": 123,
+      "parameters": {
+        "referenceRgb": [
+          128,
+          128,
+          128
+        ],
+        "fieldRgb": [
+          128,
+          128,
+          128
+        ]
+      }
+    },
+    "camera": null
+  },
+  "expected": {
+    "verification": "proposed",
+    "basis": "Geplanter synthetischer Nullvergleich; noch kein geprüftes Bild.",
+    "referenceBounds": {
+      "x": 80,
+      "y": 80,
+      "width": 160,
+      "height": 160
+    },
+    "fields": [
+      {
+        "fieldId": "field-1",
+        "bounds": {
+          "x": 400,
+          "y": 80,
+          "width": 120,
+          "height": 120
+        },
+        "deltaE00": 0,
+        "measurementAllowed": true,
+        "requiredHint": null
+      }
+    ],
+    "measurementAllowed": true,
+    "requiredHint": null
+  }
+}

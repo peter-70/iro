@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="../src/iro.analysis/Iro.Analysis.csproj" />
+  <Project Path="../src/iro.core/Iro.Core.csproj" />
+  <Project Path="../tests/iro.gen.tests/IroGen.Tests.csproj" />
+  <Project Path="IroGen.csproj" />
+</Solution>

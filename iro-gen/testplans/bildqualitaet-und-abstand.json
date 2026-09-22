@@ -1,0 +1,300 @@
+{
+  "formatVersion": 1,
+  "kind": "irogen-test-plan",
+  "name": "Bildqualitaet und Abstand – erste Diagnose",
+  "defaults": {
+    "seed": 12345,
+    "width": 1600,
+    "height": 1200,
+    "fieldCount": 7,
+    "matchingField": 3,
+    "orientation": "Vertical",
+    "position": "Right",
+    "labels": true
+  },
+  "cases": [
+    {
+      "name": "Kontrolle senkrecht",
+      "coverRange": false,
+      "options": {},
+      "count": 3
+    },
+    {
+      "name": "Verdeckung leicht",
+      "coverRange": false,
+      "options": {
+        "occlusion": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Verdeckung mittel",
+      "coverRange": false,
+      "options": {
+        "occlusion": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Verdeckung stark",
+      "coverRange": false,
+      "options": {
+        "occlusion": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Unschärfe leicht",
+      "coverRange": false,
+      "options": {
+        "blur": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Unschärfe mittel",
+      "coverRange": false,
+      "options": {
+        "blur": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Unschärfe stark",
+      "coverRange": false,
+      "options": {
+        "blur": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Bewegungsunschärfe leicht",
+      "coverRange": false,
+      "options": {
+        "motionBlur": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Bewegungsunschärfe mittel",
+      "coverRange": false,
+      "options": {
+        "motionBlur": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Bewegungsunschärfe stark",
+      "coverRange": false,
+      "options": {
+        "motionBlur": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schatten leicht",
+      "coverRange": false,
+      "options": {
+        "shadows": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schatten mittel",
+      "coverRange": false,
+      "options": {
+        "shadows": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schatten stark",
+      "coverRange": false,
+      "options": {
+        "shadows": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Randabfall leicht",
+      "coverRange": false,
+      "options": {
+        "vignette": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Randabfall mittel",
+      "coverRange": false,
+      "options": {
+        "vignette": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Randabfall stark",
+      "coverRange": false,
+      "options": {
+        "vignette": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schleier leicht",
+      "coverRange": false,
+      "options": {
+        "haze": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schleier mittel",
+      "coverRange": false,
+      "options": {
+        "haze": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Schleier stark",
+      "coverRange": false,
+      "options": {
+        "haze": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Rauschen leicht",
+      "coverRange": false,
+      "options": {
+        "noise": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Rauschen mittel",
+      "coverRange": false,
+      "options": {
+        "noise": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Rauschen stark",
+      "coverRange": false,
+      "options": {
+        "noise": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand weit",
+      "coverRange": false,
+      "options": {
+        "distance": "Far"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand weiter",
+      "coverRange": false,
+      "options": {
+        "distance": "Farther"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand sehr weit",
+      "coverRange": false,
+      "options": {
+        "distance": "TooFar"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand nahe",
+      "coverRange": false,
+      "options": {
+        "distance": "Near"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand näher",
+      "coverRange": false,
+      "options": {
+        "distance": "Nearer"
+      },
+      "count": 3
+    },
+    {
+      "name": "Abstand ganz nahe",
+      "coverRange": false,
+      "options": {
+        "distance": "TooClose"
+      },
+      "count": 3
+    },
+    {
+      "name": "Belichtung -1",
+      "coverRange": false,
+      "options": {
+        "exposureStops": -1
+      },
+      "count": 3
+    },
+    {
+      "name": "Belichtung 1",
+      "coverRange": false,
+      "options": {
+        "exposureStops": 1
+      },
+      "count": 3
+    },
+    {
+      "name": "Kontrolle waagerecht",
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "count": 3
+    },
+    {
+      "name": "Verdeckung waagerecht leicht",
+      "coverRange": false,
+      "options": {
+        "position": "Bottom",
+        "orientation": "Horizontal",
+        "occlusion": "Light"
+      },
+      "count": 3
+    },
+    {
+      "name": "Verdeckung waagerecht mittel",
+      "coverRange": false,
+      "options": {
+        "position": "Bottom",
+        "orientation": "Horizontal",
+        "occlusion": "Medium"
+      },
+      "count": 3
+    },
+    {
+      "name": "Verdeckung waagerecht stark",
+      "coverRange": false,
+      "options": {
+        "position": "Bottom",
+        "orientation": "Horizontal",
+        "occlusion": "Strong"
+      },
+      "count": 3
+    },
+    {
+      "name": "Kontrolle gesamter Farbabstandsbereich",
+      "coverRange": true,
+      "options": {},
+      "count": 11
+    }
+  ]
+}

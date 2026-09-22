@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Iro.App.MainPage" Title="Iro">
+    <ScrollView>
+        <VerticalStackLayout Padding="28" Spacing="20">
+            <Label Text="Farben vergleichen" FontSize="30" FontAttributes="Bold"
+                   SemanticProperties.HeadingLevel="Level1" />
+            <Label Text="Vergleiche die Farbe deiner Wand oder einer anderen Fläche mit den Farbfeldern eines Musterstreifens."
+                   FontSize="18" />
+            <Label Text="Testmodus · gespeicherte Bilder, keine Live-Kamera" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="8">
+                <Button Text="Klares Testbild" CommandParameter="test-normal.png" Clicked="OnTestImageClicked" />
+                <Button Text="Unscharfes Testbild" CommandParameter="test-blur.png" Clicked="OnTestImageClicked" />
+            </HorizontalStackLayout>
+            <Image x:Name="TestPreview" HeightRequest="140" Aspect="AspectFit" />
+            <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
+            <Border Padding="16" Stroke="#92B7AD">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="{Binding Heading}" FontSize="22" FontAttributes="Bold" />
+                    <Label Text="{Binding Message}" FontSize="18" AutomationId="AnalysisHint" />
+                </VerticalStackLayout>
+            </Border>
+            <VerticalStackLayout BindableLayout.ItemsSource="{Binding Fields}" Spacing="8">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <VerticalStackLayout>
+                            <HorizontalStackLayout Spacing="16">
+                                <Label Text="{Binding Label}" />
+                                <Label Text="{Binding Value}" FontAttributes="Bold" />
+                            </HorizontalStackLayout>
+                            <Label Text="{Binding Hint}" />
+                        </VerticalStackLayout>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </VerticalStackLayout>
+            <Border Padding="20" Stroke="#92B7AD" BackgroundColor="{AppThemeBinding Light=#EDF5F2, Dark=#173D3B}">
+                <VerticalStackLayout Spacing="12">
+                    <Label Text="Gleichmäßiges Licht hilft" FontAttributes="Bold" FontSize="20" />
+                    <Label Text="Halte den Streifen waagerecht oder senkrecht. Vermeide Reflexe und starke Schatten." />
+                </VerticalStackLayout>
+            </Border>
+            <Label x:Name="StatusLabel" Text="Kameraberechtigung wird geprüft." FontSize="16" />
+            <Button x:Name="PermissionButton" Text="Kamerazugriff erlauben" Clicked="OnRequestCameraClicked" />
+            <Button x:Name="SettingsButton" Text="Android-App-Einstellungen öffnen"
+                    Clicked="OnOpenSettingsClicked" IsVisible="False" />
+            <Label Text="Entwicklungsstand: Einzelbildanalyse im Testmodus. Die Live-Kamera wird später angebunden."
+                   FontSize="14" />
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
+
+

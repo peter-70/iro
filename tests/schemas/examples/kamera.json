@@ -1,0 +1,27 @@
+{
+  "formatVersion": 1,
+  "captureId": "beispiel-kamera-0001",
+  "description": "Reines Formatbeispiel für eine Kameraaufnahme; kein reales Kamerabild vorhanden.",
+  "imageFile": "beispiel-kamera-0001.png",
+  "source": "camera",
+  "width": 640,
+  "height": 480,
+  "colorSpace": null,
+  "createdAtUtc": null,
+  "conditions": {
+    "generator": null,
+    "camera": {
+      "device": null,
+      "cameraId": null,
+      "sessionId": null,
+      "measurementGeneration": null,
+      "sensorTimestampNs": null,
+      "timestampSource": null,
+      "exposureTimeNs": null,
+      "iso": null,
+      "autoExposure": null,
+      "autoWhiteBalance": null
+    }
+  },
+  "expected": null
+}

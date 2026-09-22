@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Iro Bildserie v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["formatVersion", "kind", "batchId", "generatorVersion", "requestedCount", "actualCount", "coverRange", "minimumDeltaE00", "maximumDeltaE00", "coverage", "captures"],
+  "properties": {
+    "formatVersion": {"const": 1},
+    "kind": {"const": "iro-image-series"},
+    "batchId": {"type": "string", "pattern": "^irogen-series-[a-f0-9]{32}$"},
+    "generatorVersion": {"type": "string", "minLength": 1},
+    "requestedCount": {"type": "integer", "minimum": 1, "maximum": 10000},
+    "actualCount": {"type": "integer", "minimum": 1, "maximum": 10000},
+    "coverRange": {"type": "boolean"},
+    "minimumDeltaE00": {"type": "number", "minimum": 0},
+    "maximumDeltaE00": {"type": "number", "minimum": 0},
+    "coverage": {
+      "type": "array", "minItems": 11, "maxItems": 11,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["name", "minimum", "maximum", "count"],
+        "properties": {
+          "name": {"type": "string", "minLength": 1},
+          "minimum": {"type": "number", "minimum": 0},
+          "maximum": {"type": ["number", "null"], "minimum": 0},
+          "count": {"type": "integer", "minimum": 0}
+        }
+      }
+    },
+    "captures": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["number", "captureId", "descriptionFile", "imageFile", "anchorDeltaE"],
+        "properties": {
+          "number": {"type": "integer", "minimum": 1},
+          "captureId": {"type": "string", "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$"},
+          "descriptionFile": {"type": "string", "pattern": "^[A-Za-z0-9_-]+/[A-Za-z0-9_-]+[.]json$"},
+          "imageFile": {"type": "string", "pattern": "^[A-Za-z0-9_-]+/[A-Za-z0-9_-]+[.]png$"},
+          "anchorDeltaE": {"type": ["number", "null"], "minimum": 0}
+        }
+      }
+    }
+  }
+}
