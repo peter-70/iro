@@ -84,6 +84,7 @@ public sealed class RgbFrame
 public readonly record struct RgbColor(byte R, byte G, byte B);
 public readonly record struct LabColor(double L, double A, double B);
 public enum ReferenceMode { SharedAutomaticTrial, AdjacentPerFieldTrial }
+public enum AnalysisHintCode { None, Other, PerspectiveTaper }
 public enum AnalysisStatus { Measured, PartiallyMeasured, NoPattern, AmbiguousPattern, UnsuitableGeometry, InvalidReference, InvalidFields }
 
 /// <summary>Explicit experimental profile; these thresholds are not a product/device accuracy promise.</summary>
@@ -138,7 +139,11 @@ public sealed record FieldAnalysis(string FieldId, PixelRect Bounds, PixelRect I
 }
 public sealed record ImageAnalysis(string AnalyzerVersion, AnalysisOptions Options, int Width, int Height,
     AnalysisStatus Status, string Hint, IReadOnlyList<FieldAnalysis> Fields, IReadOnlyList<string> Diagnostics)
-{ public double StraighteningDegrees { get; init; } }
+{
+    public double StraighteningDegrees { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public AnalysisHintCode? HintCode { get; init; }
+}
 
 public interface IImageAnalyzer
 {

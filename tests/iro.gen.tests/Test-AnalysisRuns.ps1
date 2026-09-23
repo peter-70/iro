@@ -5,6 +5,9 @@ $files = @(Get-ChildItem -LiteralPath $Directory -Recurse -File -Filter results.
 if ($files.Count -eq 0) { throw 'Keine Analyseläufe gefunden.' }
 foreach ($file in $files) {
     $json = Get-Content -LiteralPath $file.FullName -Raw
+    $format = ($json | ConvertFrom-Json).formatVersion
+    if ($format -notin @(1,2)) { throw 'Unbekanntes Analyseformat.' }
+    $schema = Join-Path $PSScriptRoot "../schemas/analyse-lauf-v$format.schema.json"
     if (-not (Test-Json -Json $json -SchemaFile $schema)) { throw "Ungültiger Analyselauf: $($file.FullName)" }
     $run = $json | ConvertFrom-Json
     if ($run.processedCount -ne $run.captures.Count -or $run.processedCount -gt $run.requestedCount) { throw 'Ungültige Bildanzahl.' }

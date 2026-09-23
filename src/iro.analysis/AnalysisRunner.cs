@@ -52,6 +52,7 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
             if (token.IsCancellationRequested) { cancelled = true; break; }
             string captureId = RequiredId(entry, "captureId"), hash = "";
             ImageAnalysis? measured = null;
+            BehaviorExpectation? expectation = null;
             try
             {
                 string descriptionPath = SafePath(seriesRoot, entry.GetProperty("descriptionFile").GetString()!);
@@ -62,6 +63,16 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
                     || metadata.GetProperty("colorSpace").GetString() != "sRGB"
                     || SafePath(Path.GetDirectoryName(descriptionPath)!, metadata.GetProperty("imageFile").GetString()!) != imagePath)
                     throw new ArgumentException("Aufnahme-ID, Bildpfad oder sRGB-Farbraum stimmt nicht überein.");
+                if (metadata.TryGetProperty("conditions", out var conditions)
+                    && conditions.TryGetProperty("generator", out var generator) && generator.ValueKind == JsonValueKind.Object
+                    && generator.TryGetProperty("parameters", out var parameters)
+                    && parameters.TryGetProperty("behaviorExpectation", out var expectationJson)
+                    && expectationJson.ValueKind != JsonValueKind.Null)
+                {
+                    var candidateExpectation = expectationJson.Deserialize<BehaviorExpectation>(JsonOptions);
+                    candidateExpectation?.Validate();
+                    expectation = candidateExpectation;
+                }
                 var info = new FileInfo(imagePath);
                 if (info.Length > 64 * 1024 * 1024) throw new ArgumentException("PNG-Datei überschreitet das Eingabelimit.");
                 byte[] png = await File.ReadAllBytesAsync(imagePath, token).ConfigureAwait(false);
@@ -73,14 +84,14 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
                     throw new ArgumentException("PNG-Abmessungen passen nicht zur Aufnahmebeschreibung.");
                 var comparisons = CompareAfterAnalysis(metadata, analysis);
                 int unmatched = analysis.Fields.Count(f => comparisons.All(c => c.DetectedFieldId != f.FieldId));
-                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched));
+                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, analysis) });
             }
             catch (OperationCanceledException) { cancelled = true; break; }
             catch (Exception error) when (error is IOException or ArgumentException or JsonException or InvalidOperationException or NotSupportedException or KeyNotFoundException or FormatException or UnauthorizedAccessException or System.Runtime.InteropServices.COMException)
-            { captures.Add(new(captureId, hash, error.Message, measured, [], measured?.Fields.Count ?? 0)); }
+            { captures.Add(new(captureId, hash, error.Message, measured, [], measured?.Fields.Count ?? 0) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, measured, error.Message) }); }
             progress?.Report(new(captures.Count, entries.Length, captureId));
         }
-        var report = new AnalysisRun(1, "iro-analysis-run", runId, requestId, ImageAnalyzer.Version, DateTime.UtcNow.ToString("O"), options,
+        var report = new AnalysisRun(2, "iro-analysis-run", runId, requestId, ImageAnalyzer.Version, DateTime.UtcNow.ToString("O"), options,
             cancelled ? "cancelled" : captures.Any(c => c.Error != null) ? "completed-with-errors" : "completed", entries.Length, captures.Count,
             captures.Count(c => c.Analysis?.Fields.Any(f => f.MeasurementAllowed) == true), captures.Sum(c => c.Analysis?.Fields.Count(f => f.MeasurementAllowed) ?? 0),
             "Istwerte aus PNG-Pixeln; nominale Generatorwerte erst nach Analyse geometrisch zugeordnet. Abweichungen unter Störungen sind Diagnosen, keine automatischen Bestehen-/Durchfallen-Urteile.", captures);

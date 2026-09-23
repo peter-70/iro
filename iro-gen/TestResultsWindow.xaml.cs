@@ -40,7 +40,7 @@ public partial class TestResultsWindow : Window
     private void Show(IReadOnlyList<TestRunRow> all)
     {
         var visible = OnlyProblems.IsChecked == true
-            ? all.Where(r => r.Verdict != ReviewVerdict.NominalUnauffaellig).ToList()
+            ? all.Where(r => r.IsProblem).ToList()
             : [.. all];
         Rows.ItemsSource = visible;
         if (all.Count == 0)
@@ -49,6 +49,7 @@ public partial class TestResultsWindow : Window
                          + "Erst „An Iro-Tests senden“ ausführen.";
             return;
         }
+        string expectationSummary = $"Soll-Ist: {all.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Passed)} erfüllt, {all.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Failed)} nicht erfüllt, {all.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.NotEvaluated)} nicht bewertet, {all.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Error)} Prüffehler. ";
         int ok = all.Count(r => r.Verdict == ReviewVerdict.NominalUnauffaellig);
         int wrong = all.Count(r => r.Verdict == ReviewVerdict.NominalAbweichend);
         int partial = all.Count(r => r.Verdict == ReviewVerdict.Teilweise);
@@ -62,7 +63,7 @@ public partial class TestResultsWindow : Window
         if (unverified > 0) parts.Add($"{unverified} ohne nominalen Vergleich");
         if (broken > 0) parts.Add($"{broken} nicht lesbar");
         Summary.Text = (runId != null ? "Aktuelle Serie · " : "Gespeicherte Läufe · ") + string.Join(" · ", parts)
-            + (visible.Count != all.Count ? $" — angezeigt: {visible.Count}" : string.Empty);
+            + " · " + expectationSummary + (visible.Count != all.Count ? $" — angezeigt: {visible.Count}" : string.Empty);
     }
 
     private void Tolerance_Changed(object sender, TextChangedEventArgs e)

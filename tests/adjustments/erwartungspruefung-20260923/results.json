@@ -1,0 +1,2229 @@
+{
+  "formatVersion": 2,
+  "kind": "iro-analysis-run",
+  "runId": "iro-run-93d317087fe641eb8e61ecc50fd2d0c9",
+  "requestId": "iro-request-ac9d9b85fcac47d6a155f7ba613fbf49",
+  "analyzerVersion": "0.5.4",
+  "createdAtUtc": "2026-09-23T11:21:19.2887741Z",
+  "options": {
+    "straighten": true,
+    "profileVersion": "synthetic-trial-1",
+    "referenceMode": "SharedAutomaticTrial",
+    "detectionLongestSide": 720,
+    "regionTolerance": 14,
+    "minimumFillRatio": 0.77,
+    "minimumFieldSide": 40,
+    "minimumFieldArea": 2500,
+    "minimumSamples": 600,
+    "innerMargin": 0.18,
+    "maximumOutlierFraction": 0.18,
+    "maximumChannelMad": 12,
+    "surfaceMargin": 0.05,
+    "maximumSpatialDeltaE": 2,
+    "maximumCrossEdgeDeviation": 0.06,
+    "minimumEdgeConcentration": 0.18
+  },
+  "status": "completed",
+  "requestedCount": 10,
+  "processedCount": 10,
+  "imagesWithMeasurements": 6,
+  "measuredFields": 18,
+  "comparisonBasis": "Istwerte aus PNG-Pixeln; nominale Generatorwerte erst nach Analyse geometrisch zugeordnet. Abweichungen unter St\u00F6rungen sind Diagnosen, keine automatischen Bestehen-/Durchfallen-Urteile.",
+  "captures": [
+    {
+      "captureId": "irogen-20260923-112116-d356809095354d64bf704c231b307299",
+      "imageSha256": "d811a3c7e5447671ce1323ddd0df46d23737f7f4a182a955282f279ae226d13e",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 1064,
+              "y": 188,
+              "width": 432,
+              "height": 261,
+              "right": 1496,
+              "bottom": 449,
+              "area": 112752
+            },
+            "innerBounds": {
+              "x": 1142,
+              "y": 235,
+              "width": 276,
+              "height": 167,
+              "right": 1418,
+              "bottom": 402,
+              "area": 46092
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1142,
+                "y": 235,
+                "width": 276,
+                "height": 167,
+                "right": 1418,
+                "bottom": 402,
+                "area": 46092
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.612196507092264,
+                "a": 1.0480495724576877,
+                "b": -19.695710142894463
+              },
+              "sampleCount": 11592,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615396534,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 1100,
+              "y": 468,
+              "width": 360,
+              "height": 264,
+              "right": 1460,
+              "bottom": 732,
+              "area": 95040
+            },
+            "innerBounds": {
+              "x": 1165,
+              "y": 516,
+              "width": 230,
+              "height": 168,
+              "right": 1395,
+              "bottom": 684,
+              "area": 38640
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1165,
+                "y": 516,
+                "width": 230,
+                "height": 168,
+                "right": 1395,
+                "bottom": 684,
+                "area": 38640
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.93177158888911,
+                "a": 0.3687051008393061,
+                "b": -18.837512194016924
+              },
+              "sampleCount": 38640,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.970131754650332,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1135,
+              "y": 748,
+              "width": 290,
+              "height": 264,
+              "right": 1425,
+              "bottom": 1012,
+              "area": 76560
+            },
+            "innerBounds": {
+              "x": 1188,
+              "y": 796,
+              "width": 184,
+              "height": 168,
+              "right": 1372,
+              "bottom": 964,
+              "area": 30912
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1188,
+                "y": 796,
+                "width": 184,
+                "height": 168,
+                "right": 1372,
+                "bottom": 964,
+                "area": 30912
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.703930836754054,
+                "a": -0.011815410064619503,
+                "b": -18.152364574058222
+              },
+              "sampleCount": 30912,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.897875095040632,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 6.736344851254867E-14
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.9722011450644961,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615396534,
+          "differenceFromNominal": 1.021049911287264E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 0.9815748161612823,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.970131754650332,
+          "differenceFromNominal": 1.1620926443356439E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9924812030075187,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.897875095040632,
+          "differenceFromNominal": 7.410960733977845E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-4ca0a4ba47804d09a24c893bc8fe49a5",
+      "imageSha256": "7cacc3f75a5ed5d4036f6b529c53b440123b76453bfd92d676b1b7d1eb75b329",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 1135,
+              "y": 188,
+              "width": 290,
+              "height": 261,
+              "right": 1425,
+              "bottom": 449,
+              "area": 75690
+            },
+            "innerBounds": {
+              "x": 1188,
+              "y": 235,
+              "width": 184,
+              "height": 167,
+              "right": 1372,
+              "bottom": 402,
+              "area": 30728
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1188,
+                "y": 235,
+                "width": 184,
+                "height": 167,
+                "right": 1372,
+                "bottom": 402,
+                "area": 30728
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.61219650708635,
+                "a": 1.0480495724530248,
+                "b": -19.6957101428904
+              },
+              "sampleCount": 30728,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615399443,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 1100,
+              "y": 468,
+              "width": 360,
+              "height": 264,
+              "right": 1460,
+              "bottom": 732,
+              "area": 95040
+            },
+            "innerBounds": {
+              "x": 1165,
+              "y": 516,
+              "width": 230,
+              "height": 168,
+              "right": 1395,
+              "bottom": 684,
+              "area": 38640
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1165,
+                "y": 516,
+                "width": 230,
+                "height": 168,
+                "right": 1395,
+                "bottom": 684,
+                "area": 38640
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.93177158888911,
+                "a": 0.3687051008393061,
+                "b": -18.837512194016924
+              },
+              "sampleCount": 38640,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.970131754650332,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1064,
+              "y": 748,
+              "width": 432,
+              "height": 264,
+              "right": 1496,
+              "bottom": 1012,
+              "area": 114048
+            },
+            "innerBounds": {
+              "x": 1142,
+              "y": 796,
+              "width": 276,
+              "height": 168,
+              "right": 1418,
+              "bottom": 964,
+              "area": 46368
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1142,
+                "y": 796,
+                "width": 276,
+                "height": 168,
+                "right": 1418,
+                "bottom": 964,
+                "area": 46368
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.70393083674844,
+                "a": -0.011815410054905051,
+                "b": -18.15236457403413
+              },
+              "sampleCount": 11592,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.897875095028686,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.981203007518797,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615399443,
+          "differenceFromNominal": 1.312017161581025E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 0.9815748161612823,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.970131754650332,
+          "differenceFromNominal": 1.1620926443356439E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9833758708698351,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.897875095028686,
+          "differenceFromNominal": -4.5350390109888394E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-4b092ab32b574d688c35624bedfef985",
+      "imageSha256": "fd8e016a79437768cbb8ec1d5627c8a175b47c30401b48dcbc877d745b9ff89c",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 1064,
+              "y": 188,
+              "width": 432,
+              "height": 261,
+              "right": 1496,
+              "bottom": 449,
+              "area": 112752
+            },
+            "innerBounds": {
+              "x": 1142,
+              "y": 235,
+              "width": 276,
+              "height": 167,
+              "right": 1418,
+              "bottom": 402,
+              "area": 46092
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1142,
+                "y": 235,
+                "width": 276,
+                "height": 167,
+                "right": 1418,
+                "bottom": 402,
+                "area": 46092
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.612196507092264,
+                "a": 1.0480495724576877,
+                "b": -19.695710142894463
+              },
+              "sampleCount": 11592,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615396534,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 1064,
+              "y": 468,
+              "width": 432,
+              "height": 264,
+              "right": 1496,
+              "bottom": 732,
+              "area": 114048
+            },
+            "innerBounds": {
+              "x": 1142,
+              "y": 516,
+              "width": 276,
+              "height": 168,
+              "right": 1418,
+              "bottom": 684,
+              "area": 46368
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1142,
+                "y": 516,
+                "width": 276,
+                "height": 168,
+                "right": 1418,
+                "bottom": 684,
+                "area": 46368
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.931771588887,
+                "a": 0.3687051008245401,
+                "b": -18.837512194005647
+              },
+              "sampleCount": 11592,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.970131754647515,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1064,
+              "y": 748,
+              "width": 432,
+              "height": 264,
+              "right": 1496,
+              "bottom": 1012,
+              "area": 114048
+            },
+            "innerBounds": {
+              "x": 1142,
+              "y": 796,
+              "width": 276,
+              "height": 168,
+              "right": 1418,
+              "bottom": 964,
+              "area": 46368
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1142,
+                "y": 796,
+                "width": 276,
+                "height": 168,
+                "right": 1418,
+                "bottom": 964,
+                "area": 46368
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.70393083674844,
+                "a": -0.011815410054905051,
+                "b": -18.15236457403413
+              },
+              "sampleCount": 11592,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 848,
+                "y": 510,
+                "width": 180,
+                "height": 180,
+                "right": 1028,
+                "bottom": 690,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.897875095028686,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.9722011450644961,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615396534,
+          "differenceFromNominal": 1.021049911287264E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 0.9833758708698351,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.970131754647515,
+          "differenceFromNominal": 8.803624496067641E-12,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9833758708698351,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.897875095028686,
+          "differenceFromNominal": -4.5350390109888394E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-a487a3bab3e24ef2ad2e344dea24861a",
+      "imageSha256": "0b711a267fd1e38fbaf80ab7894f67062fc3a944248acdf70b848b83ab6d8508",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "UnsuitableGeometry",
+        "hint": "Streifen verj\u00FCngt sich deutlich. Kamera m\u00F6glichst frontal auf Muster und Wand ausrichten.",
+        "fields": [],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: 1,0\u00B0; Winkelzuversicht 0,91; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": 1,
+        "hintCode": "PerspectiveTaper"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "PerspectiveTaper",
+        "forbiddenHint": null
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-fc2767f3a12f474d94b6b10e9b267fd4",
+      "imageSha256": "874b40aea19c2150aea91dbd25e8f3f6e1bce6d4d70c2f8dfb24a9baa08e1eb9",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "UnsuitableGeometry",
+        "hint": "Streifen verj\u00FCngt sich deutlich. Kamera m\u00F6glichst frontal auf Muster und Wand ausrichten.",
+        "fields": [],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 0,11; Messung aus Originalpixeln.",
+          "Keine eindeutige Kantenausrichtung; Bild unver\u00E4ndert analysiert."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "PerspectiveTaper"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "PerspectiveTaper",
+        "forbiddenHint": null
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-62bbdd4f7b5f476799e783a262b5eeda",
+      "imageSha256": "bea13b977673e0aed764b561bef9d1666299b9a9d36643ef5ebf57c1b8f04d27",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 246,
+              "y": 797,
+              "width": 354,
+              "height": 326,
+              "right": 600,
+              "bottom": 1123,
+              "area": 115404
+            },
+            "innerBounds": {
+              "x": 310,
+              "y": 856,
+              "width": 226,
+              "height": 208,
+              "right": 536,
+              "bottom": 1064,
+              "area": 47008
+            },
+            "measurement": {
+              "bounds": {
+                "x": 310,
+                "y": 856,
+                "width": 226,
+                "height": 208,
+                "right": 536,
+                "bottom": 1064,
+                "area": 47008
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.61219650709228,
+                "a": 1.0480495724576877,
+                "b": -19.69571014289444
+              },
+              "sampleCount": 11752,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615396523,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 622,
+              "y": 824,
+              "width": 356,
+              "height": 272,
+              "right": 978,
+              "bottom": 1096,
+              "area": 96832
+            },
+            "innerBounds": {
+              "x": 687,
+              "y": 873,
+              "width": 226,
+              "height": 174,
+              "right": 913,
+              "bottom": 1047,
+              "area": 39324
+            },
+            "measurement": {
+              "bounds": {
+                "x": 687,
+                "y": 873,
+                "width": 226,
+                "height": 174,
+                "right": 913,
+                "bottom": 1047,
+                "area": 39324
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.93177158888955,
+                "a": 0.36870510083875097,
+                "b": -18.83751219401639
+              },
+              "sampleCount": 39324,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.970131754649813,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1000,
+              "y": 851,
+              "width": 354,
+              "height": 218,
+              "right": 1354,
+              "bottom": 1069,
+              "area": 77172
+            },
+            "innerBounds": {
+              "x": 1064,
+              "y": 891,
+              "width": 226,
+              "height": 138,
+              "right": 1290,
+              "bottom": 1029,
+              "area": 31188
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1064,
+                "y": 891,
+                "width": 226,
+                "height": 138,
+                "right": 1290,
+                "bottom": 1029,
+                "area": 31188
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.70393083675408,
+                "a": -0.011815410064786036,
+                "b": -18.152364574058755
+              },
+              "sampleCount": 31188,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.897875095040899,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615396523,
+          "differenceFromNominal": 1.0199840971836238E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 1,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.970131754649813,
+          "differenceFromNominal": 1.1102230246251565E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.897875095040899,
+          "differenceFromNominal": 7.677414259887883E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-3993176ab99f489db8d685558beaec5b",
+      "imageSha256": "00dd3b652b95e47223564bd49351e7274ddc984b1f7e8cdff76f9fa531bedffc",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 246,
+              "y": 851,
+              "width": 354,
+              "height": 218,
+              "right": 600,
+              "bottom": 1069,
+              "area": 77172
+            },
+            "innerBounds": {
+              "x": 310,
+              "y": 891,
+              "width": 226,
+              "height": 138,
+              "right": 536,
+              "bottom": 1029,
+              "area": 31188
+            },
+            "measurement": {
+              "bounds": {
+                "x": 310,
+                "y": 891,
+                "width": 226,
+                "height": 138,
+                "right": 536,
+                "bottom": 1029,
+                "area": 31188
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.612196507086686,
+                "a": 1.0480495724525807,
+                "b": -19.69571014289081
+              },
+              "sampleCount": 31188,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615399305,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 622,
+              "y": 824,
+              "width": 356,
+              "height": 272,
+              "right": 978,
+              "bottom": 1096,
+              "area": 96832
+            },
+            "innerBounds": {
+              "x": 687,
+              "y": 873,
+              "width": 226,
+              "height": 174,
+              "right": 913,
+              "bottom": 1047,
+              "area": 39324
+            },
+            "measurement": {
+              "bounds": {
+                "x": 687,
+                "y": 873,
+                "width": 226,
+                "height": 174,
+                "right": 913,
+                "bottom": 1047,
+                "area": 39324
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.93177158888955,
+                "a": 0.36870510083875097,
+                "b": -18.83751219401639
+              },
+              "sampleCount": 39324,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.970131754649813,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1000,
+              "y": 797,
+              "width": 354,
+              "height": 326,
+              "right": 1354,
+              "bottom": 1123,
+              "area": 115404
+            },
+            "innerBounds": {
+              "x": 1064,
+              "y": 856,
+              "width": 226,
+              "height": 208,
+              "right": 1290,
+              "bottom": 1064,
+              "area": 47008
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1064,
+                "y": 856,
+                "width": 226,
+                "height": 208,
+                "right": 1290,
+                "bottom": 1064,
+                "area": 47008
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.70393083674857,
+                "a": -0.011815410055071585,
+                "b": -18.152364574033907
+              },
+              "sampleCount": 11752,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.89787509502857,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615399305,
+          "differenceFromNominal": 1.298161578233703E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 1,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.970131754649813,
+          "differenceFromNominal": 1.1102230246251565E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.89787509502857,
+          "differenceFromNominal": -4.650502205549856E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-26cd3cfca59b42108313be46ec000075",
+      "imageSha256": "25f85b167e5cecceac3f36de933782b771291b6b39b08be3601cb45bbc0dbc6c",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "Measured",
+        "hint": "Farbabstand \u0394E00 \u00B7 kleiner = \u00E4hnlicher",
+        "fields": [
+          {
+            "fieldId": "detected-1",
+            "bounds": {
+              "x": 246,
+              "y": 797,
+              "width": 354,
+              "height": 326,
+              "right": 600,
+              "bottom": 1123,
+              "area": 115404
+            },
+            "innerBounds": {
+              "x": 310,
+              "y": 856,
+              "width": 226,
+              "height": 208,
+              "right": 536,
+              "bottom": 1064,
+              "area": 47008
+            },
+            "measurement": {
+              "bounds": {
+                "x": 310,
+                "y": 856,
+                "width": 226,
+                "height": 208,
+                "right": 536,
+                "bottom": 1064,
+                "area": 47008
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 33.61219650709228,
+                "a": 1.0480495724576877,
+                "b": -19.69571014289444
+              },
+              "sampleCount": 11752,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 27.333703615396523,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-2",
+            "bounds": {
+              "x": 622,
+              "y": 797,
+              "width": 356,
+              "height": 326,
+              "right": 978,
+              "bottom": 1123,
+              "area": 116056
+            },
+            "innerBounds": {
+              "x": 687,
+              "y": 856,
+              "width": 226,
+              "height": 208,
+              "right": 913,
+              "bottom": 1064,
+              "area": 47008
+            },
+            "measurement": {
+              "bounds": {
+                "x": 687,
+                "y": 856,
+                "width": 226,
+                "height": 208,
+                "right": 913,
+                "bottom": 1064,
+                "area": 47008
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 45.93177158888699,
+                "a": 0.3687051008245401,
+                "b": -18.837512194005935
+              },
+              "sampleCount": 11752,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 17.97013175464763,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": false,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          },
+          {
+            "fieldId": "detected-3",
+            "bounds": {
+              "x": 1000,
+              "y": 797,
+              "width": 354,
+              "height": 326,
+              "right": 1354,
+              "bottom": 1123,
+              "area": 115404
+            },
+            "innerBounds": {
+              "x": 1064,
+              "y": 856,
+              "width": 226,
+              "height": 208,
+              "right": 1290,
+              "bottom": 1064,
+              "area": 47008
+            },
+            "measurement": {
+              "bounds": {
+                "x": 1064,
+                "y": 856,
+                "width": 226,
+                "height": 208,
+                "right": 1290,
+                "bottom": 1064,
+                "area": 47008
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 57.70393083674857,
+                "a": -0.011815410055071585,
+                "b": -18.152364574033907
+              },
+              "sampleCount": 11752,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "reference": {
+              "bounds": {
+                "x": 710,
+                "y": 581,
+                "width": 180,
+                "height": 180,
+                "right": 890,
+                "bottom": 761,
+                "area": 32400
+              },
+              "isUsable": true,
+              "reason": null,
+              "lab": {
+                "l": 58.25006969170589,
+                "a": -1.0668112837564081E-05,
+                "b": 4.267245112821172E-06
+              },
+              "sampleCount": 32400,
+              "rejectedFraction": 0,
+              "channelMad": 0,
+              "nearLimitFraction": 0,
+              "polygon": null,
+              "spatialDeltaE": 0
+            },
+            "deltaE00": 12.89787509502857,
+            "measurementAllowed": true,
+            "hint": null,
+            "isNearest": true,
+            "polygon": null,
+            "innerPolygon": null,
+            "surfaceSpatialDeltaE": 0
+          }
+        ],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: -0,0\u00B0; Winkelzuversicht 1,00; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": -0,
+        "hintCode": "None"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": "detected-1",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": 27.333703615396523,
+          "differenceFromNominal": 1.0199840971836238E-11,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": "detected-2",
+          "intersectionOverUnion": 1,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": 17.97013175464763,
+          "differenceFromNominal": 8.917311333789257E-12,
+          "status": "measured"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": "detected-3",
+          "intersectionOverUnion": 0.9943820224719101,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": 12.89787509502857,
+          "differenceFromNominal": -4.650502205549856E-12,
+          "status": "measured"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": null,
+        "forbiddenHint": "PerspectiveTaper"
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112117-71b4c484a12244fc862f3fe5dc9826a2",
+      "imageSha256": "eb3233019a77a76b0a77f0d9e9b7ecfd4a761dfd1852aba66b584ba08ed53a76",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "UnsuitableGeometry",
+        "hint": "Streifen verj\u00FCngt sich deutlich. Kamera m\u00F6glichst frontal auf Muster und Wand ausrichten.",
+        "fields": [],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: 0,9\u00B0; Winkelzuversicht 0,99; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": 0.9,
+        "hintCode": "PerspectiveTaper"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "PerspectiveTaper",
+        "forbiddenHint": null
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    },
+    {
+      "captureId": "irogen-20260923-112118-8d08b3a591f341d6873d80a5b2fead5b",
+      "imageSha256": "461b512ac0af5a5180ab75f1d117dccc831da76985553f4dde01580df4c8d1cf",
+      "error": null,
+      "analysis": {
+        "analyzerVersion": "0.5.4",
+        "options": {
+          "straighten": true,
+          "profileVersion": "synthetic-trial-1",
+          "referenceMode": "SharedAutomaticTrial",
+          "detectionLongestSide": 720,
+          "regionTolerance": 14,
+          "minimumFillRatio": 0.77,
+          "minimumFieldSide": 40,
+          "minimumFieldArea": 2500,
+          "minimumSamples": 600,
+          "innerMargin": 0.18,
+          "maximumOutlierFraction": 0.18,
+          "maximumChannelMad": 12,
+          "surfaceMargin": 0.05,
+          "maximumSpatialDeltaE": 2,
+          "maximumCrossEdgeDeviation": 0.06,
+          "minimumEdgeConcentration": 0.18
+        },
+        "width": 1600,
+        "height": 1200,
+        "status": "UnsuitableGeometry",
+        "hint": "Streifen verj\u00FCngt sich deutlich. Kamera m\u00F6glichst frontal auf Muster und Wand ausrichten.",
+        "fields": [],
+        "diagnostics": [
+          "Experimenteller Einzelbild-Testweg; keine Kamera- oder zeitliche Stabilit\u00E4tsfreigabe.",
+          "Ganzbildsuche; zusammenh\u00E4ngende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
+          "Gleichm\u00E4\u00DFige Beleuchtungsverschiebungen und materialabh\u00E4ngige Reflexe sind nicht allgemein aus einem Bild erkennbar.",
+          "Gerade richten: 2,9\u00B0; Winkelzuversicht 0,90; Messung aus Originalpixeln."
+        ],
+        "straighteningDegrees": 2.9,
+        "hintCode": "PerspectiveTaper"
+      },
+      "comparisons": [
+        {
+          "expectedFieldId": "field-1",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 27.333703615386323,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-2",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 17.97013175463871,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        },
+        {
+          "expectedFieldId": "field-3",
+          "detectedFieldId": null,
+          "intersectionOverUnion": null,
+          "nominalDeltaE00": 12.897875095033221,
+          "actualDeltaE00": null,
+          "differenceFromNominal": null,
+          "status": "not-detected"
+        }
+      ],
+      "unexpectedDetectedFields": 0,
+      "expectation": {
+        "formatVersion": 1,
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "PerspectiveTaper",
+        "forbiddenHint": null
+      },
+      "evaluation": {
+        "status": "Passed",
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+      }
+    }
+  ]
+}

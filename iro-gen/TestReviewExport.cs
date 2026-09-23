@@ -23,6 +23,14 @@ public static class TestReviewExport
         text.AppendLine($"Diagnosegrenze: {tolerance.ToString(CultureInfo.InvariantCulture)} ΔE00. Bilder insgesamt: {rows.Count}.");
         text.AppendLine($"Dialogfilter: {(onlyProblems ? "nur Probleme" : "alle")}. Der Export berücksichtigt immer ALLE eingelesenen Bilder.");
         text.AppendLine("Entwicklungsdiagnose, keine Abnahme. Nominale Materialabstände vor Störungen sind keine geprüften Bild-Sollwerte. Abweisung kann richtig sein. Befunde unten sind Beispiele, keine vollständige Einzelfallliste.\n");
+        text.AppendLine($"Verhaltenserwartungen: {rows.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Passed)} erfüllt; {rows.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Failed)} nicht erfüllt; {rows.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.NotEvaluated)} nicht bewertet; {rows.Count(r => r.CheckStatus == Iro.Analysis.ExpectationStatus.Error)} Prüffehler.");
+        text.AppendLine("Diese Prüfung bewertet Freigabe, freigegebene Feldanzahl und fachlichen Hinweis. Sie ist keine Farbgenauigkeits- oder Nutzerabnahme.");
+        text.AppendLine();
+        text.AppendLine("| Testfall / Aufnahme | Sollverhalten | Soll-Ist-Ergebnis | Befund | Grundlage |");
+        text.AppendLine("|---|---|---|---|---|");
+        foreach (var row in rows)
+            text.AppendLine($"| {Cell(row.CaseName)} / {Cell(row.CaptureId)} | {Cell(row.ExpectedBehavior)} | {row.CheckText} | {Cell(row.CheckDetails)} | {Cell(row.Expectation?.Basis)} |");
+        text.AppendLine();
         foreach (var verdict in Enum.GetValues<ReviewVerdict>())
             text.AppendLine($"- {VerdictLabel(verdict)}: {rows.Count(r => r.Verdict == verdict)}");
         text.AppendLine("\n## Zusammenfassung nach Testfall, Optionen und Softwareversion\n");

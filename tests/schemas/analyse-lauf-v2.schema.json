@@ -1,0 +1,758 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Iro Analyse-Lauf v2 – getrennte Verhaltenserwartungen und nominale Diagnose",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "formatVersion",
+    "kind",
+    "runId",
+    "requestId",
+    "analyzerVersion",
+    "createdAtUtc",
+    "options",
+    "status",
+    "requestedCount",
+    "processedCount",
+    "imagesWithMeasurements",
+    "measuredFields",
+    "comparisonBasis",
+    "captures"
+  ],
+  "properties": {
+    "formatVersion": {
+      "const": 2
+    },
+    "kind": {
+      "const": "iro-analysis-run"
+    },
+    "runId": {
+      "type": "string",
+      "pattern": "^iro-run-[a-f0-9]{32}$"
+    },
+    "requestId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "analyzerVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "createdAtUtc": {
+      "type": "string",
+      "format": "date-time",
+      "pattern": "Z$"
+    },
+    "options": {
+      "$ref": "#/$defs/options"
+    },
+    "status": {
+      "enum": [
+        "completed",
+        "completed-with-errors",
+        "cancelled"
+      ]
+    },
+    "requestedCount": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 10000
+    },
+    "processedCount": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "imagesWithMeasurements": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10000
+    },
+    "measuredFields": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "comparisonBasis": {
+      "type": "string",
+      "minLength": 1
+    },
+    "captures": {
+      "type": "array",
+      "maxItems": 10000,
+      "items": {
+        "$ref": "#/$defs/capture"
+      }
+    }
+  },
+  "$defs": {
+    "options": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "profileVersion",
+        "referenceMode",
+        "detectionLongestSide",
+        "regionTolerance",
+        "minimumFillRatio",
+        "minimumFieldSide",
+        "minimumFieldArea",
+        "minimumSamples",
+        "innerMargin",
+        "maximumOutlierFraction",
+        "maximumChannelMad",
+        "minimumEdgeConcentration"
+      ],
+      "properties": {
+        "straighten": {
+          "type": "boolean"
+        },
+        "profileVersion": {
+          "const": "synthetic-trial-1"
+        },
+        "referenceMode": {
+          "enum": [
+            "SharedAutomaticTrial",
+            "AdjacentPerFieldTrial"
+          ]
+        },
+        "detectionLongestSide": {
+          "type": "integer",
+          "minimum": 200,
+          "maximum": 1600
+        },
+        "regionTolerance": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 40
+        },
+        "minimumFillRatio": {
+          "type": "number",
+          "minimum": 0.5,
+          "maximum": 1
+        },
+        "minimumFieldSide": {
+          "type": "integer",
+          "minimum": 8,
+          "maximum": 1000
+        },
+        "minimumFieldArea": {
+          "type": "integer",
+          "minimum": 64,
+          "maximum": 1000000
+        },
+        "minimumSamples": {
+          "type": "integer",
+          "minimum": 16,
+          "maximum": 40000
+        },
+        "innerMargin": {
+          "type": "number",
+          "minimum": 0.05,
+          "maximum": 0.4
+        },
+        "maximumOutlierFraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4
+        },
+        "maximumChannelMad": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 40
+        },
+        "maximumCrossEdgeDeviation": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 0.2
+        },
+        "maximumSpatialDeltaE": {
+          "type": "number",
+          "exclusiveMinimum": 0,
+          "maximum": 200
+        },
+        "surfaceMargin": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 0.4
+        },
+        "minimumEdgeConcentration": {
+          "type": "number",
+          "minimum": 0.01,
+          "maximum": 1
+        }
+      }
+    },
+    "point": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y"
+      ],
+      "properties": {
+        "x": {
+          "type": "number"
+        },
+        "y": {
+          "type": "number"
+        }
+      }
+    },
+    "polygon": {
+      "anyOf": [
+        {
+          "type": "array",
+          "minItems": 3,
+          "items": {
+            "$ref": "#/$defs/point"
+          }
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "rect": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "x",
+        "y",
+        "width",
+        "height",
+        "right",
+        "bottom",
+        "area"
+      ],
+      "properties": {
+        "x": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "y": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "right": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "bottom": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "area": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "lab": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "l",
+        "a",
+        "b"
+      ],
+      "properties": {
+        "l": {
+          "type": "number"
+        },
+        "a": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        }
+      }
+    },
+    "region": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "bounds",
+        "isUsable",
+        "reason",
+        "lab",
+        "sampleCount",
+        "rejectedFraction",
+        "channelMad",
+        "nearLimitFraction"
+      ],
+      "properties": {
+        "bounds": {
+          "$ref": "#/$defs/rect"
+        },
+        "isUsable": {
+          "type": "boolean"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "lab": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/lab"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sampleCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "rejectedFraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "channelMad": {
+          "type": "number",
+          "minimum": 0
+        },
+        "nearLimitFraction": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "polygon": {
+          "$ref": "#/$defs/polygon"
+        },
+        "spatialDeltaE": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "isUsable": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "lab": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "lab": {
+                "$ref": "#/$defs/lab"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "field": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fieldId",
+        "bounds",
+        "innerBounds",
+        "measurement",
+        "reference",
+        "deltaE00",
+        "measurementAllowed",
+        "hint",
+        "isNearest"
+      ],
+      "properties": {
+        "fieldId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "bounds": {
+          "$ref": "#/$defs/rect"
+        },
+        "innerBounds": {
+          "$ref": "#/$defs/rect"
+        },
+        "measurement": {
+          "$ref": "#/$defs/region"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/region"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "deltaE00": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "measurementAllowed": {
+          "type": "boolean"
+        },
+        "hint": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "isNearest": {
+          "type": "boolean"
+        },
+        "polygon": {
+          "$ref": "#/$defs/polygon"
+        },
+        "innerPolygon": {
+          "$ref": "#/$defs/polygon"
+        },
+        "surfaceSpatialDeltaE": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "measurementAllowed": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "deltaE00": {
+                "type": "null"
+              },
+              "isNearest": {
+                "const": false
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "deltaE00": {
+                "type": "number",
+                "minimum": 0
+              },
+              "measurement": {
+                "properties": {
+                  "isUsable": {
+                    "const": true
+                  }
+                }
+              },
+              "reference": {
+                "type": "object",
+                "properties": {
+                  "isUsable": {
+                    "const": true
+                  }
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "analysis": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "analyzerVersion",
+        "options",
+        "width",
+        "height",
+        "status",
+        "hint",
+        "fields",
+        "diagnostics"
+      ],
+      "properties": {
+        "analyzerVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "options": {
+          "$ref": "#/$defs/options"
+        },
+        "width": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "height": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "status": {
+          "enum": [
+            "Measured",
+            "PartiallyMeasured",
+            "NoPattern",
+            "AmbiguousPattern",
+            "UnsuitableGeometry",
+            "InvalidReference",
+            "InvalidFields"
+          ]
+        },
+        "hint": {
+          "type": "string"
+        },
+        "fields": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field"
+          }
+        },
+        "diagnostics": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "straighteningDegrees": {
+          "type": "number",
+          "minimum": -45,
+          "maximum": 45
+        },
+        "hintCode": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null
+          ]
+        }
+      }
+    },
+    "comparison": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "expectedFieldId",
+        "detectedFieldId",
+        "intersectionOverUnion",
+        "nominalDeltaE00",
+        "actualDeltaE00",
+        "differenceFromNominal",
+        "status"
+      ],
+      "properties": {
+        "expectedFieldId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "detectedFieldId": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "intersectionOverUnion": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 1
+        },
+        "nominalDeltaE00": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "actualDeltaE00": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "differenceFromNominal": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "status": {
+          "enum": [
+            "measured",
+            "rejected",
+            "not-detected",
+            "ambiguous-assignment"
+          ]
+        }
+      }
+    },
+    "capture": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "captureId",
+        "imageSha256",
+        "error",
+        "analysis",
+        "comparisons",
+        "unexpectedDetectedFields",
+        "evaluation"
+      ],
+      "properties": {
+        "captureId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "imageSha256": {
+          "type": "string",
+          "pattern": "^([a-f0-9]{64})?$"
+        },
+        "error": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "analysis": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/analysis"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparisons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/comparison"
+          }
+        },
+        "unexpectedDetectedFields": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "expectation": {
+          "$ref": "#/$defs/behaviorExpectation"
+        },
+        "evaluation": {
+          "$ref": "#/$defs/evaluation"
+        }
+      }
+    },
+    "behaviorExpectation": {
+      "type": "object",
+      "required": [
+        "formatVersion",
+        "verification",
+        "basis",
+        "measurementAllowed",
+        "releasedFieldCount",
+        "requiredHint",
+        "forbiddenHint"
+      ],
+      "properties": {
+        "forbiddenHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null
+          ]
+        },
+        "measurementAllowed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "formatVersion": {
+          "const": 1
+        },
+        "verification": {
+          "enum": [
+            "proposed",
+            "verified"
+          ]
+        },
+        "releasedFieldCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "maximum": 20,
+          "minimum": 0
+        },
+        "requiredHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "additionalProperties": false
+    },
+    "evaluation": {
+      "type": "object",
+      "required": [
+        "status",
+        "details"
+      ],
+      "properties": {
+        "details": {
+          "type": "string",
+          "minLength": 1
+        },
+        "status": {
+          "enum": [
+            "NotEvaluated",
+            "Passed",
+            "Failed",
+            "Error"
+          ]
+        }
+      },
+      "additionalProperties": false
+    }
+  }
+}

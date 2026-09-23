@@ -5,7 +5,13 @@ namespace Iro.Analysis;
 public sealed record FieldComparison(string ExpectedFieldId, string? DetectedFieldId, double? IntersectionOverUnion,
     double? NominalDeltaE00, double? ActualDeltaE00, double? DifferenceFromNominal, string Status);
 public sealed record CaptureAnalysis(string CaptureId, string ImageSha256, string? Error, ImageAnalysis? Analysis,
-    IReadOnlyList<FieldComparison> Comparisons, int UnexpectedDetectedFields);
+    IReadOnlyList<FieldComparison> Comparisons, int UnexpectedDetectedFields)
+{
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public BehaviorExpectation? Expectation { get; init; }
+    [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
+    public ExpectationEvaluation? Evaluation { get; init; }
+}
 public sealed record AnalysisRun(int FormatVersion, string Kind, string RunId, string RequestId, string AnalyzerVersion,
     string CreatedAtUtc, AnalysisOptions Options, string Status, int RequestedCount, int ProcessedCount,
     int ImagesWithMeasurements, int MeasuredFields, string ComparisonBasis, IReadOnlyList<CaptureAnalysis> Captures);

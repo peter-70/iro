@@ -1,6 +1,6 @@
 # Arbeitsplan: Bildoptimierung ohne Verfälschung der Farbmessung
 
-Stand: 22. September 2026. Grundlage: [konsolidierter Plan, Fassung 1.32](../IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage) und das ausdrücklich angenommene [Entscheidungsprotokoll](entscheidung-bildoptimierung-2026-09-22.md). Dieser Plan konkretisiert die beschlossene Arbeit; er ersetzt keine fachliche Festlegung.
+Stand: 22. September 2026. Grundlage: [konsolidierter Plan, Fassung 1.33](../IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage) und das ausdrücklich angenommene [Entscheidungsprotokoll](entscheidung-bildoptimierung-2026-09-22.md). Dieser Plan konkretisiert die beschlossene Arbeit; er ersetzt keine fachliche Festlegung.
 
 ## Verbindliche Arbeits- und Statusregeln
 
@@ -22,7 +22,7 @@ Pro Schritt festhalten: Änderungsdatum, betroffene Code-/Dokumentfassung, tats�
 | Unbrauchbare Unterbelichtung ohne Kanalanschlag erkennen | offen | offen | offen | nein |
 | Vergleichbare Beleuchtung prüfen und Schattenwarnung/Sperre konkretisieren | offen | offen | offen | nein |
 | Verbleibende Lücken bei Vollständigkeit, Unschärfe und flächigen Reflexen schließen | kleine passende Randreste in Analyse 0.5.1 ergänzt; weitere Lücken offen | gezielte Beschnittprüfungen bestanden; insgesamt unvollständig | offen | nein |
-| Verifizierte Freigabe-, Hinweis- und Farbwerterwartungen im Testwerkzeug auswerten | offen | offen | offen | nein |
+| Verifizierte Freigabe-, Hinweis- und Farbwerterwartungen im Testwerkzeug auswerten | Erste bildbezogene Freigabe-/Feldanzahl-/Haupt-Hinweisprüfung umgesetzt; Feldidentitäten und Farbwerte offen | Gezielte Gegenproben und Zehn-Bilder-Ablauf bestanden | offen | nein |
 
 Keine zusätzlichen Erkennungsoptimierungen oder Farbkorrekturmodelle beginnen, solange diese Lücken nicht geschlossen oder ihre Grenzen ausdrücklich abgenommen sind. Unabhängige Fehlerbehebungen bleiben autorisiert. Die bisherige Kamera-Reihenfolge bleibt bestehen. Ein bestandener synthetischer Test wird nicht als Kundenfreigabe behandelt.
 
@@ -191,3 +191,11 @@ Keine Sollfarben aus dem Testbericht als versteckte Analyzer-Eingaben verwenden.
 **Aktueller Abschluss der gezielten Korrektur, 23. September 2026:** Analyse 0.5.3 beseitigt den übersprungenen Zwei-Feld-Verjüngungsschutz. 28 gezielte Geometriefälle und unveränderter IroGen-Plan mit 10/10 erfüllten Erwartungen; anschließend alle 96 Kern- und 123 Integrationstests bestanden. Schema-/Export-/Ergebnisvertragsprüfungen bestanden. [Nachweise und Grenzen](geometrie-schutzpruefung.md). Umsetzung und technische Prüfung dieses Teilpunkts abgeschlossen; Nutzerabnahme und Erledigt offen. Allgemeine Perspektiverkennung weiterhin unvollständig.
 
 Abschließender Release-Build der gesamten Solution einschließlich Android bestanden: 0 Fehler, 8 bekannte XAML-Bindungswarnungen (XC0022). Keine neue Geräteprüfung. Für den Nutzer-Gegenlauf denselben JSON-Plan mit neu gestarteter IroGen-Instanz und Analyse 0.5.3 verwenden.
+
+**Nutzer-Gegenlauf nach Korrektur, 23. September 2026:** [Übermittelter Bericht](../iro-gen/testplans/iro-testbericht-20260923-123744.md), Generator 1.4.0 / Analyse 0.5.3, 10/10 verarbeitet ohne Fehler. Alle zehn Erwartungen erfüllt: sechs geeignete Bilder jeweils 3/3 Felder freigegeben; vier Verjüngungsfälle vollständig gesperrt mit Frontalhinweis, einschließlich der zuvor fehlerhaften waagerechten Kombination. Umsetzung und Prüfung der begrenzten Korrektur damit auch im Nutzerlauf bestätigt. Ausdrückliche Nutzerabnahme und Erledigt bleiben offen; allgemeine Perspektivprüfung nicht abgeschlossen.
+
+**Fortschritt zu Vergleichsdaten und verständlicher Diagnose, 23. September 2026:** Erste automatische Verhaltenserwartungsprüfung umgesetzt und gezielt geprüft; [Vertrag, Nachweise und Gegenlauf](verhaltenserwartungen.md). Schritte 3 und 13 bleiben insgesamt offen, weil der vollständige Datensatz, weitere Verträge und Abnahmen noch fehlen. Kein neuer Messalgorithmus und keine Genauigkeitsfreigabe.
+
+**Abschlussprüfung der Erwartungsauswertung, 23. September 2026:** Nach Implementierung alle 96 Kern- und 129 Generator-/Integrationstests bestanden, keine übersprungen. Gezielt zuvor Gegenproben mit falscher Freigabe/Feldzahl/Hinweis, ungeprüften und alten Daten sowie echtem Dialogfilter geprüft. Neuer Testplan v2, neuer Ergebnislauf v2 und historische Ergebnisläufe schema-validiert; Aufnahmebeispiele einschließlich fünf ungültiger Gegenbeispiele bestanden. Der Zehn-Bilder-Lauf meldet automatisch 10 erfüllt / 0 nicht erfüllt / 0 nicht bewertet / 0 Prüffehler. Nutzer-Gegenlauf und Abnahme offen.
+
+Abschließender vollständiger Release-Build zur Erwartungsauswertung einschließlich Android erfolgreich: 0 Fehler, 8 bekannte XAML-Bindungswarnungen. Keine neue Geräteprüfung. Ausgelieferter Prüfstand für den Gegenlauf: IroGen 1.5.0 / Analyse 0.5.4.

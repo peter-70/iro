@@ -29,10 +29,38 @@ public class TestPlanTests
                 Path.Combine(root, "tests", "runs"), new());
             var review = TestRunReview.Load(root, 1);
             string report = TestReviewExport.Create(review, 1, false);
-            string evidence = Path.Combine(project, "tests", "adjustments", "konturplan-20260923-korrigiert");
+            string evidence = Path.Combine(project, "tests", "adjustments", "erwartungspruefung-20260923");
             Directory.CreateDirectory(evidence);
             File.WriteAllText(Path.Combine(evidence, "bericht.md"), report);
+            Assert.Equal(2, saved.Report.FormatVersion);
+            Assert.All(saved.Report.Captures, c => {
+                Assert.NotNull(c.Expectation);
+                Assert.Equal(Iro.Analysis.ExpectationStatus.Passed, c.Evaluation?.Status);
+            });
             Assert.Equal(10, review.Count);
+            Assert.All(review, r => Assert.Equal(Iro.Analysis.ExpectationStatus.Passed,r.CheckStatus));
+            Assert.Contains("10 erfüllt; 0 nicht erfüllt",report);
+            Sta(() =>
+            {
+                var dialog = new TestResultsWindow(root, saved.Report.RunId);
+                dialog.Show();
+                Assert.Contains("10 erfüllt", ((System.Windows.Controls.TextBlock)dialog.FindName("Summary")).Text);
+                var grid = (System.Windows.Controls.DataGrid)dialog.FindName("Rows");
+                Assert.Equal(10,grid.Items.Count);
+                Assert.Contains(grid.Columns, c => c.Header?.ToString() == "Soll-Ist-Prüfung");
+                ((System.Windows.Controls.CheckBox)dialog.FindName("OnlyProblems")).IsChecked = true;
+                Assert.Empty(grid.Items.Cast<object>());
+                dialog.Close();
+                return true;
+            });
+            // Results remain auditable even when source requests are no longer available.
+            Directory.Delete(Path.Combine(root,"tests","requests"),true);
+            var withoutRequests=TestRunReview.Load(root,1);
+            Assert.All(withoutRequests,r => {
+                Assert.Equal(Iro.Analysis.ExpectationStatus.Passed,r.CheckStatus);
+                Assert.NotNull(r.Expectation?.Basis);
+            });
+            File.Copy(saved.ResultFile,Path.Combine(evidence,"results.json"),true);
             var findings = new List<string> { "# Soll-Ist-Prüfung des IroGen-Konturplans", "", "Keine Nutzerabnahme; nominale Farbabweichungen sind kein Prüfkriterium.", "" };
             foreach (var row in review)
             {

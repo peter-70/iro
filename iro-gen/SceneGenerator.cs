@@ -18,7 +18,7 @@ public sealed record GeneratedScene(GeneratorOptions Options, Rgb Wall, IReadOnl
 
 public static class SceneGenerator
 {
-    public const string Version = "1.4.0";
+    public const string Version = "1.5.0";
 
     // WPF text rendering requires an STA. The caller runs this on a dedicated STA worker.
     public static GeneratedScene Generate(GeneratorOptions o, CancellationToken cancellationToken = default)

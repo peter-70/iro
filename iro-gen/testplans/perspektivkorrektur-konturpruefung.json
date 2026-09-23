@@ -1,5 +1,5 @@
 {
-  "formatVersion": 1,
+  "formatVersion": 2,
   "kind": "irogen-test-plan",
   "name": "Konturkorrektur: Rechtecke zulassen und Verjuengung sperren",
   "defaults": {
@@ -55,7 +55,15 @@
           0.6666666667
         ]
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Rechtecke zunehmend senkrecht - SOLL messbar ohne Perspektivhinweis",
@@ -69,7 +77,15 @@
           1.0
         ]
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Kontrolle senkrecht - SOLL alle drei Felder messbar",
@@ -78,7 +94,15 @@
         "position": "Right",
         "orientation": "Vertical"
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Verjuengung senkrecht - SOLL gesperrt mit Frontalhinweis",
@@ -88,7 +112,15 @@
         "position": "Right",
         "perspective": "Medium"
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "formatVersion": 1,
+        "requiredHint": "PerspectiveTaper",
+        "releasedFieldCount": 0
+      }
     },
     {
       "name": "Verjuengung dunkel verrauscht senkrecht - SOLL gesperrt mit Frontalhinweis",
@@ -100,7 +132,15 @@
         "perspective": "Medium",
         "exposureStops": -0.7
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "formatVersion": 1,
+        "requiredHint": "PerspectiveTaper",
+        "releasedFieldCount": 0
+      }
     },
     {
       "name": "Rechtecke abnehmend waagerecht - SOLL messbar ohne Perspektivhinweis",
@@ -114,7 +154,15 @@
           0.6666666667
         ]
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Rechtecke zunehmend waagerecht - SOLL messbar ohne Perspektivhinweis",
@@ -128,7 +176,15 @@
           1.0
         ]
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Kontrolle waagerecht - SOLL alle drei Felder messbar",
@@ -137,7 +193,15 @@
         "position": "Bottom",
         "orientation": "Horizontal"
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "forbiddenHint": "PerspectiveTaper",
+        "measurementAllowed": true,
+        "formatVersion": 1,
+        "releasedFieldCount": 3
+      }
     },
     {
       "name": "Verjuengung waagerecht - SOLL gesperrt mit Frontalhinweis",
@@ -147,7 +211,15 @@
         "position": "Bottom",
         "perspective": "Medium"
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "formatVersion": 1,
+        "requiredHint": "PerspectiveTaper",
+        "releasedFieldCount": 0
+      }
     },
     {
       "name": "Verjuengung dunkel verrauscht waagerecht - SOLL gesperrt mit Frontalhinweis",
@@ -159,7 +231,15 @@
         "perspective": "Medium",
         "exposureStops": -0.7
       },
-      "count": 1
+      "count": 1,
+      "expected": {
+        "verification": "verified",
+        "basis": "Geometrisch konstruierter Entwicklungsfall; Erwartung vor Analyse festgelegt, Gegenprobe und Nutzerlauf vom 23.09.2026 dokumentiert in docs/geometrie-schutzpruefung.md und iro-testbericht-20260923-123744.md. Keine Nutzerabnahme oder Farbgenauigkeitszusage.",
+        "measurementAllowed": false,
+        "formatVersion": 1,
+        "requiredHint": "PerspectiveTaper",
+        "releasedFieldCount": 0
+      }
     }
   ]
 }

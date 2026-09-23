@@ -74,3 +74,5 @@ Aufnahmebezug, geometrische Rückabbildung, tatsächlich verwendete Messgrundlag
 ### Geprüfter Teilstand Analyse 0.5.0
 
 Die [Regelaudit-Korrekturen](regelaudit-2026-09-22.md) sperren erkannte unbrauchbare Unschärfe und relevante Kanalendpunkte aufnahmeweit sowie geometrisch erkannten Bildbeschnitt. Originalpixelmessung bleibt erhalten. Die konservative Endpunktregel ist mit der Analyserversion gekennzeichnet; die Struktur des gespeicherten Ergebnisvertrags bleibt unverändert. Vollständige Perspektiv-, Unterbelichtungs-, Beleuchtungs- und Vollständigkeitsprüfung sind weiterhin nicht abgenommen. Kein allgemeines Freigabeversprechen aus diesem Teilstand ableiten.
+
+Aktuell ab Plan 1.33: [automatische Verhaltenserwartungen](verhaltenserwartungen.md). Neue Testpläne können Format 2 verwenden; neue Ergebnisläufe verwenden Format 2 mit gespeicherter Erwartung und Soll-Ist-Bewertung. Altformate bleiben lesbar, ohne rückwirkende Bewertung. Die erste Stufe prüft Freigabe, freigegebene Feldanzahl und fachlichen Haupt-Hinweis, keine Farbgenauigkeit.

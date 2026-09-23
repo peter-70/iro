@@ -11,6 +11,8 @@ public enum CameraDistance { Normal, TooClose, TooFar, Near, Nearer, Far, Farthe
 
 public sealed record GeneratorOptions
 {
+    [System.Text.Json.Serialization.JsonIgnore]
+    public Iro.Analysis.BehaviorExpectation? TestExpectation { get; init; }
     public string? TestCaseName { get; init; }
     public int Seed { get; init; } = 12345;
     public SceneColors? Colors { get; init; }

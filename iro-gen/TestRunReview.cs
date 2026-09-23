@@ -17,6 +17,28 @@ public sealed record TestRunRow(
     ReviewVerdict Verdict, string Finding, string Message, int Expected, int Measured,
     double? MaxDeviation, int Unexpected, string Folder)
 {
+    public BehaviorExpectation? Expectation { get; init; }
+    public ExpectationEvaluation? Evaluation { get; init; }
+    public ExpectationStatus CheckStatus => Evaluation?.Status ?? ExpectationStatus.NotEvaluated;
+    public string CheckText => CheckStatus switch
+    {
+        ExpectationStatus.Passed => "Erwartung erfüllt",
+        ExpectationStatus.Failed => "Erwartung NICHT erfüllt",
+        ExpectationStatus.Error => "Prüffehler",
+        _ => "Nicht bewertet"
+    };
+    public string CheckDetails => Evaluation?.Details ?? "Historischer Lauf ohne gespeicherte Erwartungsprüfung.";
+    public string ExpectedBehavior => Expectation == null ? "Keine geprüfte Erwartung" :
+        string.Join("; ", new[]
+        {
+            Expectation.MeasurementAllowed is bool allowed ? allowed ? "Messfreigabe" : "Vollständige Sperre" : null,
+            Expectation.ReleasedFieldCount is int count ? $"{count} freigegebene Felder" : null,
+            Expectation.RequiredHint is { } required ? "Hinweis erforderlich: " + ExpectationEvaluator.HintText(required) : null,
+            Expectation.ForbiddenHint is { } forbidden ? "Hinweis unzulässig: " + ExpectationEvaluator.HintText(forbidden) : null
+        }.Where(s => s != null));
+    public bool IsProblem => CheckStatus is ExpectationStatus.Failed or ExpectationStatus.Error
+        || (CheckStatus != ExpectationStatus.Passed && Verdict != ReviewVerdict.NominalUnauffaellig)
+        || Verdict is ReviewVerdict.NominalAbweichend or ReviewVerdict.Fehler;
     public string? CaptureId { get; init; }
     public string? CaseName { get; init; }
     public string? Seed { get; init; }
@@ -74,7 +96,7 @@ public static class TestRunReview
             try
             {
                 var run = JsonSerializer.Deserialize<AnalysisRun>(File.ReadAllText(file), AnalysisRunner.JsonOptions);
-                if (run == null || run.Kind != "iro-analysis-run") continue;
+                if (run == null || run.Kind != "iro-analysis-run" || run.FormatVersion is not (1 or 2)) throw new JsonException("Unbekanntes Analyseformat.");
                 foreach (var capture in run.Captures) rows.Add(Build(run, capture, scenes, tolerance, folder));
             }
             catch (Exception error)
@@ -96,7 +118,7 @@ public static class TestRunReview
 
         if (capture.Error != null)
             return new(run.RunId, run.RequestId, created, sceneText, disturbanceText, ReviewVerdict.Fehler,
-                "Bild konnte nicht verarbeitet werden", capture.Error, 0, 0, null, 0, folder) { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0, RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
+                "Bild konnte nicht verarbeitet werden", capture.Error, 0, 0, null, 0, folder) { Expectation = run.FormatVersion == 2 ? capture.Expectation : null, Evaluation = run.FormatVersion == 2 ? capture.Evaluation : null, CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0, RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
 
         var comparisons = capture.Comparisons;
         int expected = comparisons.Count;
@@ -122,7 +144,7 @@ public static class TestRunReview
 
         return new(run.RunId, run.RequestId, created, sceneText, disturbanceText, verdict, finding,
             Message(capture, verdict, maxDeviation, tolerance), expected, verdict == ReviewVerdict.OhneSollvergleich ? released : measured, maxDeviation, unexpected, folder)
-        { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, AnalyzerVersion = capture.Analysis?.AnalyzerVersion, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0,
+        { Expectation = run.FormatVersion == 2 ? capture.Expectation : null, Evaluation = run.FormatVersion == 2 ? capture.Evaluation : null, CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, AnalyzerVersion = capture.Analysis?.AnalyzerVersion, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0,
           AnalysisProfile = capture.Analysis == null ? null : JsonSerializer.Serialize(capture.Analysis.Options, new JsonSerializerOptions(AnalysisRunner.JsonOptions) { WriteIndented = false }),
           RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
     }

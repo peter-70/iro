@@ -18,7 +18,7 @@
   <Border Grid.Row="1" Background="#FFF6E2" BorderBrush="#E4D2A6" BorderThickness="1" CornerRadius="8"
           Padding="12" Margin="0,0,0,12">
    <StackPanel>
-    <TextBlock TextWrapping="Wrap" Text="Diese Bewertung ist eine Entwicklungsdiagnose, keine Abnahme. Für gestörte Bilder ist im Testauftrag kein geprüftes Sollverhalten hinterlegt: Eine abgewiesene Messung kann richtig sein. Eine Abweichung vom nominalen Materialabstand vor Störungen belegt allein keinen Messfehler. Auch ein unauffälliger Abstand ist keine fachliche Freigabe."/>
+    <TextBlock TextWrapping="Wrap" Text="Diese Bewertung ist eine Entwicklungsdiagnose, keine Abnahme. Geprüfte Verhaltenserwartungen werden getrennt als erfüllt oder nicht erfüllt ausgewiesen. Ohne geprüfte Erwartung bleibt der Lauf nicht bewertet. Eine erwartete Abweisung ist ein erfüllter Testfall. Eine Abweichung vom nominalen Materialabstand vor Störungen belegt allein keinen Messfehler. Auch ein unauffälliger Abstand ist keine fachliche Freigabe."/>
     <WrapPanel Margin="0,10,0,0" VerticalAlignment="Center">
      <TextBlock Text="Diagnosegrenze der nominalen Abweichung (ΔE00)" VerticalAlignment="Center" Margin="0,0,8,0"/>
      <TextBox x:Name="Tolerance" Text="1,0" Width="70" Margin="0,0,12,0" TextChanged="Tolerance_Changed"
@@ -50,10 +50,28 @@
       <DataTrigger Binding="{Binding Verdict}" Value="Fehler">
        <Setter Property="Background" Value="#FBE4E1"/>
       </DataTrigger>
+      <DataTrigger Binding="{Binding CheckStatus}" Value="Failed">
+       <Setter Property="Background" Value="#FBE4E1"/>
+      </DataTrigger>
+      <DataTrigger Binding="{Binding CheckStatus}" Value="Error">
+       <Setter Property="Background" Value="#FBE4E1"/>
+      </DataTrigger>
      </Style.Triggers>
     </Style>
    </DataGrid.RowStyle>
    <DataGrid.Columns>
+    <DataGridTextColumn Header="Testfall" Binding="{Binding CaseName}" Width="220"/>
+    <DataGridTextColumn Header="Soll-Ist-Prüfung" Binding="{Binding CheckText}" Width="160"/>
+    <DataGridTextColumn Header="Erwartetes Verhalten" Binding="{Binding ExpectedBehavior}" Width="230">
+     <DataGridTextColumn.ElementStyle>
+      <Style TargetType="TextBlock"><Setter Property="TextWrapping" Value="Wrap"/></Style>
+     </DataGridTextColumn.ElementStyle>
+    </DataGridTextColumn>
+    <DataGridTextColumn Header="Prüfbefund" Binding="{Binding CheckDetails}" Width="260">
+     <DataGridTextColumn.ElementStyle>
+      <Style TargetType="TextBlock"><Setter Property="TextWrapping" Value="Wrap"/></Style>
+     </DataGridTextColumn.ElementStyle>
+    </DataGridTextColumn>
     <DataGridTextColumn Header="Zeit" Binding="{Binding TimeText}" Width="90"/>
     <DataGridTextColumn Header="Szene" Binding="{Binding Scene}" Width="200">
      <DataGridTextColumn.ElementStyle>

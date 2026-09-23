@@ -2,7 +2,7 @@ namespace Iro.Core.Analysis;
 
 public sealed class ImageAnalyzer : IImageAnalyzer
 {
-    public const string Version = "0.5.3";
+    public const string Version = "0.5.4";
     public ImageAnalysis Analyze(RgbFrame image, AnalysisOptions options, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(image); ArgumentNullException.ThrowIfNull(options); options.Validate();
@@ -28,7 +28,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             return Finish(AnalysisStatus.UnsuitableGeometry, "Muster vollständig ins Bild nehmen. Angeschnittener Streifen ist nicht messfähig.", []);
 
         if (MeasurementSafety.HasStrongCoherentTaper(detection))
-            return Finish(AnalysisStatus.UnsuitableGeometry, "Streifen verjüngt sich deutlich. Kamera möglichst frontal auf Muster und Wand ausrichten.", []);
+            return Finish(AnalysisStatus.UnsuitableGeometry, "Streifen verjüngt sich deutlich. Kamera möglichst frontal auf Muster und Wand ausrichten.", [], AnalysisHintCode.PerspectiveTaper);
 
         var combined = Union(detection.Fields);
         var exclusions = detection.Fields.Concat(detection.BorderRegions ?? []).ToArray();
@@ -96,7 +96,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
         return Finish(valid == fields.Count ? AnalysisStatus.Measured : valid > 0 ? AnalysisStatus.PartiallyMeasured : missingReference ? AnalysisStatus.InvalidReference : AnalysisStatus.InvalidFields,
             valid == fields.Count ? "Farbabstand ΔE00 · kleiner = ähnlicher" : valid > 0 ? "Einzelne Messflächen ungeeignet; gültige Felder bleiben auswertbar." : fields[0].Hint ?? "Messung nicht möglich.", fields);
 
-        ImageAnalysis Finish(AnalysisStatus status, string hint, IReadOnlyList<FieldAnalysis> results)
+        ImageAnalysis Finish(AnalysisStatus status, string hint, IReadOnlyList<FieldAnalysis> results, AnalysisHintCode? hintCode = null)
         {
             RegionMeasurement? Map(RegionMeasurement? region) => region == null || rotation == null ? region
                 : region with { Bounds = rotation.SourceBounds(region.Bounds), Polygon = rotation.ToSource(region.Bounds) };
@@ -107,7 +107,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
                 Measurement = Map(f.Measurement)!, Reference = Map(f.Reference)
             }).ToArray();
             return new(Version, options, source.Width, source.Height, status, hint, mapped, diagnostics)
-                { StraighteningDegrees = -alignment.Degrees };
+                { StraighteningDegrees = -alignment.Degrees, HintCode = hintCode ?? (status == AnalysisStatus.Measured ? AnalysisHintCode.None : AnalysisHintCode.Other) };
         }
     }
     private static PixelRect Union(IReadOnlyList<PixelRect> fields)
