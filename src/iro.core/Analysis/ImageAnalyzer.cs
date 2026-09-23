@@ -2,7 +2,7 @@ namespace Iro.Core.Analysis;
 
 public sealed class ImageAnalyzer : IImageAnalyzer
 {
-    public const string Version = "0.5.2";
+    public const string Version = "0.5.3";
     public ImageAnalysis Analyze(RgbFrame image, AnalysisOptions options, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(image); ArgumentNullException.ThrowIfNull(options); options.Validate();

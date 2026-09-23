@@ -29,7 +29,7 @@ public class TestPlanTests
                 Path.Combine(root, "tests", "runs"), new());
             var review = TestRunReview.Load(root, 1);
             string report = TestReviewExport.Create(review, 1, false);
-            string evidence = Path.Combine(project, "tests", "adjustments", "konturplan-20260923");
+            string evidence = Path.Combine(project, "tests", "adjustments", "konturplan-20260923-korrigiert");
             Directory.CreateDirectory(evidence);
             File.WriteAllText(Path.Combine(evidence, "bericht.md"), report);
             Assert.Equal(10, review.Count);
@@ -44,13 +44,6 @@ public class TestPlanTests
                 bool expectedRejection = row.CaseName!.StartsWith("Verjuengung");
                 bool passed = expectedRejection ? rejectedAsExpected : measuredAsExpected;
                 findings.Add("- " + row.CaseName + ": **" + (passed ? "erfüllt" : "NICHT ERFÜLLT") + "**. " + row.Finding);
-                // Combined disturbances remain a diagnostic experiment: record failures
-                // explicitly, never turn successful export into a safety acceptance.
-                if (row.CaseName.StartsWith("Verjuengung dunkel verrauscht"))
-                {
-                    Assert.Contains(row.CaseName, report);
-                    continue;
-                }
                 if (expectedRejection)
                 {
                     Assert.True(row.Verdict == ReviewVerdict.Abgewiesen,

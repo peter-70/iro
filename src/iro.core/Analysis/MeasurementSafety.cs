@@ -11,13 +11,13 @@ internal static class MeasurementSafety
 
     // Image-space trial criterion, not an estimate of a physical camera angle.
     // A coherent cross-width change is different from varying field lengths or
-    // one occluded field. Require at least three regions and a well-supported trend.
+    // one occluded field. Two regions suffice only when BOTH contours independently support the trend.
     internal const double MaximumCoherentWidthChange = .15;
     internal const double MinimumTaperFit = .90;
     internal const double MinimumWithinFieldWidthChange = .025;
     internal static bool HasStrongCoherentTaper(Detection detection)
     {
-        if (detection.Fields.Count < 3 || detection.Orientation == "single") return false;
+        if (detection.Fields.Count < 2 || detection.Orientation == "single") return false;
         bool vertical = detection.Orientation == "vertical";
         var points = detection.Fields.Select(r => (
             Position: vertical ? r.Y + r.Height / 2d : r.X + r.Width / 2d,
@@ -27,6 +27,8 @@ internal static class MeasurementSafety
         double yy = points.Sum(p => Math.Pow(p.Width - meanY, 2));
         if (xx == 0 || yy == 0) return false;
         double xy = points.Sum(p => (p.Position - meanX) * (p.Width - meanY));
+        // With two fields the fit is trivially perfect; the two independent
+        // within-field contour checks below remain mandatory.
         double fit = xy * xy / (xx * yy);
         double relativeChange = Math.Abs(xy / xx) * (points[^1].Position - points[0].Position) / points.Max(p => p.Width);
         if (fit < MinimumTaperFit || relativeChange <= MaximumCoherentWidthChange

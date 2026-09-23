@@ -1,3 +1,4 @@
+> **Aktueller Stand, 23. September 2026:** Die bekannte kombinierte Fehlfreigabe ist in Analyse **0.5.3** gezielt behoben. Derselbe unveränderte JSON-Plan erfüllt im neuen Probelauf **10/10 Erwartungen**. IroGen 1.4.0 neu starten und auf Analyseversion 0.5.3 im Bericht achten. [Neuer Soll-Ist-Nachweis](../../tests/adjustments/konturplan-20260923-korrigiert/soll-ist.md). Die unten beschriebenen 9/10 und der offene Fehler sind historische Befunde unter 0.5.2. Eine Nutzerabnahme steht weiterhin aus.
 # IroGen: JSON-Testplan für die korrigierte Perspektivprüfung
 
 Aktualisiert: 23. September 2026. Dieser Abschnitt entspricht dem klargestellten Nutzerauftrag: Bilder in IroGen erzeugen, an Iro senden und den exportierten Bericht prüfen. Die frühere PowerShell-Anleitung unten bleibt als ergänzender Entwicklertest erhalten.

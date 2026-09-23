@@ -39,6 +39,52 @@ public class GeometrySafetyTests
         Assert.Equal(AnalysisStatus.Measured, result.Status);
         Assert.Equal(3, result.Fields.Count(f => f.MeasurementAllowed));
     }
+    [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public void TwoFieldsRequireContourEvidenceToRejectTaper(bool horizontal, bool tapered)
+    {
+        var data = Empty();
+        for (int y = 50; y < 290; y++)
+        {
+            int field = (y - 50) / 130;
+            if ((y - 50) % 130 >= 110) continue;
+            int width = tapered ? 180 - (y - 50) / 3 : 180 - field * 44;
+            Paint(data, 620 - width / 2, y, width, 1, (byte)(60 + 30 * field));
+        }
+        var result = Run(data, horizontal);
+        if (tapered)
+        {
+            Assert.Equal(AnalysisStatus.UnsuitableGeometry, result.Status);
+            Assert.Contains("frontal", result.Hint);
+            Assert.DoesNotContain(result.Fields, f => f.MeasurementAllowed);
+        }
+        else
+        {
+            Assert.Equal(AnalysisStatus.Measured, result.Status);
+            Assert.Equal(2, result.Fields.Count(f => f.MeasurementAllowed));
+            Assert.DoesNotContain("frontal", result.Hint);
+        }
+    }
+    [Theory]
+    [InlineData(false)]
+    [InlineData(true)]
+    public void OneTaperedContourDoesNotEstablishTwoFieldPerspective(bool horizontal)
+    {
+        var data = Empty();
+        for (int y = 50; y < 290; y++)
+        {
+            int field = (y - 50) / 130;
+            if ((y - 50) % 130 >= 110) continue;
+            int width = field == 0 ? 180 - (y - 50) / 3 : 136;
+            Paint(data, 620 - width / 2, y, width, 1, (byte)(60 + 30 * field));
+        }
+        var result = Run(data, horizontal);
+        Assert.DoesNotContain("frontal", result.Hint);
+        Assert.Contains(result.Fields, f => f.MeasurementAllowed);
+    }
     private const int W = 800, H = 600;
     private static byte[] Empty() => Enumerable.Repeat((byte)140, W * H * 3).ToArray();
     private static void Paint(byte[] pixels, int x, int y, int width, int height, byte shade)

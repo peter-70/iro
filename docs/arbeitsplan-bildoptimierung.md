@@ -1,6 +1,6 @@
 # Arbeitsplan: Bildoptimierung ohne Verfälschung der Farbmessung
 
-Stand: 22. September 2026. Grundlage: [konsolidierter Plan, Fassung 1.31](../IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage) und das ausdrücklich angenommene [Entscheidungsprotokoll](entscheidung-bildoptimierung-2026-09-22.md). Dieser Plan konkretisiert die beschlossene Arbeit; er ersetzt keine fachliche Festlegung.
+Stand: 22. September 2026. Grundlage: [konsolidierter Plan, Fassung 1.32](../IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage) und das ausdrücklich angenommene [Entscheidungsprotokoll](entscheidung-bildoptimierung-2026-09-22.md). Dieser Plan konkretisiert die beschlossene Arbeit; er ersetzt keine fachliche Festlegung.
 
 ## Verbindliche Arbeits- und Statusregeln
 
@@ -187,3 +187,7 @@ Keine Sollfarben aus dem Testbericht als versteckte Analyzer-Eingaben verwenden.
 **Klargestellter Nutzerauftrag, 23. September 2026:** [Ladbarer IroGen-JSON-Plan](../iro-gen/testplans/perspektivkorrektur-konturpruefung.json) mit zehn Bildern umgesetzt. Feldbreitenoption ergänzt; PNG-Übergabe, Analyse und Export geprüft. Probelauf: neun Erwartungen erfüllt, waagerechte Verjüngung mit Abdunklung/Rauschen gibt fälschlich zwei Felder frei. Diese Schutzlücke hat weiter Vorrang. [Anleitung und Befunde](../iro-gen/testplans/perspektivkorrektur-konturpruefung.md). Nutzerabnahme und Erledigt bleiben offen.
 
 **Nutzerlauf vom 23. September 2026 bestätigt:** [Übermittelter Bericht mit zehn Bildern](../iro-gen/testplans/iro-testbericht-20260923-114032.md), Generator 1.4.0 / Analyse 0.5.2, vollständig und ohne Verarbeitungsfehler. Vier unterschiedliche Rechteckbreiten und zwei Kontrollen jeweils 3/3 Felder freigegeben; drei Verjüngungsfälle korrekt gesperrt. Waagerechte Verjüngung mit Abdunklung/Rauschen weiterhin 2/3 freigegeben statt vollständiger Sperre: neun von zehn Erwartungen erfüllt. Keine Nutzerabnahme aus der Berichtsübermittlung ableiten. Als Nächstes diese reproduzierte Fehlfreigabe beheben; derselbe JSON-Plan bleibt die Gegenprobe.
+
+**Aktueller Abschluss der gezielten Korrektur, 23. September 2026:** Analyse 0.5.3 beseitigt den übersprungenen Zwei-Feld-Verjüngungsschutz. 28 gezielte Geometriefälle und unveränderter IroGen-Plan mit 10/10 erfüllten Erwartungen; anschließend alle 96 Kern- und 123 Integrationstests bestanden. Schema-/Export-/Ergebnisvertragsprüfungen bestanden. [Nachweise und Grenzen](geometrie-schutzpruefung.md). Umsetzung und technische Prüfung dieses Teilpunkts abgeschlossen; Nutzerabnahme und Erledigt offen. Allgemeine Perspektiverkennung weiterhin unvollständig.
+
+Abschließender Release-Build der gesamten Solution einschließlich Android bestanden: 0 Fehler, 8 bekannte XAML-Bindungswarnungen (XC0022). Keine neue Geräteprüfung. Für den Nutzer-Gegenlauf denselben JSON-Plan mit neu gestarteter IroGen-Instanz und Analyse 0.5.3 verwenden.

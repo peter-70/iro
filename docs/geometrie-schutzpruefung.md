@@ -1,3 +1,22 @@
+# Korrektur der Zwei-Feld-Schutzlücke – aktueller Stand
+
+23. September 2026 · Analyse 0.5.3 · Plan 1.32.
+
+Im unveränderten IroGen-Fall „Verjuengung dunkel verrauscht waagerecht“ enthielt die erkannte Streifengruppe nur zwei Felder. Deren Querbreiten betrugen 136 und 114 Pixel; die inneren Konturänderungen betrugen ungefähr −9,94 % und −7,11 %. Die Schutzprüfung kehrte bei weniger als drei Feldern dennoch sofort zurück. Dies ist die unmittelbar nachgewiesene Ursache der Freigabe trotz vorhandener Verjüngungsbelege. Die Erkennung aller ursprünglichen Felder wird durch diese Korrektur nicht behauptet.
+
+Gezielte Änderung: Auch zwei erkannte Felder werden geprüft, wobei beide Konturen gleichgerichtete Verjüngung belegen müssen. Breitenänderungs-, Kontur- und Anpassungsschwellen bleiben unverändert. Bei zwei Punkten ist eine lineare Anpassung allein kein Beleg; deshalb bleiben beide unabhängigen Konturbedingungen zwingend. Originalpixel-Farbpfad und Generatorplan sind unverändert.
+
+Sechs unabhängige neue Kernfälle: zwei verjüngte Zwei-Feld-Streifen, zwei Rechteckkontrollen mit unterschiedlichen Breiten und zwei Fälle mit nur einer verjüngten Kontur. Vor Korrektur versagten beide Verjüngungssperren bei bestandenen Rechteckkontrollen. Danach bestehen alle 28 gezielten Geometriefälle. Im Ende-zu-Ende-Test entfällt die bisherige Ausnahme für kombinierte Störungen: Alle zehn Erwartungen werden nun zwingend geprüft.
+
+[Unveränderter JSON-Plan](../iro-gen/testplans/perspektivkorrektur-konturpruefung.json): **10/10 Erwartungen erfüllt**, sechs Bilder mit jeweils drei freigegebenen Feldern, vier Bilder vollständig gesperrt mit Frontalhinweis. [Neuer Bericht](../tests/adjustments/konturplan-20260923-korrigiert/bericht.md) und [Soll-Ist-Prüfung](../tests/adjustments/konturplan-20260923-korrigiert/soll-ist.md). Frühere Berichte bleiben erhalten.
+
+Abschließend nach der Codekorrektur: 96 Kern- und 123 Generator-/Integrationstests bestanden, keine übersprungen. Schemaprüfung mit zwei gültigen und fünf ungültigen Beispielen bestanden; 34 Exportpakete einzeln sowie gespeicherte Analyseläufe erfolgreich auf Vertragskonsistenz geprüft. Ein anfänglicher Sammelaufruf über alle Aufträge meldete mehrfach verwendete Aufnahme-IDs zwischen separaten Paketen; korrekt paketweise geprüft ohne Fehler. Die Vertragsprüfung alter Läufe ist keine erneute Analyse alter Bilder. Der abschließende Release-Build wird separat im Arbeitsplan dokumentiert.
+
+Keine Geräte-/Emulatorprüfung oder Nutzerabnahme. Die allgemeine Perspektiverkennung, einschließlich gleichmäßiger Verkürzung ohne bekannte Feldform, bleibt offen.
+
+## Historische Entwicklungsstände bis Analyse 0.5.2
+
+Die folgenden Befunde beschreiben frühere Stufen. Ihre Mindestanzahl von drei Feldern ist durch die oben beschriebene Regel ersetzt.
 # Geometrieschutz: Konturen statt bloßer Feldbreiten
 
 Stand: 22. September 2026. Aktuell: Analyse 0.5.2, Plan 1.30.
