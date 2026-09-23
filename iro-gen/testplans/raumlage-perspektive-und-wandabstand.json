@@ -1,0 +1,343 @@
+{
+  "formatVersion": 1,
+  "kind": "irogen-test-plan",
+  "name": "Räumliche Aufnahmebedingungen und Freihand",
+  "defaults": {
+    "seed": 12345,
+    "width": 1600,
+    "height": 1200,
+    "fieldCount": 7,
+    "matchingField": 3,
+    "orientation": "Vertical",
+    "position": "Center",
+    "labels": true
+  },
+  "cases": [
+    {
+      "name": "Kontrolle senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {}
+    },
+    {
+      "name": "Kontrolle waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Zufällige Lage senkrechter Streifen",
+      "count": 6,
+      "coverRange": false,
+      "options": {
+        "randomPlacement": true
+      }
+    },
+    {
+      "name": "Zufällige Lage waagerechter Streifen",
+      "count": 6,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "randomPlacement": true
+      }
+    },
+    {
+      "name": "Seitenblick leicht senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "Light",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Oben oder unten leicht senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "Light",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Seitenblick stark senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "Strong",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Oben oder unten stark senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "Strong",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Seitenblick sehr stark senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "VeryStrong",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Oben oder unten sehr stark senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "VeryStrong",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Wandabstand klein senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Small",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Wandabstand größer senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Greater",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Wandabstand groß senkrecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Large",
+        "orientation": "Vertical"
+      }
+    },
+    {
+      "name": "Seitenblick leicht waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "Light",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Oben oder unten leicht waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "Light",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Seitenblick stark waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "Strong",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Oben oder unten stark waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "Strong",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Seitenblick sehr stark waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "sideView": "VeryStrong",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Oben oder unten sehr stark waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalView": "VeryStrong",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Wandabstand klein waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Small",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Wandabstand größer waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Greater",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Wandabstand groß waagerecht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "wallGap": "Large",
+        "orientation": "Horizontal"
+      }
+    },
+    {
+      "name": "Kontrolle Blick von oben",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalDirection": "FromAbove",
+        "verticalView": "Strong"
+      }
+    },
+    {
+      "name": "Kontrolle Blick von unten",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "verticalDirection": "FromBelow",
+        "verticalView": "Strong"
+      }
+    },
+    {
+      "name": "Hochhalten leicht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -1,
+        "noise": "Light",
+        "verticalView": "Light",
+        "wallGap": "Small",
+        "verticalDirection": "FromBelow",
+        "motionBlur": "Light"
+      }
+    },
+    {
+      "name": "Hochhalten stark",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -2,
+        "noise": "Medium",
+        "verticalView": "Strong",
+        "wallGap": "Greater",
+        "verticalDirection": "FromBelow",
+        "sideView": "Light",
+        "motionBlur": "Medium"
+      }
+    },
+    {
+      "name": "Hochhalten sehr stark",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -2.5,
+        "noise": "Medium",
+        "verticalView": "VeryStrong",
+        "wallGap": "Large",
+        "verticalDirection": "FromBelow",
+        "sideView": "Strong",
+        "motionBlur": "Strong"
+      }
+    },
+    {
+      "name": "Bücken leicht",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -1,
+        "noise": "Light",
+        "verticalView": "Light",
+        "wallGap": "Small",
+        "verticalDirection": "FromAbove",
+        "motionBlur": "Light"
+      }
+    },
+    {
+      "name": "Bücken stark",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -2,
+        "noise": "Medium",
+        "verticalView": "Strong",
+        "wallGap": "Greater",
+        "verticalDirection": "FromAbove",
+        "sideView": "Light",
+        "motionBlur": "Medium"
+      }
+    },
+    {
+      "name": "Bücken sehr stark",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -2.5,
+        "noise": "Medium",
+        "verticalView": "VeryStrong",
+        "wallGap": "Large",
+        "verticalDirection": "FromAbove",
+        "sideView": "Strong",
+        "motionBlur": "Strong"
+      }
+    },
+    {
+      "name": "Freihand kombiniert zufällig",
+      "count": 6,
+      "coverRange": false,
+      "options": {
+        "sideView": "Strong",
+        "noise": "Light",
+        "verticalView": "Strong",
+        "wallGap": "Greater",
+        "randomPlacement": true,
+        "motionBlur": "Light",
+        "exposureStops": -1
+      }
+    },
+    {
+      "name": "Vergleich wenig Licht frontal",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "noise": "Medium",
+        "exposureStops": -2
+      }
+    },
+    {
+      "name": "Vergleich wenig Licht und Zittern frontal",
+      "count": 3,
+      "coverRange": false,
+      "options": {
+        "exposureStops": -2,
+        "motionBlur": "Medium",
+        "noise": "Medium"
+      }
+    }
+  ]
+}

@@ -18,12 +18,12 @@
   <Border Grid.Row="1" Background="#FFF6E2" BorderBrush="#E4D2A6" BorderThickness="1" CornerRadius="8"
           Padding="12" Margin="0,0,0,12">
    <StackPanel>
-    <TextBlock TextWrapping="Wrap" Text="Diese Bewertung ist eine Entwicklungsdiagnose, keine Abnahme. Für gestörte Bilder ist im Testauftrag kein geprüftes Sollverhalten hinterlegt: Eine abgewiesene Messung kann richtig sein. Eindeutig fehlerhaft ist nur eine freigegebene Messung, deren Wert zu weit vom nominalen Sollabstand abweicht."/>
+    <TextBlock TextWrapping="Wrap" Text="Diese Bewertung ist eine Entwicklungsdiagnose, keine Abnahme. Für gestörte Bilder ist im Testauftrag kein geprüftes Sollverhalten hinterlegt: Eine abgewiesene Messung kann richtig sein. Eine Abweichung vom nominalen Materialabstand vor Störungen belegt allein keinen Messfehler. Auch ein unauffälliger Abstand ist keine fachliche Freigabe."/>
     <WrapPanel Margin="0,10,0,0" VerticalAlignment="Center">
-     <TextBlock Text="Zulässige Abweichung vom Sollabstand (ΔE00)" VerticalAlignment="Center" Margin="0,0,8,0"/>
+     <TextBlock Text="Diagnosegrenze der nominalen Abweichung (ΔE00)" VerticalAlignment="Center" Margin="0,0,8,0"/>
      <TextBox x:Name="Tolerance" Text="1,0" Width="70" Margin="0,0,12,0" TextChanged="Tolerance_Changed"
-              AutomationProperties.Name="Zulässige Abweichung vom nominalen Sollabstand in Delta E 2000"/>
-     <CheckBox x:Name="OnlyProblems" Content="Nur Läufe mit Problemen zeigen" VerticalAlignment="Center"
+              AutomationProperties.Name="Diagnosegrenze der nominalen Abweichung in Delta E 2000"/>
+     <CheckBox x:Name="OnlyProblems" Content="Nur auffällige oder unvollständige Befunde zeigen" VerticalAlignment="Center"
                Margin="0,0,12,0" Checked="Filter_Changed" Unchecked="Filter_Changed"/>
      <Button Content="Neu einlesen" Click="Reload_Click"/>
     </WrapPanel>
@@ -38,10 +38,10 @@
     <Style TargetType="DataGridRow">
      <Setter Property="VerticalContentAlignment" Value="Top"/>
      <Style.Triggers>
-      <DataTrigger Binding="{Binding Verdict}" Value="Erreicht">
+      <DataTrigger Binding="{Binding Verdict}" Value="NominalUnauffaellig">
        <Setter Property="Background" Value="#EDF6EA"/>
       </DataTrigger>
-      <DataTrigger Binding="{Binding Verdict}" Value="FalscherMesswert">
+      <DataTrigger Binding="{Binding Verdict}" Value="NominalAbweichend">
        <Setter Property="Background" Value="#FBE4E1"/>
       </DataTrigger>
       <DataTrigger Binding="{Binding Verdict}" Value="Teilweise">

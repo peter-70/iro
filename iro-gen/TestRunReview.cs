@@ -10,7 +10,7 @@ namespace IroGen;
 /// Testauftrags zu. Die Bewertung ist eine Entwicklungsdiagnose mit offengelegter Regel, kein
 /// Abnahmeurteil: Für gestörte Bilder ist im Testauftrag kein geprüftes Sollverhalten hinterlegt.
 /// </summary>
-public enum ReviewVerdict { Erreicht, FalscherMesswert, Teilweise, Abgewiesen, Fehler }
+public enum ReviewVerdict { NominalUnauffaellig, NominalAbweichend, Teilweise, Abgewiesen, Fehler, OhneSollvergleich }
 
 public sealed record TestRunRow(
     string RunId, string RequestId, DateTime? CreatedUtc, string Scene, string Disturbances,
@@ -23,6 +23,8 @@ public sealed record TestRunRow(
     public string? AnalyzerVersion { get; init; }
     public string? GeneratorVersion { get; init; }
     public string? OptionsText { get; init; }
+    public string? GeometryText { get; init; }
+    public double StraighteningDegrees { get; init; }
     public string? AnalysisProfile { get; init; }
     public string? RunStatus { get; init; }
     public int RequestedCount { get; init; }
@@ -30,10 +32,11 @@ public sealed record TestRunRow(
     public string TimeText => CreatedUtc is { } t ? t.ToLocalTime().ToString("dd.MM. HH:mm") : "–";
     public string VerdictText => Verdict switch
     {
-        ReviewVerdict.Erreicht => "Ziel erreicht",
-        ReviewVerdict.FalscherMesswert => "Ziel nicht erreicht – falscher Messwert",
+        ReviewVerdict.NominalUnauffaellig => "Vollständig gemessen; nominal unauffällig",
+        ReviewVerdict.NominalAbweichend => "Nominale Abweichung – fachlich zu prüfen",
         ReviewVerdict.Teilweise => "Teilweise gemessen",
         ReviewVerdict.Abgewiesen => "Messung abgewiesen",
+        ReviewVerdict.OhneSollvergleich => "Gemessen ohne nominalen Vergleich",
         _ => "Lauf nicht lesbar"
     };
     public string DeviationText => MaxDeviation is { } d ? d.ToString("0.0") : "–";
@@ -49,7 +52,10 @@ public static class TestRunReview
         ("glare", "Reflexe", "None"), ("shadows", "Schatten", "None"),
         ("vignette", "Randabfall", "None"), ("texture", "Oberflächenstruktur", "None"),
         ("occlusion", "Verdeckung", "None"), ("dirt", "Verschmutzung", "None"),
-        ("perspective", "Perspektive", "None"), ("distance", "Abstand", "Normal"),
+        ("randomPlacement", "Zufällige Position und Drehung", "False"),
+        ("sideView", "Blick von der Seite", "None"), ("verticalView", "Blick von oben/unten", "None"),
+        ("wallGap", "Abstand zur Wand", "None"),
+        ("perspective", "Bisherige Verjüngung", "None"), ("distance", "Abstand", "Normal"),
         ("rotationDegrees", "Drehung", "0"), ("exposureStops", "Belichtung", "0")
     ];
 
@@ -90,29 +96,33 @@ public static class TestRunReview
 
         if (capture.Error != null)
             return new(run.RunId, run.RequestId, created, sceneText, disturbanceText, ReviewVerdict.Fehler,
-                "Bild konnte nicht verarbeitet werden", capture.Error, 0, 0, null, 0, folder) { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
+                "Bild konnte nicht verarbeitet werden", capture.Error, 0, 0, null, 0, folder) { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0, RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
 
         var comparisons = capture.Comparisons;
         int expected = comparisons.Count;
         int measured = comparisons.Count(c => c.Status == "measured");
+        int released = capture.Analysis?.Fields.Count(f => f.MeasurementAllowed && f.DeltaE00.HasValue) ?? 0;
         var deviations = comparisons.Where(c => c.DifferenceFromNominal is { } d && double.IsFinite(d))
             .Select(c => Math.Abs(c.DifferenceFromNominal!.Value)).ToList();
         double? maxDeviation = deviations.Count > 0 ? deviations.Max() : null;
         int unexpected = capture.UnexpectedDetectedFields;
 
-        var verdict = measured == 0 ? ReviewVerdict.Abgewiesen
-            : maxDeviation > tolerance ? ReviewVerdict.FalscherMesswert
+        var verdict = released == 0 ? ReviewVerdict.Abgewiesen
+            : expected == 0 || measured == 0 || maxDeviation == null ? ReviewVerdict.OhneSollvergleich
+            : maxDeviation > tolerance ? ReviewVerdict.NominalAbweichend
             : measured < expected || unexpected > 0 ? ReviewVerdict.Teilweise
-            : ReviewVerdict.Erreicht;
+            : ReviewVerdict.NominalUnauffaellig;
 
-        string finding = measured == 0
+        string finding = verdict == ReviewVerdict.OhneSollvergleich
+            ? $"{released} Felder freigegeben; kein zugeordneter nominaler Farbvergleich verfügbar"
+            : released == 0
             ? $"Kein Farbfeld gemessen (Status {StatusText(capture.Analysis?.Status)})"
             : $"{measured} von {expected} Feldern gemessen, größte Abweichung {(maxDeviation is { } m ? m.ToString("0.00") : "–")} ΔE00"
               + (unexpected > 0 ? $", {unexpected} zusätzlich erkannte Fläche(n)" : string.Empty);
 
         return new(run.RunId, run.RequestId, created, sceneText, disturbanceText, verdict, finding,
-            Message(capture, verdict, maxDeviation, tolerance), expected, measured, maxDeviation, unexpected, folder)
-        { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, AnalyzerVersion = capture.Analysis?.AnalyzerVersion, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText,
+            Message(capture, verdict, maxDeviation, tolerance), expected, verdict == ReviewVerdict.OhneSollvergleich ? released : measured, maxDeviation, unexpected, folder)
+        { CaptureId = capture.CaptureId, CaseName = scene?.CaseName, Seed = scene?.Seed, AnalyzerVersion = capture.Analysis?.AnalyzerVersion, GeneratorVersion = scene?.GeneratorVersion, OptionsText = scene?.OptionsText, GeometryText = scene?.GeometryText, StraighteningDegrees = capture.Analysis?.StraighteningDegrees ?? 0,
           AnalysisProfile = capture.Analysis == null ? null : JsonSerializer.Serialize(capture.Analysis.Options, new JsonSerializerOptions(AnalysisRunner.JsonOptions) { WriteIndented = false }),
           RunStatus = run.Status, RequestedCount = run.RequestedCount, ProcessedCount = run.ProcessedCount };
     }
@@ -121,12 +131,12 @@ public static class TestRunReview
     {
         var analysis = capture.Analysis;
         if (analysis == null) return "Keine Analyse gespeichert.";
-        if (verdict == ReviewVerdict.FalscherMesswert)
-            return $"Messwerte freigegeben, obwohl sie bis zu {maxDeviation!.Value:0.0} ΔE00 vom nominalen Sollabstand "
-                 + $"abweichen (Diagnosegrenze {tolerance:0.0}). App: {analysis.Hint} " + string.Join(" | ", analysis.Fields.Select(f => f.Hint).Where(h => !string.IsNullOrWhiteSpace(h)).Distinct());
+        if (verdict == ReviewVerdict.NominalAbweichend)
+            return $"Freigegebene Werte weichen bis zu {maxDeviation!.Value:0.0} ΔE00 vom nominalen Materialabstand "
+                 + $"ab (Diagnosegrenze {tolerance:0.0}). Das allein belegt keinen Messfehler. App: {analysis.Hint} " + string.Join(" | ", analysis.Fields.Select(f => f.Hint).Where(h => !string.IsNullOrWhiteSpace(h)).Distinct());
         var reasons = analysis.Fields
             .SelectMany(f => new[] { f.Measurement?.Reason, f.Reference?.Reason, f.Hint })
-            .Concat([verdict == ReviewVerdict.Erreicht ? null : analysis.Hint])
+            .Concat([verdict == ReviewVerdict.NominalUnauffaellig ? null : analysis.Hint])
             .Where(r => !string.IsNullOrWhiteSpace(r)).Distinct().ToList();
         return reasons.Count > 0 ? string.Join(" | ", reasons) : string.Empty;
     }
@@ -143,7 +153,7 @@ public static class TestRunReview
         _ => "unbekannt"
     };
 
-    private sealed record SceneInfo(string Scene, string Disturbances, string? CaseName, string? Seed, string? GeneratorVersion, string OptionsText);
+    private sealed record SceneInfo(string Scene, string Disturbances, string? CaseName, string? Seed, string? GeneratorVersion, string OptionsText, string? GeometryText);
 
     private static Dictionary<string, SceneInfo> ReadScenes(string requestsFolder, CancellationToken token)
     {
@@ -170,7 +180,7 @@ public static class TestRunReview
                     var compact = System.Text.Json.Nodes.JsonNode.Parse(options.GetRawText())!.AsObject();
                     compact.Remove("colors"); compact.Remove("seed"); compact.Remove("testCaseName");
                     scenes[captureId] = new(Scene(options), DisturbanceText(options), Text("testCaseName"), Text("seed"),
-                        generator.TryGetProperty("version", out var version) ? version.GetString() : null, compact.ToJsonString());
+                        generator.TryGetProperty("version", out var version) ? version.GetString() : null, compact.ToJsonString(), GeometryText(parameters));
                 }
                 catch (JsonException) { }
                 catch (IOException) { }
@@ -179,6 +189,16 @@ public static class TestRunReview
         return scenes;
     }
 
+    private static string? GeometryText(JsonElement parameters)
+    {
+        if (!parameters.TryGetProperty("spatialGeometry", out var geometry) || geometry.ValueKind != JsonValueKind.Object) return null;
+        double Number(string key) => geometry.TryGetProperty(key, out var value) && value.ValueKind == JsonValueKind.Number && value.TryGetDouble(out double n) && double.IsFinite(n) ? n : 0;
+        double rotation = Number("rotationDegrees"), side = Number("sideViewDegrees"),
+            vertical = Number("verticalViewDegrees"), gap = Number("wallGapCentimeters");
+        if (rotation == 0 && side == 0 && vertical == 0 && gap == 0) return null;
+        return $"Simulierte Lage: Drehung {rotation:0.0}°, Seitenblick {Math.Abs(side):0}° ({(side < 0 ? "links" : side > 0 ? "rechts" : "frontal")}), "
+            + $"Blick {(vertical > 0 ? "von oben" : vertical < 0 ? "von unten" : "frontal")} {Math.Abs(vertical):0}°, Wandabstand {gap:0} cm.";
+    }
     private static IEnumerable<string> SafeEnumerate(string folder)
     {
         try { return Directory.EnumerateFiles(folder, "*.json", SearchOption.AllDirectories); }
@@ -199,8 +219,10 @@ public static class TestRunReview
             } : "";
         var parts = new List<string>();
         string orientation = Text("orientation"), position = Text("position"), count = Text("fieldCount");
-        if (orientation.Length > 0) parts.Add(orientation == "Vertical" ? "senkrecht" : "waagerecht");
-        if (position.Length > 0) parts.Add("Streifen " + (position switch
+        bool randomPlacement = Text("randomPlacement") == "ja";
+        if (orientation.Length > 0) parts.Add((randomPlacement ? "Grundform " : "") + (orientation == "Vertical" ? "senkrecht" : "waagerecht"));
+        if (randomPlacement) parts.Add("Streifen zufällig positioniert und gedreht");
+        else if (position.Length > 0) parts.Add("Streifen " + (position switch
         {
             "Right" => "rechts", "Left" => "links", "Top" => "oben", "Bottom" => "unten", "Center" => "mittig", _ => position
         }));
@@ -220,12 +242,16 @@ public static class TestRunReview
             if (text.Length == 0 || text == neutral || text == "null") continue;
             set.Add($"{label}: {Strength(text)}");
         }
+        if (options.TryGetProperty("verticalView", out var view) && view.GetString() != "None"
+            && options.TryGetProperty("verticalDirection", out var direction))
+            set.Add("Blickrichtung: " + (direction.GetString() switch { "FromAbove" => "von oben", "FromBelow" => "von unten", _ => "zufällig oben/unten" }));
         return set.Count > 0 ? string.Join(", ", set) : "keine Störung";
     }
 
     private static string Strength(string value) => value switch
     {
-        "Light" => "leicht", "Medium" => "mittel", "Strong" => "stark",
+        "Light" => "leicht", "Medium" => "mittel", "Strong" => "stark", "VeryStrong" => "sehr stark",
+        "Small" => "< 10 cm", "Greater" => "10–< 20 cm", "Large" => "> 20 cm", "True" => "aktiv",
         "Near" => "nahe", "Nearer" => "näher", "TooClose" => "ganz nahe",
         "Far" => "weit", "Farther" => "weiter", "TooFar" => "sehr weit",
         "1" => "+1 Blende", "-1" => "−1 Blende",

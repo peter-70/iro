@@ -37,6 +37,14 @@ public class VisualSmokeTests
                 Assert.StartsWith("Vorschau fertig", status.Text);
                 Assert.NotNull(((System.Windows.Controls.Image)window.FindName("Preview")).Source);
                 Assert.Equal(7, ((DataGrid)window.FindName("Results")).Items.Count);
+                var flags = System.Reflection.BindingFlags.Instance | System.Reflection.BindingFlags.NonPublic;
+                var setOptions = typeof(MainWindow).GetMethod("SetOptions", flags)!;
+                var readOptions = typeof(MainWindow).GetMethod("ReadOptions", flags)!;
+                var spatialOptions = new GeneratorOptions { RandomPlacement = true, SideView = ViewStrength.VeryStrong,
+                    VerticalView = ViewStrength.Strong, VerticalDirection = VerticalViewDirection.FromBelow, WallGap = WallSeparation.Large };
+                setOptions.Invoke(window, [spatialOptions]);
+                Assert.Equal(spatialOptions, (GeneratorOptions)readOptions.Invoke(window, null)!);
+                setOptions.Invoke(window, [new GeneratorOptions()]);
                 ((TextBox)window.FindName("SeriesCount")).Text = "11";
                 ((Button)window.FindName("GenerateButton")).RaiseEvent(new RoutedEventArgs(Button.ClickEvent));
                 var seriesLoop = new DispatcherFrame();

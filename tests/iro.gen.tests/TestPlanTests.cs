@@ -8,6 +8,81 @@ namespace IroGenTests;
 
 public class TestPlanTests
 {
+    [Fact]
+    public async Task ContourCorrectionPlanExercisesPngHandoffAndExport()
+    {
+        string project = AppContext.BaseDirectory;
+        while (!File.Exists(Path.Combine(project, "iro.slnx")))
+            project = Directory.GetParent(project)?.FullName ?? throw new Exception("Projekt fehlt.");
+        var plan = TestPlan.Parse(File.ReadAllText(Path.Combine(project,
+            "iro-gen", "testplans", "perspektivkorrektur-konturpruefung.json")));
+        string root = Path.Combine(Path.GetTempPath(), "iro-contour-plan-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(root);
+        try
+        {
+            using var batch = Sta(() => plan.Generate(root));
+            Assert.Equal(10, batch.Items.Count);
+            File.WriteAllText(Path.Combine(root, "iro.slnx"), "<Solution/>");
+            File.WriteAllText(Path.Combine(root, "IRO-KONSOLIDIERTER-PLAN.md"), "Isolierter Test");
+            var request = IroTestHandoff.Submit(batch, root);
+            var saved = await new Iro.Analysis.AnalysisRunner().RunAsync(request.Folder,
+                Path.Combine(root, "tests", "runs"), new());
+            var review = TestRunReview.Load(root, 1);
+            string report = TestReviewExport.Create(review, 1, false);
+            string evidence = Path.Combine(project, "tests", "adjustments", "konturplan-20260923");
+            Directory.CreateDirectory(evidence);
+            File.WriteAllText(Path.Combine(evidence, "bericht.md"), report);
+            Assert.Equal(10, review.Count);
+            var findings = new List<string> { "# Soll-Ist-Prüfung des IroGen-Konturplans", "", "Keine Nutzerabnahme; nominale Farbabweichungen sind kein Prüfkriterium.", "" };
+            foreach (var row in review)
+            {
+                Assert.Equal("completed", row.RunStatus);
+                Assert.NotEqual(ReviewVerdict.Fehler, row.Verdict);
+                bool rejectedAsExpected = row.Verdict == ReviewVerdict.Abgewiesen &&
+                    row.Message.Contains("frontal") && row.Measured == 0;
+                bool measuredAsExpected = row.Measured == 3 && !row.Message.Contains("frontal");
+                bool expectedRejection = row.CaseName!.StartsWith("Verjuengung");
+                bool passed = expectedRejection ? rejectedAsExpected : measuredAsExpected;
+                findings.Add("- " + row.CaseName + ": **" + (passed ? "erfüllt" : "NICHT ERFÜLLT") + "**. " + row.Finding);
+                // Combined disturbances remain a diagnostic experiment: record failures
+                // explicitly, never turn successful export into a safety acceptance.
+                if (row.CaseName.StartsWith("Verjuengung dunkel verrauscht"))
+                {
+                    Assert.Contains(row.CaseName, report);
+                    continue;
+                }
+                if (expectedRejection)
+                {
+                    Assert.True(row.Verdict == ReviewVerdict.Abgewiesen,
+                        row.CaseName + ": " + row.Finding + " / " + row.Message);
+                    Assert.Contains("frontal", row.Message);
+                    Assert.Equal(0, row.Measured);
+                }
+                else
+                {
+                    Assert.True(row.Measured == 3, row.CaseName + ": " + row.Finding + " / " + row.Message);
+                    Assert.DoesNotContain("frontal", row.Message);
+                }
+                Assert.Contains(row.CaseName, report);
+                Assert.Equal(SceneGenerator.Version, row.GeneratorVersion);
+            }
+            File.WriteAllLines(Path.Combine(evidence, "soll-ist.md"), findings);
+        }
+        finally { Directory.Delete(root, true); }
+    }
+
+    [Fact]
+    public void FieldWidthFactorsValidateAndChangeMetadata()
+    {
+        Assert.Throws<ArgumentException>(() => (new GeneratorOptions { FieldWidthFactors = [1] }).Validate());
+        Assert.Throws<ArgumentException>(() => (new GeneratorOptions { FieldCount = 3, MatchingField = 1,
+            FieldWidthFactors = [1, double.NaN, .6] }).Validate());
+        var scene = Sta(() => SceneGenerator.Generate(new() { FieldCount = 3, MatchingField = 1,
+            FieldWidthFactors = [1, .8, .6], Labels = false, RoundedTop = false }));
+        double[] widths = scene.Fields.Select(f => f.Polygon[1].X - f.Polygon[0].X).ToArray();
+        Assert.Equal(.8, widths[1] / widths[0], 6);
+        Assert.Equal(.6, widths[2] / widths[0], 6);
+    }
     private static T Sta<T>(Func<T> action)
     {
         T result = default!; Exception? error = null;
@@ -99,7 +174,7 @@ public class TestPlanTests
     public void ExportIncludesTotalsAndVersionButLimitsExamples()
     {
         var rows = Enumerable.Range(0, 100).Select(i => new TestRunRow("run", "request", null, "Szene", "Verdeckung",
-            ReviewVerdict.FalscherMesswert, "Befund", "Hinweis", 7, 6, i, 0, "folder")
+            ReviewVerdict.NominalAbweichend, "Befund", "Hinweis", 7, 6, i, 0, "folder")
             { CaptureId = "capture-" + i, Seed = i.ToString(), AnalyzerVersion = "test-v1", CaseName = "Fall" }).ToArray();
         string report = TestReviewExport.Create(rows, 1, true);
         Assert.Contains("Bilder insgesamt: 100", report);

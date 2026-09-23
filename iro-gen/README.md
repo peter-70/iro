@@ -95,3 +95,13 @@ Die Tests können über `IROGEN_SERIES_OUTPUT` lokale Kopien der 100-/500-Bild-S
 Über **Testplan laden** die Datei [bildqualitaet-und-abstand.json](testplans/bildqualitaet-und-abstand.json) auswählen: 113 Bilder in 35 Fällen. Anschließend **An Iro-Tests senden**, **Testergebnisse auswerten** und **Kompakten Bericht exportieren**. Format, Entfernungsstufen und Prüfstand: [Dokumentation](../docs/testplaene-und-verdeckung.md).
 
 Seit der Ablaufkorrektur vom 22. September genügt nach **Testplan laden** der Button **Testergebnisse auswerten**. Er analysiert die aktuelle Serie bei Bedarf und öffnet genau deren Lauf; ältere gespeicherte Ergebnisse werden dabei nicht beigemischt.
+
+
+## Räumliche Aufnahmen und Freihandkombinationen (Generator 1.3.0)
+
+Neu sind zufällige Position und Drehung, Seitenblick sowie Blick von oben/unten (jeweils leicht/stark/sehr stark) und ein simulierter Abstand des Streifens zur Wand. Höhenblick kann zufällig oder ausdrücklich von oben/unten erfolgen. Effekte lassen sich mit wenig Licht, Bewegungsunschärfe und allen bisherigen Störungen kombinieren.
+
+Der zusätzliche [Testplan für Raumlage, Perspektive und Wandabstand](testplans/raumlage-perspektive-und-wandabstand.json) erzeugt **108 Bilder in 33 Fällen**, einschließlich Hochhalten und Bücken. Über **Testplan laden** auswählen, danach an Iro-Tests senden und den kompakten Bericht exportieren. Frühere Optionsdateien der Generatorversionen 1.0.0 bis 1.2.0 bleiben lesbar.
+
+Die Zentimeterklassen repräsentieren synthetische Szenarien, keine aus Bildern gemessenen Abstände. Modell, vollständiger Ablauf und Prüfstand: [Räumliche Aufnahmeszenarien](../docs/raeumliche-aufnahmeszenarien.md).
+Gezielter Konturtest ab Generator 1.4.0: [JSON-Testplan](testplans/perspektivkorrektur-konturpruefung.json) und [Anleitung mit Sollbefunden](testplans/perspektivkorrektur-konturpruefung.md). Die optionale JSON-Einstellung fieldWidthFactors enthält je Farbfeld einen Faktor von 0,3 bis 1; Felder bleiben zentriert. Ohne Angabe bleibt die bisherige Breite erhalten. Die Einstellung wird mit Optionen und Metadaten gespeichert; ein eigener UI-Regler ist nicht vorgesehen. Der Probelauf ist wegen einer dokumentierten kombinierten Fehlfreigabe noch keine vollständige Abnahme.

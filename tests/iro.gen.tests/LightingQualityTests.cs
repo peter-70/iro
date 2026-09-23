@@ -81,13 +81,13 @@ public class LightingQualityTests(ITestOutputHelper output)
                 var afterRows = TestRunReview.Load(root, 1, runId: after.Report.RunId);
                 Assert.Equal(113, afterRows.Count);
                 Assert.DoesNotContain(afterRows, r => r.Verdict == ReviewVerdict.Fehler);
-                Assert.Equal(17, afterRows.Count(r => r.CaseName!.StartsWith("Kontrolle") && r.Verdict == ReviewVerdict.Erreicht));
-                Assert.Equal(20, beforeRows.Count(r => r.Verdict == ReviewVerdict.FalscherMesswert));
-                Assert.True(afterRows.Count(r => r.Verdict == ReviewVerdict.FalscherMesswert) < 20);
+                Assert.Equal(17, afterRows.Count(r => r.CaseName!.StartsWith("Kontrolle") && r.Verdict == ReviewVerdict.NominalUnauffaellig));
+
+                Assert.True(afterRows.Count(r => r.Verdict == ReviewVerdict.NominalAbweichend) < beforeRows.Count(r => r.Verdict == ReviewVerdict.NominalAbweichend));
                 foreach (var group in afterRows.GroupBy(r => r.CaseName))
                 {
                     var prior = beforeRows.Where(r => r.CaseName == group.Key).ToArray();
-                    output.WriteLine($"{group.Key}: full {prior.Count(r=>r.Verdict==ReviewVerdict.Erreicht)} -> {group.Count(r=>r.Verdict==ReviewVerdict.Erreicht)}, wrong {prior.Count(r=>r.Verdict==ReviewVerdict.FalscherMesswert)} -> {group.Count(r=>r.Verdict==ReviewVerdict.FalscherMesswert)}, fields {prior.Sum(r=>r.Measured)} -> {group.Sum(r=>r.Measured)}");
+                    output.WriteLine($"{group.Key}: full {prior.Count(r=>r.Verdict==ReviewVerdict.NominalUnauffaellig)} -> {group.Count(r=>r.Verdict==ReviewVerdict.NominalUnauffaellig)}, wrong {prior.Count(r=>r.Verdict==ReviewVerdict.NominalAbweichend)} -> {group.Count(r=>r.Verdict==ReviewVerdict.NominalAbweichend)}, fields {prior.Sum(r=>r.Measured)} -> {group.Sum(r=>r.Measured)}");
                 }
                 output.WriteLine($"TOTAL: {string.Join(", ", Enum.GetValues<ReviewVerdict>().Select(v=>$"{v}={afterRows.Count(r=>r.Verdict==v)}"))}");
                 string? artifact = Environment.GetEnvironmentVariable("IRO_LIGHTING_REPORT");

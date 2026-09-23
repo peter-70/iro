@@ -1,0 +1,165 @@
+{
+  "formatVersion": 1,
+  "kind": "irogen-test-plan",
+  "name": "Konturkorrektur: Rechtecke zulassen und Verjuengung sperren",
+  "defaults": {
+    "seed": 12345,
+    "width": 1600,
+    "height": 1200,
+    "fieldCount": 3,
+    "matchingField": 1,
+    "position": "Right",
+    "stripWidthPercent": 28,
+    "stripLengthPercent": 70,
+    "gapPercent": 6,
+    "labels": false,
+    "roundedTop": false,
+    "colors": {
+      "coverageBand": "Feste Geometriepruefung",
+      "anchorField": 1,
+      "targetDeltaE": 0,
+      "palette": [
+        {
+          "g": 80,
+          "b": 110,
+          "r": 60
+        },
+        {
+          "g": 110,
+          "b": 140,
+          "r": 90
+        },
+        {
+          "g": 140,
+          "b": 170,
+          "r": 120
+        }
+      ],
+      "wall": {
+        "g": 140,
+        "b": 140,
+        "r": 140
+      }
+    }
+  },
+  "cases": [
+    {
+      "name": "Rechtecke abnehmend senkrecht - SOLL messbar ohne Perspektivhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "fieldWidthFactors": [
+          1.0,
+          0.8333333333,
+          0.6666666667
+        ]
+      },
+      "count": 1
+    },
+    {
+      "name": "Rechtecke zunehmend senkrecht - SOLL messbar ohne Perspektivhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "fieldWidthFactors": [
+          0.6666666667,
+          0.8333333333,
+          1.0
+        ]
+      },
+      "count": 1
+    },
+    {
+      "name": "Kontrolle senkrecht - SOLL alle drei Felder messbar",
+      "coverRange": false,
+      "options": {
+        "position": "Right",
+        "orientation": "Vertical"
+      },
+      "count": 1
+    },
+    {
+      "name": "Verjuengung senkrecht - SOLL gesperrt mit Frontalhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "perspective": "Medium"
+      },
+      "count": 1
+    },
+    {
+      "name": "Verjuengung dunkel verrauscht senkrecht - SOLL gesperrt mit Frontalhinweis",
+      "coverRange": false,
+      "options": {
+        "noise": "Light",
+        "orientation": "Vertical",
+        "position": "Right",
+        "perspective": "Medium",
+        "exposureStops": -0.7
+      },
+      "count": 1
+    },
+    {
+      "name": "Rechtecke abnehmend waagerecht - SOLL messbar ohne Perspektivhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "fieldWidthFactors": [
+          1.0,
+          0.8333333333,
+          0.6666666667
+        ]
+      },
+      "count": 1
+    },
+    {
+      "name": "Rechtecke zunehmend waagerecht - SOLL messbar ohne Perspektivhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "fieldWidthFactors": [
+          0.6666666667,
+          0.8333333333,
+          1.0
+        ]
+      },
+      "count": 1
+    },
+    {
+      "name": "Kontrolle waagerecht - SOLL alle drei Felder messbar",
+      "coverRange": false,
+      "options": {
+        "position": "Bottom",
+        "orientation": "Horizontal"
+      },
+      "count": 1
+    },
+    {
+      "name": "Verjuengung waagerecht - SOLL gesperrt mit Frontalhinweis",
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "perspective": "Medium"
+      },
+      "count": 1
+    },
+    {
+      "name": "Verjuengung dunkel verrauscht waagerecht - SOLL gesperrt mit Frontalhinweis",
+      "coverRange": false,
+      "options": {
+        "noise": "Light",
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "perspective": "Medium",
+        "exposureStops": -0.7
+      },
+      "count": 1
+    }
+  ]
+}

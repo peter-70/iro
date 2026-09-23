@@ -63,3 +63,14 @@ RGB24 bedeutet drei Bytes je Pixel in der Reihenfolge R, G, B, mit kodierten sRG
 - Aktuell ein begrenzter Regions-/Geometrieversuch für annähernd achsenparallele, getrennte Farbfelder. Nahezu weiße Felder am weißen Träger, starke Perspektive, Verdeckung und räumliche Lichtänderungen benötigen weitere Arbeit. Kein vollständiger Nachweis der geplanten Qualitäts-, Gradienten- oder Kamerapipeline.
 
 Verträge: [Analyselauf v1](../tests/schemas/analyse-lauf-v1.schema.json), [Testauftrag v2](../tests/schemas/testauftrag-v2.schema.json). Reproduzierbare Prüfungen und tatsächliche Erkennungszahlen stehen im [Prüfstand](analyse-pruefung.md).
+
+## Verbindlicher Messvertrag zur Bildoptimierung — Planfassung 1.27
+
+Die [gemeinsame Messgrundlage](../IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage) gilt für sämtliche Analyseaufrufe. Eine optimierte Erkennungskopie darf Geometrie und unterstützende Qualitätsmerkmale liefern, aber keine bearbeiteten Messfarben. Wand und Farbstreifen stammen aus demselben Frame und demselben gemeinsamen Messbild. Unabhängige Bereichskorrekturen sind verboten; gemeinsame Messkorrekturen benötigen das festgelegte Modell und den vorgeschriebenen Nutzennachweis.
+
+Die neue Nutzerentscheidung verlangt aufnahmeweite Ablehnung bei messrelevantem Clipping, starker Unterbelichtung, starker Unschärfe und starker Perspektive sowie vollständige Streifensichtbarkeit. Diese Anforderungen haben Vorrang vor älteren allgemeinen Aussagen zur Teilfreigabe in dieser Dokumentation. Umsetzung und Nachweise sind im [Arbeitsplan](arbeitsplan-bildoptimierung.md) noch zu prüfen; dieser Abschnitt behauptet keine bereits vollständige Implementierung.
+
+Aufnahmebezug, geometrische Rückabbildung, tatsächlich verwendete Messgrundlage und gegebenenfalls gemeinsames Korrekturmodell einschließlich Version/Parametern müssen nachvollziehbar sein. Erforderliche neue Vertragsfelder werden im entsprechenden Arbeitsschritt ausdrücklich versioniert; vorhandene Datensätze werden nicht stillschweigend umgedeutet. Sollwerte dürfen nicht als versteckte Analyseeingaben dienen. Die ältere API-Beschreibung oben bleibt ein historischer Implementierungsstand, soweit neuere Anforderungen oder Prüfberichte abweichen.
+### Geprüfter Teilstand Analyse 0.5.0
+
+Die [Regelaudit-Korrekturen](regelaudit-2026-09-22.md) sperren erkannte unbrauchbare Unschärfe und relevante Kanalendpunkte aufnahmeweit sowie geometrisch erkannten Bildbeschnitt. Originalpixelmessung bleibt erhalten. Die konservative Endpunktregel ist mit der Analyserversion gekennzeichnet; die Struktur des gespeicherten Ergebnisvertrags bleibt unverändert. Vollständige Perspektiv-, Unterbelichtungs-, Beleuchtungs- und Vollständigkeitsprüfung sind weiterhin nicht abgenommen. Kein allgemeines Freigabeversprechen aus diesem Teilstand ableiten.

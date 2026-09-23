@@ -40,7 +40,7 @@ public partial class TestResultsWindow : Window
     private void Show(IReadOnlyList<TestRunRow> all)
     {
         var visible = OnlyProblems.IsChecked == true
-            ? all.Where(r => r.Verdict != ReviewVerdict.Erreicht).ToList()
+            ? all.Where(r => r.Verdict != ReviewVerdict.NominalUnauffaellig).ToList()
             : [.. all];
         Rows.ItemsSource = visible;
         if (all.Count == 0)
@@ -49,15 +49,17 @@ public partial class TestResultsWindow : Window
                          + "Erst „An Iro-Tests senden“ ausführen.";
             return;
         }
-        int ok = all.Count(r => r.Verdict == ReviewVerdict.Erreicht);
-        int wrong = all.Count(r => r.Verdict == ReviewVerdict.FalscherMesswert);
+        int ok = all.Count(r => r.Verdict == ReviewVerdict.NominalUnauffaellig);
+        int wrong = all.Count(r => r.Verdict == ReviewVerdict.NominalAbweichend);
         int partial = all.Count(r => r.Verdict == ReviewVerdict.Teilweise);
         int refused = all.Count(r => r.Verdict == ReviewVerdict.Abgewiesen);
         int broken = all.Count(r => r.Verdict == ReviewVerdict.Fehler);
-        var parts = new List<string> { $"{all.Count} Bilder ausgewertet", $"{ok} vollständig und genau gemessen" };
-        if (wrong > 0) parts.Add($"{wrong} mit freigegebenen, aber zu weit abweichenden Werten");
+        var parts = new List<string> { $"{all.Count} Bilder ausgewertet", $"{ok} vollständig gemessen und nominal unauffällig" };
+        if (wrong > 0) parts.Add($"{wrong} mit nominalen Abweichungen zur Prüfung");
         if (partial > 0) parts.Add($"{partial} nur teilweise gemessen");
         if (refused > 0) parts.Add($"{refused} vollständig abgewiesen");
+        int unverified = all.Count(r => r.Verdict == ReviewVerdict.OhneSollvergleich);
+        if (unverified > 0) parts.Add($"{unverified} ohne nominalen Vergleich");
         if (broken > 0) parts.Add($"{broken} nicht lesbar");
         Summary.Text = (runId != null ? "Aktuelle Serie · " : "Gespeicherte Läufe · ") + string.Join(" · ", parts)
             + (visible.Count != all.Count ? $" — angezeigt: {visible.Count}" : string.Empty);

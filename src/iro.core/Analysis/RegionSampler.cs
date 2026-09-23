@@ -13,17 +13,17 @@ public static class RegionSampler
         int nearLimits = 0;
         var tiles = Enumerable.Range(0, 9).Select(_ => new int[3 * 256]).ToArray();
         var tileCounts = new int[9];
-        for (int y = bounds.Y; y < bounds.Bottom; y += step)
+        if (!image.ContainsArea(bounds))
+            return new(bounds, false, "Messfläche liegt teilweise außerhalb des Originalbilds.", null, 0, 0, 0, 0);
+        foreach (var sample in image.Sample(bounds, step, token))
         {
-            token.ThrowIfCancellationRequested();
-            for (int x = bounds.X; x < bounds.Right; x += step)
-            {
-                var pixel = image.GetPixel(x, y); samples.Add(pixel); r[pixel.R]++; g[pixel.G]++; b[pixel.B]++;
-                int tile = Math.Min(2, (y - bounds.Y) * 3 / bounds.Height) * 3 + Math.Min(2, (x - bounds.X) * 3 / bounds.Width);
-                tiles[tile][pixel.R]++; tiles[tile][256 + pixel.G]++; tiles[tile][512 + pixel.B]++; tileCounts[tile]++;
-                if (pixel.R is <= 1 or >= 254 || pixel.G is <= 1 or >= 254 || pixel.B is <= 1 or >= 254) nearLimits++;
-            }
+            var pixel = sample.Pixel; samples.Add(pixel); r[pixel.R]++; g[pixel.G]++; b[pixel.B]++;
+            int tile = Math.Min(2, (int)((sample.Y - bounds.Y) * 3 / bounds.Height)) * 3
+                + Math.Min(2, (int)((sample.X - bounds.X) * 3 / bounds.Width));
+            tiles[tile][pixel.R]++; tiles[tile][256 + pixel.G]++; tiles[tile][512 + pixel.B]++; tileCounts[tile]++;
+            if (pixel.R is <= 1 or >= 254 || pixel.G is <= 1 or >= 254 || pixel.B is <= 1 or >= 254) nearLimits++;
         }
+        if (samples.Count == 0) return new(bounds, false, "Zu wenig nutzbare Bildfläche.", null, 0, 0, 0, 0);
         static int Median(int[] histogram, int count)
         {
             int cumulative = 0;
@@ -36,12 +36,13 @@ public static class RegionSampler
         int mad = Median(deviations, samples.Count);
         // Explicit MAD=0 handling: a small quantization/noise floor, never division by zero.
         double tolerance = Math.Max(4, 3 * mad);
-        int retained = 0;
+        int retained = 0, retainedAtLimit = 0;
         double lr = 0, lg = 0, lb = 0;
         foreach (var p in samples)
         {
             if (Math.Max(Math.Abs(p.R - mr), Math.Max(Math.Abs(p.G - mg), Math.Abs(p.B - mb))) > tolerance) continue;
             lr += ColorMath.Decode(p.R); lg += ColorMath.Decode(p.G); lb += ColorMath.Decode(p.B); retained++;
+            if (p.R is 0 or 255 || p.G is 0 or 255 || p.B is 0 or 255) retainedAtLimit++;
         }
         // Central histogram means tolerate print/outliers without the discontinuous
         // median jump of a balanced two-tone texture. Used only for quality, not the measured color.
@@ -66,11 +67,13 @@ public static class RegionSampler
         for (int bIndex = a + 1; bIndex < tileColors.Length; bIndex++)
             spatialDelta = Math.Max(spatialDelta, ColorMath.DeltaE00(tileColors[a], tileColors[bIndex]));
         double rejected = 1 - retained / (double)samples.Count;
+        bool unresolvedChannels = retained > 0 && retainedAtLimit / (double)retained > MeasurementSafety.MaximumRetainedEndpointFraction;
         string? reason = Math.Min(bounds.Width, bounds.Height) < 20 || retained < options.MinimumSamples ? "Zu wenig nutzbare Bildfläche." :
+            unresolvedChannels ? MeasurementSafety.ChannelLimitHint :
             spatialDelta > options.MaximumSpatialDeltaE ? "Messfläche räumlich ungleichmäßig. Gleichmäßigeres Licht und eine einheitliche Fläche verwenden." :
             mad > options.MaximumChannelMad || rejected > options.MaximumOutlierFraction ? "Messfläche durch Flecken, Reflexe oder ungleichmäßiges Licht gestört." : null;
         return new(bounds, reason == null, reason, reason == null ? ColorMath.LinearToLab(lr / retained, lg / retained, lb / retained) : null,
-            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta };
+            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta, HasUnresolvedChannels = unresolvedChannels };
     }
 }
 

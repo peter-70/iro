@@ -57,3 +57,16 @@ Führe die zur Änderung passenden Prüfungen aus. Reine Dokumentationsänderung
 Ein erfolgreicher Build belegt keine fachliche Richtigkeit. Ein Testlauf ohne gefundene Tests gilt nicht als bestandene fachliche Prüfung. Berichte, was tatsächlich geprüft wurde und was noch aussteht. Der Testgenerator ist derzeit ein Gerüst; sein erfolgreicher Start weist keine Testdatenerzeugung nach.
 
 Details zu Visual Studio, Emulator-Grafik und bisherigen Prüfungen stehen in [Entwicklungsumgebung und Prüfstand](docs/entwicklungsumgebung.md). Reale Kamera- und Farbgenauigkeit sind am Gerät zu prüfen; Emulatorprüfungen ersetzen diese Nachweise nicht.
+
+## Verbindliches Protokoll zur Bildoptimierung und Arbeitsfortschritt
+
+Für alle im Projekt verwendeten Agenten gilt die Nutzerentscheidung vom 22. September 2026 in [Planfassung 1.27, gemeinsame Messgrundlage](IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage). Vor einschlägiger Arbeit das [angenommene Entscheidungsprotokoll](docs/entscheidung-bildoptimierung-2026-09-22.md) und den [Arbeitsplan](docs/arbeitsplan-bildoptimierung.md) lesen. Keine abweichenden Agentenvereinbarungen führen.
+
+- Wand und Farbstreifen aus derselben gemeinsamen Messgrundlage auswerten. Keine voneinander unabhängige Helligkeits-, Gamma-, Kontrast-, Weißabgleich-, Farb- oder Filterkorrektur.
+- Optimierte Erkennungskopien dürfen Geometrie liefern, aber keine bearbeiteten Farbwerte für die Messung. Koordinaten zuverlässig zurückführen; Qualitätsmängel der Originalaufnahme nicht durch verbesserte Optik kaschieren.
+- Bedingt zulässige gemeinsame Korrekturen erst nach den vorgeschriebenen reproduzierbaren Nutzennachweisen einsetzen. Keine verlorene Farbinformation rekonstruieren oder erfinden.
+- Arbeitsplan schrittweise pflegen. Umsetzung, bestandene Prüfung und ausdrückliche Nutzerabnahme getrennt mit Datum und Belegen dokumentieren. Erst wenn alle drei vorliegen, den Punkt als erledigt markieren. Alte Tests sind keine automatische Abnahme neuer Anforderungen; Schweigen oder die Übermittlung eines Berichts ist keine Abnahme.
+- Abnahmepunkte, Rückfragen und Berichte beschreiben das konkrete Verhalten in Klartext. Unabhängige autorisierte Arbeit während ausstehender Abnahme fortsetzen; Abnahmen nicht selbst behaupten. Bei Änderungen betroffene Prüfungen und Abnahmen wieder öffnen.
+
+Grundlage dieser Agentenregel: ausdrücklicher Nutzerauftrag zum verbindlichen Protokoll und schrittweisen Arbeitsplan; dokumentiert im Änderungsprotokoll der Planfassung 1.27.
+**Aktueller Vorrang, Planfassung 1.28:** Gemäß Nutzerauftrag zuerst die im [Regelaudit](docs/regelaudit-2026-09-22.md) belegten Verstöße und offenen notwendigen Schutzprüfungen bearbeiten. Schwerpunkt ist die Kunden-App Iro. Zusätzliche Bildoptimierungen zurückstellen; Generator-Testzahlen sind keine App-Abnahme. Den Vorrang und offenen Status im Arbeitsplan pflegen.

@@ -45,3 +45,9 @@ Weitere Informationen: [Umgebung und Prüfstand](docs/entwicklungsumgebung.md).
 
 
 
+
+## Verbindliche Bildoptimierung
+
+Die beschlossene gemeinsame Messgrundlage und zulässigen Optimierungen stehen im [Entwicklungsplan](IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage). Der [Arbeitsplan zur Bildoptimierung](docs/arbeitsplan-bildoptimierung.md) führt Umsetzung, Prüfung und Nutzerabnahme für jeden Schritt getrennt. Das [vollständige Entscheidungsprotokoll](docs/entscheidung-bildoptimierung-2026-09-22.md) bleibt als unveränderte Quelle erhalten.
+
+Aktueller [Entwicklungs- und Regelaudit](docs/regelaudit-2026-09-22.md): Analyse 0.5.0 behebt nachgewiesene Freigabefehler; weitere Schutzprüfungen und die Kunden-App bleiben unvollständig. Sicherheits- und Nachweislücken haben vor neuen Bildoptimierungen Vorrang.

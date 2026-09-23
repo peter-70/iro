@@ -2,11 +2,15 @@ namespace Iro.Core.Analysis;
 
 public sealed class ImageAnalyzer : IImageAnalyzer
 {
-    public const string Version = "0.3.0";
+    public const string Version = "0.5.2";
     public ImageAnalysis Analyze(RgbFrame image, AnalysisOptions options, CancellationToken cancellationToken = default)
     {
         ArgumentNullException.ThrowIfNull(image); ArgumentNullException.ThrowIfNull(options); options.Validate();
         cancellationToken.ThrowIfCancellationRequested();
+        var source = image;
+        var alignment = options.Straighten ? ImageStraightener.Estimate(image, cancellationToken) : new AlignmentEstimate(0, 0, false);
+        ImageRotation? rotation = alignment.Degrees == 0 ? null : new(image.Width, image.Height, alignment.Degrees);
+        if (rotation != null) image = new RgbFrame(source, rotation);
         var detection = StripDetector.Detect(image, options, cancellationToken);
         var diagnostics = new List<string>
         {
@@ -14,9 +18,17 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             "Ganzbildsuche; zusammenhängende Farbregionen und Streifengeometrie. Keine Generator-Sollwerte als Analyseinput.",
             "Gleichmäßige Beleuchtungsverschiebungen und materialabhängige Reflexe sind nicht allgemein aus einem Bild erkennbar."
         };
+        diagnostics.Add($"Gerade richten: {-alignment.Degrees:F1}°; Winkelzuversicht {alignment.Confidence:F2}; Messung aus Originalpixeln.");
+        if (alignment.Ambiguous) diagnostics.Add("Keine eindeutige Kantenausrichtung; Bild unverändert analysiert.");
         if (detection.Ambiguous) return Finish(AnalysisStatus.AmbiguousPattern, "Mehrere mögliche Muster. Nur den gewünschten Streifen ins Bild nehmen.", []);
         if (detection.Fields.Count == 0) return Finish(detection.HadSmallRegions ? AnalysisStatus.UnsuitableGeometry : AnalysisStatus.NoPattern,
             detection.HadSmallRegions ? "Muster zu klein oder unvollständig. Abstand und Ausschnitt prüfen." : "Vergleichsmuster nicht erkannt.", []);
+
+        if (MeasurementSafety.HasCroppedContinuation(detection))
+            return Finish(AnalysisStatus.UnsuitableGeometry, "Muster vollständig ins Bild nehmen. Angeschnittener Streifen ist nicht messfähig.", []);
+
+        if (MeasurementSafety.HasStrongCoherentTaper(detection))
+            return Finish(AnalysisStatus.UnsuitableGeometry, "Streifen verjüngt sich deutlich. Kamera möglichst frontal auf Muster und Wand ausrichten.", []);
 
         var combined = Union(detection.Fields);
         var exclusions = detection.Fields.Concat(detection.BorderRegions ?? []).ToArray();
@@ -27,6 +39,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             if (referenceBounds != null) shared = RegionSampler.Measure(image, referenceBounds.Value, options, cancellationToken);
         }
         var fields = new List<FieldAnalysis>();
+        bool hasUnusableBlur = false;
         foreach (var bounds in detection.Fields)
         {
             cancellationToken.ThrowIfCancellationRequested();
@@ -42,7 +55,10 @@ public sealed class ImageAnalyzer : IImageAnalyzer
                 measurement = measurement with { IsUsable = false, Lab = null,
                     Reason = "Feldgrenzen passen nicht zum Streifen. Mögliche Verdeckung; Muster vollständig sichtbar halten." };
             if (HasBlurredEdges(image, bounds, options.MinimumEdgeConcentration))
-                measurement = measurement with { IsUsable = false, Lab = null, Reason = "Bild unscharf. Kamera ruhig halten und neu fokussieren." };
+            {
+                hasUnusableBlur = true;
+                measurement = measurement with { IsUsable = false, Lab = null, Reason = MeasurementSafety.BlurHint };
+            }
             RegionMeasurement? reference = shared;
             if (options.ReferenceMode == ReferenceMode.AdjacentPerFieldTrial)
             {
@@ -55,6 +71,20 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             fields.Add(new($"detected-{fields.Count + 1}", bounds, inner, measurement, reference,
                 allowed ? ColorMath.DeltaE00(measurement.Lab!.Value, reference!.Lab!.Value) : null, allowed, hint, false) { SurfaceSpatialDeltaE = surface.SpatialDeltaE });
         }
+        // Frame-wide safety decisions precede ranking and every published value.
+        string? frameFailure = fields.Any(f => f.Measurement.HasUnresolvedChannels || f.Reference?.HasUnresolvedChannels == true)
+            ? MeasurementSafety.ChannelLimitHint : hasUnusableBlur ? MeasurementSafety.BlurHint : null;
+        if (frameFailure != null)
+        {
+            for (int i = 0; i < fields.Count; i++) fields[i] = fields[i] with
+            {
+                MeasurementAllowed = false, DeltaE00 = null, IsNearest = false, Hint = frameFailure,
+                Measurement = fields[i].Measurement with { IsUsable = false, Lab = null }
+            };
+            diagnostics.Add("Aufnahmeweite Messsperre: " + frameFailure);
+            return Finish(fields.Any(f => f.Reference?.HasUnresolvedChannels == true)
+                ? AnalysisStatus.InvalidReference : AnalysisStatus.InvalidFields, frameFailure, fields);
+        }
         int valid = fields.Count(f => f.MeasurementAllowed);
         if (valid > 0)
         {
@@ -66,10 +96,20 @@ public sealed class ImageAnalyzer : IImageAnalyzer
         return Finish(valid == fields.Count ? AnalysisStatus.Measured : valid > 0 ? AnalysisStatus.PartiallyMeasured : missingReference ? AnalysisStatus.InvalidReference : AnalysisStatus.InvalidFields,
             valid == fields.Count ? "Farbabstand ΔE00 · kleiner = ähnlicher" : valid > 0 ? "Einzelne Messflächen ungeeignet; gültige Felder bleiben auswertbar." : fields[0].Hint ?? "Messung nicht möglich.", fields);
 
-        ImageAnalysis Finish(AnalysisStatus status, string hint, IReadOnlyList<FieldAnalysis> results) =>
-            new(Version, options, image.Width, image.Height, status, hint, results, diagnostics);
+        ImageAnalysis Finish(AnalysisStatus status, string hint, IReadOnlyList<FieldAnalysis> results)
+        {
+            RegionMeasurement? Map(RegionMeasurement? region) => region == null || rotation == null ? region
+                : region with { Bounds = rotation.SourceBounds(region.Bounds), Polygon = rotation.ToSource(region.Bounds) };
+            var mapped = rotation == null ? results : results.Select(f => f with
+            {
+                Bounds = rotation.SourceBounds(f.Bounds), InnerBounds = rotation.SourceBounds(f.InnerBounds),
+                Polygon = rotation.ToSource(f.Bounds), InnerPolygon = rotation.ToSource(f.InnerBounds),
+                Measurement = Map(f.Measurement)!, Reference = Map(f.Reference)
+            }).ToArray();
+            return new(Version, options, source.Width, source.Height, status, hint, mapped, diagnostics)
+                { StraighteningDegrees = -alignment.Degrees };
+        }
     }
-
     private static PixelRect Union(IReadOnlyList<PixelRect> fields)
     {
         int x = fields.Min(r => r.X), y = fields.Min(r => r.Y);
@@ -84,7 +124,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
         PixelRect[] choices = [new(target.X - gap - side, cy - side / 2, side, side), new(target.Right + gap, cy - side / 2, side, side),
             new(cx - side / 2, target.Y - gap - side, side, side), new(cx - side / 2, target.Bottom + gap, side, side)];
         // Geometry only: never choose the brightest or darkest patch to bias the result.
-        return choices.Where((r, i) => orientation == "single" || (orientation == "vertical" ? i < 2 : i >= 2)).Where(r => r.X >= 0 && r.Y >= 0 && r.Right <= image.Width && r.Bottom <= image.Height && !exclusions.Any(r.Intersects))
+        return choices.Where((r, i) => orientation == "single" || (orientation == "vertical" ? i < 2 : i >= 2)).Where(r => r.X >= 0 && r.Y >= 0 && r.Right <= image.Width && r.Bottom <= image.Height && image.ContainsArea(r) && !exclusions.Any(r.Intersects))
             .OrderBy(r => Math.Pow(r.X + side / 2d - cx, 2) + Math.Pow(r.Y + side / 2d - cy, 2))
             .Select(r => (PixelRect?)r).FirstOrDefault();
     }
@@ -99,7 +139,7 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             for (int d = -12; d <= 12; d++)
             {
                 int x = edge.Item1 + (edge.Item3 ? d : 0), y = edge.Item2 + (edge.Item3 ? 0 : d);
-                if (x >= 0 && y >= 0 && x < image.Width && y < image.Height) colors.Add(image.GetPixel(x, y));
+                if (image.IsValidPixel(x, y)) colors.Add(image.GetPixel(x, y));
             }
             for (int i = 0; i < colors.Count; i++)
             for (int j = i + 1; j < colors.Count; j++)
@@ -109,7 +149,10 @@ public sealed class ImageAnalyzer : IImageAnalyzer
             }
             if (range >= 10 && maxStep / range < minimumConcentration) poor++;
         }
-        return poor >= 2;
+        // A clearly smeared boundary already contaminates the axis-aligned interior
+        // after straightening. Requiring two poor sides admitted narrow fields whose
+        // second blurred boundary was outside the short sampling segment.
+        return poor >= 1;
     }
 }
 

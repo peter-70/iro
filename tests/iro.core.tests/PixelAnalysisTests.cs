@@ -18,7 +18,7 @@ public class PixelAnalysisTests
     }
     private static void Strip(byte[] pixels, int x = 550)
     {
-        Paint(pixels, new(x, 60, 160, 130), new(255, 255, 255));
+        Paint(pixels, new(x, 60, 160, 130), new(250, 250, 250));
         Paint(pixels, new(x, 204, 160, 130), new(10, 10, 10));
         Paint(pixels, new(x, 348, 160, 130), new(170, 90, 110));
     }
@@ -31,7 +31,7 @@ public class PixelAnalysisTests
         var result = Analyze(pixels);
         Assert.Equal(AnalysisStatus.Measured, result.Status);
         Assert.Equal(3, result.Fields.Count);
-        Assert.InRange(result.Fields[0].Measurement.Lab!.Value.L, 99.99, 100.01);
+        Assert.InRange(result.Fields[0].Measurement.Lab!.Value.L, 98, 99);
         Assert.InRange(result.Fields[1].Measurement.Lab!.Value.L, 0, 3);
         Assert.All(result.Fields, f => Assert.Equal(result.Fields[0].Reference, f.Reference));
     }

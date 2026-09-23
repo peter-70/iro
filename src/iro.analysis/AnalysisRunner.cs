@@ -129,7 +129,12 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
             PixelRect? bounds = null;
             if (expected.TryGetProperty("bounds", out var box) && box.ValueKind == JsonValueKind.Object)
                 bounds = new(box.GetProperty("x").GetInt32(), box.GetProperty("y").GetInt32(), box.GetProperty("width").GetInt32(), box.GetProperty("height").GetInt32());
-            var matches = bounds == null ? [] : analysis.Fields.Select(f => (Field: f, Overlap: IoU(bounds.Value, f.Bounds)))
+            PixelPoint[]? polygon = expected.TryGetProperty("projectedCorners", out var corners) && corners.ValueKind == JsonValueKind.Array
+                ? corners.EnumerateArray().Select(p => new PixelPoint(p.GetProperty("x").GetDouble(), p.GetProperty("y").GetDouble())).ToArray() : null;
+            bool usablePolygon = polygon is { Length: >= 3 } && polygon.All(p => double.IsFinite(p.X) && double.IsFinite(p.Y));
+            var matches = bounds == null ? [] : analysis.Fields.Select(f => (Field: f, Overlap: usablePolygon && f.Polygon != null
+                ? PolygonGeometry.IntersectionOverUnion(polygon!, f.Polygon, analysis.Width, analysis.Height)
+                : IoU(bounds.Value, f.Bounds)))
                 .Where(m => m.Overlap >= .45).OrderByDescending(m => m.Overlap).ToArray();
             if (matches.Length == 0) { comparisons.Add(new(fieldId, null, null, distance, null, null, "not-detected")); continue; }
             if (matches.Length > 1 || !used.Add(matches[0].Field.FieldId))

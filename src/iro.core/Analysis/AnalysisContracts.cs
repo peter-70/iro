@@ -19,16 +19,63 @@ public sealed class RgbFrame
     public int Width { get; }
     public int Height { get; }
     public int Stride { get; }
-    public ReadOnlyMemory<byte> Pixels { get; }
+    private readonly ReadOnlyMemory<byte> pixels;
+    public ReadOnlyMemory<byte> Pixels => Source == null ? pixels : throw new InvalidOperationException("Gedrehte Analysesicht besitzt keinen interpolierten Farbpuffer.");
+    internal RgbFrame? Source { get; }
+    internal ImageRotation? Rotation { get; }
+    internal RgbFrame(RgbFrame source, ImageRotation rotation)
+    {
+        Source = source; Rotation = rotation; Width = rotation.Width; Height = rotation.Height; Stride = checked(Width * 3);
+    }
+    internal bool IsValidPixel(int x, int y)
+    {
+        if ((uint)x >= Width || (uint)y >= Height) return false;
+        if (Rotation == null) return true;
+        var p = Rotation.ToSource(x + .5, y + .5);
+        return p.X >= 0 && p.Y >= 0 && p.X < Source!.Width && p.Y < Source.Height;
+    }
+    internal bool ContainsArea(PixelRect bounds) => bounds.X >= 0 && bounds.Y >= 0 && bounds.Right <= Width && bounds.Bottom <= Height
+        && (Rotation == null || Rotation.ToSource(bounds).All(p => p.X >= 0 && p.Y >= 0 && p.X <= Source!.Width && p.Y <= Source.Height));
+    internal IEnumerable<(RgbColor Pixel, double X, double Y)> Sample(PixelRect bounds, int step, CancellationToken token)
+    {
+        if (Rotation == null)
+        {
+            for (int y = bounds.Y; y < bounds.Bottom; y += step)
+            {
+                token.ThrowIfCancellationRequested();
+                for (int x = bounds.X; x < bounds.Right; x += step) yield return (GetPixel(x, y), x, y);
+            }
+        }
+        else
+        {
+            var original = Rotation.SourceBounds(bounds);
+            step = Math.Max(step, (int)Math.Ceiling(Math.Sqrt(original.Area / 160000d)));
+            for (int y = original.Y; y < original.Bottom; y += step)
+            {
+                token.ThrowIfCancellationRequested();
+                for (int x = original.X; x < original.Right; x += step)
+                {
+                    var p = Rotation.ToAligned(x + .5, y + .5);
+                    if (p.X >= bounds.X && p.Y >= bounds.Y && p.X < bounds.Right && p.Y < bounds.Bottom)
+                        yield return (Source!.GetPixel(x, y), p.X, p.Y);
+                }
+            }
+        }
+    }
     public RgbFrame(int width, int height, int stride, ReadOnlyMemory<byte> pixels)
     {
         if (width < 1 || height < 1 || (long)width * height > 12_000_000 || stride < (long)width * 3 || (long)stride * height > pixels.Length)
             throw new ArgumentException("Ungültiger RGB-Puffer: Bildgröße, Stride oder Datenlänge.");
-        Width = width; Height = height; Stride = stride; Pixels = pixels;
+        Width = width; Height = height; Stride = stride; this.pixels = pixels;
     }
     public RgbColor GetPixel(int x, int y)
     {
         if ((uint)x >= Width || (uint)y >= Height) throw new ArgumentOutOfRangeException(nameof(x));
+        if (Rotation != null)
+        {
+            var p = Rotation.ToSource(x + .5, y + .5);
+            return IsValidPixel(x, y) ? Source!.GetPixel((int)p.X, (int)p.Y) : default;
+        }
         var data = Pixels.Span; int offset = y * Stride + x * 3;
         return new(data[offset], data[offset + 1], data[offset + 2]);
     }
@@ -42,6 +89,7 @@ public enum AnalysisStatus { Measured, PartiallyMeasured, NoPattern, AmbiguousPa
 /// <summary>Explicit experimental profile; these thresholds are not a product/device accuracy promise.</summary>
 public sealed record AnalysisOptions
 {
+    public bool Straighten { get; init; } = true;
     public string ProfileVersion { get; init; } = "synthetic-trial-1";
     public ReferenceMode ReferenceMode { get; init; } = ReferenceMode.SharedAutomaticTrial;
     public int DetectionLongestSide { get; init; } = 720;
@@ -77,15 +125,20 @@ public sealed record AnalysisOptions
 public sealed record RegionMeasurement(PixelRect Bounds, bool IsUsable, string? Reason, LabColor? Lab,
     int SampleCount, double RejectedFraction, double ChannelMad, double NearLimitFraction)
 {
+    public IReadOnlyList<PixelPoint>? Polygon { get; init; }
     public double? SpatialDeltaE { get; init; }
+    internal bool HasUnresolvedChannels { get; init; }
 }
 public sealed record FieldAnalysis(string FieldId, PixelRect Bounds, PixelRect InnerBounds, RegionMeasurement Measurement,
     RegionMeasurement? Reference, double? DeltaE00, bool MeasurementAllowed, string? Hint, bool IsNearest)
 {
+    public IReadOnlyList<PixelPoint>? Polygon { get; init; }
+    public IReadOnlyList<PixelPoint>? InnerPolygon { get; init; }
     public double? SurfaceSpatialDeltaE { get; init; }
 }
 public sealed record ImageAnalysis(string AnalyzerVersion, AnalysisOptions Options, int Width, int Height,
-    AnalysisStatus Status, string Hint, IReadOnlyList<FieldAnalysis> Fields, IReadOnlyList<string> Diagnostics);
+    AnalysisStatus Status, string Hint, IReadOnlyList<FieldAnalysis> Fields, IReadOnlyList<string> Diagnostics)
+{ public double StraighteningDegrees { get; init; } }
 
 public interface IImageAnalyzer
 {

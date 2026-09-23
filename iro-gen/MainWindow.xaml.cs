@@ -47,7 +47,13 @@ public partial class MainWindow : Window
         Choice(nameof(GeneratorOptions.Distance), "Kameraabstand (Simulation)", ["Normal", "Zu nahe: nahe", "Zu nahe: näher", "Zu nahe: ganz nahe", "Zu weit: weit", "Zu weit: weiter", "Zu weit: sehr weit"]);
         editors[nameof(GeneratorOptions.Distance)].Tag = new[] { CameraDistance.Normal, CameraDistance.Near, CameraDistance.Nearer, CameraDistance.TooClose, CameraDistance.Far, CameraDistance.Farther, CameraDistance.TooFar };
         Number(nameof(GeneratorOptions.RotationDegrees), "Drehung im Bild (−80 bis 80°)");
-        Level(nameof(GeneratorOptions.Perspective), "Seitlicher Blick / Perspektive");
+        Check(nameof(GeneratorOptions.RandomPlacement), "Zufällige Position und Drehung");
+        editors[nameof(GeneratorOptions.RandomPlacement)].ToolTip = "Ersetzt die feste Position und Drehung durch reproduzierbare Zufallswerte.";
+        Choice(nameof(GeneratorOptions.SideView), "Blick von der Seite (Seite zufällig)", ["Aus", "Leicht", "Stark", "Sehr stark"]);
+        Choice(nameof(GeneratorOptions.VerticalView), "Blick von oben / unten", ["Aus", "Leicht", "Stark", "Sehr stark"]);
+        Choice(nameof(GeneratorOptions.VerticalDirection), "Blickrichtung oben / unten", ["Zufällig", "Von oben", "Von unten"]);
+        Choice(nameof(GeneratorOptions.WallGap), "Streifen vor der Wand (Simulation)", ["Anliegend", "Kleiner Abstand (< 10 cm)", "Größerer Abstand (10–< 20 cm)", "Großer Abstand (> 20 cm)"]);
+        Level(nameof(GeneratorOptions.Perspective), "Zusätzliche Verjüngung (bisherige Perspektive)");
         Section("Licht & Bildstörungen");
         Level(nameof(GeneratorOptions.Glare), "Glanzlicht auf dem Streifen");
         Level(nameof(GeneratorOptions.Dirt), "Verschmutzung / Flecken");
@@ -170,7 +176,7 @@ public partial class MainWindow : Window
             if (root.TryGetProperty("conditions", out var conditions))
             {
                 var generator = conditions.GetProperty("generator");
-                if (root.GetProperty("formatVersion").GetInt32() != 1 || generator.GetProperty("name").GetString() != "IroGen" || generator.GetProperty("version").GetString() is not ("1.0.0" or "1.1.0" or SceneGenerator.Version))
+                if (root.GetProperty("formatVersion").GetInt32() != 1 || generator.GetProperty("name").GetString() != "IroGen" || generator.GetProperty("version").GetString() is not ("1.0.0" or "1.1.0" or "1.2.0" or SceneGenerator.Version))
                     throw new ArgumentException("Diese Aufnahme stammt nicht aus einer unterstützten IroGen-Version.");
                 SeriesCount.Text = "1";
                 options = generator.GetProperty("parameters").GetProperty("options").Deserialize<GeneratorOptions>(SceneExport.JsonOptions)!;
@@ -178,7 +184,7 @@ public partial class MainWindow : Window
             else
             {
                 var file = root.Deserialize<OptionsFile>(SceneExport.JsonOptions) ?? throw new ArgumentException("Leere Optionsdatei.");
-                if (file.FormatVersion is not (1 or 2) || file.GeneratorVersion is not ("1.0.0" or "1.1.0" or SceneGenerator.Version)) throw new ArgumentException("Nicht unterstützte Optionsversion.");
+                if (file.FormatVersion is not (1 or 2) || file.GeneratorVersion is not ("1.0.0" or "1.1.0" or "1.2.0" or SceneGenerator.Version)) throw new ArgumentException("Nicht unterstützte Optionsversion.");
                 options = file.Options;
                 SeriesCount.Text = file.ImageCount.ToString(CultureInfo.InvariantCulture);
                 CoverRangeCheck.IsChecked = file.CoverRange;

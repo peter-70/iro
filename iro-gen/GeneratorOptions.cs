@@ -3,6 +3,9 @@ namespace IroGen;
 public enum StripPosition { Right, Left, Bottom, Top, Center }
 public enum StripOrientation { Vertical, Horizontal }
 public enum Severity { None, Light, Medium, Strong }
+public enum ViewStrength { None, Light, Strong, VeryStrong }
+public enum VerticalViewDirection { Random, FromAbove, FromBelow }
+public enum WallSeparation { None, Small, Greater, Large }
 public enum WallDifference { Exact, Light, Medium, Strong, Opposite }
 public enum CameraDistance { Normal, TooClose, TooFar, Near, Nearer, Far, Farther }
 
@@ -25,10 +28,16 @@ public sealed record GeneratorOptions
     public WallDifference WallDifference { get; init; }
     public bool RoundedTop { get; init; } = true;
     public bool VariableFieldHeights { get; init; }
+    public double[]? FieldWidthFactors { get; init; }
     public bool Labels { get; init; } = true;
     public double RotationDegrees { get; init; }
     public CameraDistance Distance { get; init; }
     public Severity Perspective { get; init; }
+    public bool RandomPlacement { get; init; }
+    public ViewStrength SideView { get; init; }
+    public ViewStrength VerticalView { get; init; }
+    public VerticalViewDirection VerticalDirection { get; init; }
+    public WallSeparation WallGap { get; init; }
     public Severity Glare { get; init; }
     public Severity Dirt { get; init; }
     public Severity Blur { get; init; }
@@ -55,6 +64,12 @@ public sealed record GeneratorOptions
         Range(GapPercent, 0, 15, "Feldabstand"); Range(MarginPercent, 0, 25, "Randabstand");
         Range(ShadeStep, 0.5, 10, "Helligkeitsabstufung"); Range(RotationDegrees, -80, 80, "Drehung");
         Range(ExposureStops, -3, 3, "Belichtung");
+        if (FieldWidthFactors is { } widths)
+        {
+            if (widths.Length != FieldCount)
+                throw new ArgumentException("Feldbreiten: Ein Faktor je Farbfeld erforderlich.");
+            foreach (double factor in widths) Range(factor, .3, 1, "Feldbreitenfaktor");
+        }
         if (Colors is { } colors)
         {
             if (colors.Palette == null || colors.Palette.Length != FieldCount)

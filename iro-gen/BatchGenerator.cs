@@ -7,6 +7,7 @@ namespace IroGen;
 public sealed record BatchProgress(int Completed, int Total);
 public sealed record BatchItem(int Number, string CaptureId, string Folder, GeneratorOptions Options, Rgb Wall, FieldInfo[] Fields)
 {
+    public SpatialSceneInfo? SpatialGeometry { get; init; }
     public string ImagePath => Path.Combine(Folder, CaptureId + ".png");
     public string Description => $"{Options.TestCaseName ?? "Einzelserie"} · Bild {Number:000} · {Options.Colors?.CoverageBand ?? "Feste Wandoption"} · Seed {Options.Seed}";
     public double MinimumDeltaE => Fields.Min(f => f.DeltaE00);
@@ -18,7 +19,7 @@ public sealed record BatchItem(int Number, string CaptureId, string Folder, Gene
         using var stream = File.OpenRead(ImagePath);
         var image = BitmapDecoder.Create(stream, BitmapCreateOptions.PreservePixelFormat, BitmapCacheOption.OnLoad).Frames[0];
         image.Freeze();
-        return new(Options, Wall, Fields, image);
+        return new(Options, Wall, Fields, image) { SpatialGeometry = SpatialGeometry };
     }
 }
 
@@ -73,7 +74,7 @@ public static class BatchGenerator
                     scene = SceneGenerator.Generate(itemOptions, token);
                 } while (!palettes.Add(string.Join("/", scene.Fields.Select(f => f.Hex))));
                 string folder = SceneExport.Save(scene, batch.Root);
-                batch.Items.Add(new(index + 1, Path.GetFileName(folder), folder, itemOptions, scene.Wall, scene.Fields.ToArray()));
+                batch.Items.Add(new(index + 1, Path.GetFileName(folder), folder, itemOptions, scene.Wall, scene.Fields.ToArray()) { SpatialGeometry = scene.SpatialGeometry });
                 progress?.Report(new(index + 1, count));
             }
             return batch;

@@ -55,7 +55,7 @@ public sealed class AnalysisPresentation(IImageAnalyzer? analyzer = null) : INot
             bool valid = acceptsValues && field.MeasurementAllowed && field.Measurement.IsUsable
                 && field.Reference?.IsUsable == true && field.DeltaE00 is >= 0 && double.IsFinite(field.DeltaE00.Value);
             return new MeasurementRow(field.FieldId, $"Erkanntes Feld {index + 1}",
-                valid ? field.DeltaE00!.Value.ToString("F2", CultureInfo.GetCultureInfo("de-DE")) : "–",
+                valid ? field.DeltaE00!.Value.ToString("F1", CultureInfo.GetCultureInfo("de-DE")) : "–",
                 valid ? "ΔE00 · kleiner = ähnlicher" : field.Hint ?? field.Measurement.Reason ?? result.Hint);
         }).ToArray();
         Heading = result.Status switch

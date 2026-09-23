@@ -23,6 +23,7 @@
       "type": "object", "additionalProperties": false,
       "required": ["profileVersion", "referenceMode", "detectionLongestSide", "regionTolerance", "minimumFillRatio", "minimumFieldSide", "minimumFieldArea", "minimumSamples", "innerMargin", "maximumOutlierFraction", "maximumChannelMad", "minimumEdgeConcentration"],
       "properties": {
+        "straighten": {"type": "boolean"},
         "profileVersion": {"const": "synthetic-trial-1"},
         "referenceMode": {"enum": ["SharedAutomaticTrial", "AdjacentPerFieldTrial"]},
         "detectionLongestSide": {"type": "integer", "minimum": 200, "maximum": 1600},
@@ -39,6 +40,13 @@
         "surfaceMargin": {"type": "number", "minimum": 0, "maximum": 0.4},
         "minimumEdgeConcentration": {"type": "number", "minimum": 0.01, "maximum": 1}
       }
+    },
+    "point": {
+      "type": "object", "additionalProperties": false, "required": ["x", "y"],
+      "properties": {"x": {"type": "number"}, "y": {"type": "number"}}
+    },
+    "polygon": {
+      "anyOf": [{"type": "array", "minItems": 3, "items": {"$ref": "#/$defs/point"}}, {"type": "null"}]
     },
     "rect": {
       "type": "object", "additionalProperties": false,
@@ -64,6 +72,7 @@
         "rejectedFraction": {"type": "number", "minimum": 0, "maximum": 1},
         "channelMad": {"type": "number", "minimum": 0},
         "nearLimitFraction": {"type": "number", "minimum": 0, "maximum": 1},
+        "polygon": {"$ref": "#/$defs/polygon"},
         "spatialDeltaE": {"type": ["number", "null"], "minimum": 0}
       },
       "allOf": [{"if": {"properties": {"isUsable": {"const": false}}}, "then": {"properties": {"lab": {"type": "null"}}}, "else": {"properties": {"lab": {"$ref": "#/$defs/lab"}}}}]
@@ -76,6 +85,7 @@
         "measurement": {"$ref": "#/$defs/region"}, "reference": {"anyOf": [{"$ref": "#/$defs/region"}, {"type": "null"}]},
         "deltaE00": {"type": ["number", "null"], "minimum": 0}, "measurementAllowed": {"type": "boolean"},
         "hint": {"type": ["string", "null"]}, "isNearest": {"type": "boolean"},
+        "polygon": {"$ref": "#/$defs/polygon"}, "innerPolygon": {"$ref": "#/$defs/polygon"},
         "surfaceSpatialDeltaE": {"type": ["number", "null"], "minimum": 0}
       },
       "allOf": [{"if": {"properties": {"measurementAllowed": {"const": false}}}, "then": {"properties": {"deltaE00": {"type": "null"}, "isNearest": {"const": false}}}, "else": {"properties": {"deltaE00": {"type": "number", "minimum": 0}, "measurement": {"properties": {"isUsable": {"const": true}}}, "reference": {"type": "object", "properties": {"isUsable": {"const": true}}}}}}]
@@ -88,7 +98,8 @@
         "width": {"type": "integer", "minimum": 1}, "height": {"type": "integer", "minimum": 1},
         "status": {"enum": ["Measured", "PartiallyMeasured", "NoPattern", "AmbiguousPattern", "UnsuitableGeometry", "InvalidReference", "InvalidFields"]},
         "hint": {"type": "string"}, "fields": {"type": "array", "items": {"$ref": "#/$defs/field"}},
-        "diagnostics": {"type": "array", "items": {"type": "string"}}
+        "diagnostics": {"type": "array", "items": {"type": "string"}},
+        "straighteningDegrees": {"type": "number", "minimum": -45, "maximum": 45}
       }
     },
     "comparison": {

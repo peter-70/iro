@@ -11,11 +11,14 @@ public sealed record FieldInfo(string FieldId, Rgb Color, double DeltaE00, Point
     public string Hex => Color.Hex;
     public string ExpectedText => DeltaE00.ToString("F2", CultureInfo.GetCultureInfo("de-DE"));
 }
-public sealed record GeneratedScene(GeneratorOptions Options, Rgb Wall, IReadOnlyList<FieldInfo> Fields, BitmapSource Image);
+public sealed record GeneratedScene(GeneratorOptions Options, Rgb Wall, IReadOnlyList<FieldInfo> Fields, BitmapSource Image)
+{
+    public SpatialSceneInfo? SpatialGeometry { get; init; }
+}
 
 public static class SceneGenerator
 {
-    public const string Version = "1.2.0";
+    public const string Version = "1.4.0";
 
     // WPF text rendering requires an STA. The caller runs this on a dedicated STA worker.
     public static GeneratedScene Generate(GeneratorOptions o, CancellationToken cancellationToken = default)
@@ -50,30 +53,8 @@ public static class SceneGenerator
         }
 
         bool vertical = o.Orientation == StripOrientation.Vertical;
-        double distanceScale = o.Distance switch { CameraDistance.TooClose => 3.4, CameraDistance.TooFar => .18, CameraDistance.Near => 1.35, CameraDistance.Nearer => 2.0, CameraDistance.Far => .65, CameraDistance.Farther => .35, _ => 1 };
-        double width = (vertical ? o.Width : o.Height) * o.StripWidthPercent / 100 * distanceScale;
-        double length = (vertical ? o.Height : o.Width) * o.StripLengthPercent / 100 * distanceScale;
-        double k = o.Perspective switch { Severity.Light => .2, Severity.Medium => .85, Severity.Strong => 3.0, _ => 0 };
-        double compression = o.Perspective switch { Severity.Light => .9, Severity.Medium => .55, Severity.Strong => .18, _ => 1 };
-        width *= compression;
-        double angle = (o.RotationDegrees + (vertical ? 0 : -90)) * Math.PI / 180;
-        double cos = Math.Cos(angle), sin = Math.Sin(angle);
-        double boxW = Math.Abs(width * cos) + Math.Abs(length * sin);
-        double boxH = Math.Abs(width * sin) + Math.Abs(length * cos);
-        // Close-up is deliberately centered: most of the wall leaves the frame.
-        double cx = o.Width / 2.0, cy = o.Height / 2.0;
-        if (o.Distance is not (CameraDistance.TooClose or CameraDistance.Near or CameraDistance.Nearer))
-        {
-            if (o.Position == StripPosition.Left) cx = o.Width * o.MarginPercent / 100 + boxW / 2;
-            if (o.Position == StripPosition.Right) cx = o.Width * (1 - o.MarginPercent / 100) - boxW / 2;
-            if (o.Position == StripPosition.Top) cy = o.Height * o.MarginPercent / 100 + boxH / 2;
-            if (o.Position == StripPosition.Bottom) cy = o.Height * (1 - o.MarginPercent / 100) - boxH / 2;
-        }
-        Point Project(double u, double v)
-        {
-            double x = (u - .5) * width / (1 + k * v), y = (v - .5) * length / (1 + k * v);
-            return new(cx + x * cos - y * sin, cy + x * sin + y * cos);
-        }
+        var geometry = new SceneGeometry(o);
+        Point Project(double u, double v) => geometry.Project(u, v);
 
         const int localWidth = 600;
         // Keep label rasterization independent of final camera distance.
@@ -91,7 +72,8 @@ public static class SceneGenerator
             for (int i = 0; i < o.FieldCount; i++)
             {
                 double h = usable * weights[i] / totalWeight;
-                var rect = new Rect(border, y, localWidth - 2 * border, h);
+                double fieldWidth = (localWidth - 2 * border) * (o.FieldWidthFactors?[i] ?? 1);
+                var rect = new Rect((localWidth - fieldWidth) / 2, y, fieldWidth, h);
                 var rgb = colors[i];
                 double delta = ColorScience.DeltaE00(ColorScience.ToLab(wall), ColorScience.ToLab(rgb));
                 dc.DrawRectangle(new SolidColorBrush(Color.FromRgb(rgb.R, rgb.G, rgb.B)), null, rect);
@@ -101,7 +83,7 @@ public static class SceneGenerator
                     double fontSize = Math.Min(27, h * .17);
                     var brush = ColorScience.ToLab(rgb).L > 55 ? Brushes.Black : Brushes.White;
                     var text = new FormattedText(label, CultureInfo.GetCultureInfo("de-DE"), FlowDirection.LeftToRight, new Typeface("Segoe UI"), fontSize, brush, 1);
-                    dc.DrawText(text, new Point(border + 12, y + h - text.Height - Math.Min(10, h * .04)));
+                    dc.DrawText(text, new Point(rect.Left + 12, y + h - text.Height - Math.Min(10, h * .04)));
                 }
                 Point[] polygon = [Project(rect.Left / localWidth, rect.Top / localHeight), Project(rect.Right / localWidth, rect.Top / localHeight), Project(rect.Right / localWidth, rect.Bottom / localHeight), Project(rect.Left / localWidth, rect.Bottom / localHeight)];
                 fields.Add(new($"field-{i + 1}", rgb, delta, polygon, Bounds(polygon, o.Width, o.Height)));
@@ -120,11 +102,8 @@ public static class SceneGenerator
             cancellationToken.ThrowIfCancellationRequested();
             for (int x = 0; x < o.Width; x++)
             {
-                double px = x + .5 - cx, py = y + .5 - cy;
-                double lx = px * cos + py * sin, ly = -px * sin + py * cos;
-                double denominator = length - k * ly;
-                double v = denominator > 0 ? (ly + .5 * length) / denominator : -1;
-                double u = .5 + lx * (1 + k * v) / width;
+                var uv = geometry.Unproject(x + .5, y + .5);
+                double u = uv.X, v = uv.Y;
                 bool inside = u >= 0 && u < 1 && v >= 0 && v < 1;
                 if (inside && o.RoundedTop && v < .055)
                     inside = v >= .055 * Math.Pow(2 * u - 1, 2);
@@ -136,7 +115,7 @@ public static class SceneGenerator
                     b = strip[si]; g = strip[si + 1]; r = strip[si + 2];
                 }
                 double nx = (x + .5) / o.Width, ny = (y + .5) / o.Height;
-                double lighting = 1;
+                double lighting = inside ? 1 : geometry.WallShadow(x + .5, y + .5, o.Width, o.Height);
                 if (o.Shadows != Severity.None)
                     lighting *= 1 - (int)o.Shadows * .22 * (.5 + .5 * Math.Tanh((nx + .55 * ny - .85) * 35));
                 if (o.Vignette != Severity.None)
@@ -189,7 +168,7 @@ public static class SceneGenerator
             pixels = BoxBlur(pixels, o.Width, o.Height, Math.Max(1, (int)((o.MotionBlur switch { Severity.Light => 7, Severity.Medium => 22, _ => 55 }) * scale)), true, cancellationToken);
         var image = BitmapSource.Create(o.Width, o.Height, 96, 96, PixelFormats.Bgra32, null, pixels, o.Width * 4);
         image.Freeze();
-        return new(o, wall, fields.AsReadOnly(), image);
+        return new(o, wall, fields.AsReadOnly(), image) { SpatialGeometry = geometry.Info };
     }
 
     public static PixelBounds? Bounds(Point[] polygon, int width, int height)

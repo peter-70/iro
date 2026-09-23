@@ -57,6 +57,7 @@ public static class SceneExport
                 parameters = new
                 {
                     options = scene.Options,
+                    spatialGeometry = scene.SpatialGeometry,
                     referenceRgb = scene.Wall.Channels,
                     nominalColorSpace = "8-bit sRGB → linear sRGB → XYZ D65 → Lab D65; CIEDE2000 kL=kC=kH=1",
                     nominalValues = scene.Fields.Select(f => new
