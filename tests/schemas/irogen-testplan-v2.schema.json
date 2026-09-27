@@ -66,6 +66,19 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$defs": {
     "behaviorExpectation": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/behaviorExpectationV1"
+        },
+        {
+          "$ref": "#/$defs/behaviorExpectationV2"
+        },
+        {
+          "$ref": "#/$defs/behaviorExpectationV3"
+        }
+      ]
+    },
+    "behaviorExpectationV1": {
       "type": "object",
       "required": [
         "formatVersion",
@@ -77,7 +90,10 @@
             "None",
             "Other",
             "PerspectiveTaper",
-            null
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
           ]
         },
         "measurementAllowed": {
@@ -108,7 +124,10 @@
             "None",
             "Other",
             "PerspectiveTaper",
-            null
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
           ]
         },
         "basis": {
@@ -119,6 +138,217 @@
         }
       },
       "additionalProperties": false
+    },
+    "behaviorExpectationV2": {
+      "type": "object",
+      "required": [
+        "formatVersion",
+        "verification",
+        "fields"
+      ],
+      "properties": {
+        "forbiddenHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
+          ]
+        },
+        "measurementAllowed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "formatVersion": {
+          "const": 2
+        },
+        "verification": {
+          "enum": [
+            "proposed",
+            "verified"
+          ]
+        },
+        "releasedFieldCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "maximum": 20,
+          "minimum": 0
+        },
+        "requiredHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/fieldExpectation"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "fieldExpectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fieldId",
+        "measurementAllowed"
+      ],
+      "properties": {
+        "fieldId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 150
+        },
+        "measurementAllowed": {
+          "type": "boolean"
+        },
+        "minimumIntersectionOverUnion": {
+          "type": "number",
+          "minimum": 0.45,
+          "maximum": 1
+        },
+        "deltaE00": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "absoluteTolerance": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "behaviorExpectationV3": {
+      "type": "object",
+      "required": [
+        "formatVersion",
+        "verification",
+        "fields",
+        "ranking"
+      ],
+      "properties": {
+        "forbiddenHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
+          ]
+        },
+        "measurementAllowed": {
+          "type": [
+            "boolean",
+            "null"
+          ]
+        },
+        "formatVersion": {
+          "const": 3
+        },
+        "verification": {
+          "enum": [
+            "proposed",
+            "verified"
+          ]
+        },
+        "releasedFieldCount": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "maximum": 20,
+          "minimum": 0
+        },
+        "requiredHint": {
+          "enum": [
+            "None",
+            "Other",
+            "PerspectiveTaper",
+            null,
+            "UnusableBlur",
+            "ChannelLimit",
+            "UnevenSurface"
+          ]
+        },
+        "basis": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "fields": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "$ref": "#/$defs/fieldExpectation"
+          }
+        },
+        "ranking": {
+          "$ref": "#/$defs/rankingExpectation"
+        }
+      },
+      "additionalProperties": false
+    },
+    "rankingExpectation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "groups",
+        "tieTolerance"
+      ],
+      "properties": {
+        "tieTolerance": {
+          "type": "number",
+          "minimum": 0
+        },
+        "groups": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 20,
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "maxItems": 20,
+            "uniqueItems": true,
+            "items": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 150
+            }
+          }
+        }
+      }
     }
   },
   "additionalProperties": false,

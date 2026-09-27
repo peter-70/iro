@@ -1,0 +1,199 @@
+{
+  "formatVersion": 2,
+  "kind": "irogen-test-plan",
+  "name": "Beleuchtung: homogene Kontrollen und starker Schattenübergang",
+  "defaults": {
+    "seed": 12345,
+    "width": 1600,
+    "height": 1200,
+    "fieldCount": 3,
+    "matchingField": 1,
+    "position": "Right",
+    "stripWidthPercent": 28,
+    "stripLengthPercent": 70,
+    "gapPercent": 6,
+    "labels": false,
+    "roundedTop": false,
+    "colors": {
+      "coverageBand": "Feste Geometriepruefung",
+      "anchorField": 1,
+      "targetDeltaE": 0,
+      "palette": [
+        {
+          "g": 80,
+          "b": 110,
+          "r": 60
+        },
+        {
+          "g": 110,
+          "b": 140,
+          "r": 90
+        },
+        {
+          "g": 140,
+          "b": 170,
+          "r": 120
+        }
+      ],
+      "wall": {
+        "g": 140,
+        "b": 140,
+        "r": 140
+      }
+    }
+  },
+  "cases": [
+    {
+      "name": "Vertical - Schatten None - Rauschen None",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "None",
+        "shadows": "None"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    },
+    {
+      "name": "Vertical - Schatten Strong - Rauschen None",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "None",
+        "shadows": "Strong"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "Other",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md. Präzisierung 27. September 2026: Dieser Fall scheitert an fehlender geeigneter Wandreferenz; kein belegter Code für räumliche Ungleichmäßigkeit."
+      }
+    },
+    {
+      "name": "Vertical - Schatten None - Rauschen Light",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "Light",
+        "shadows": "None"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    },
+    {
+      "name": "Vertical - Schatten Strong - Rauschen Light",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "Light",
+        "shadows": "Strong"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "Other",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md. Präzisierung 27. September 2026: Dieser Fall scheitert an fehlender geeigneter Wandreferenz; kein belegter Code für räumliche Ungleichmäßigkeit."
+      }
+    },
+    {
+      "name": "Horizontal - Schatten None - Rauschen None",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "noise": "None",
+        "shadows": "None"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    },
+    {
+      "name": "Horizontal - Schatten Strong - Rauschen None",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "noise": "None",
+        "shadows": "Strong"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "UnevenSurface",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    },
+    {
+      "name": "Horizontal - Schatten None - Rauschen Light",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "noise": "Light",
+        "shadows": "None"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    },
+    {
+      "name": "Horizontal - Schatten Strong - Rauschen Light",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "noise": "Light",
+        "shadows": "Strong"
+      },
+      "expected": {
+        "formatVersion": 1,
+        "measurementAllowed": false,
+        "releasedFieldCount": 0,
+        "requiredHint": "UnevenSurface",
+        "verification": "verified",
+        "basis": "Vorab festgelegte Erwartung für diese Geometrie: homogene scharfe Kontrollen mit bekanntem leichtem Rauschen messbar; starker modellierter Schattenübergang durch Messflächen sperrt sämtliche Vergleiche. Vorwärtsmodell SceneGenerator (linearer Lichtfaktor bis 0,34). Keine Behauptung einer eindeutigen Schattenursache aus Pixeln. Unabhängige Gegenproben: IlluminationEvidenceTests; docs/beleuchtung-untersuchung.md."
+      }
+    }
+  ]
+}

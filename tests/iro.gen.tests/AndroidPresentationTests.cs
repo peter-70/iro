@@ -24,7 +24,7 @@ public class AndroidPresentationTests
         await pending;
         Assert.False(presentation.IsBusy);
         Assert.Equal("Keine zuverlässige Messung", presentation.Heading);
-        Assert.Equal("Bild unscharf. Kamera ruhig halten und neu fokussieren.", presentation.Message);
+        Assert.Equal("Bild unbrauchbar: zu unscharf. Bitte erneut aufnehmen. Kamera ruhig halten und neu fokussieren.", presentation.Message);
         Assert.NotEmpty(presentation.Fields);
         Assert.All(presentation.Fields, f => Assert.Equal("–", f.Value));
 

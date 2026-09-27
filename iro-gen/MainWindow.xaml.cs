@@ -42,6 +42,7 @@ public partial class MainWindow : Window
         Check(nameof(GeneratorOptions.Labels), "Sollwerte auf Farbfelder drucken");
         Section("Wandfarbe");
         Number(nameof(GeneratorOptions.MatchingField), "Bezugsfeld (Nummer ab 1)");
+        Choice(nameof(GeneratorOptions.ColorProfile), "Farbprofil für Testserien", ["Allgemein", "Hell", "Blass", "Gering gesättigt"]);
         Choice(nameof(GeneratorOptions.WallDifference), "Abweichung vom Bezugsfeld", ["Exakt gleich", "Leicht (ca. ΔE00 1)", "Mittel (ca. ΔE00 4)", "Stark (ca. ΔE00 12)", "Andere Farbfamilie"]);
         Section("Geometrie & Abstand");
         Choice(nameof(GeneratorOptions.Distance), "Kameraabstand (Simulation)", ["Normal", "Zu nahe: nahe", "Zu nahe: näher", "Zu nahe: ganz nahe", "Zu weit: weit", "Zu weit: weiter", "Zu weit: sehr weit"]);
@@ -65,6 +66,8 @@ public partial class MainWindow : Window
         Level(nameof(GeneratorOptions.Vignette), "Abgedunkelte Bildränder");
         Level(nameof(GeneratorOptions.Occlusion), "Verdeckte Farbfelder");
         Level(nameof(GeneratorOptions.Haze), "Schleier / Kontrastverlust");
+        Number(nameof(GeneratorOptions.ReflectionVeilLevel), "Gleichmäßiger Reflexschleier (Teststufe 0–10)");
+        editors[nameof(GeneratorOptions.ReflectionVeilLevel)].ToolTip = "Nur Testdatenerzeugung: 0 = keine Überlagerung; jede Stufe mischt bildweit 4 % Weiß hinzu; 10 = 40 %. Der Wert wird nicht an Iro übergeben.";
         Number(nameof(GeneratorOptions.ExposureStops), "Belichtung (−3 bis +3 EV)");
         SetOptions(new());
         Loaded += async (_, _) => await GenerateAsync();
@@ -176,7 +179,7 @@ public partial class MainWindow : Window
             if (root.TryGetProperty("conditions", out var conditions))
             {
                 var generator = conditions.GetProperty("generator");
-                if (root.GetProperty("formatVersion").GetInt32() != 1 || generator.GetProperty("name").GetString() != "IroGen" || generator.GetProperty("version").GetString() is not ("1.0.0" or "1.1.0" or "1.2.0" or SceneGenerator.Version))
+                if (root.GetProperty("formatVersion").GetInt32() != 1 || generator.GetProperty("name").GetString() != "IroGen" || generator.GetProperty("version").GetString() is not ("1.0.0" or "1.1.0" or "1.2.0" or "1.3.0" or "1.4.0" or "1.5.0" or SceneGenerator.Version))
                     throw new ArgumentException("Diese Aufnahme stammt nicht aus einer unterstützten IroGen-Version.");
                 SeriesCount.Text = "1";
                 options = generator.GetProperty("parameters").GetProperty("options").Deserialize<GeneratorOptions>(SceneExport.JsonOptions)!;
@@ -184,7 +187,7 @@ public partial class MainWindow : Window
             else
             {
                 var file = root.Deserialize<OptionsFile>(SceneExport.JsonOptions) ?? throw new ArgumentException("Leere Optionsdatei.");
-                if (file.FormatVersion is not (1 or 2) || file.GeneratorVersion is not ("1.0.0" or "1.1.0" or "1.2.0" or SceneGenerator.Version)) throw new ArgumentException("Nicht unterstützte Optionsversion.");
+                if (file.FormatVersion is not (1 or 2) || file.GeneratorVersion is not ("1.0.0" or "1.1.0" or "1.2.0" or "1.3.0" or "1.4.0" or "1.5.0" or SceneGenerator.Version)) throw new ArgumentException("Nicht unterstützte Optionsversion.");
                 options = file.Options;
                 SeriesCount.Text = file.ImageCount.ToString(CultureInfo.InvariantCulture);
                 CoverRangeCheck.IsChecked = file.CoverRange;

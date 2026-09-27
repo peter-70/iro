@@ -121,4 +121,4 @@ Zum Vergleich enthielt der vom Nutzer übermittelte [108-Bilder-Bericht mit Anal
 
 Audit erstellt und durch Codeprüfung sowie reproduzierbare Tests gestützt. Die beschriebenen Korrekturen sind umgesetzt und im angegebenen Umfang geprüft. **Keine Nutzerabnahme dieser Korrekturen, keine Erledigt-Markierung offener Schutzprüfungen und keine Kundenfreigabe.**
 
-Die nächsten Arbeiten dienen dem Schließen der oben benannten Sicherheits- und Nachweislücken. Zusätzliche Bildoptimierungen sind bis dahin zurückgestellt. Die Kamera bleibt gemäß bisherigem Beschluss eine spätere Phase nach der technischen Gesamtabnahme.
+Die nächsten Arbeiten dienen dem Schließen der oben benannten Sicherheits- und Nachweislücken. Zusätzliche Bildoptimierungen sind bis dahin zurückgestellt. Die damalige Reihenfolge ist seit 23. September 2026 durch Planfassung 1.34 aktualisiert: Kamera nach grünem technischem Sammel-Testlauf; ausdrückliche Nutzerabnahmen erst nach grünen realen Gerätetests.

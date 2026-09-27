@@ -24,6 +24,20 @@ public class MeasurementRuleTests
             pixels[offset] = color.R; pixels[offset + 1] = color.G; pixels[offset + 2] = color.B;
         }
     }
+    private static void PaintEndpointPileup(byte[] pixels, PixelRect rect, bool upper)
+    {
+        for (int y = Math.Max(0, rect.Y); y < Math.Min(Height, rect.Bottom); y++)
+        for (int x = Math.Max(0, rect.X); x < Math.Min(Width, rect.Right); x++)
+        {
+            int offset = (y * Width + x) * 3;
+            int shoulder = (x - rect.X) % 12;
+            pixels[offset] = upper
+                ? (byte)(shoulder < 5 ? 250 + shoulder : 255)
+                : (byte)(shoulder < 5 ? 5 - shoulder : 0);
+            pixels[offset + 1] = 100;
+            pixels[offset + 2] = 160;
+        }
+    }
     private static ImageAnalysis Analyze(byte[] pixels, bool horizontal = false)
     {
         if (!horizontal) return new ImageAnalyzer().Analyze(new(Width, Height, Width * 3, pixels), new());
@@ -41,19 +55,22 @@ public class MeasurementRuleTests
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void CroppedStripDoesNotReleaseItsRemainingFields(bool horizontal)
+    public void SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy(bool horizontal)
     {
         var control = Analyze(Scene(), horizontal);
         Assert.Equal(AnalysisStatus.Measured, control.Status);
         Assert.Equal(3, control.Fields.Count);
         var result = Analyze(Scene(cropped: true), horizontal);
-        AssertNoValues(result);
-        Assert.Contains("vollständig", result.Hint);
+        Assert.Equal(AnalysisStatus.PartiallyMeasured, result.Status);
+        Assert.Equal(3, result.Fields.Count(f => f.MeasurementAllowed));
+        Assert.Contains("kein vollständiger Streifenvergleich", result.Hint);
     }
     [Theory]
-    [InlineData(false)]
-    [InlineData(true)]
-    public void AClippedMeasurementChannelStopsTheWholeComparison(bool wall)
+    [InlineData(false, 0)]
+    [InlineData(false, 255)]
+    [InlineData(true, 0)]
+    [InlineData(true, 255)]
+    public void AnEndpointPileupStopsTheWholeComparison(bool wall, byte endpoint)
     {
         var pixels = Scene();
         var control = Analyze(pixels);
@@ -61,13 +78,28 @@ public class MeasurementRuleTests
         if (wall)
         {
             var reference = control.Fields[0].Reference!.Bounds;
-            Paint(pixels, reference, new(255, 120, 140));
+            PaintEndpointPileup(pixels, reference, endpoint == 255);
         }
-        else Paint(pixels, new(550, 60, 160, 130), new(255, 100, 160));
+        else PaintEndpointPileup(pixels, new(550, 60, 160, 130), endpoint == 255);
         var result = Analyze(pixels);
         Assert.NotEmpty(result.Fields);
         AssertNoValues(result);
         Assert.Contains("kanal", result.Hint);
+        Assert.Equal(AnalysisHintCode.ChannelLimit, result.HintCode);
+    }
+    [Theory]
+    [InlineData(0, 100, 160)]
+    [InlineData(255, 100, 160)]
+    [InlineData(255, 255, 255)]
+    [InlineData(0, 0, 0)]
+    public void HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(byte r, byte g, byte b)
+    {
+        var pixels = Scene();
+        Paint(pixels, new(550, 60, 160, 130), new(r, g, b));
+        var result = Analyze(pixels);
+        Assert.Equal(AnalysisStatus.Measured, result.Status);
+        Assert.Equal(3, result.Fields.Count(f => f.MeasurementAllowed));
+        Assert.DoesNotContain(result.Fields, field => field.Hint?.Contains("Farbkanal") == true);
     }
     [Fact]
     public void DetectedUnusableMotionBlurStopsOtherSharpFieldsToo()
@@ -86,6 +118,12 @@ public class MeasurementRuleTests
         Assert.Contains(result.Fields, f => f.Hint?.Contains("unscharf") == true);
         AssertNoValues(result);
         Assert.Contains("unscharf", result.Hint);
+        Assert.Equal(AnalysisHintCode.UnusableBlur, result.HintCode);
+        // A simultaneous endpoint failure retains the established dominant reason.
+        Paint(pixels, new(550, 360, 160, 130), new(255, 160, 220));
+        var combined = Analyze(pixels);
+        AssertNoValues(combined);
+        Assert.Equal(AnalysisHintCode.ChannelLimit, combined.HintCode);
     }
     [Theory]
     [InlineData(250, 250, 250)]
@@ -102,12 +140,21 @@ public class MeasurementRuleTests
     [Theory]
     [InlineData(0)]
     [InlineData(255)]
-    public void EndpointPlateausAreRejectedButSparseExcludedPrintIsAllowed(byte endpoint)
+    public void HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(byte endpoint)
     {
         var plateau = Enumerable.Repeat(endpoint, 60 * 60 * 3).ToArray();
         var result = RegionSampler.Measure(new(60, 60, 180, plateau), new(0, 0, 60, 60), new());
-        Assert.False(result.IsUsable);
-        Assert.Null(result.Lab);
+        Assert.True(result.IsUsable, result.Reason);
+        Assert.NotNull(result.Lab);
+        var pileup = Enumerable.Repeat((byte)120, 60 * 60 * 3).ToArray();
+        for (int pixel = 0; pixel < 60 * 60; pixel++)
+            pileup[pixel * 3] = pixel % 12 < 5
+                ? (byte)(endpoint == 255 ? 250 + pixel % 12 : 5 - pixel % 12)
+                : endpoint;
+        var clipped = RegionSampler.Measure(new(60, 60, 180, pileup), new(0, 0, 60, 60), new());
+        Assert.False(clipped.IsUsable);
+        Assert.Null(clipped.Lab);
+        Assert.True(clipped.HasUnresolvedChannels);
         var printed = Enumerable.Repeat((byte)120, 60 * 60 * 3).ToArray();
         Array.Fill(printed, endpoint, 0, 100 * 3);
         var usable = RegionSampler.Measure(new(60, 60, 180, printed), new(0, 0, 60, 60), new());

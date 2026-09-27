@@ -1,0 +1,185 @@
+{
+  "formatVersion": 1,
+  "kind": "iro-technical-test-inventory",
+  "name": "Technischer Prüfbestand vor dem Abschluss-Sammellauf",
+  "plannedImages": 277,
+  "verifiedExpectationImages": 44,
+  "diagnosticOrUnassessedImages": 233,
+  "plans": [
+    {
+      "path": "iro-gen/testplans/beleuchtung-schutzpruefung.json",
+      "images": 8,
+      "cases": 8,
+      "verifiedCases": 8,
+      "unassessedImages": 0,
+      "status": "verified-expectations",
+      "coverage": "IlluminationPlanTests",
+      "purpose": "Homogene Kontrollen und nachweisbar starke Schattenübergänge in beiden Streifenrichtungen.",
+      "limitation": "Belegt nur die konstruierten Übergänge. Homogene Beleuchtungsunterschiede und reale Mischlichtursachen bleiben offen."
+    },
+    {
+      "path": "iro-gen/testplans/bildqualitaet-und-abstand.json",
+      "images": 113,
+      "cases": 35,
+      "verifiedCases": 0,
+      "unassessedImages": 113,
+      "status": "diagnostic-only",
+      "coverage": "VisualSmokeTests, LightingQualityTests und TestPlanTests",
+      "purpose": "Breite historische Diagnosematrix für Bildqualität, Abstand, Belichtung und beide Streifenrichtungen.",
+      "limitation": "Format 1 ohne vorab geprüfte Verhaltenserwartungen. Ergebnisse dürfen nicht als 113 bestandene Abnahmefälle gezählt werden."
+    },
+    {
+      "path": "iro-gen/testplans/feldzuordnung-und-messwerte.json",
+      "images": 3,
+      "cases": 3,
+      "verifiedCases": 3,
+      "unassessedImages": 0,
+      "status": "verified-expectations",
+      "coverage": "FieldExpectationTests",
+      "purpose": "Geometrische Feldzuordnung und unabhängig berechnete Messwerte bei sauberer Aufnahme und leichtem Rauschen.",
+      "limitation": "Synthetische Regressionsgrenzen, keine reale Gerätegenauigkeit."
+    },
+    {
+      "path": "iro-gen/testplans/perspektivkorrektur-konturpruefung.json",
+      "images": 10,
+      "cases": 10,
+      "verifiedCases": 10,
+      "unassessedImages": 0,
+      "status": "verified-expectations",
+      "coverage": "TestPlanTests",
+      "purpose": "Unterschiedliche Rechteckbreiten von tatsächlicher deutlicher Verjüngung unterscheiden.",
+      "limitation": "Keine allgemeine Freigabe beliebiger Perspektive oder realer Kamerawinkel."
+    },
+    {
+      "path": "iro-gen/testplans/rangfolge-und-gleichstaende.json",
+      "images": 5,
+      "cases": 5,
+      "verifiedCases": 5,
+      "unassessedImages": 0,
+      "status": "verified-expectations",
+      "coverage": "FieldExpectationTests und RankingExpectationTests",
+      "purpose": "Eindeutige Rangfolgen, exakte Gleichstände und Toleranzgleichstände innerhalb eines Bildes.",
+      "limitation": "Die Prüftoleranz ist keine Produktschwelle für ähnlich nahe Farben."
+    },
+    {
+      "path": "iro-gen/testplans/raumlage-perspektive-und-wandabstand.json",
+      "images": 108,
+      "cases": 33,
+      "verifiedCases": 0,
+      "unassessedImages": 108,
+      "status": "diagnostic-only",
+      "coverage": "SpatialSceneTests und StraighteningTests",
+      "purpose": "Historische Diagnose für zufällige Lage, Seiten-/Höhenperspektive, Wandabstand und Freihandkombinationen.",
+      "limitation": "Format 1 ohne vorab geprüfte Erwartungen; keine allgemeine Perspektiv- oder Wandabstandsfreigabe."
+    },
+    {
+      "path": "iro-gen/testplans/unschaerfe-strenge-ablehnung.json",
+      "images": 12,
+      "cases": 12,
+      "verifiedCases": 12,
+      "unassessedImages": 0,
+      "status": "verified-expectations",
+      "coverage": "BlurPlanTests",
+      "purpose": "Scharfe Kontrollen erhalten und erkannte starke Fokus-/Bewegungsunschärfe vollständig sperren.",
+      "limitation": "Ein Fall wird schon als mehrdeutige Geometrie abgelehnt; dort wird keine Unschärfeursache behauptet."
+    },
+    {
+      "path": "iro-gen/testplans/unterbelichtung-und-dunkle-originalfarben.json",
+      "images": 16,
+      "cases": 16,
+      "verifiedCases": 4,
+      "unassessedImages": 12,
+      "status": "mixed",
+      "coverage": "UnderexposurePlanTests",
+      "purpose": "Echte dunkle Materialien als positive Gegenfälle und Belichtungsreihen als Untersuchung.",
+      "limitation": "Zwölf Belichtungsfälle bleiben mangels unabhängig belegter Eignungsgrenze bewusst unbewertet."
+    },
+    {
+      "path": "iro-gen/testplans/zwischenkontrolle-zwei-bilder.json",
+      "images": 2,
+      "cases": 2,
+      "verifiedCases": 2,
+      "unassessedImages": 0,
+      "status": "checkpoint",
+      "coverage": "TwoImageCheckpointTests",
+      "purpose": "Pflichtkontrolle zwischen Arbeitspunkten: sauber und bekannt leicht verrauscht.",
+      "limitation": "Regressionserkennung mit zwei Bildern; ersetzt weder Fachmatrix noch Sammellauf oder Gerätetest."
+    }
+  ],
+  "knownGaps": [
+    {
+      "id": "uniform-reflection-overlay",
+      "severity": "blocking-product-requirement",
+      "evidence": "docs/reflexe-schutzpruefung.md",
+      "text": "Zwölf gleichmäßig reflexüberlagerte synthetische Aufnahmen werden weiterhin freigegeben, obwohl die beschlossene Produktregel vollständige Ablehnung verlangt."
+    },
+    {
+      "id": "underexposure-without-channel-endpoint",
+      "severity": "unverified-boundary",
+      "evidence": "docs/unterbelichtung-untersuchung.md",
+      "text": "Für zwölf Belichtungsfälle ohne eindeutigen Kanalanschlag fehlt weiterhin eine unabhängig belegte Grenze zwischen noch auswertbar und unbrauchbar."
+    },
+    {
+      "id": "homogeneous-lighting-difference",
+      "severity": "unverified-boundary",
+      "evidence": "docs/beleuchtung-untersuchung.md",
+      "text": "Starke räumliche Übergänge werden gesperrt; unterschiedliche, jeweils homogene Beleuchtung von Wand und Streifen ist aus einem Einzelbild noch nicht allgemein zuverlässig erkannt."
+    },
+    {
+      "id": "general-perspective-and-wall-gap",
+      "severity": "unverified-boundary",
+      "evidence": "docs/perspektivmasken-schutzpruefung.md",
+      "text": "Leichte synthetische Perspektive und deutliche Verjüngung sind gezielt geprüft. Allgemeine reale Winkel-, Wandabstands- und kombinierte Freihandgrenzen sind nicht freigegeben."
+    },
+    {
+      "id": "general-crop-boundary",
+      "severity": "device-phase-boundary",
+      "evidence": "docs/endbeschnitt-freigabe.md",
+      "text": "Nur der dokumentierte begrenzte Endbeschnitt ist synthetisch freigegeben. Weitere Beschnittgrenzen bleiben bis zu realen Gerätetests offen."
+    },
+    {
+      "id": "real-camera-and-color-accuracy",
+      "severity": "device-phase-required",
+      "evidence": "IRO-KONSOLIDIERTER-PLAN.md",
+      "text": "Kameraeigenschaften, reale Beleuchtung, reale Farbgenauigkeit und Gerätegrenzen sind synthetisch nicht nachweisbar und folgen erst nach grünem technischem Sammellauf."
+    },
+    {
+      "id": "similar-nearest-product-threshold",
+      "severity": "open-product-decision",
+      "evidence": "IRO-KONSOLIDIERTER-PLAN.md",
+      "text": "Die Produktgrenze für die Anzeige ähnlich naher Farben ist weiterhin offen. Die Rangfolge-Prüftoleranz darf dafür nicht verwendet werden."
+    }
+  ],
+  "commands": [
+    {
+      "id": "restore",
+      "command": "dotnet restore iro.slnx --locked-mode",
+      "purpose": "Festgelegte Pakete wiederherstellen."
+    },
+    {
+      "id": "build",
+      "command": "dotnet build iro.slnx --no-restore -c Release",
+      "purpose": "Gesamte Solution im Release-Stand bauen."
+    },
+    {
+      "id": "core-tests",
+      "command": "dotnet test tests/iro.core.tests/Iro.Core.Tests.csproj --no-restore -c Release --verbosity minimal",
+      "purpose": "Vollständiges Kern-Testprojekt ausführen."
+    },
+    {
+      "id": "generator-tests",
+      "command": "dotnet test tests/iro.gen.tests/IroGen.Tests.csproj --no-restore -c Release --verbosity minimal",
+      "purpose": "Vollständiges Generator-, Vertrags- und Integrations-Testprojekt ausführen."
+    },
+    {
+      "id": "schema-tests",
+      "command": "& tests/schemas/Invoke-FieldExpectations.ps1",
+      "purpose": "Testplan- und Ergebnisverträge einschließlich ungültiger Gegenbeispiele prüfen."
+    },
+    {
+      "id": "android-release",
+      "command": "dotnet build src/iro.app/Iro.App.csproj -f net10.0-android --no-restore -c Release --verbosity minimal",
+      "purpose": "Android-Release-Build als Übergangsvoraussetzung prüfen."
+    }
+  ]
+}

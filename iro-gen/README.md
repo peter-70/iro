@@ -44,6 +44,8 @@ Die Wand übernimmt das gewählte Bezugsfeld exakt oder weicht ungefähr um ΔE0
 
 Glanzlicht, Verschmutzung, unscharfer Fokus, Bewegungsunschärfe, Licht/Schatten, Perspektive, Wandstruktur, Bildrauschen, Randabdunklung, Verdeckung und Schleier sind jeweils aus, leicht, mittel oder stark einstellbar. Zusätzlich gibt es Drehung, simulierten Nah-/Fernabstand und Belichtung von −3 bis +3 EV. Effekte lassen sich kombinieren.
 
+Für die gezielte Robustheitsuntersuchung gibt es außerdem den **gleichmäßigen Reflexschleier als Teststufe 0–10**. Stufe 0 verändert das Bild nicht. Jede weitere Stufe mischt bildweit vier Prozentpunkte Weiß in alle kodierten sRGB-Farbkanäle: 1 = 4 %, 2 = 8 %, 3 = 12 %, 4 = 16 %, 5 = 20 %, 6 = 24 %, 7 = 28 %, 8 = 32 %, 9 = 36 %, 10 = 40 %. Die Stufe ist ausschließlich ein reproduzierbarer Generatorparameter. Sie wird exportiert, aber niemals an Iros Analyse-API übergeben. Die Farbprofile „Allgemein“, „Hell“, „Blass“ und „Gering gesättigt“ erzeugen unterschiedliche Testfarbklassen; sie sind keine Materialdiagnose.
+
 - Fokusunschärfe: drei separierbare Boxfilter als Gauß-/Defokusnäherung. Bewegungsunschärfe: horizontaler Linienfilter. Beides skaliert mit der Bildauflösung und wirkt auch auf den gedruckten Text.
 - Perspektive: projektive Verjüngung und seitliche Verkürzung; unabhängig von der Drehung in der Bildebene.
 - Beleuchtung und Belichtung wirken im linearen RGB. Glanz, Schleier, Flecken, Verdeckung und Rauschen sind einfache synthetische Bildmodelle, keine physikalische Kamera- oder Materialsimulation.

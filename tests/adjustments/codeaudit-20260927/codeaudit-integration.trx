@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="4c570b8f-ea71-44f1-ad5c-a938b0e084f6" name="Peter Breitkopf@DESKTOP-LJN9LU4 2026-09-27 18:45:30" runUser="DESKTOP-LJN9LU4\Peter Breitkopf" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-09-27T18:45:30.5317085+02:00" queuing="2026-09-27T18:45:30.5317086+02:00" start="2026-09-27T18:45:29.5567299+02:00" finish="2026-09-27T18:45:38.4779844+02:00" />
+  <TestSettings name="default" id="f8a54f61-22b5-4eeb-b6b4-9eb6cd7c7472">
+    <Deployment runDeploymentRoot="Peter_Breitkopf_DESKTOP-LJN9LU4_2026-09-27_18_45_30" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="ab35c898-951e-4a7a-8464-5abe55093c01" testId="80007e73-413e-6d2d-4caa-c3341263829f" testName="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 2,125, tolerance: 0,125)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000213" startTime="2026-09-27T18:45:30.5126433+02:00" endTime="2026-09-27T18:45:30.5126645+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ab35c898-951e-4a7a-8464-5abe55093c01" />
+    <UnitTestResult executionId="f1d87f9b-0613-4ded-a66b-fc175079d148" testId="1f8ba20c-8fcb-3769-89a8-268f9b3448ea" testName="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: NaN)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0002254" startTime="2026-09-27T18:45:30.4931402+02:00" endTime="2026-09-27T18:45:30.4937945+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f1d87f9b-0613-4ded-a66b-fc175079d148" />
+    <UnitTestResult executionId="ec8f60d5-3d0d-4725-add9-15329ec36f48" testId="731115bd-37a7-3180-d018-5d4f5eba9564" testName="IroGenTests.FieldExpectationTests.PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis(planFile: &quot;rangfolge-und-gleichstaende.json&quot;)" computerName="DESKTOP-LJN9LU4" duration="00:00:01.2523430" startTime="2026-09-27T18:45:30.5129063+02:00" endTime="2026-09-27T18:45:31.7453839+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ec8f60d5-3d0d-4725-add9-15329ec36f48" />
+    <UnitTestResult executionId="dc013d99-5312-4267-a367-23ad70b86513" testId="590b406c-76ce-53a7-a871-cf553afb3939" testName="IroGenTests.RankingExpectationTests.TiesOutsideToleranceAndAccidentalTiesFail" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0002011" startTime="2026-09-27T18:45:30.5275906+02:00" endTime="2026-09-27T18:45:30.5277006+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dc013d99-5312-4267-a367-23ad70b86513" />
+    <UnitTestResult executionId="dcf15d70-5a60-4b59-a33a-c1c79bc3f7da" testId="57dec10b-cf5b-97bf-c2b7-dfe3bf1df378" testName="IroGenTests.AndroidPresentationTests.OriginalBlurredImageReplacesValidValuesWithActualAnalyzerHint" computerName="DESKTOP-LJN9LU4" duration="00:00:00.2104744" startTime="2026-09-27T18:45:30.7244968+02:00" endTime="2026-09-27T18:45:30.9352347+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dcf15d70-5a60-4b59-a33a-c1c79bc3f7da" />
+    <UnitTestResult executionId="129271ca-1649-4ae5-8f48-43e4432f7132" testId="7004f8ce-75d1-acf1-29e0-92c865f8c48a" testName="IroGenTests.AndroidPresentationTests.CancelledOlderImageCannotOverwriteANewerResult" computerName="DESKTOP-LJN9LU4" duration="00:00:00.2784872" startTime="2026-09-27T18:45:30.4409179+02:00" endTime="2026-09-27T18:45:30.7236246+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="129271ca-1649-4ae5-8f48-43e4432f7132" />
+    <UnitTestResult executionId="b0383bc7-1436-4d79-ba01-18714e54b33e" testId="6cb9cbe5-4263-74e2-abf8-406a590d1919" testName="IroGenTests.UnderexposurePlanTests.DarkControlsAndWholeImageExposureRetainVerifiedRelativeComparison" computerName="DESKTOP-LJN9LU4" duration="00:00:07.9630170" startTime="2026-09-27T18:45:30.4408778+02:00" endTime="2026-09-27T18:45:38.4074167+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b0383bc7-1436-4d79-ba01-18714e54b33e" />
+    <UnitTestResult executionId="8a14ec69-e965-48f2-8ce1-7ca9c1cf3f27" testId="e85f4edf-8475-49be-e8fc-2530c40c5b57" testName="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: -1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000216" startTime="2026-09-27T18:45:30.4942497+02:00" endTime="2026-09-27T18:45:30.4942782+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8a14ec69-e965-48f2-8ce1-7ca9c1cf3f27" />
+    <UnitTestResult executionId="591ddf8c-810e-417a-98dd-2512ea7d69af" testId="b6ec43d4-fb49-5534-95d7-112792522efc" testName="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: ∞)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0418250" startTime="2026-09-27T18:45:30.4399663+02:00" endTime="2026-09-27T18:45:30.4869589+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="591ddf8c-810e-417a-98dd-2512ea7d69af" />
+    <UnitTestResult executionId="86c218fc-502a-4af9-b0a8-60b68bbbe5a9" testId="16419d0f-c62e-74a5-8133-5ec4d4c6e209" testName="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 2, tolerance: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0006361" startTime="2026-09-27T18:45:30.5125106+02:00" endTime="2026-09-27T18:45:30.5125299+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="86c218fc-502a-4af9-b0a8-60b68bbbe5a9" />
+    <UnitTestResult executionId="49070e00-db45-4d01-8f85-f5d8bdab39e8" testId="405554fb-987f-27bf-5885-482c82fefec3" testName="IroGenTests.RankingExpectationTests.InvalidRankingContractsAreRejectedAndOldContractsRemainReadable" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0083920" startTime="2026-09-27T18:45:30.5128370+02:00" endTime="2026-09-27T18:45:30.5129238+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="49070e00-db45-4d01-8f85-f5d8bdab39e8" />
+    <UnitTestResult executionId="84e5ed19-8185-4e83-b701-8686a238f905" testId="7dee64c6-ad29-0f61-7201-6a5caf68bc22" testName="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 1,875, tolerance: 0,125)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0001728" startTime="2026-09-27T18:45:30.5125825+02:00" endTime="2026-09-27T18:45:30.5126017+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="84e5ed19-8185-4e83-b701-8686a238f905" />
+    <UnitTestResult executionId="00be3f45-ca53-45d9-9607-37c7db7154d8" testId="a66f78d4-974d-b2aa-b14b-95e17229a17d" testName="IroGenTests.FieldExpectationTests.ExplicitValuesUseActualAnalysisNeverNominalOrCachedComparisonValues" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0051192" startTime="2026-09-27T18:45:30.4950203+02:00" endTime="2026-09-27T18:45:30.5128553+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="00be3f45-ca53-45d9-9607-37c7db7154d8" />
+    <UnitTestResult executionId="226df690-fc91-45fc-a372-fecf3d1ebfca" testId="65472cca-22fd-2df1-749a-df77c5b34016" testName="IroGenTests.RankingExpectationTests.WrongMissingOrIncompleteNearestFlagsFailEvenWithCorrectValues" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0008772" startTime="2026-09-27T18:45:30.5127251+02:00" endTime="2026-09-27T18:45:30.5127426+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="226df690-fc91-45fc-a372-fecf3d1ebfca" />
+    <UnitTestResult executionId="b615368f-75c5-4c92-94c3-b5f32aa29299" testId="721dbf34-8c85-75d5-295f-c4a060fa86cc" testName="IroGenTests.RankingExpectationTests.PartialComparisonRanksOnlyReleasedFieldsAndRejectsStaleFlags" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0012077" startTime="2026-09-27T18:45:30.5122602+02:00" endTime="2026-09-27T18:45:30.5123008+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b615368f-75c5-4c92-94c3-b5f32aa29299" />
+    <UnitTestResult executionId="ba98b464-c89e-4d78-92b7-70ddbcbcfe34" testId="f7f0e4f0-2309-04e0-9e34-adeb5764cd2b" testName="IroGenTests.FieldExpectationTests.PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis(planFile: &quot;feldzuordnung-und-messwerte.json&quot;)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.8296615" startTime="2026-09-27T18:45:31.7455149+02:00" endTime="2026-09-27T18:45:32.5754079+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ba98b464-c89e-4d78-92b7-70ddbcbcfe34" />
+    <UnitTestResult executionId="df12a286-2343-4c03-b241-e5cecebbfb2a" testId="c1400b82-0eb3-465d-5746-3888d67c8a36" testName="IroGenTests.RankingExpectationTests.ChainedNearValuesDoNotBecomeAnInventedThreeWayTie" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0443763" startTime="2026-09-27T18:45:30.4409073+02:00" endTime="2026-09-27T18:45:30.4950511+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="df12a286-2343-4c03-b241-e5cecebbfb2a" />
+    <UnitTestResult executionId="9770a8e7-96d0-454c-9300-2645257c29ba" testId="50e8a912-7f49-ae3d-90b2-ebaf0e8627ae" testName="IroGenTests.RankingExpectationTests.MissingInvalidAndRejectedValuesCannotPassRanking" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0011504" startTime="2026-09-27T18:45:30.5127860+02:00" endTime="2026-09-27T18:45:30.5128013+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9770a8e7-96d0-454c-9300-2645257c29ba" />
+    <UnitTestResult executionId="7fc1acce-983a-46ba-8593-aa7d852cab1a" testId="eea2f6e1-67d0-966c-ec1c-2b00f9460479" testName="IroGenTests.AndroidPresentationTests.LoadingFailureClearsPreviousMeasurements" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0964255" startTime="2026-09-27T18:45:30.9353626+02:00" endTime="2026-09-27T18:45:31.0321997+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="7fc1acce-983a-46ba-8593-aa7d852cab1a" />
+    <UnitTestResult executionId="9ab995a4-c29d-4074-bd63-0f7dcfd8ffe3" testId="423051e0-d40b-bda2-12d2-16da0a0649ed" testName="IroGenTests.TwoImageCheckpointTests.CleanAndKnownMildNoiseRetainFieldsValuesAndRanking" computerName="DESKTOP-LJN9LU4" duration="00:00:00.7760107" startTime="2026-09-27T18:45:30.4409268+02:00" endTime="2026-09-27T18:45:31.2197881+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9ab995a4-c29d-4074-bd63-0f7dcfd8ffe3" />
+    <UnitTestResult executionId="a95e7ded-469f-44f3-8456-a46f1c2ad237" testId="5e749248-cd3d-5e52-2f98-52d629dee4a0" testName="IroGenTests.RankingExpectationTests.OrderUsesMappedValuesNotArrayOrderOrNominalMetadata" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0268609" startTime="2026-09-27T18:45:30.5140481+02:00" endTime="2026-09-27T18:45:30.5274808+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a95e7ded-469f-44f3-8456-a46f1c2ad237" />
+    <UnitTestResult executionId="984973d1-2f9e-4116-af83-b511ecc3af43" testId="98c8ec06-523c-6ed8-58f3-e4fcd60ae6af" testName="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: 2,101)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000092" startTime="2026-09-27T18:45:30.4943458+02:00" endTime="2026-09-27T18:45:30.4943647+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="984973d1-2f9e-4116-af83-b511ecc3af43" />
+    <UnitTestResult executionId="8bc5e53c-f6e9-48bf-9a44-0d825c3bba1e" testId="6a8fa721-94a6-5168-33e6-c19b8a5bf611" testName="IroGenTests.FieldExpectationTests.MissingUnverifiedAndMalformedFieldContractsNeverPass" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0009445" startTime="2026-09-27T18:45:32.5755778+02:00" endTime="2026-09-27T18:45:32.5763866+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="8bc5e53c-f6e9-48bf-9a44-0d825c3bba1e" />
+    <UnitTestResult executionId="851d0029-7fa4-433f-b493-8fde8314a8d8" testId="d4de88a7-e79d-f113-fcdc-22646f364ec6" testName="IroGenTests.FieldExpectationTests.WrongDuplicateAmbiguousAndWeakAssignmentsNeverPass" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0003199" startTime="2026-09-27T18:45:32.5764531+02:00" endTime="2026-09-27T18:45:32.5767626+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="851d0029-7fa4-433f-b493-8fde8314a8d8" />
+    <UnitTestResult executionId="c4e12c3c-f578-4b3f-b548-6077fb8775c2" testId="cb5a1cc5-6b18-545e-a045-429d12c3298e" testName="IroGenTests.FieldExpectationTests.RejectedFieldsAndUnexpectedReleasesAreCheckedIndividually" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0005266" startTime="2026-09-27T18:45:32.5768305+02:00" endTime="2026-09-27T18:45:32.5773395+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c4e12c3c-f578-4b3f-b548-6077fb8775c2" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="IroGenTests.AndroidPresentationTests.OriginalBlurredImageReplacesValidValuesWithActualAnalyzerHint" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="57dec10b-cf5b-97bf-c2b7-dfe3bf1df378">
+      <Execution id="dcf15d70-5a60-4b59-a33a-c1c79bc3f7da" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.AndroidPresentationTests" name="OriginalBlurredImageReplacesValidValuesWithActualAnalyzerHint" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: 2,101)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="98c8ec06-523c-6ed8-58f3-e4fcd60ae6af">
+      <Execution id="984973d1-2f9e-4116-af83-b511ecc3af43" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="InvalidOrOutOfToleranceActualValuesFail" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.AndroidPresentationTests.CancelledOlderImageCannotOverwriteANewerResult" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="7004f8ce-75d1-acf1-29e0-92c865f8c48a">
+      <Execution id="129271ca-1649-4ae5-8f48-43e4432f7132" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.AndroidPresentationTests" name="CancelledOlderImageCannotOverwriteANewerResult" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.TiesOutsideToleranceAndAccidentalTiesFail" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="590b406c-76ce-53a7-a871-cf553afb3939">
+      <Execution id="dc013d99-5312-4267-a367-23ad70b86513" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="TiesOutsideToleranceAndAccidentalTiesFail" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.AndroidPresentationTests.LoadingFailureClearsPreviousMeasurements" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="eea2f6e1-67d0-966c-ec1c-2b00f9460479">
+      <Execution id="7fc1acce-983a-46ba-8593-aa7d852cab1a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.AndroidPresentationTests" name="LoadingFailureClearsPreviousMeasurements" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.WrongMissingOrIncompleteNearestFlagsFailEvenWithCorrectValues" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="65472cca-22fd-2df1-749a-df77c5b34016">
+      <Execution id="226df690-fc91-45fc-a372-fecf3d1ebfca" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="WrongMissingOrIncompleteNearestFlagsFailEvenWithCorrectValues" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.OrderUsesMappedValuesNotArrayOrderOrNominalMetadata" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="5e749248-cd3d-5e52-2f98-52d629dee4a0">
+      <Execution id="a95e7ded-469f-44f3-8456-a46f1c2ad237" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="OrderUsesMappedValuesNotArrayOrderOrNominalMetadata" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 2, tolerance: 0)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="16419d0f-c62e-74a5-8133-5ec4d4c6e209">
+      <Execution id="86c218fc-502a-4af9-b0a8-60b68bbbe5a9" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="ExactAndNearTiesIncludeBoundaryInEitherDirection" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: NaN)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="1f8ba20c-8fcb-3769-89a8-268f9b3448ea">
+      <Execution id="f1d87f9b-0613-4ded-a66b-fc175079d148" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="InvalidOrOutOfToleranceActualValuesFail" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 1,875, tolerance: 0,125)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="7dee64c6-ad29-0f61-7201-6a5caf68bc22">
+      <Execution id="84e5ed19-8185-4e83-b701-8686a238f905" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="ExactAndNearTiesIncludeBoundaryInEitherDirection" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.ExplicitValuesUseActualAnalysisNeverNominalOrCachedComparisonValues" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="a66f78d4-974d-b2aa-b14b-95e17229a17d">
+      <Execution id="00be3f45-ca53-45d9-9607-37c7db7154d8" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="ExplicitValuesUseActualAnalysisNeverNominalOrCachedComparisonValues" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: -1)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="e85f4edf-8475-49be-e8fc-2530c40c5b57">
+      <Execution id="8a14ec69-e965-48f2-8ce1-7ca9c1cf3f27" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="InvalidOrOutOfToleranceActualValuesFail" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.WrongDuplicateAmbiguousAndWeakAssignmentsNeverPass" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="d4de88a7-e79d-f113-fcdc-22646f364ec6">
+      <Execution id="851d0029-7fa4-433f-b493-8fde8314a8d8" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="WrongDuplicateAmbiguousAndWeakAssignmentsNeverPass" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.TwoImageCheckpointTests.CleanAndKnownMildNoiseRetainFieldsValuesAndRanking" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="423051e0-d40b-bda2-12d2-16da0a0649ed">
+      <Execution id="9ab995a4-c29d-4074-bd63-0f7dcfd8ffe3" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.TwoImageCheckpointTests" name="CleanAndKnownMildNoiseRetainFieldsValuesAndRanking" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis(planFile: &quot;feldzuordnung-und-messwerte.json&quot;)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="f7f0e4f0-2309-04e0-9e34-adeb5764cd2b">
+      <Execution id="ba98b464-c89e-4d78-92b7-70ddbcbcfe34" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.UnderexposurePlanTests.DarkControlsAndWholeImageExposureRetainVerifiedRelativeComparison" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="6cb9cbe5-4263-74e2-abf8-406a590d1919">
+      <Execution id="b0383bc7-1436-4d79-ba01-18714e54b33e" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.UnderexposurePlanTests" name="DarkControlsAndWholeImageExposureRetainVerifiedRelativeComparison" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis(planFile: &quot;rangfolge-und-gleichstaende.json&quot;)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="731115bd-37a7-3180-d018-5d4f5eba9564">
+      <Execution id="ec8f60d5-3d0d-4725-add9-15329ec36f48" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="PlanRunsThroughPngPersistenceReviewAndExportWithoutLeakingExpectationsToAnalysis" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.InvalidRankingContractsAreRejectedAndOldContractsRemainReadable" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="405554fb-987f-27bf-5885-482c82fefec3">
+      <Execution id="49070e00-db45-4d01-8f85-f5d8bdab39e8" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="InvalidRankingContractsAreRejectedAndOldContractsRemainReadable" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.RejectedFieldsAndUnexpectedReleasesAreCheckedIndividually" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="cb5a1cc5-6b18-545e-a045-429d12c3298e">
+      <Execution id="c4e12c3c-f578-4b3f-b548-6077fb8775c2" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="RejectedFieldsAndUnexpectedReleasesAreCheckedIndividually" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.ChainedNearValuesDoNotBecomeAnInventedThreeWayTie" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="c1400b82-0eb3-465d-5746-3888d67c8a36">
+      <Execution id="df12a286-2343-4c03-b241-e5cecebbfb2a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="ChainedNearValuesDoNotBecomeAnInventedThreeWayTie" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.PartialComparisonRanksOnlyReleasedFieldsAndRejectsStaleFlags" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="721dbf34-8c85-75d5-295f-c4a060fa86cc">
+      <Execution id="b615368f-75c5-4c92-94c3-b5f32aa29299" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="PartialComparisonRanksOnlyReleasedFieldsAndRejectsStaleFlags" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.MissingInvalidAndRejectedValuesCannotPassRanking" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="50e8a912-7f49-ae3d-90b2-ebaf0e8627ae">
+      <Execution id="9770a8e7-96d0-454c-9300-2645257c29ba" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="MissingInvalidAndRejectedValuesCannotPassRanking" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.InvalidOrOutOfToleranceActualValuesFail(value: ∞)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="b6ec43d4-fb49-5534-95d7-112792522efc">
+      <Execution id="591ddf8c-810e-417a-98dd-2512ea7d69af" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="InvalidOrOutOfToleranceActualValuesFail" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.RankingExpectationTests.ExactAndNearTiesIncludeBoundaryInEitherDirection(second: 2,125, tolerance: 0,125)" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="80007e73-413e-6d2d-4caa-c3341263829f">
+      <Execution id="ab35c898-951e-4a7a-8464-5abe55093c01" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.RankingExpectationTests" name="ExactAndNearTiesIncludeBoundaryInEitherDirection" />
+    </UnitTest>
+    <UnitTest name="IroGenTests.FieldExpectationTests.MissingUnverifiedAndMalformedFieldContractsNeverPass" storage="d:\source\iro\tests\iro.gen.tests\bin\release\net10.0-windows\irogen.tests.dll" id="6a8fa721-94a6-5168-33e6-c19b8a5bf611">
+      <Execution id="8bc5e53c-f6e9-48bf-9a44-0d825c3bba1e" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.gen.tests\bin\Release\net10.0-windows\IroGen.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="IroGenTests.FieldExpectationTests" name="MissingUnverifiedAndMalformedFieldContractsNeverPass" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="80007e73-413e-6d2d-4caa-c3341263829f" executionId="ab35c898-951e-4a7a-8464-5abe55093c01" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1f8ba20c-8fcb-3769-89a8-268f9b3448ea" executionId="f1d87f9b-0613-4ded-a66b-fc175079d148" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="731115bd-37a7-3180-d018-5d4f5eba9564" executionId="ec8f60d5-3d0d-4725-add9-15329ec36f48" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="590b406c-76ce-53a7-a871-cf553afb3939" executionId="dc013d99-5312-4267-a367-23ad70b86513" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="57dec10b-cf5b-97bf-c2b7-dfe3bf1df378" executionId="dcf15d70-5a60-4b59-a33a-c1c79bc3f7da" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7004f8ce-75d1-acf1-29e0-92c865f8c48a" executionId="129271ca-1649-4ae5-8f48-43e4432f7132" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6cb9cbe5-4263-74e2-abf8-406a590d1919" executionId="b0383bc7-1436-4d79-ba01-18714e54b33e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e85f4edf-8475-49be-e8fc-2530c40c5b57" executionId="8a14ec69-e965-48f2-8ce1-7ca9c1cf3f27" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b6ec43d4-fb49-5534-95d7-112792522efc" executionId="591ddf8c-810e-417a-98dd-2512ea7d69af" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16419d0f-c62e-74a5-8133-5ec4d4c6e209" executionId="86c218fc-502a-4af9-b0a8-60b68bbbe5a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="405554fb-987f-27bf-5885-482c82fefec3" executionId="49070e00-db45-4d01-8f85-f5d8bdab39e8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7dee64c6-ad29-0f61-7201-6a5caf68bc22" executionId="84e5ed19-8185-4e83-b701-8686a238f905" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="a66f78d4-974d-b2aa-b14b-95e17229a17d" executionId="00be3f45-ca53-45d9-9607-37c7db7154d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65472cca-22fd-2df1-749a-df77c5b34016" executionId="226df690-fc91-45fc-a372-fecf3d1ebfca" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="721dbf34-8c85-75d5-295f-c4a060fa86cc" executionId="b615368f-75c5-4c92-94c3-b5f32aa29299" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f7f0e4f0-2309-04e0-9e34-adeb5764cd2b" executionId="ba98b464-c89e-4d78-92b7-70ddbcbcfe34" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c1400b82-0eb3-465d-5746-3888d67c8a36" executionId="df12a286-2343-4c03-b241-e5cecebbfb2a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="50e8a912-7f49-ae3d-90b2-ebaf0e8627ae" executionId="9770a8e7-96d0-454c-9300-2645257c29ba" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="eea2f6e1-67d0-966c-ec1c-2b00f9460479" executionId="7fc1acce-983a-46ba-8593-aa7d852cab1a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="423051e0-d40b-bda2-12d2-16da0a0649ed" executionId="9ab995a4-c29d-4074-bd63-0f7dcfd8ffe3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5e749248-cd3d-5e52-2f98-52d629dee4a0" executionId="a95e7ded-469f-44f3-8456-a46f1c2ad237" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98c8ec06-523c-6ed8-58f3-e4fcd60ae6af" executionId="984973d1-2f9e-4116-af83-b511ecc3af43" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6a8fa721-94a6-5168-33e6-c19b8a5bf611" executionId="8bc5e53c-f6e9-48bf-9a44-0d825c3bba1e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d4de88a7-e79d-f113-fcdc-22646f364ec6" executionId="851d0029-7fa4-433f-b493-8fde8314a8d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cb5a1cc5-6b18-545e-a045-429d12c3298e" executionId="c4e12c3c-f578-4b3f-b548-6077fb8775c2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Ergebnisse nicht in einer Liste" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Completed">
+    <Counters total="25" executed="25" passed="25" failed="0" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.14]   Discovering: IroGen.Tests&#xD;
+[xUnit.net 00:00:00.20]   Discovered:  IroGen.Tests&#xD;
+[xUnit.net 00:00:00.22]   Starting:    IroGen.Tests&#xD;
+[xUnit.net 00:00:08.20]   Finished:    IroGen.Tests&#xD;
+</StdOut>
+    </Output>
+  </ResultSummary>
+</TestRun>

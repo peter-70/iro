@@ -31,3 +31,6 @@ Geraderichten korrigiert ausschließlich Drehung in der Bildebene. Starke Perspe
 - Starke zufällige Freihandkombinationen mit Perspektive, Wandabstand, wenig Licht und Unschärfe blieben vollständig abgewiesen.
 
 Reale Kameraaufnahmen, Gerätegeschwindigkeit und Overlaydarstellung sind damit noch nicht abgenommen. Die künstlichen Bilder belegen die Geometriefunktion und ihre Rückabbildung.
+## Ergänzung vom 27. September 2026
+
+Analyse 0.5.12 gleicht bei gedrehten Aufnahmen die Mustergeometrie zusätzlich mit einer Detektion im Original ab. Erkannte konkurrierende Muster sperren vor endgültiger Freigabe; bestehende aufnahmeweite Qualitätsgründe behalten Vorrang. [55 neue Grenzfälle und Einschränkungen](gedrehte-messflaechen-schutzpruefung.md). Frühere Zahlen oben sind historische Nachweise, keine neue Gesamtprüfung.

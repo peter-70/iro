@@ -76,3 +76,32 @@ Aufnahmebezug, geometrische Rückabbildung, tatsächlich verwendete Messgrundlag
 Die [Regelaudit-Korrekturen](regelaudit-2026-09-22.md) sperren erkannte unbrauchbare Unschärfe und relevante Kanalendpunkte aufnahmeweit sowie geometrisch erkannten Bildbeschnitt. Originalpixelmessung bleibt erhalten. Die konservative Endpunktregel ist mit der Analyserversion gekennzeichnet; die Struktur des gespeicherten Ergebnisvertrags bleibt unverändert. Vollständige Perspektiv-, Unterbelichtungs-, Beleuchtungs- und Vollständigkeitsprüfung sind weiterhin nicht abgenommen. Kein allgemeines Freigabeversprechen aus diesem Teilstand ableiten.
 
 Aktuell ab Plan 1.33: [automatische Verhaltenserwartungen](verhaltenserwartungen.md). Neue Testpläne können Format 2 verwenden; neue Ergebnisläufe verwenden Format 2 mit gespeicherter Erwartung und Soll-Ist-Bewertung. Altformate bleiben lesbar, ohne rückwirkende Bewertung. Die erste Stufe prüft Freigabe, freigegebene Feldanzahl und fachlichen Haupt-Hinweis, keine Farbgenauigkeit.
+
+## Unabhängige Einzelbildauswertung (23. September 2026)
+
+Gemäß Planfassung 1.36 verarbeitet Iro jedes Bild unabhängig. Der zwischenzeitlich ergänzte Historienkern wurde entfernt. Es gibt keine bildübergreifende Feldverfolgung oder Glättung. Die bestehende PNG-API und Dateiformate bleiben unverändert; der Serienläufer ruft die Analyse pro Bild nacheinander auf.
+
+**Präzisierung mit Analyse 0.5.8:** Bei PartiallyMeasured nennt Hint die Zahl auswertbarer und erkannter Felder. ΔE00-Vergleich und IsNearest beziehen sich ausschließlich auf auswertbare sichtbare Felder, nie auf unbekannte oder unsichtbare Felder. Der vorhandene Status und das Schema bleiben unverändert; historische Hinweise werden nicht nachträglich umgeschrieben. Siehe [Randrestschutz und Teilmessungen](randrest-schutzpruefung.md).
+
+**Analyse 0.5.9:** Ein geeigneter erkannter Endbeschnitt liefert stets PartiallyMeasured, auch wenn alle sichtbaren erkannten Felder einen Messwert haben. Der Hinweis benennt Beschnitt und eingeschränkten Vergleich. Iro-Gen darf diesen Status nicht allein wegen vollständiger nominaler Feldzuordnung als vollständige Messung ausgeben. Schema unverändert; [begrenzter Freigabebereich](endbeschnitt-freigabe.md).
+
+**Analyse 0.5.11, Originalpixelvertrag:** RgbFrame übernimmt einen eigenen RGB-Snapshot; Pixels exportiert eine abgetrennte Kopie. Eingaben während der Übernahme nicht gleichzeitig verändern. Gedrehte Ansichten sind intern, direkt an die Originalquelle mit passenden Abmessungen gebunden und besitzen keinen interpolierten Messpuffer. Keine neuen Ergebnisfelder oder PNG-Schemaversion; [Nachweise und Speicherfolgen](originalpixel-absicherung.md).
+
+**Analyse 0.5.12:** Bei Geraderichten erkennbare konkurrierende Muster auch anhand der Originalgeometrie prüfen; vor Freigabe als AmbiguousPattern ohne Werte abweisen. Bereits erkannte aufnahmeweite Qualitätsgründe behalten Vorrang. Ergebnisstruktur unverändert; [Messflächenprüfung und Grenzen](gedrehte-messflaechen-schutzpruefung.md).
+
+**Analyse 0.5.13:** Für passende leichte Perspektive können innere Messpolygone aus konservativen Konturmasken entstehen; Polygonfelder bilden die tatsächlich geschnittenen Messflächen in Originalkoordinaten ab. Bounds bleibt ein Umhüllungsrechteck. Originalpixel und Ergebnisstruktur unverändert, keine photometrische Korrektur; [Nachweise](perspektivmasken-schutzpruefung.md).
+
+
+## Ergänzung vom 27. September 2026: feldbezogene Test-Erwartungen
+
+Plan 1.49: Die PNG-Analyse-API erhält weiterhin keine Testmetadaten oder Sollwerte. Ausschließlich der nachgeschaltete Serienläufer prüft Erwartungsformat 2 mit vollständiger Feldliste, geometrischer Zuordnung und optionalem ausdrücklich geprüftem ΔE00 samt absoluter Toleranz. Er verwendet dafür tatsächliche Analysewerte, niemals nominale Differenzen als Ersatz. Testplan- und Analyselaufformat 2 behalten ihre äußere Version; das verschachtelte Erwartungsformat wird eigenständig versioniert. Format 1 bleibt unverändert lesbar. [Vertrag und Nachweise](felderwartungen-pruefung-2026-09-27.md). Keine Änderung am Einzelbildprinzip oder am Originalpixelvertrag.
+
+
+## Hinweispräzisierung vom 27. September 2026, Plan 1.50
+
+Analyse 0.5.15 ergänzt `UnusableBlur`, `ChannelLimit` und `UnevenSurface` am bestehenden Haupt-Hinweiscode. Bedeutung: belegte unbrauchbare Unschärfe, Farbkanal an der Messgrenze, räumlich ungleichmäßige Messfläche. Keine Ursachenbehauptung für Beleuchtung. Priorität, Sperren und Struktur unverändert; Enums und Schemata additiv erweitert. Frühere Enumnummern erhalten. Ältere Leser ohne diese Erweiterung unterstützen die neuen Codes nicht; vorhandene historische Ergebnisse bleiben unverändert lesbar und werden nicht umbewertet. Fehlender Code bleibt unbekannt, `Other` unbestimmt. [Prüfnachweise und genaue Shellaufrufe](qualitaetsgruende-pruefung-2026-09-27.md).
+
+
+## Rangprüfung vom 27. September 2026, Plan 1.51
+
+Erwartungsformat **3** verlangt zusätzlich `ranking.groups` (nächste Gruppe zuerst; alle erwarteten freigegebenen Felder genau einmal) und `ranking.tieTolerance`. Innerhalb einer Gruppe muss jedes Wertepaar innerhalb der Toleranz liegen, zwischen Gruppen gilt eine Trennung um mehr als die Toleranz. Separat wird die unveränderte Kennzeichnung aller exakten minimalen Werte überprüft. Keine Produktschwelle oder bildübergreifende Bestätigung. `evaluation.ranking` speichert den separaten Status, paarweise Beziehungen/Differenzen und die Korrektheit der Minima-Kennzeichnung. Äußere Testplan-/Ergebnisversion 2 bleibt erhalten; alte verschachtelte Erwartungen 1/2 bleiben lesbar und enthalten keine Rangprüfung. [Vollständiger Vertrag, Tests und Grenzen](rangfolge-pruefung-2026-09-27.md).

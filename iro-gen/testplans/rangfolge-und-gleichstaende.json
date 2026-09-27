@@ -1,0 +1,451 @@
+{
+  "formatVersion": 2,
+  "kind": "irogen-test-plan",
+  "name": "Rangfolge und Gleichstände innerhalb eines Einzelbilds",
+  "defaults": {
+    "seed": 12345,
+    "width": 1600,
+    "height": 1200,
+    "fieldCount": 3,
+    "matchingField": 1,
+    "position": "Right",
+    "stripWidthPercent": 28,
+    "stripLengthPercent": 70,
+    "gapPercent": 6,
+    "labels": false,
+    "roundedTop": false,
+    "colors": {
+      "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+      "anchorField": 1,
+      "targetDeltaE": 0,
+      "palette": [
+        {
+          "r": 80,
+          "g": 80,
+          "b": 80
+        },
+        {
+          "r": 128,
+          "g": 128,
+          "b": 128
+        },
+        {
+          "r": 180,
+          "g": 180,
+          "b": 180
+        }
+      ],
+      "wall": {
+        "g": 140,
+        "b": 140,
+        "r": 140
+      }
+    }
+  },
+  "cases": [
+    {
+      "name": "Eindeutige Reihenfolge",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "None",
+        "colors": {
+          "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+          "anchorField": 1,
+          "targetDeltaE": 0,
+          "palette": [
+            {
+              "r": 80,
+              "g": 80,
+              "b": 80
+            },
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 180,
+              "g": 180,
+              "b": 180
+            }
+          ],
+          "wall": {
+            "g": 140,
+            "b": 140,
+            "r": 140
+          }
+        }
+      },
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Achromatische sRGB-Felder 80/128/180 gegen Wand 140; unabhängige skalare CIEDE2000-Berechnung in docs/verify-field-expectations.py. Sauber: Rundungsgrenze 0,001; nur für diesen festen Rauschfall: separat geprüfte Regressionstoleranz 0,15. Keine physikalische Genauigkeitszusage. Ranggruppen vorab aus derselben unabhängigen Neutralwertformel festgelegt. Prüftoleranz verändert keine App-Messentscheidung; exakte Minima bleiben maßgeblich für IsNearest.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 23.338282,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 12.267977,
+            "absoluteTolerance": 0.001
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-2"
+            ],
+            [
+              "field-3"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0.001
+        }
+      }
+    },
+    {
+      "name": "Exakter Gleichstand senkrecht",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "None",
+        "colors": {
+          "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+          "anchorField": 1,
+          "targetDeltaE": 0,
+          "palette": [
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 180,
+              "g": 180,
+              "b": 180
+            }
+          ],
+          "wall": {
+            "g": 140,
+            "b": 140,
+            "r": 140
+          }
+        }
+      },
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Achromatische sRGB-Felder 80/128/180 gegen Wand 140; unabhängige skalare CIEDE2000-Berechnung in docs/verify-field-expectations.py. Sauber: Rundungsgrenze 0,001; nur für diesen festen Rauschfall: separat geprüfte Regressionstoleranz 0,15. Keine physikalische Genauigkeitszusage. Ranggruppen vorab aus derselben unabhängigen Neutralwertformel festgelegt. Prüftoleranz verändert keine App-Messentscheidung; exakte Minima bleiben maßgeblich für IsNearest.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 12.267977,
+            "absoluteTolerance": 0.001
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-1",
+              "field-2"
+            ],
+            [
+              "field-3"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "name": "Nahe Werte innerhalb Prüftoleranz",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "None",
+        "colors": {
+          "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+          "anchorField": 1,
+          "targetDeltaE": 0,
+          "palette": [
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 129,
+              "g": 129,
+              "b": 129
+            },
+            {
+              "r": 180,
+              "g": 180,
+              "b": 180
+            }
+          ],
+          "wall": {
+            "g": 140,
+            "b": 140,
+            "r": 140
+          }
+        }
+      },
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Achromatische sRGB-Felder 80/128/180 gegen Wand 140; unabhängige skalare CIEDE2000-Berechnung in docs/verify-field-expectations.py. Sauber: Rundungsgrenze 0,001; nur für diesen festen Rauschfall: separat geprüfte Regressionstoleranz 0,15. Keine physikalische Genauigkeitszusage. Ranggruppen vorab aus derselben unabhängigen Neutralwertformel festgelegt. Prüftoleranz verändert keine App-Messentscheidung; exakte Minima bleiben maßgeblich für IsNearest.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 3.978887,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 12.267977,
+            "absoluteTolerance": 0.001
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-1",
+              "field-2"
+            ],
+            [
+              "field-3"
+            ]
+          ],
+          "tieTolerance": 0.5
+        }
+      }
+    },
+    {
+      "name": "Exakter Gleichstand waagerecht",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Horizontal",
+        "position": "Bottom",
+        "noise": "None",
+        "colors": {
+          "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+          "anchorField": 1,
+          "targetDeltaE": 0,
+          "palette": [
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 180,
+              "g": 180,
+              "b": 180
+            }
+          ],
+          "wall": {
+            "g": 140,
+            "b": 140,
+            "r": 140
+          }
+        }
+      },
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Achromatische sRGB-Felder 80/128/180 gegen Wand 140; unabhängige skalare CIEDE2000-Berechnung in docs/verify-field-expectations.py. Sauber: Rundungsgrenze 0,001; nur für diesen festen Rauschfall: separat geprüfte Regressionstoleranz 0,15. Keine physikalische Genauigkeitszusage. Ranggruppen vorab aus derselben unabhängigen Neutralwertformel festgelegt. Prüftoleranz verändert keine App-Messentscheidung; exakte Minima bleiben maßgeblich für IsNearest.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.001
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 12.267977,
+            "absoluteTolerance": 0.001
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-1",
+              "field-2"
+            ],
+            [
+              "field-3"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "name": "Eindeutige Reihenfolge leicht verrauscht",
+      "count": 1,
+      "coverRange": false,
+      "options": {
+        "orientation": "Vertical",
+        "position": "Right",
+        "noise": "Light",
+        "colors": {
+          "coverageBand": "Analytisch geprüfte neutrale sRGB-Palette",
+          "anchorField": 1,
+          "targetDeltaE": 0,
+          "palette": [
+            {
+              "r": 80,
+              "g": 80,
+              "b": 80
+            },
+            {
+              "r": 128,
+              "g": 128,
+              "b": 128
+            },
+            {
+              "r": 180,
+              "g": 180,
+              "b": 180
+            }
+          ],
+          "wall": {
+            "g": 140,
+            "b": 140,
+            "r": 140
+          }
+        }
+      },
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Achromatische sRGB-Felder 80/128/180 gegen Wand 140; unabhängige skalare CIEDE2000-Berechnung in docs/verify-field-expectations.py. Sauber: Rundungsgrenze 0,001; nur für diesen festen Rauschfall: separat geprüfte Regressionstoleranz 0,15. Keine physikalische Genauigkeitszusage. Ranggruppen vorab aus derselben unabhängigen Neutralwertformel festgelegt. Prüftoleranz verändert keine App-Messentscheidung; exakte Minima bleiben maßgeblich für IsNearest.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "requiredHint": "None",
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 23.338282,
+            "absoluteTolerance": 0.15
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 4.356546,
+            "absoluteTolerance": 0.15
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9,
+            "deltaE00": 12.267977,
+            "absoluteTolerance": 0.15
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-2"
+            ],
+            [
+              "field-3"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0.15
+        }
+      }
+    }
+  ]
+}

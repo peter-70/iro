@@ -84,7 +84,7 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
                     throw new ArgumentException("PNG-Abmessungen passen nicht zur Aufnahmebeschreibung.");
                 var comparisons = CompareAfterAnalysis(metadata, analysis);
                 int unmatched = analysis.Fields.Count(f => comparisons.All(c => c.DetectedFieldId != f.FieldId));
-                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, analysis) });
+                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, analysis, comparisons: comparisons) });
             }
             catch (OperationCanceledException) { cancelled = true; break; }
             catch (Exception error) when (error is IOException or ArgumentException or JsonException or InvalidOperationException or NotSupportedException or KeyNotFoundException or FormatException or UnauthorizedAccessException or System.Runtime.InteropServices.COMException)

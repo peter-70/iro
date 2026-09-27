@@ -1,0 +1,622 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TestRun id="db0254f9-43fd-47c6-ab63-377e9587c508" name="Peter Breitkopf@DESKTOP-LJN9LU4 2026-09-27 18:45:09" runUser="DESKTOP-LJN9LU4\Peter Breitkopf" xmlns="http://microsoft.com/schemas/VisualStudio/TeamTest/2010">
+  <Times creation="2026-09-27T18:45:09.6994690+02:00" queuing="2026-09-27T18:45:09.6994691+02:00" start="2026-09-27T18:45:09.1477808+02:00" finish="2026-09-27T18:45:10.2953340+02:00" />
+  <TestSettings name="default" id="5e31d3b4-4da5-4298-a085-d02e0db5215c">
+    <Deployment runDeploymentRoot="Peter_Breitkopf_DESKTOP-LJN9LU4_2026-09-27_18_45_09" />
+  </TestSettings>
+  <Results>
+    <UnitTestResult executionId="6dc774a5-de17-4f2b-98f9-de3396697729" testId="8455c23a-d53f-279d-a7b3-98b7830b5331" testName="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 240, g: 10, b: 10)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0260547" startTime="2026-09-27T18:45:09.7081935+02:00" endTime="2026-09-27T18:45:09.7342267+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6dc774a5-de17-4f2b-98f9-de3396697729" />
+    <UnitTestResult executionId="e1d62e93-6b8b-4e38-b497-b220ba9fe4d1" testId="f8799bbe-1909-4afe-ddb6-20c1b7176f7d" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 0, b: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0212983" startTime="2026-09-27T18:45:10.0666798+02:00" endTime="2026-09-27T18:45:10.0875036+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e1d62e93-6b8b-4e38-b497-b220ba9fe4d1">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Measured&#xD;
+Actual:   InvalidFields</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 100&#xD;
+   at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c54651dd-e107-4a06-8149-946bcfedda20" testId="e904c829-6ddc-5558-9bdf-df22e4c50c0b" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0169460" startTime="2026-09-27T18:45:09.6363241+02:00" endTime="2026-09-27T18:45:09.6826149+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c54651dd-e107-4a06-8149-946bcfedda20">
+      <Output>
+        <ErrorInfo>
+          <Message>Farbkanal an der Messgrenze. Beleuchtung und Belichtung prüfen; keine zuverlässige Messung möglich.</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Byte endpoint) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 147&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="c5392852-619e-4dde-89c7-026ef2cb6a49" testId="50210820-97a8-6ad4-b79d-91ea5b570044" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,6772, b1: -79,775099999999995, l2: 50, a2: 0, b2: -82,748500000000007, expected: 2,0425)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0049350" startTime="2026-09-27T18:45:09.6368248+02:00" endTime="2026-09-27T18:45:09.6525771+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c5392852-619e-4dde-89c7-026ef2cb6a49" />
+    <UnitTestResult executionId="76b07f1e-5e57-4f74-8161-e01d20582ac9" testId="902bf1ce-e0a7-e480-41bb-a3526c3f187c" testName="Iro.Core.Tests.MeasurementRuleTests.FrameWideFailureClearsPreviouslyDisplayedValues" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0686648" startTime="2026-09-27T18:45:10.1835363+02:00" endTime="2026-09-27T18:45:10.2521808+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="76b07f1e-5e57-4f74-8161-e01d20582ac9" />
+    <UnitTestResult executionId="b52e0a9d-4a64-46f9-9190-53d906442b54" testId="bc3774ea-27f3-0ed5-4912-318b122c1882" testName="Iro.Core.Tests.MeasurementRuleTests.SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy(horizontal: False)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0435898" startTime="2026-09-27T18:45:10.0001903+02:00" endTime="2026-09-27T18:45:10.0437639+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b52e0a9d-4a64-46f9-9190-53d906442b54" />
+    <UnitTestResult executionId="31dc3e5c-6fac-41b4-bba0-2fa04ce50dbe" testId="97aed444-0e4d-04eb-4813-167412f96b10" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 3,1570999999999998, b1: -77,280299999999997, l2: 50, a2: 0, b2: -82,748500000000007, expected: 2,8614999999999999)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000020" startTime="2026-09-27T18:45:09.6791321+02:00" endTime="2026-09-27T18:45:09.6791461+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31dc3e5c-6fac-41b4-bba0-2fa04ce50dbe" />
+    <UnitTestResult executionId="269fd7ab-1bfb-4157-bb19-767cd9a7b9c0" testId="8b7da062-173d-9178-c1f1-e982050532ef" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,90090000000000003, b1: -85,521100000000004, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000019" startTime="2026-09-27T18:45:09.6809780+02:00" endTime="2026-09-27T18:45:09.6809939+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="269fd7ab-1bfb-4157-bb19-767cd9a7b9c0" />
+    <UnitTestResult executionId="951eb536-50f0-49f3-8c98-12e392574ea3" testId="1a3abc53-80b1-b380-6949-dba0e0a2baf6" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 255, b: 255)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0214331" startTime="2026-09-27T18:45:10.1128267+02:00" endTime="2026-09-27T18:45:10.1327544+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="951eb536-50f0-49f3-8c98-12e392574ea3">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Measured&#xD;
+Actual:   InvalidFields</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 100&#xD;
+   at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="4481f653-61f6-4410-9226-63a8af3334c0" testId="ab1164bf-ac44-0ce1-296c-bf5ab22af618" testName="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 255, g: 255, b: 255, l: 100, a: 0, labB: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0001375" startTime="2026-09-27T18:45:09.6860698+02:00" endTime="2026-09-27T18:45:09.6860856+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4481f653-61f6-4410-9226-63a8af3334c0" />
+    <UnitTestResult executionId="08031e4f-8a33-463b-b4df-f85c44fe9119" testId="5245cb23-1512-f3f7-4d31-c0d26681e9c8" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,8361000000000001, b1: -74,019999999999996, l2: 50, a2: 0, b2: -82,748500000000007, expected: 3,4411999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000012" startTime="2026-09-27T18:45:09.6810210+02:00" endTime="2026-09-27T18:45:09.6810346+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="08031e4f-8a33-463b-b4df-f85c44fe9119" />
+    <UnitTestResult executionId="46c3bd35-b27c-46d3-9eee-05ae68461c9d" testId="6dcc7f5a-1dc9-81db-a7b8-6cd439f80941" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 22,723299999999998, a1: 20,090399999999999, b1: -46,694000000000003, l2: 23,033100000000001, a2: 14,973000000000001, b2: -42,561900000000001, expected: 2,0373000000000001)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000014" startTime="2026-09-27T18:45:09.6822002+02:00" endTime="2026-09-27T18:45:09.6822148+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="46c3bd35-b27c-46d3-9eee-05ae68461c9d" />
+    <UnitTestResult executionId="e2a86228-a074-4eda-ad74-25b2c6b3e050" testId="6686204c-9834-afde-35a3-01c3bccd7d18" testName="Iro.Core.Tests.AnalysisTests.CancellationAndInvalidProfilesAreRejected" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0003067" startTime="2026-09-27T18:45:09.6867407+02:00" endTime="2026-09-27T18:45:09.6867604+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2a86228-a074-4eda-ad74-25b2c6b3e050" />
+    <UnitTestResult executionId="6caba710-d5b3-4182-ab1f-51e95dfb6bd7" testId="6c7cca2a-af38-3978-fffb-42fa1ccd71af" testName="Iro.Core.Tests.AnalysisTests.InhomogeneousRegionDoesNotReturnAnInventedColor" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0048753" startTime="2026-09-27T18:45:09.6868151+02:00" endTime="2026-09-27T18:45:09.6868335+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6caba710-d5b3-4182-ab1f-51e95dfb6bd7" />
+    <UnitTestResult executionId="b878eb1a-9b7b-4099-89a6-08f1457762bf" testId="982f3cfc-8892-f423-68d7-d9a4298ffa92" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 90,925700000000006, a1: -0,54059999999999997, b1: -0,92079999999999995, l2: 88,638099999999994, a2: -0,89849999999999997, b2: -0,72389999999999999, expected: 1,5381)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000029" startTime="2026-09-27T18:45:09.6808291+02:00" endTime="2026-09-27T18:45:09.6808435+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b878eb1a-9b7b-4099-89a6-08f1457762bf" />
+    <UnitTestResult executionId="836d8b7c-e3da-4462-a59b-52c9973e97a6" testId="6ebb29cb-83f8-ac36-fcb4-c861ec550c7a" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,00089999999999999998, b2: -2,4900000000000002, expected: 4,8045)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000016" startTime="2026-09-27T18:45:09.6807366+02:00" endTime="2026-09-27T18:45:09.6807512+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="836d8b7c-e3da-4462-a59b-52c9973e97a6" />
+    <UnitTestResult executionId="a10f0ad9-b750-4717-b877-7ec8ba378aa1" testId="ec8a7e1e-4615-2e75-93c6-0b6605f24de5" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 63,010899999999999, a1: -31,0961, b1: -5,8662999999999998, l2: 62,8187, a2: -29,794599999999999, b2: -4,0864000000000003, expected: 1,2629999999999999)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000015" startTime="2026-09-27T18:45:09.6806845+02:00" endTime="2026-09-27T18:45:09.6807034+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a10f0ad9-b750-4717-b877-7ec8ba378aa1" />
+    <UnitTestResult executionId="4709947f-e57a-4fc7-a568-0d2cd26ef09a" testId="0170bf49-6d5e-a5a3-a5aa-8ecee34b5223" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1,1848000000000001, b1: -84,800600000000003, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000012" startTime="2026-09-27T18:45:09.6821509+02:00" endTime="2026-09-27T18:45:09.6821698+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4709947f-e57a-4fc7-a568-0d2cd26ef09a" />
+    <UnitTestResult executionId="c1b7cd5f-9e37-495d-b9a6-5ac6d854f2a9" testId="f6aaee41-554a-42b2-0010-6554b7404c4c" testName="Iro.Core.Tests.OriginalPixelContractTests.OriginalSnapshotCannotBeChangedThroughInputOrExport(throughExport: False)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0015954" startTime="2026-09-27T18:45:09.8755961+02:00" endTime="2026-09-27T18:45:09.8764119+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c1b7cd5f-9e37-495d-b9a6-5ac6d854f2a9" />
+    <UnitTestResult executionId="c27b170b-0ea7-4f49-b3f1-03d25fd3665a" testId="dda85794-e141-2ab7-cd17-b2b5e4afea92" testName="Iro.Core.Tests.PixelAnalysisTests.AContaminatedFieldDoesNotInvalidateOtherFields" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0441994" startTime="2026-09-27T18:45:09.9220588+02:00" endTime="2026-09-27T18:45:09.9662112+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c27b170b-0ea7-4f49-b3f1-03d25fd3665a" />
+    <UnitTestResult executionId="753fa9fb-3110-48cd-ba96-0105365a4b6e" testId="0d709db7-4293-7a23-82cc-eac922048a01" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 1,8633999999999999, b2: 0,57569999999999999, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000012" startTime="2026-09-27T18:45:09.6795253+02:00" endTime="2026-09-27T18:45:09.6795824+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="753fa9fb-3110-48cd-ba96-0105365a4b6e" />
+    <UnitTestResult executionId="f3791c53-23a4-41df-a905-916f1ac57e76" testId="0437421e-e050-5eab-66f0-66ab765e11e6" testName="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: False, endpoint: 255)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0562029" startTime="2026-09-27T18:45:09.7562105+02:00" endTime="2026-09-27T18:45:09.8124509+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="f3791c53-23a4-41df-a905-916f1ac57e76" />
+    <UnitTestResult executionId="d9e0ff2b-e2b7-49b8-8d25-a5e30cc16ffd" testId="145f1a85-be5a-fa7d-1a37-b7d9f0c50878" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 100, b: 160)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0221107" startTime="2026-09-27T18:45:10.0438740+02:00" endTime="2026-09-27T18:45:10.0660825+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d9e0ff2b-e2b7-49b8-8d25-a5e30cc16ffd">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Measured&#xD;
+Actual:   InvalidFields</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 100&#xD;
+   at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="b6693d34-bab6-4006-8f5e-4bf8f5d7bded" testId="2ce4ce6d-56a8-c08d-d09f-fc250ced83bc" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,001, b2: -2,4900000000000002, expected: 4,8045)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000015" startTime="2026-09-27T18:45:09.6818304+02:00" endTime="2026-09-27T18:45:09.6818466+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b6693d34-bab6-4006-8f5e-4bf8f5d7bded" />
+    <UnitTestResult executionId="965218d4-305a-4461-8e6b-522a17815940" testId="c3c2b469-c160-f607-613a-107afb6faed8" testName="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: True, endpoint: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0449486" startTime="2026-09-27T18:45:09.9032752+02:00" endTime="2026-09-27T18:45:09.9482442+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="965218d4-305a-4461-8e6b-522a17815940" />
+    <UnitTestResult executionId="1a4334a6-b6ef-4f70-82fa-c733190a3b2b" testId="d2ef7fb8-f905-a4a5-0fcd-2300f81bb9c5" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,0011000000000000001, expected: 7,2195)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000041" startTime="2026-09-27T18:45:09.6816502+02:00" endTime="2026-09-27T18:45:09.6816723+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1a4334a6-b6ef-4f70-82fa-c733190a3b2b" />
+    <UnitTestResult executionId="5549c856-4bcb-48f0-af04-b30449277907" testId="901a2002-95a8-b36b-d8df-17cd900ad51a" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,1736, b2: 0,58540000000000003, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000099" startTime="2026-09-27T18:45:09.6588339+02:00" endTime="2026-09-27T18:45:09.6588510+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5549c856-4bcb-48f0-af04-b30449277907" />
+    <UnitTestResult executionId="183649bf-8d30-4d84-bd81-da9eccaac12a" testId="e6a381dd-e0fd-01ee-4033-ec1ab1aef011" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 60,257399999999997, a1: -34,009900000000002, b1: 36,267699999999998, l2: 60,462600000000002, a2: -34,1751, b2: 39,438699999999997, expected: 1,2644)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000044" startTime="2026-09-27T18:45:09.6589236+02:00" endTime="2026-09-27T18:45:09.6589395+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="183649bf-8d30-4d84-bd81-da9eccaac12a" />
+    <UnitTestResult executionId="28c12f83-bc97-4433-9907-e2880c255f7f" testId="0bbc58d9-23ed-d38d-17ed-21e8ecc1e287" testName="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 250, g: 250, b: 250)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0439295" startTime="2026-09-27T18:45:09.6859235+02:00" endTime="2026-09-27T18:45:09.7081004+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="28c12f83-bc97-4433-9907-e2880c255f7f" />
+    <UnitTestResult executionId="9f055d87-a3b0-4599-9c89-831c5e8f6f0f" testId="1a6a502a-f630-9c8f-f9ff-436e08fa3a0e" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,2591999999999999, b2: 0,33500000000000002, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000020" startTime="2026-09-27T18:45:09.6791696+02:00" endTime="2026-09-27T18:45:09.6791838+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9f055d87-a3b0-4599-9c89-831c5e8f6f0f" />
+    <UnitTestResult executionId="9e1b1a44-aade-43aa-9b01-1cf9bf5e6a76" testId="f20d713b-0551-1fb4-5ec1-63941e8aec46" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1, b1: 2, l2: 50, a2: 0, b2: 0, expected: 2,3668999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000030" startTime="2026-09-27T18:45:09.6809187+02:00" endTime="2026-09-27T18:45:09.6809405+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9e1b1a44-aade-43aa-9b01-1cf9bf5e6a76" />
+    <UnitTestResult executionId="6754a568-3fa9-4ea6-8b0b-d485d47dbb70" testId="ce65903b-20b2-81f2-035e-d22368dc760c" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,0011999999999999999, expected: 7,2195)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000022" startTime="2026-09-27T18:45:09.6790530+02:00" endTime="2026-09-27T18:45:09.6790681+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6754a568-3fa9-4ea6-8b0b-d485d47dbb70" />
+    <UnitTestResult executionId="4eda92e3-4512-4f18-bdf9-0dbc2290e283" testId="03310df3-6b18-9e00-c697-b58929ce97b6" testName="Iro.Core.Tests.PixelAnalysisTests.OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable(horizontal: False)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0553486" startTime="2026-09-27T18:45:09.7675535+02:00" endTime="2026-09-27T18:45:09.8228576+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4eda92e3-4512-4f18-bdf9-0dbc2290e283" />
+    <UnitTestResult executionId="d10f1595-6f67-4ca6-8128-9b1a148abda0" testId="16a9538b-f056-8905-21ad-bcf44ca93273" testName="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 10, g: 10, b: 10)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0219092" startTime="2026-09-27T18:45:09.7343205+02:00" endTime="2026-09-27T18:45:09.7561442+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d10f1595-6f67-4ca6-8128-9b1a148abda0" />
+    <UnitTestResult executionId="188cb56f-b8d7-4700-8940-d25128ec585a" testId="6db89f2a-a508-f56c-cd6b-7d17598a6b31" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,2972000000000001, b2: 0, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000010" startTime="2026-09-27T18:45:09.6807853+02:00" endTime="2026-09-27T18:45:09.6808006+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="188cb56f-b8d7-4700-8940-d25128ec585a" />
+    <UnitTestResult executionId="084639e6-2ffb-435e-9fe1-a89d5f8dbc28" testId="fe72309f-5a95-84b8-3502-d472f45e4535" testName="Iro.Core.Tests.MeasurementRuleTests.SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy(horizontal: True)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0517960" startTime="2026-09-27T18:45:09.9483569+02:00" endTime="2026-09-27T18:45:10.0000998+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="084639e6-2ffb-435e-9fe1-a89d5f8dbc28" />
+    <UnitTestResult executionId="09a49693-4ae2-4512-a9b1-5b4a860d1a5a" testId="d8927229-cb31-0d39-223e-decd2cff1f96" testName="Iro.Core.Tests.PixelAnalysisTests.OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable(horizontal: True)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0523010" startTime="2026-09-27T18:45:09.8229381+02:00" endTime="2026-09-27T18:45:09.8756237+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="09a49693-4ae2-4512-a9b1-5b4a860d1a5a" />
+    <UnitTestResult executionId="18c9ffcb-4c4d-4254-9bc5-60e82d4f3a9b" testId="c3d4d31a-07f8-ac00-bb68-cde4a950c859" testName="Iro.Core.Tests.OriginalPixelContractTests.GloballyAlteredWorkingCopyCannotChangeOriginalAnalysis" computerName="DESKTOP-LJN9LU4" duration="00:00:00.2302193" startTime="2026-09-27T18:45:09.6587557+02:00" endTime="2026-09-27T18:45:09.8747810+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="18c9ffcb-4c4d-4254-9bc5-60e82d4f3a9b" />
+    <UnitTestResult executionId="31d39939-f7a7-4002-9613-e3628cb692a8" testId="b2f9587d-3a28-a455-6872-d4c53006f96c" testName="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: False, endpoint: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0447904" startTime="2026-09-27T18:45:09.8585029+02:00" endTime="2026-09-27T18:45:09.9032250+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="31d39939-f7a7-4002-9613-e3628cb692a8" />
+    <UnitTestResult executionId="eb5b2506-9f9b-49c9-b6a0-a9ad66511332" testId="976df7c9-7279-7613-7bf5-ee5091f16f9b" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 61, a2: -5, b2: 29, expected: 22,8977)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000026" startTime="2026-09-27T18:45:09.6792472+02:00" endTime="2026-09-27T18:45:09.6794584+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="eb5b2506-9f9b-49c9-b6a0-a9ad66511332" />
+    <UnitTestResult executionId="c62fce2f-4df1-4b23-bc0c-1ba0f30d6daf" testId="8b6b5dea-9f62-9a93-15c8-af25ff562a08" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,00089999999999999998, expected: 7,1791999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0002701" startTime="2026-09-27T18:45:09.6581913+02:00" endTime="2026-09-27T18:45:09.6587788+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c62fce2f-4df1-4b23-bc0c-1ba0f30d6daf" />
+    <UnitTestResult executionId="dac43ec7-ff92-4976-8adc-064c75177fa2" testId="58bb31bf-f866-fcc3-bf2c-c90b77409f25" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 6,7747000000000002, a1: -0,2908, b1: -2,4247000000000001, l2: 5,8714000000000004, a2: -0,098500000000000004, b2: -2,2286000000000001, expected: 0,63770000000000004)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000015" startTime="2026-09-27T18:45:09.6806093+02:00" endTime="2026-09-27T18:45:09.6806327+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dac43ec7-ff92-4976-8adc-064c75177fa2" />
+    <UnitTestResult executionId="9a657fd0-f1cd-4e53-b2b1-1fe86ce06032" testId="4ada77c2-23fb-99ca-707c-99ed63773367" testName="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: -27,300000000000001)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0118123" startTime="2026-09-27T18:45:09.8779018+02:00" endTime="2026-09-27T18:45:09.8896199+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9a657fd0-f1cd-4e53-b2b1-1fe86ce06032" />
+    <UnitTestResult executionId="9cde49ec-39d9-4eb5-a36a-39dbdcdb2a32" testId="7055f7c9-40e3-426a-ad5d-a350c82f6462" testName="Iro.Core.Tests.AnalysisTests.StrideAndBufferBoundsAreValidated" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0015449" startTime="2026-09-27T18:45:09.6859970+02:00" endTime="2026-09-27T18:45:09.6860196+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="9cde49ec-39d9-4eb5-a36a-39dbdcdb2a32" />
+    <UnitTestResult executionId="c7091fc3-bece-457e-ad9a-ea7fe49f60e2" testId="f6f2559f-03b5-dd52-7df4-b47a76df944c" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 58, a2: 24, b2: 15, expected: 19,453499999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000023" startTime="2026-09-27T18:45:09.6789957+02:00" endTime="2026-09-27T18:45:09.6790146+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c7091fc3-bece-457e-ad9a-ea7fe49f60e2" />
+    <UnitTestResult executionId="91800031-82c7-4aee-adff-7857d8cde39c" testId="b122e302-a77e-a353-e7ce-65f01c853dad" testName="Iro.Core.Tests.OriginalPixelContractTests.RotationRejectsWrongSizeAndNestedView" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0039741" startTime="2026-09-27T18:45:09.6354313+02:00" endTime="2026-09-27T18:45:09.6444049+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="91800031-82c7-4aee-adff-7857d8cde39c" />
+    <UnitTestResult executionId="457d2a08-a72c-4be7-b57d-c1015588b99d" testId="6cf39a05-ac35-3c45-cebc-1ccab9bc1a0e" testName="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 0, b: 255, l: 32,296999999999997, a: 79,1875, labB: -107,86020000000001)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0002115" startTime="2026-09-27T18:45:09.6861123+02:00" endTime="2026-09-27T18:45:09.6861362+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="457d2a08-a72c-4be7-b57d-c1015588b99d" />
+    <UnitTestResult executionId="5cdbc2ef-29b0-4a2f-b375-7d66bb36aadb" testId="e73ec9aa-3a2d-22bb-7bf5-06782030c43b" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 255)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0022694" startTime="2026-09-27T18:45:09.6855845+02:00" endTime="2026-09-27T18:45:09.6856332+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5cdbc2ef-29b0-4a2f-b375-7d66bb36aadb">
+      <Output>
+        <ErrorInfo>
+          <Message>Farbkanal an der Messgrenze. Beleuchtung und Belichtung prüfen; keine zuverlässige Messung möglich.</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Byte endpoint) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 147&#xD;
+   at InvokeStub_MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="51f0705e-bd85-4ade-9d6b-fcbf052bd099" testId="000bc2bd-3e65-aad8-4841-9f94e5dc78d8" testName="Iro.Core.Tests.AnalysisTests.ConstantRegionAndSmallTextOutliersAreHandledWithoutZeroMadFailure" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0005764" startTime="2026-09-27T18:45:09.6868882+02:00" endTime="2026-09-27T18:45:09.6869196+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="51f0705e-bd85-4ade-9d6b-fcbf052bd099" />
+    <UnitTestResult executionId="bfc83f54-9c29-4f92-8091-946205fc6d0d" testId="f6307b15-4d5f-dfad-8215-89cd4df45da4" testName="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 0, b: 0, l: 0, a: 0, labB: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000035" startTime="2026-09-27T18:45:09.6864693+02:00" endTime="2026-09-27T18:45:09.6864885+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="bfc83f54-9c29-4f92-8091-946205fc6d0d" />
+    <UnitTestResult executionId="94b96783-6619-4bbe-8372-10bdbef33331" testId="5c20739e-22af-9cc6-1b80-e12b3b03ebb6" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 35,083100000000002, a1: -44,116399999999999, b1: 3,7932999999999999, l2: 35,023200000000003, a2: -40,071599999999997, b2: 1,5901000000000001, expected: 1,8645)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000015" startTime="2026-09-27T18:45:09.6814355+02:00" endTime="2026-09-27T18:45:09.6814505+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="94b96783-6619-4bbe-8372-10bdbef33331" />
+    <UnitTestResult executionId="c627025b-4c33-46b6-81c9-fdddad209918" testId="4f5e3d7b-2f80-6a83-dda8-cf428cb8980e" testName="Iro.Core.Tests.PixelAnalysisTests.MultipleStripsAreAmbiguousAndProduceNoValues" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0162084" startTime="2026-09-27T18:45:09.7513453+02:00" endTime="2026-09-27T18:45:09.7674757+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c627025b-4c33-46b6-81c9-fdddad209918" />
+    <UnitTestResult executionId="a70383b2-6fab-4e46-b6da-3eb74e21423d" testId="892410c5-e2a6-cae3-372b-eeb6819c8d1c" testName="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: True, endpoint: 255)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0458521" startTime="2026-09-27T18:45:09.8125438+02:00" endTime="2026-09-27T18:45:09.8583927+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a70383b2-6fab-4e46-b6da-3eb74e21423d" />
+    <UnitTestResult executionId="56f8e4f7-25d6-43df-a6bf-f76616a7587c" testId="28cb9d9e-ca86-2a8b-376e-eb528b026381" testName="Iro.Core.Tests.OriginalPixelContractTests.OriginalSnapshotCannotBeChangedThroughInputOrExport(throughExport: True)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0013046" startTime="2026-09-27T18:45:09.8764942+02:00" endTime="2026-09-27T18:45:09.8777855+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56f8e4f7-25d6-43df-a6bf-f76616a7587c" />
+    <UnitTestResult executionId="d5c515da-267b-4ab4-9228-80de338c6e91" testId="4803cf55-176f-e3ec-dc3e-80f51bac7738" testName="Iro.Core.Tests.PixelAnalysisTests.WhiteAndVeryDarkFieldsAreNotDiscardedByColor" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0712872" startTime="2026-09-27T18:45:09.6368109+02:00" endTime="2026-09-27T18:45:09.7105926+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="d5c515da-267b-4ab4-9228-80de338c6e91" />
+    <UnitTestResult executionId="a4d9918e-258e-4f19-8257-7f8d2ebcff39" testId="5f0f6194-8e86-ed36-6cdf-e2ff4c5ece03" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 0, b2: -2,5, expected: 4,3064999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000016" startTime="2026-09-27T18:45:09.6787488+02:00" endTime="2026-09-27T18:45:09.6787877+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a4d9918e-258e-4f19-8257-7f8d2ebcff39" />
+    <UnitTestResult executionId="dab34303-d8a6-4aab-bfe2-1a72a7c49d43" testId="13dd926d-90c6-0545-93e0-b400bdee6cf4" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 2,0775999999999999, a1: 0,079500000000000001, b1: -1,135, l2: 0,90329999999999999, a2: -0,063600000000000004, b2: -0,5514, expected: 0,90820000000000001)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000019" startTime="2026-09-27T18:45:09.6814805+02:00" endTime="2026-09-27T18:45:09.6814976+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="dab34303-d8a6-4aab-bfe2-1a72a7c49d43" />
+    <UnitTestResult executionId="5f388644-b30a-438b-9a62-c9c890c51828" testId="b7bb3ab9-11d5-53d8-e3ca-e1ad6412337a" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1,3802000000000001, b1: -84,281400000000005, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000031" startTime="2026-09-27T18:45:09.6790948+02:00" endTime="2026-09-27T18:45:09.6791090+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="5f388644-b30a-438b-9a62-c9c890c51828" />
+    <UnitTestResult executionId="425e1e98-d2ab-4a0a-9bfc-3593df7bd498" testId="cdc92439-5536-d1e3-e89c-b4f1d64c637e" testName="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 100, b: 160)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0233111" startTime="2026-09-27T18:45:10.0885128+02:00" endTime="2026-09-27T18:45:10.1112035+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Failed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="425e1e98-d2ab-4a0a-9bfc-3593df7bd498">
+      <Output>
+        <ErrorInfo>
+          <Message>Assert.Equal() Failure: Values differ&#xD;
+Expected: Measured&#xD;
+Actual:   InvalidFields</Message>
+          <StackTrace>   at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b) in D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs:line 100&#xD;
+   at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+   at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)</StackTrace>
+        </ErrorInfo>
+      </Output>
+    </UnitTestResult>
+    <UnitTestResult executionId="a848a560-0c29-469a-9287-bf027eaae4d8" testId="ee1e4cd9-d235-6d64-9313-41bdd0f404c5" testName="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 45)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0010692" startTime="2026-09-27T18:45:09.8896843+02:00" endTime="2026-09-27T18:45:09.8907208+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="a848a560-0c29-469a-9287-bf027eaae4d8" />
+    <UnitTestResult executionId="ca49db20-2170-4f00-9e6b-e2c999e929a7" testId="13ecc2ca-4b49-bbf1-601b-624e75ab4310" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 61,290100000000002, a1: 3,7195999999999998, b1: -5,3901000000000003, l2: 61,429200000000002, a2: 2,2480000000000002, b2: -4,9619999999999997, expected: 1,8731)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000035" startTime="2026-09-27T18:45:09.6813751+02:00" endTime="2026-09-27T18:45:09.6813937+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="ca49db20-2170-4f00-9e6b-e2c999e929a7" />
+    <UnitTestResult executionId="1f7faaab-5155-44ad-be32-955eef092f28" testId="5c7562ae-7b94-db24-e719-3903929c8d20" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 0, b1: 0, l2: 50, a2: -1, b2: 2, expected: 2,3668999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000038" startTime="2026-09-27T18:45:09.6815354+02:00" endTime="2026-09-27T18:45:09.6815560+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1f7faaab-5155-44ad-be32-955eef092f28" />
+    <UnitTestResult executionId="0e24d634-7c76-496b-b8c6-685edc85200e" testId="65f991ce-945d-9504-4a6c-9af1ac03912e" testName="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 255, b: 0, l: 87,734700000000004, a: -86,182699999999997, labB: 83,179299999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000012" startTime="2026-09-27T18:45:09.6865343+02:00" endTime="2026-09-27T18:45:09.6865518+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0e24d634-7c76-496b-b8c6-685edc85200e" />
+    <UnitTestResult executionId="265f6678-8c77-488f-82e5-0dbce7d0c13f" testId="e325b1f1-314e-f627-ac74-306e170bd244" testName="Iro.Core.Tests.AnalysisTests.RegionMeanIsComputedBeforeLabAndInLinearLight" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0048144" startTime="2026-09-27T18:45:09.6866722+02:00" endTime="2026-09-27T18:45:09.6866983+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="265f6678-8c77-488f-82e5-0dbce7d0c13f" />
+    <UnitTestResult executionId="2335f190-1054-49f2-8063-2cd3116c0a5b" testId="95d726c2-4dbe-897a-ed03-904b02ce5c37" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,001, expected: 7,1791999999999998)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000015" startTime="2026-09-27T18:45:09.6815938+02:00" endTime="2026-09-27T18:45:09.6816085+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="2335f190-1054-49f2-8063-2cd3116c0a5b" />
+    <UnitTestResult executionId="6935bd30-2c3e-4dd2-9123-0e0e7aa5abab" testId="fa57185c-87c0-12dd-d83a-b9bc3d5e1416" testName="Iro.Core.Tests.AnalysisTests.EmptyWallDoesNotBecomeASwatch" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0279431" startTime="2026-09-27T18:45:09.6822791+02:00" endTime="2026-09-27T18:45:09.6859427+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6935bd30-2c3e-4dd2-9123-0e0e7aa5abab" />
+    <UnitTestResult executionId="c5900cae-408d-4f95-b4db-90c0e3b279e4" testId="70872612-a6c4-bfb7-7c59-f7c42dd3f96e" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 36,461199999999998, a1: 47,857999999999997, b1: 18,385200000000001, l2: 36,271500000000003, a2: 50,506500000000003, b2: 21,223099999999999, expected: 1,4146000000000001)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000038" startTime="2026-09-27T18:45:09.6808679+02:00" endTime="2026-09-27T18:45:09.6808881+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c5900cae-408d-4f95-b4db-90c0e3b279e4" />
+    <UnitTestResult executionId="6dea9916-7769-41ec-a8ea-21220b013789" testId="46097dda-7857-0190-b099-7500ae1f518d" testName="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: -45)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0009684" startTime="2026-09-27T18:45:09.8936384+02:00" endTime="2026-09-27T18:45:09.8958614+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="6dea9916-7769-41ec-a8ea-21220b013789" />
+    <UnitTestResult executionId="c681f937-5403-47f5-a6c1-91b7017e282b" testId="4fa7ef37-64f5-4c68-6459-360f2b6734da" testName="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 255, g: 0, b: 0, l: 53,2408, a: 80,092500000000001, labB: 67,203199999999995)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000009" startTime="2026-09-27T18:45:09.6865835+02:00" endTime="2026-09-27T18:45:09.6866097+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="c681f937-5403-47f5-a6c1-91b7017e282b" />
+    <UnitTestResult executionId="e2e2cab3-64fd-4e5d-9960-ba786041a101" testId="fe08f54e-87ad-4e42-9487-e184d3e939ab" testName="Iro.Core.Tests.MeasurementRuleTests.DetectedUnusableMotionBlurStopsOtherSharpFieldsToo" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0505370" startTime="2026-09-27T18:45:10.1330918+02:00" endTime="2026-09-27T18:45:10.1834001+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="e2e2cab3-64fd-4e5d-9960-ba786041a101" />
+    <UnitTestResult executionId="be718d4b-d448-4693-b35d-03342bcc3b6b" testId="5430ea53-767d-5a45-edbe-4b9e07e2ccb4" testName="Iro.Core.Tests.PixelAnalysisTests.InvalidSharedWallInvalidatesEveryComparison" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0466099" startTime="2026-09-27T18:45:09.8756814+02:00" endTime="2026-09-27T18:45:09.9219306+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="be718d4b-d448-4693-b35d-03342bcc3b6b" />
+    <UnitTestResult executionId="4564985b-b6a7-41ae-bc0c-9ab93544bf2d" testId="98b65c07-4b07-831a-ca85-7d4ce9abc76b" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 90,802700000000002, a1: -2,0831, b1: 1,4410000000000001, l2: 91,152799999999999, a2: -1,6435, b2: 0,044699999999999997, expected: 1,4440999999999999)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000026" startTime="2026-09-27T18:45:09.6817661+02:00" endTime="2026-09-27T18:45:09.6817888+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="4564985b-b6a7-41ae-bc0c-9ab93544bf2d" />
+    <UnitTestResult executionId="56c6aa49-2192-40d7-b535-53e2e23bad3d" testId="32c12bad-8105-2424-801b-5e4707db38d4" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 73, a2: 25, b2: -18, expected: 27,1492)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000032" startTime="2026-09-27T18:45:09.6817129+02:00" endTime="2026-09-27T18:45:09.6817349+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="56c6aa49-2192-40d7-b535-53e2e23bad3d" />
+    <UnitTestResult executionId="1d29f89e-be24-430c-8175-8a0c3a50ab8d" testId="892bbbb4-c988-c34e-58ab-a7fd934e3ef4" testName="Iro.Core.Tests.OriginalPixelContractTests.EmptyRotationCornersNeverBecomeBlackMeasurements" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0002151" startTime="2026-09-27T18:45:09.8963164+02:00" endTime="2026-09-27T18:45:09.8963371+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="1d29f89e-be24-430c-8175-8a0c3a50ab8d" />
+    <UnitTestResult executionId="38869165-e874-47ae-80ae-2fe04ce2a797" testId="b137c478-5f52-d942-f9c8-1bfec8d56c8c" testName="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 13,699999999999999)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0009096" startTime="2026-09-27T18:45:09.8907762+02:00" endTime="2026-09-27T18:45:09.8916583+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="38869165-e874-47ae-80ae-2fe04ce2a797" />
+    <UnitTestResult executionId="0af9b119-7b22-486d-843d-7449cd51155f" testId="c39f3f2a-f13d-be65-e09b-e8913ce5d34e" testName="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 0)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0019083" startTime="2026-09-27T18:45:09.8917120+02:00" endTime="2026-09-27T18:45:09.8935855+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="0af9b119-7b22-486d-843d-7449cd51155f" />
+    <UnitTestResult executionId="b2280160-bc12-4fad-86e4-232ecca8ea36" testId="46774f67-d6ce-d454-68c6-6397d957abdb" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,0011000000000000001, b2: -2,4900000000000002, expected: 4,7461000000000002)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000026" startTime="2026-09-27T18:45:09.6588802+02:00" endTime="2026-09-27T18:45:09.6588951+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="b2280160-bc12-4fad-86e4-232ecca8ea36" />
+    <UnitTestResult executionId="934cb169-09c0-4706-9457-f12f0b39603d" testId="67bb7fe3-464f-7ba3-dcab-ad4b87da04cd" testName="Iro.Core.Tests.PixelAnalysisTests.ASingleClearlyBoundedFieldIsPermitted" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0405203" startTime="2026-09-27T18:45:09.7111389+02:00" endTime="2026-09-27T18:45:09.7512405+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="934cb169-09c0-4706-9457-f12f0b39603d" />
+    <UnitTestResult executionId="676bad7c-7bc2-4269-ab8d-b5dd3d12422f" testId="4086c928-8c61-8083-16b5-abcbff4151c7" testName="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 56, a2: -27, b2: -3, expected: 31,902999999999999)" computerName="DESKTOP-LJN9LU4" duration="00:00:00.0000060" startTime="2026-09-27T18:45:09.6792063+02:00" endTime="2026-09-27T18:45:09.6792200+02:00" testType="13cdc9d9-ddb5-4fa4-a97d-d965ccfc6d4b" outcome="Passed" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" relativeResultsDirectory="676bad7c-7bc2-4269-ab8d-b5dd3d12422f" />
+  </Results>
+  <TestDefinitions>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CancellationAndInvalidProfilesAreRejected" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6686204c-9834-afde-35a3-01c3bccd7d18">
+      <Execution id="e2a86228-a074-4eda-ad74-25b2c6b3e050" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CancellationAndInvalidProfilesAreRejected" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 255, g: 255, b: 255, l: 100, a: 0, labB: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="ab1164bf-ac44-0ce1-296c-bf5ab22af618">
+      <Execution id="4481f653-61f6-4410-9226-63a8af3334c0" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="D65ReferenceColors" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,90090000000000003, b1: -85,521100000000004, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="8b7da062-173d-9178-c1f1-e982050532ef">
+      <Execution id="269fd7ab-1bfb-4157-bb19-767cd9a7b9c0" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.EmptyRotationCornersNeverBecomeBlackMeasurements" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="892bbbb4-c988-c34e-58ab-a7fd934e3ef4">
+      <Execution id="1d29f89e-be24-430c-8175-8a0c3a50ab8d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="EmptyRotationCornersNeverBecomeBlackMeasurements" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 36,461199999999998, a1: 47,857999999999997, b1: 18,385200000000001, l2: 36,271500000000003, a2: 50,506500000000003, b2: 21,223099999999999, expected: 1,4146000000000001)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="70872612-a6c4-bfb7-7c59-f7c42dd3f96e">
+      <Execution id="c5900cae-408d-4f95-b4db-90c0e3b279e4" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.RegionMeanIsComputedBeforeLabAndInLinearLight" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="e325b1f1-314e-f627-ac74-306e170bd244">
+      <Execution id="265f6678-8c77-488f-82e5-0dbce7d0c13f" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="RegionMeanIsComputedBeforeLabAndInLinearLight" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 0, b: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="f8799bbe-1909-4afe-ddb6-20c1b7176f7d">
+      <Execution id="e1d62e93-6b8b-4e38-b497-b220ba9fe4d1" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.ConstantRegionAndSmallTextOutliersAreHandledWithoutZeroMadFailure" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="000bc2bd-3e65-aad8-4841-9f94e5dc78d8">
+      <Execution id="51f0705e-bd85-4ade-9d6b-fcbf052bd099" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="ConstantRegionAndSmallTextOutliersAreHandledWithoutZeroMadFailure" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 0, b: 0, l: 0, a: 0, labB: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="f6307b15-4d5f-dfad-8215-89cd4df45da4">
+      <Execution id="bfc83f54-9c29-4f92-8091-946205fc6d0d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="D65ReferenceColors" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.EmptyWallDoesNotBecomeASwatch" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="fa57185c-87c0-12dd-d83a-b9bc3d5e1416">
+      <Execution id="6935bd30-2c3e-4dd2-9123-0e0e7aa5abab" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="EmptyWallDoesNotBecomeASwatch" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,0011000000000000001, expected: 7,2195)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="d2ef7fb8-f905-a4a5-0fcd-2300f81bb9c5">
+      <Execution id="1a4334a6-b6ef-4f70-82fa-c733190a3b2b" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 45)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="ee1e4cd9-d235-6d64-9313-41bdd0f404c5">
+      <Execution id="a848a560-0c29-469a-9287-bf027eaae4d8" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 22,723299999999998, a1: 20,090399999999999, b1: -46,694000000000003, l2: 23,033100000000001, a2: 14,973000000000001, b2: -42,561900000000001, expected: 2,0373000000000001)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6dcc7f5a-1dc9-81db-a7b8-6cd439f80941">
+      <Execution id="46c3bd35-b27c-46d3-9eee-05ae68461c9d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,2591999999999999, b2: 0,33500000000000002, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="1a6a502a-f630-9c8f-f9ff-436e08fa3a0e">
+      <Execution id="9f055d87-a3b0-4599-9c89-831c5e8f6f0f" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="e904c829-6ddc-5558-9bdf-df22e4c50c0b">
+      <Execution id="c54651dd-e107-4a06-8149-946bcfedda20" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 61,290100000000002, a1: 3,7195999999999998, b1: -5,3901000000000003, l2: 61,429200000000002, a2: 2,2480000000000002, b2: -4,9619999999999997, expected: 1,8731)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="13ecc2ca-4b49-bbf1-601b-624e75ab4310">
+      <Execution id="ca49db20-2170-4f00-9e6b-e2c999e929a7" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,00089999999999999998, b2: -2,4900000000000002, expected: 4,8045)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6ebb29cb-83f8-ac36-fcb4-c861ec550c7a">
+      <Execution id="836d8b7c-e3da-4462-a59b-52c9973e97a6" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 255, b: 0, l: 87,734700000000004, a: -86,182699999999997, labB: 83,179299999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="65f991ce-945d-9504-4a6c-9af1ac03912e">
+      <Execution id="0e24d634-7c76-496b-b8c6-685edc85200e" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="D65ReferenceColors" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: True, endpoint: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="c3c2b469-c160-f607-613a-107afb6faed8">
+      <Execution id="965218d4-305a-4461-8e6b-522a17815940" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="AnEndpointPileupStopsTheWholeComparison" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: -45)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="46097dda-7857-0190-b099-7500ae1f518d">
+      <Execution id="6dea9916-7769-41ec-a8ea-21220b013789" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 255)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="e73ec9aa-3a2d-22bb-7bf5-06782030c43b">
+      <Execution id="5cdbc2ef-29b0-4a2f-b375-7d66bb36aadb" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,0011000000000000001, b2: -2,4900000000000002, expected: 4,7461000000000002)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="46774f67-d6ce-d454-68c6-6397d957abdb">
+      <Execution id="b2280160-bc12-4fad-86e4-232ecca8ea36" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 240, g: 10, b: 10)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="8455c23a-d53f-279d-a7b3-98b7830b5331">
+      <Execution id="6dc774a5-de17-4f2b-98f9-de3396697729" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -0,001, b1: 2,4900000000000002, l2: 50, a2: 0,001, b2: -2,4900000000000002, expected: 4,8045)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="2ce4ce6d-56a8-c08d-d09f-fc250ced83bc">
+      <Execution id="b6693d34-bab6-4006-8f5e-4bf8f5d7bded" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 100, b: 160)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="145f1a85-be5a-fa7d-1a37-b7d9f0c50878">
+      <Execution id="d9e0ff2b-e2b7-49b8-8d25-a5e30cc16ffd" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 100, b: 160)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="cdc92439-5536-d1e3-e89c-b4f1d64c637e">
+      <Execution id="425e1e98-d2ab-4a0a-9bfc-3593df7bd498" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 61, a2: -5, b2: 29, expected: 22,8977)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="976df7c9-7279-7613-7bf5-ee5091f16f9b">
+      <Execution id="eb5b2506-9f9b-49c9-b6a0-a9ad66511332" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 255, g: 0, b: 0, l: 53,2408, a: 80,092500000000001, labB: 67,203199999999995)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="4fa7ef37-64f5-4c68-6459-360f2b6734da">
+      <Execution id="c681f937-5403-47f5-a6c1-91b7017e282b" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="D65ReferenceColors" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.D65ReferenceColors(r: 0, g: 0, b: 255, l: 32,296999999999997, a: 79,1875, labB: -107,86020000000001)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6cf39a05-ac35-3c45-cebc-1ccab9bc1a0e">
+      <Execution id="457d2a08-a72c-4be7-b57d-c1015588b99d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="D65ReferenceColors" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 90,925700000000006, a1: -0,54059999999999997, b1: -0,92079999999999995, l2: 88,638099999999994, a2: -0,89849999999999997, b2: -0,72389999999999999, expected: 1,5381)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="982f3cfc-8892-f423-68d7-d9a4298ffa92">
+      <Execution id="b878eb1a-9b7b-4099-89a6-08f1457762bf" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="c39f3f2a-f13d-be65-e09b-e8913ce5d34e">
+      <Execution id="0af9b119-7b22-486d-843d-7449cd51155f" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 56, a2: -27, b2: -3, expected: 31,902999999999999)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="4086c928-8c61-8083-16b5-abcbff4151c7">
+      <Execution id="676bad7c-7bc2-4269-ab8d-b5dd3d12422f" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,0011999999999999999, expected: 7,2195)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="ce65903b-20b2-81f2-035e-d22368dc760c">
+      <Execution id="6754a568-3fa9-4ea6-8b0b-d485d47dbb70" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: 13,699999999999999)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="b137c478-5f52-d942-f9c8-1bfec8d56c8c">
+      <Execution id="38869165-e874-47ae-80ae-2fe04ce2a797" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 10, g: 10, b: 10)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="16a9538b-f056-8905-21ad-bcf44ca93273">
+      <Execution id="d10f1595-6f67-4ca6-8128-9b1a148abda0" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.ASingleClearlyBoundedFieldIsPermitted" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="67bb7fe3-464f-7ba3-dcab-ad4b87da04cd">
+      <Execution id="934cb169-09c0-4706-9457-f12f0b39603d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="ASingleClearlyBoundedFieldIsPermitted" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 1,8633999999999999, b2: 0,57569999999999999, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="0d709db7-4293-7a23-82cc-eac922048a01">
+      <Execution id="753fa9fb-3110-48cd-ba96-0105365a4b6e" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.StrideAndBufferBoundsAreValidated" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="7055f7c9-40e3-426a-ad5d-a350c82f6462">
+      <Execution id="9cde49ec-39d9-4eb5-a36a-39dbdcdb2a32" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="StrideAndBufferBoundsAreValidated" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 255, b: 255)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="1a3abc53-80b1-b380-6949-dba0e0a2baf6">
+      <Execution id="951eb536-50f0-49f3-8c98-12e392574ea3" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 60,257399999999997, a1: -34,009900000000002, b1: 36,267699999999998, l2: 60,462600000000002, a2: -34,1751, b2: 39,438699999999997, expected: 1,2644)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="e6a381dd-e0fd-01ee-4033-ec1ab1aef011">
+      <Execution id="183649bf-8d30-4d84-bd81-da9eccaac12a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,8361000000000001, b1: -74,019999999999996, l2: 50, a2: 0, b2: -82,748500000000007, expected: 3,4411999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="5245cb23-1512-f3f7-4d31-c0d26681e9c8">
+      <Execution id="08031e4f-8a33-463b-b4df-f85c44fe9119" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 2,0775999999999999, a1: 0,079500000000000001, b1: -1,135, l2: 0,90329999999999999, a2: -0,063600000000000004, b2: -0,5514, expected: 0,90820000000000001)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="13dd926d-90c6-0545-93e0-b400bdee6cf4">
+      <Execution id="dab34303-d8a6-4aab-bfe2-1a72a7c49d43" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,001, expected: 7,1791999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="95d726c2-4dbe-897a-ed03-904b02ce5c37">
+      <Execution id="2335f190-1054-49f2-8063-2cd3116c0a5b" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1,1848000000000001, b1: -84,800600000000003, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="0170bf49-6d5e-a5a3-a5aa-8ecee34b5223">
+      <Execution id="4709947f-e57a-4fc7-a568-0d2cd26ef09a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 73, a2: 25, b2: -18, expected: 27,1492)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="32c12bad-8105-2424-801b-5e4707db38d4">
+      <Execution id="56c6aa49-2192-40d7-b535-53e2e23bad3d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.FrameWideFailureClearsPreviouslyDisplayedValues" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="902bf1ce-e0a7-e480-41bb-a3526c3f187c">
+      <Execution id="76b07f1e-5e57-4f74-8161-e01d20582ac9" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="FrameWideFailureClearsPreviouslyDisplayedValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy(horizontal: False)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="bc3774ea-27f3-0ed5-4912-318b122c1882">
+      <Execution id="b52e0a9d-4a64-46f9-9190-53d906442b54" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 35,083100000000002, a1: -44,116399999999999, b1: 3,7932999999999999, l2: 35,023200000000003, a2: -40,071599999999997, b2: 1,5901000000000001, expected: 1,8645)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="5c20739e-22af-9cc6-1b80-e12b3b03ebb6">
+      <Execution id="94b96783-6619-4bbe-8372-10bdbef33331" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy(horizontal: True)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="fe72309f-5a95-84b8-3502-d472f45e4535">
+      <Execution id="084639e6-2ffb-435e-9fe1-a89d5f8dbc28" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="SufficientCleanEndCropIsExplicitlyPartialUnderRevisedPolicy" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce(degrees: -27,300000000000001)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="4ada77c2-23fb-99ca-707c-99ed63773367">
+      <Execution id="9a657fd0-f1cd-4e53-b2b1-1fe86ce06032" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotatedMeasurementUsesEachOriginalPixelInsideMaskExactlyOnce" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1,3802000000000001, b1: -84,281400000000005, l2: 50, a2: 0, b2: -82,748500000000007, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="b7bb3ab9-11d5-53d8-e3ca-e1ad6412337a">
+      <Execution id="5f388644-b30a-438b-9a62-c9c890c51828" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.RotationRejectsWrongSizeAndNestedView" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="b122e302-a77e-a353-e7ce-65f01c853dad">
+      <Execution id="91800031-82c7-4aee-adff-7857d8cde39c" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="RotationRejectsWrongSizeAndNestedView" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable(horizontal: True)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="d8927229-cb31-0d39-223e-decd2cff1f96">
+      <Execution id="09a49693-4ae2-4512-a9b1-5b4a860d1a5a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,2972000000000001, b2: 0, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6db89f2a-a508-f56c-cd6b-7d17598a6b31">
+      <Execution id="188cb56f-b8d7-4700-8940-d25128ec585a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,4900000000000002, b1: -0,001, l2: 50, a2: -2,4900000000000002, b2: 0,00089999999999999998, expected: 7,1791999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="8b6b5dea-9f62-9a93-15c8-af25ff562a08">
+      <Execution id="c62fce2f-4df1-4b23-bc0c-1ba0f30d6daf" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.DetectedUnusableMotionBlurStopsOtherSharpFieldsToo" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="fe08f54e-87ad-4e42-9487-e184d3e939ab">
+      <Execution id="e2e2cab3-64fd-4e5d-9960-ba786041a101" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="DetectedUnusableMotionBlurStopsOtherSharpFieldsToo" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: False, endpoint: 255)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="0437421e-e050-5eab-66f0-66ab765e11e6">
+      <Execution id="f3791c53-23a4-41df-a905-916f1ac57e76" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="AnEndpointPileupStopsTheWholeComparison" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable(r: 250, g: 250, b: 250)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="0bbc58d9-23ed-d38d-17ed-21e8ecc1e287">
+      <Execution id="28c12f83-bc97-4433-9907-e2880c255f7f" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="BrightDarkAndSaturatedColorsWithResolvableChannelsRemainMeasurable" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: True, endpoint: 255)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="892410c5-e2a6-cae3-372b-eeb6819c8d1c">
+      <Execution id="a70383b2-6fab-4e46-b6da-3eb74e21423d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="AnEndpointPileupStopsTheWholeComparison" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 58, a2: 24, b2: 15, expected: 19,453499999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="f6f2559f-03b5-dd52-7df4-b47a76df944c">
+      <Execution id="c7091fc3-bece-457e-ad9a-ea7fe49f60e2" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.InvalidSharedWallInvalidatesEveryComparison" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="5430ea53-767d-5a45-edbe-4b9e07e2ccb4">
+      <Execution id="be718d4b-d448-4693-b35d-03342bcc3b6b" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="InvalidSharedWallInvalidatesEveryComparison" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.OriginalSnapshotCannotBeChangedThroughInputOrExport(throughExport: False)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="f6aaee41-554a-42b2-0010-6554b7404c4c">
+      <Execution id="c1b7cd5f-9e37-495d-b9a6-5ac6d854f2a9" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="OriginalSnapshotCannotBeChangedThroughInputOrExport" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: -1, b1: 2, l2: 50, a2: 0, b2: 0, expected: 2,3668999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="f20d713b-0551-1fb4-5ec1-63941e8aec46">
+      <Execution id="9e1b1a44-aade-43aa-9b01-1cf9bf5e6a76" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 0, b2: -2,5, expected: 4,3064999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="5f0f6194-8e86-ed36-6cdf-e2ff4c5ece03">
+      <Execution id="a4d9918e-258e-4f19-8257-7f8d2ebcff39" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,6772, b1: -79,775099999999995, l2: 50, a2: 0, b2: -82,748500000000007, expected: 2,0425)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="50210820-97a8-6ad4-b79d-91ea5b570044">
+      <Execution id="c5392852-619e-4dde-89c7-026ef2cb6a49" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.GloballyAlteredWorkingCopyCannotChangeOriginalAnalysis" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="c3d4d31a-07f8-ac00-bb68-cde4a950c859">
+      <Execution id="18c9ffcb-4c4d-4254-9bc5-60e82d4f3a9b" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="GloballyAlteredWorkingCopyCannotChangeOriginalAnalysis" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 6,7747000000000002, a1: -0,2908, b1: -2,4247000000000001, l2: 5,8714000000000004, a2: -0,098500000000000004, b2: -2,2286000000000001, expected: 0,63770000000000004)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="58bb31bf-f866-fcc3-bf2c-c90b77409f25">
+      <Execution id="dac43ec7-ff92-4976-8adc-064c75177fa2" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 2,5, b1: 0, l2: 50, a2: 3,1736, b2: 0,58540000000000003, expected: 1)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="901a2002-95a8-b36b-d8df-17cd900ad51a">
+      <Execution id="5549c856-4bcb-48f0-af04-b30449277907" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.MeasurementRuleTests.AnEndpointPileupStopsTheWholeComparison(wall: False, endpoint: 0)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="b2f9587d-3a28-a455-6872-d4c53006f96c">
+      <Execution id="31d39939-f7a7-4002-9613-e3628cb692a8" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.MeasurementRuleTests" name="AnEndpointPileupStopsTheWholeComparison" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.MultipleStripsAreAmbiguousAndProduceNoValues" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="4f5e3d7b-2f80-6a83-dda8-cf428cb8980e">
+      <Execution id="c627025b-4c33-46b6-81c9-fdddad209918" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="MultipleStripsAreAmbiguousAndProduceNoValues" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.WhiteAndVeryDarkFieldsAreNotDiscardedByColor" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="4803cf55-176f-e3ec-dc3e-80f51bac7738">
+      <Execution id="d5c515da-267b-4ab4-9228-80de338c6e91" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="WhiteAndVeryDarkFieldsAreNotDiscardedByColor" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.AContaminatedFieldDoesNotInvalidateOtherFields" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="dda85794-e141-2ab7-cd17-b2b5e4afea92">
+      <Execution id="c27b170b-0ea7-4f49-b3f1-03d25fd3665a" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="AContaminatedFieldDoesNotInvalidateOtherFields" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.OriginalPixelContractTests.OriginalSnapshotCannotBeChangedThroughInputOrExport(throughExport: True)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="28cb9d9e-ca86-2a8b-376e-eb528b026381">
+      <Execution id="56f8e4f7-25d6-43df-a6bf-f76616a7587c" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.OriginalPixelContractTests" name="OriginalSnapshotCannotBeChangedThroughInputOrExport" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.InhomogeneousRegionDoesNotReturnAnInventedColor" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="6c7cca2a-af38-3978-fffb-42fa1ccd71af">
+      <Execution id="6caba710-d5b3-4182-ab1f-51e95dfb6bd7" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="InhomogeneousRegionDoesNotReturnAnInventedColor" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.PixelAnalysisTests.OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable(horizontal: False)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="03310df3-6b18-9e00-c697-b58929ce97b6">
+      <Execution id="4eda92e3-4512-4f18-bdf9-0dbc2290e283" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.PixelAnalysisTests" name="OffsetOccluderIsRejectedWhileDifferentFieldHeightsRemainUsable" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 90,802700000000002, a1: -2,0831, b1: 1,4410000000000001, l2: 91,152799999999999, a2: -1,6435, b2: 0,044699999999999997, expected: 1,4440999999999999)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="98b65c07-4b07-831a-ca85-7d4ce9abc76b">
+      <Execution id="4564985b-b6a7-41ae-bc0c-9ab93544bf2d" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 3,1570999999999998, b1: -77,280299999999997, l2: 50, a2: 0, b2: -82,748500000000007, expected: 2,8614999999999999)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="97aed444-0e4d-04eb-4813-167412f96b10">
+      <Execution id="31dc3e5c-6fac-41b4-bba0-2fa04ce50dbe" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 50, a1: 0, b1: 0, l2: 50, a2: -1, b2: 2, expected: 2,3668999999999998)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="5c7562ae-7b94-db24-e719-3903929c8d20">
+      <Execution id="1f7faaab-5155-44ad-be32-955eef092f28" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+    <UnitTest name="Iro.Core.Tests.AnalysisTests.CoreMatchesAllPublishedCiede2000Pairs(l1: 63,010899999999999, a1: -31,0961, b1: -5,8662999999999998, l2: 62,8187, a2: -29,794599999999999, b2: -4,0864000000000003, expected: 1,2629999999999999)" storage="d:\source\iro\tests\iro.core.tests\bin\release\net10.0\iro.core.tests.dll" id="ec8a7e1e-4615-2e75-93c6-0b6605f24de5">
+      <Execution id="a10f0ad9-b750-4717-b877-7ec8ba378aa1" />
+      <TestMethod codeBase="D:\Source\iro\tests\iro.core.tests\bin\Release\net10.0\Iro.Core.Tests.dll" adapterTypeName="executor://xunit/VsTestRunner3/netcore/" className="Iro.Core.Tests.AnalysisTests" name="CoreMatchesAllPublishedCiede2000Pairs" />
+    </UnitTest>
+  </TestDefinitions>
+  <TestEntries>
+    <TestEntry testId="8455c23a-d53f-279d-a7b3-98b7830b5331" executionId="6dc774a5-de17-4f2b-98f9-de3396697729" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f8799bbe-1909-4afe-ddb6-20c1b7176f7d" executionId="e1d62e93-6b8b-4e38-b497-b220ba9fe4d1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e904c829-6ddc-5558-9bdf-df22e4c50c0b" executionId="c54651dd-e107-4a06-8149-946bcfedda20" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="50210820-97a8-6ad4-b79d-91ea5b570044" executionId="c5392852-619e-4dde-89c7-026ef2cb6a49" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="902bf1ce-e0a7-e480-41bb-a3526c3f187c" executionId="76b07f1e-5e57-4f74-8161-e01d20582ac9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="bc3774ea-27f3-0ed5-4912-318b122c1882" executionId="b52e0a9d-4a64-46f9-9190-53d906442b54" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="97aed444-0e4d-04eb-4813-167412f96b10" executionId="31dc3e5c-6fac-41b4-bba0-2fa04ce50dbe" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b7da062-173d-9178-c1f1-e982050532ef" executionId="269fd7ab-1bfb-4157-bb19-767cd9a7b9c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a3abc53-80b1-b380-6949-dba0e0a2baf6" executionId="951eb536-50f0-49f3-8c98-12e392574ea3" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ab1164bf-ac44-0ce1-296c-bf5ab22af618" executionId="4481f653-61f6-4410-9226-63a8af3334c0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5245cb23-1512-f3f7-4d31-c0d26681e9c8" executionId="08031e4f-8a33-463b-b4df-f85c44fe9119" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6dcc7f5a-1dc9-81db-a7b8-6cd439f80941" executionId="46c3bd35-b27c-46d3-9eee-05ae68461c9d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6686204c-9834-afde-35a3-01c3bccd7d18" executionId="e2a86228-a074-4eda-ad74-25b2c6b3e050" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6c7cca2a-af38-3978-fffb-42fa1ccd71af" executionId="6caba710-d5b3-4182-ab1f-51e95dfb6bd7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="982f3cfc-8892-f423-68d7-d9a4298ffa92" executionId="b878eb1a-9b7b-4099-89a6-08f1457762bf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6ebb29cb-83f8-ac36-fcb4-c861ec550c7a" executionId="836d8b7c-e3da-4462-a59b-52c9973e97a6" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ec8a7e1e-4615-2e75-93c6-0b6605f24de5" executionId="a10f0ad9-b750-4717-b877-7ec8ba378aa1" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0170bf49-6d5e-a5a3-a5aa-8ecee34b5223" executionId="4709947f-e57a-4fc7-a568-0d2cd26ef09a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6aaee41-554a-42b2-0010-6554b7404c4c" executionId="c1b7cd5f-9e37-495d-b9a6-5ac6d854f2a9" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="dda85794-e141-2ab7-cd17-b2b5e4afea92" executionId="c27b170b-0ea7-4f49-b3f1-03d25fd3665a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0d709db7-4293-7a23-82cc-eac922048a01" executionId="753fa9fb-3110-48cd-ba96-0105365a4b6e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0437421e-e050-5eab-66f0-66ab765e11e6" executionId="f3791c53-23a4-41df-a905-916f1ac57e76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="145f1a85-be5a-fa7d-1a37-b7d9f0c50878" executionId="d9e0ff2b-e2b7-49b8-8d25-a5e30cc16ffd" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="2ce4ce6d-56a8-c08d-d09f-fc250ced83bc" executionId="b6693d34-bab6-4006-8f5e-4bf8f5d7bded" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3c2b469-c160-f607-613a-107afb6faed8" executionId="965218d4-305a-4461-8e6b-522a17815940" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d2ef7fb8-f905-a4a5-0fcd-2300f81bb9c5" executionId="1a4334a6-b6ef-4f70-82fa-c733190a3b2b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="901a2002-95a8-b36b-d8df-17cd900ad51a" executionId="5549c856-4bcb-48f0-af04-b30449277907" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e6a381dd-e0fd-01ee-4033-ec1ab1aef011" executionId="183649bf-8d30-4d84-bd81-da9eccaac12a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="0bbc58d9-23ed-d38d-17ed-21e8ecc1e287" executionId="28c12f83-bc97-4433-9907-e2880c255f7f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="1a6a502a-f630-9c8f-f9ff-436e08fa3a0e" executionId="9f055d87-a3b0-4599-9c89-831c5e8f6f0f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f20d713b-0551-1fb4-5ec1-63941e8aec46" executionId="9e1b1a44-aade-43aa-9b01-1cf9bf5e6a76" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ce65903b-20b2-81f2-035e-d22368dc760c" executionId="6754a568-3fa9-4ea6-8b0b-d485d47dbb70" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="03310df3-6b18-9e00-c697-b58929ce97b6" executionId="4eda92e3-4512-4f18-bdf9-0dbc2290e283" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="16a9538b-f056-8905-21ad-bcf44ca93273" executionId="d10f1595-6f67-4ca6-8128-9b1a148abda0" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6db89f2a-a508-f56c-cd6b-7d17598a6b31" executionId="188cb56f-b8d7-4700-8940-d25128ec585a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe72309f-5a95-84b8-3502-d472f45e4535" executionId="084639e6-2ffb-435e-9fe1-a89d5f8dbc28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="d8927229-cb31-0d39-223e-decd2cff1f96" executionId="09a49693-4ae2-4512-a9b1-5b4a860d1a5a" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c3d4d31a-07f8-ac00-bb68-cde4a950c859" executionId="18c9ffcb-4c4d-4254-9bc5-60e82d4f3a9b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b2f9587d-3a28-a455-6872-d4c53006f96c" executionId="31d39939-f7a7-4002-9613-e3628cb692a8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="976df7c9-7279-7613-7bf5-ee5091f16f9b" executionId="eb5b2506-9f9b-49c9-b6a0-a9ad66511332" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="8b6b5dea-9f62-9a93-15c8-af25ff562a08" executionId="c62fce2f-4df1-4b23-bc0c-1ba0f30d6daf" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="58bb31bf-f866-fcc3-bf2c-c90b77409f25" executionId="dac43ec7-ff92-4976-8adc-064c75177fa2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4ada77c2-23fb-99ca-707c-99ed63773367" executionId="9a657fd0-f1cd-4e53-b2b1-1fe86ce06032" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="7055f7c9-40e3-426a-ad5d-a350c82f6462" executionId="9cde49ec-39d9-4eb5-a36a-39dbdcdb2a32" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6f2559f-03b5-dd52-7df4-b47a76df944c" executionId="c7091fc3-bece-457e-ad9a-ea7fe49f60e2" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b122e302-a77e-a353-e7ce-65f01c853dad" executionId="91800031-82c7-4aee-adff-7857d8cde39c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="6cf39a05-ac35-3c45-cebc-1ccab9bc1a0e" executionId="457d2a08-a72c-4be7-b57d-c1015588b99d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e73ec9aa-3a2d-22bb-7bf5-06782030c43b" executionId="5cdbc2ef-29b0-4a2f-b375-7d66bb36aadb" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="000bc2bd-3e65-aad8-4841-9f94e5dc78d8" executionId="51f0705e-bd85-4ade-9d6b-fcbf052bd099" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="f6307b15-4d5f-dfad-8215-89cd4df45da4" executionId="bfc83f54-9c29-4f92-8091-946205fc6d0d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c20739e-22af-9cc6-1b80-e12b3b03ebb6" executionId="94b96783-6619-4bbe-8372-10bdbef33331" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4f5e3d7b-2f80-6a83-dda8-cf428cb8980e" executionId="c627025b-4c33-46b6-81c9-fdddad209918" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="892410c5-e2a6-cae3-372b-eeb6819c8d1c" executionId="a70383b2-6fab-4e46-b6da-3eb74e21423d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="28cb9d9e-ca86-2a8b-376e-eb528b026381" executionId="56f8e4f7-25d6-43df-a6bf-f76616a7587c" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4803cf55-176f-e3ec-dc3e-80f51bac7738" executionId="d5c515da-267b-4ab4-9228-80de338c6e91" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5f0f6194-8e86-ed36-6cdf-e2ff4c5ece03" executionId="a4d9918e-258e-4f19-8257-7f8d2ebcff39" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="13dd926d-90c6-0545-93e0-b400bdee6cf4" executionId="dab34303-d8a6-4aab-bfe2-1a72a7c49d43" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b7bb3ab9-11d5-53d8-e3ca-e1ad6412337a" executionId="5f388644-b30a-438b-9a62-c9c890c51828" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="cdc92439-5536-d1e3-e89c-b4f1d64c637e" executionId="425e1e98-d2ab-4a0a-9bfc-3593df7bd498" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="ee1e4cd9-d235-6d64-9313-41bdd0f404c5" executionId="a848a560-0c29-469a-9287-bf027eaae4d8" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="13ecc2ca-4b49-bbf1-601b-624e75ab4310" executionId="ca49db20-2170-4f00-9e6b-e2c999e929a7" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5c7562ae-7b94-db24-e719-3903929c8d20" executionId="1f7faaab-5155-44ad-be32-955eef092f28" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="65f991ce-945d-9504-4a6c-9af1ac03912e" executionId="0e24d634-7c76-496b-b8c6-685edc85200e" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="e325b1f1-314e-f627-ac74-306e170bd244" executionId="265f6678-8c77-488f-82e5-0dbce7d0c13f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="95d726c2-4dbe-897a-ed03-904b02ce5c37" executionId="2335f190-1054-49f2-8063-2cd3116c0a5b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fa57185c-87c0-12dd-d83a-b9bc3d5e1416" executionId="6935bd30-2c3e-4dd2-9123-0e0e7aa5abab" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="70872612-a6c4-bfb7-7c59-f7c42dd3f96e" executionId="c5900cae-408d-4f95-b4db-90c0e3b279e4" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46097dda-7857-0190-b099-7500ae1f518d" executionId="6dea9916-7769-41ec-a8ea-21220b013789" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4fa7ef37-64f5-4c68-6459-360f2b6734da" executionId="c681f937-5403-47f5-a6c1-91b7017e282b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="fe08f54e-87ad-4e42-9487-e184d3e939ab" executionId="e2e2cab3-64fd-4e5d-9960-ba786041a101" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="5430ea53-767d-5a45-edbe-4b9e07e2ccb4" executionId="be718d4b-d448-4693-b35d-03342bcc3b6b" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="98b65c07-4b07-831a-ca85-7d4ce9abc76b" executionId="4564985b-b6a7-41ae-bc0c-9ab93544bf2d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="32c12bad-8105-2424-801b-5e4707db38d4" executionId="56c6aa49-2192-40d7-b535-53e2e23bad3d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="892bbbb4-c988-c34e-58ab-a7fd934e3ef4" executionId="1d29f89e-be24-430c-8175-8a0c3a50ab8d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="b137c478-5f52-d942-f9c8-1bfec8d56c8c" executionId="38869165-e874-47ae-80ae-2fe04ce2a797" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="c39f3f2a-f13d-be65-e09b-e8913ce5d34e" executionId="0af9b119-7b22-486d-843d-7449cd51155f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="46774f67-d6ce-d454-68c6-6397d957abdb" executionId="b2280160-bc12-4fad-86e4-232ecca8ea36" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="67bb7fe3-464f-7ba3-dcab-ad4b87da04cd" executionId="934cb169-09c0-4706-9457-f12f0b39603d" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestEntry testId="4086c928-8c61-8083-16b5-abcbff4151c7" executionId="676bad7c-7bc2-4269-ab8d-b5dd3d12422f" testListId="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+  </TestEntries>
+  <TestLists>
+    <TestList name="Ergebnisse nicht in einer Liste" id="8c84fa94-04c1-424b-9868-57a2d4851a1d" />
+    <TestList name="Alle geladenen Ergebnisse" id="19431567-8539-422a-85d7-44ee4e166bda" />
+  </TestLists>
+  <ResultSummary outcome="Failed">
+    <Counters total="79" executed="79" passed="73" failed="6" error="0" timeout="0" aborted="0" inconclusive="0" passedButRunAborted="0" notRunnable="0" notExecuted="0" disconnected="0" warning="0" completed="0" inProgress="0" pending="0" />
+    <Output>
+      <StdOut>[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v3.1.4+50e68bbb8b (64-bit .NET 10.0.12)&#xD;
+[xUnit.net 00:00:00.05]   Discovering: Iro.Core.Tests&#xD;
+[xUnit.net 00:00:00.11]   Discovered:  Iro.Core.Tests&#xD;
+[xUnit.net 00:00:00.15]   Starting:    Iro.Core.Tests&#xD;
+[xUnit.net 00:00:00.21]       Farbkanal an der Messgrenze. Beleuchtung und Belichtung prüfen; keine zuverlässige Messung möglich.&#xD;
+[xUnit.net 00:00:00.21]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.21]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(147,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Byte endpoint)&#xD;
+[xUnit.net 00:00:00.21]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:00.21]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.21]       Farbkanal an der Messgrenze. Beleuchtung und Belichtung prüfen; keine zuverlässige Messung möglich.&#xD;
+[xUnit.net 00:00:00.21]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.21]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(147,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Byte endpoint)&#xD;
+[xUnit.net 00:00:00.21]            at InvokeStub_MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.21]            at System.Reflection.MethodBaseInvoker.InvokeWithOneArg(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.59]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.59]       Expected: Measured&#xD;
+[xUnit.net 00:00:00.59]       Actual:   InvalidFields&#xD;
+[xUnit.net 00:00:00.59]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.59]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(100,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b)&#xD;
+[xUnit.net 00:00:00.59]            at System.Reflection.MethodBaseInvoker.InterpretedInvoke_Method(Object obj, IntPtr* args)&#xD;
+[xUnit.net 00:00:00.59]            at System.Reflection.MethodBaseInvoker.InvokeDirectByRefWithFewArgs(Object obj, Span`1 copyOfArgs, BindingFlags invokeAttr)&#xD;
+[xUnit.net 00:00:00.61]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.61]       Expected: Measured&#xD;
+[xUnit.net 00:00:00.61]       Actual:   InvalidFields&#xD;
+[xUnit.net 00:00:00.61]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.61]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(100,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b)&#xD;
+[xUnit.net 00:00:00.61]            at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.61]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.64]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.64]       Expected: Measured&#xD;
+[xUnit.net 00:00:00.64]       Actual:   InvalidFields&#xD;
+[xUnit.net 00:00:00.64]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.64]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(100,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b)&#xD;
+[xUnit.net 00:00:00.64]            at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.64]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.66]       Assert.Equal() Failure: Values differ&#xD;
+[xUnit.net 00:00:00.66]       Expected: Measured&#xD;
+[xUnit.net 00:00:00.66]       Actual:   InvalidFields&#xD;
+[xUnit.net 00:00:00.66]       Stack Trace:&#xD;
+[xUnit.net 00:00:00.66]         D:\Source\iro\tests\iro.core.tests\MeasurementRuleTests.cs(100,0): at Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Byte r, Byte g, Byte b)&#xD;
+[xUnit.net 00:00:00.66]            at InvokeStub_MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(Object, Span`1)&#xD;
+[xUnit.net 00:00:00.66]            at System.Reflection.MethodBaseInvoker.InvokeWithFewArgs(Object obj, BindingFlags invokeAttr, Binder binder, Object[] parameters, CultureInfo culture)&#xD;
+[xUnit.net 00:00:00.78]   Finished:    Iro.Core.Tests&#xD;
+</StdOut>
+    </Output>
+    <RunInfos>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:09.7033630+02:00">
+        <Text>[xUnit.net 00:00:00.21]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 0) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:09.7033899+02:00">
+        <Text>[xUnit.net 00:00:00.21]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousEndpointsAreMeasurableButEndpointPileupsAreRejected(endpoint: 255) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:10.0665614+02:00">
+        <Text>[xUnit.net 00:00:00.59]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 100, b: 160) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:10.0878881+02:00">
+        <Text>[xUnit.net 00:00:00.61]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 0, g: 0, b: 0) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:10.1120408+02:00">
+        <Text>[xUnit.net 00:00:00.64]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 100, b: 160) [FAIL]</Text>
+      </RunInfo>
+      <RunInfo computerName="DESKTOP-LJN9LU4" outcome="Error" timestamp="2026-09-27T18:45:10.1331455+02:00">
+        <Text>[xUnit.net 00:00:00.66]     Iro.Core.Tests.MeasurementRuleTests.HomogeneousGenuineEndpointColorsAreNotRejectedSolelyForTheirAbsoluteValues(r: 255, g: 255, b: 255) [FAIL]</Text>
+      </RunInfo>
+    </RunInfos>
+  </ResultSummary>
+</TestRun>

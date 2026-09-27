@@ -1,10 +1,10 @@
 {
   "formatVersion": 2,
   "kind": "iro-analysis-run",
-  "runId": "iro-run-93d317087fe641eb8e61ecc50fd2d0c9",
-  "requestId": "iro-request-ac9d9b85fcac47d6a155f7ba613fbf49",
-  "analyzerVersion": "0.5.4",
-  "createdAtUtc": "2026-09-23T11:21:19.2887741Z",
+  "runId": "iro-run-b03943dd881b47d8ac848255e216e31f",
+  "requestId": "iro-request-fb66b1bdbc1644699ac067927165938a",
+  "analyzerVersion": "0.5.15",
+  "createdAtUtc": "2026-09-27T12:13:24.8336903Z",
   "options": {
     "straighten": true,
     "profileVersion": "synthetic-trial-1",
@@ -31,11 +31,11 @@
   "comparisonBasis": "Istwerte aus PNG-Pixeln; nominale Generatorwerte erst nach Analyse geometrisch zugeordnet. Abweichungen unter St\u00F6rungen sind Diagnosen, keine automatischen Bestehen-/Durchfallen-Urteile.",
   "captures": [
     {
-      "captureId": "irogen-20260923-112116-d356809095354d64bf704c231b307299",
+      "captureId": "irogen-20260927-121321-ed915af42ead4866970e5b4042363f61",
       "imageSha256": "d811a3c7e5447671ce1323ddd0df46d23737f7f4a182a955282f279ae226d13e",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -338,15 +338,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-4ca0a4ba47804d09a24c893bc8fe49a5",
+      "captureId": "irogen-20260927-121322-45d0731884314d1aba4ecfef00265095",
       "imageSha256": "7cacc3f75a5ed5d4036f6b529c53b440123b76453bfd92d676b1b7d1eb75b329",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -649,15 +649,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-4b092ab32b574d688c35624bedfef985",
+      "captureId": "irogen-20260927-121322-40a00f15d2c84bdbb6b33ed88bcf64e4",
       "imageSha256": "fd8e016a79437768cbb8ec1d5627c8a175b47c30401b48dcbc877d745b9ff89c",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -960,15 +960,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-a487a3bab3e24ef2ad2e344dea24861a",
+      "captureId": "irogen-20260927-121322-accf097f999045f89cacdae2db253405",
       "imageSha256": "0b711a267fd1e38fbaf80ab7894f67062fc3a944248acdf70b848b83ab6d8508",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -1042,15 +1042,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-fc2767f3a12f474d94b6b10e9b267fd4",
+      "captureId": "irogen-20260927-121322-4e068b2d0aa0475a8888c9495f37b5c5",
       "imageSha256": "874b40aea19c2150aea91dbd25e8f3f6e1bce6d4d70c2f8dfb24a9baa08e1eb9",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -1125,15 +1125,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-62bbdd4f7b5f476799e783a262b5eeda",
+      "captureId": "irogen-20260927-121322-ed36951640794016812df04de2da244b",
       "imageSha256": "bea13b977673e0aed764b561bef9d1666299b9a9d36643ef5ebf57c1b8f04d27",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -1436,15 +1436,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-3993176ab99f489db8d685558beaec5b",
+      "captureId": "irogen-20260927-121322-e528fc3a764543c3a05036fde386fc77",
       "imageSha256": "00dd3b652b95e47223564bd49351e7274ddc984b1f7e8cdff76f9fa531bedffc",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -1747,15 +1747,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-26cd3cfca59b42108313be46ec000075",
+      "captureId": "irogen-20260927-121322-e5de0f0e02c0418db9a438c20cc0bc0f",
       "imageSha256": "25f85b167e5cecceac3f36de933782b771291b6b39b08be3601cb45bbc0dbc6c",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -2058,15 +2058,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 3 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112117-71b4c484a12244fc862f3fe5dc9826a2",
+      "captureId": "irogen-20260927-121322-07c3110dae164f70af70c6d8a7109dfb",
       "imageSha256": "eb3233019a77a76b0a77f0d9e9b7ecfd4a761dfd1852aba66b584ba08ed53a76",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -2140,15 +2140,15 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     },
     {
-      "captureId": "irogen-20260923-112118-8d08b3a591f341d6873d80a5b2fead5b",
+      "captureId": "irogen-20260927-121322-09dcacce0b8d4766aa79638843dc4108",
       "imageSha256": "461b512ac0af5a5180ab75f1d117dccc831da76985553f4dde01580df4c8d1cf",
       "error": null,
       "analysis": {
-        "analyzerVersion": "0.5.4",
+        "analyzerVersion": "0.5.15",
         "options": {
           "straighten": true,
           "profileVersion": "synthetic-trial-1",
@@ -2222,7 +2222,7 @@
       },
       "evaluation": {
         "status": "Passed",
-        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben. Keine Aussage zur Farbgenauigkeit."
+        "details": "Alle hinterlegten Verhaltenserwartungen erf\u00FCllt; 0 Felder freigegeben.  Keine Aussage zur Farbgenauigkeit."
       }
     }
   ]

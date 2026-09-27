@@ -2,7 +2,7 @@ namespace Iro.Core.Analysis;
 
 public static class RegionSampler
 {
-    public static RegionMeasurement Measure(RgbFrame image, PixelRect bounds, AnalysisOptions options, CancellationToken token = default)
+    public static RegionMeasurement Measure(RgbFrame image, PixelRect bounds, AnalysisOptions options, CancellationToken token = default, IReadOnlyList<PixelPoint>? mask = null)
     {
         ArgumentNullException.ThrowIfNull(image); ArgumentNullException.ThrowIfNull(options); options.Validate();
         if (bounds.X < 0 || bounds.Y < 0 || bounds.Width <= 0 || bounds.Height <= 0 || bounds.Right > image.Width || bounds.Bottom > image.Height)
@@ -17,6 +17,7 @@ public static class RegionSampler
             return new(bounds, false, "Messfläche liegt teilweise außerhalb des Originalbilds.", null, 0, 0, 0, 0);
         foreach (var sample in image.Sample(bounds, step, token))
         {
+            if (mask != null && !ContourMask.Contains(mask, sample.X + (image.Rotation == null ? .5 : 0), sample.Y + (image.Rotation == null ? .5 : 0))) continue;
             var pixel = sample.Pixel; samples.Add(pixel); r[pixel.R]++; g[pixel.G]++; b[pixel.B]++;
             int tile = Math.Min(2, (int)((sample.Y - bounds.Y) * 3 / bounds.Height)) * 3
                 + Math.Min(2, (int)((sample.X - bounds.X) * 3 / bounds.Width));
@@ -73,7 +74,7 @@ public static class RegionSampler
             spatialDelta > options.MaximumSpatialDeltaE ? "Messfläche räumlich ungleichmäßig. Gleichmäßigeres Licht und eine einheitliche Fläche verwenden." :
             mad > options.MaximumChannelMad || rejected > options.MaximumOutlierFraction ? "Messfläche durch Flecken, Reflexe oder ungleichmäßiges Licht gestört." : null;
         return new(bounds, reason == null, reason, reason == null ? ColorMath.LinearToLab(lr / retained, lg / retained, lb / retained) : null,
-            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta, HasUnresolvedChannels = unresolvedChannels };
+            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta, HasUnresolvedChannels = unresolvedChannels, Polygon = mask == null ? null : ContourMask.Intersect(mask, bounds) };
     }
 }
 

@@ -18,16 +18,32 @@ public sealed record GeneratedScene(GeneratorOptions Options, Rgb Wall, IReadOnl
 
 public static class SceneGenerator
 {
-    public const string Version = "1.5.0";
+    public const string Version = "1.6.0";
 
     // WPF text rendering requires an STA. The caller runs this on a dedicated STA worker.
     public static GeneratedScene Generate(GeneratorOptions o, CancellationToken cancellationToken = default)
     {
         o.Validate();
         var random = new SeedRandom(o.Seed);
-        double hue = random.Next() * 360, saturation = .25 + random.Next() * .40;
+        double hue = random.Next() * 360;
+        double saturation = o.ColorProfile switch
+        {
+            ColorProfile.Bright => .18 + random.Next() * .37,
+            ColorProfile.Pale => .03 + random.Next() * .12,
+            ColorProfile.LowSaturation => random.Next() * .06,
+            _ => .25 + random.Next() * .40
+        };
         double step = Math.Min(o.ShadeStep / 100, .76 / Math.Max(1, o.FieldCount - 1));
-        double span = step * (o.FieldCount - 1), center = .12 + span / 2 + random.Next() * (.76 - span);
+        double span = step * (o.FieldCount - 1);
+        (double minimumLightness, double maximumLightness) = o.ColorProfile switch
+        {
+            ColorProfile.Bright => (.68, .95),
+            ColorProfile.Pale => (.58, .90),
+            ColorProfile.LowSaturation => (.25, .78),
+            _ => (.12, .88)
+        };
+        double availableCenterRange = maximumLightness - minimumLightness - span;
+        double center = minimumLightness + span / 2 + random.Next() * Math.Max(0, availableCenterRange);
         Rgb[] colors = Enumerable.Range(0, o.FieldCount).Select(i => ColorScience.Hsl(hue, saturation, center + span / 2 - i * step)).ToArray();
         Rgb wall = colors[o.MatchingField - 1];
         if (o.WallDifference == WallDifference.Opposite) wall = ColorScience.Hsl(hue + 180, .65, .5);
@@ -141,7 +157,9 @@ public static class SceneGenerator
                 { r = 164; g = 116; b = 82; }
                 double glare = o.Glare == Severity.None ? 0 : Math.Min(.98, (int)o.Glare * .36 * Math.Exp(-Math.Pow((u - .55) / .36, 2) - Math.Pow((v - .38) / .23, 2)) * (inside ? 1 : .12));
                 double haze = (int)o.Haze * .13;
-                double whiteMix = 1 - (1 - glare) * (1 - haze);
+                // Test-only, whole-image encoded-sRGB veil: level 0 = 0 %, each step adds 4 %, level 10 = 40 %.
+                double reflectionVeil = o.ReflectionVeilLevel * .04;
+                double whiteMix = 1 - (1 - glare) * (1 - haze) * (1 - reflectionVeil);
                 r += (255 - r) * whiteMix; g += (255 - g) * whiteMix; b += (255 - b) * whiteMix;
                 if (o.Noise != Severity.None)
                 {

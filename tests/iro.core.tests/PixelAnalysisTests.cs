@@ -60,6 +60,19 @@ public class PixelAnalysisTests
         Assert.Null(result.Fields[1].DeltaE00);
         Assert.False(result.Fields[1].IsNearest);
         Assert.Equal(2, result.Fields.Count(f => f.MeasurementAllowed));
+        Assert.Contains("2 von 3 erkannten Feldern", result.Hint);
+        Assert.Contains("nur für die auswertbaren sichtbaren Felder", result.Hint);
+        Assert.Contains("kein vollständiger Streifenvergleich", result.Hint);
+        var display = new AnalysisPresentation();
+        display.Present(first);
+        display.Present(result);
+        Assert.Equal("Teilweise auswertbar", display.Heading);
+        Assert.Equal(result.Hint, display.Message);
+        Assert.Equal("–", display.Fields[1].Value);
+        Assert.Equal(2, display.Fields.Count(f => f.Value != "–"));
+        display.Present(first);
+        Assert.Equal("Farbvergleich", display.Heading);
+        Assert.DoesNotContain("kein vollständiger", display.Message);
     }
 
     [Fact]

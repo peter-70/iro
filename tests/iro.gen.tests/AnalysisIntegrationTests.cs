@@ -23,6 +23,62 @@ public class AnalysisIntegrationTests
         using var stream=new MemoryStream();encoder.Save(stream);return stream.ToArray();
     });
     [Theory]
+    [InlineData(false, false)]
+    [InlineData(true, false)]
+    [InlineData(false, true)]
+    [InlineData(true, true)]
+    public async Task CropQualityAndPartialScopeSurvivePng(bool horizontal, bool clean)
+    {
+        const int w = 800, h = 600;
+        var pixels = Enumerable.Repeat((byte)140, w * h * 3).ToArray();
+        for (int field = 0; field < 3; field++)
+        {
+            int top = field == 0 ? 0 : (clean ? 78 : 34) + (field - 1) * 128;
+            for (int y = top; y < top + (field == 0 ? (clean ? 60 : 16) : 110); y++)
+            for (int x = 540; x < 700; x++)
+            for (int c = 0; c < 3; c++)
+                pixels[(y * w + x) * 3 + c] = (byte)(60 + field * 30 + c * 15 + (field == 0 && !clean ? (x - 540) * 35 / 159 : 0));
+        }
+        int width = w, height = h;
+        if (horizontal)
+        {
+            var turned = new byte[pixels.Length];
+            for (int y = 0; y < h; y++)
+            for (int x = 0; x < w; x++)
+                Array.Copy(pixels, (y * w + x) * 3, turned, (x * h + h - 1 - y) * 3, 3);
+            pixels = turned; width = h; height = w;
+        }
+        var png = Sta(() => {
+            var bitmap = BitmapSource.Create(width, height, 96, 96, System.Windows.Media.PixelFormats.Rgb24, null, pixels, width * 3);
+            var encoder = new PngBitmapEncoder(); encoder.Frames.Add(BitmapFrame.Create(bitmap));
+            using var stream = new MemoryStream(); encoder.Save(stream); return stream.ToArray();
+        });
+        var result = await new PngAnalysisApi().AnalyzeAsync(png, new());
+        var display = new AnalysisPresentation(); display.Present(result);
+        if (clean)
+        {
+            Assert.Equal(AnalysisStatus.PartiallyMeasured, result.Status);
+            Assert.Equal(3, result.Fields.Count(f => f.MeasurementAllowed));
+            Assert.Contains("kein vollständiger Streifenvergleich", result.Hint);
+            Assert.Equal("Teilweise auswertbar", display.Heading);
+            Assert.All(display.Fields, field => Assert.NotEqual("–", field.Value));
+        }
+        else
+        {
+            Assert.Equal(AnalysisStatus.UnsuitableGeometry, result.Status);
+            Assert.DoesNotContain(result.Fields, f => f.MeasurementAllowed || f.DeltaE00 != null || f.IsNearest);
+            Assert.All(display.Fields, field => Assert.Equal("–", field.Value));
+            Assert.Contains("sichere Auswertung", display.Message);
+        }
+        string root = AppContext.BaseDirectory;
+        while (!File.Exists(Path.Combine(root, "iro.slnx"))) root = Directory.GetParent(root)!.FullName;
+        string folder = Path.Combine(root, "tests", "adjustments", "endbeschnitt-20260924");
+        Directory.CreateDirectory(folder);
+        string name = (clean ? "geeignet-" : "gestoert-") + (horizontal ? "waagerecht" : "senkrecht");
+        File.WriteAllBytes(Path.Combine(folder, name + ".png"), png);
+        File.WriteAllText(Path.Combine(folder, name + ".md"), $"# PNG-Gegenprobe {name}\n\nAnalyse {result.AnalyzerVersion}: {result.Status}. Freigegebene sichtbare Felder: {result.Fields.Count(f => f.MeasurementAllowed)}.\n\n{result.Hint}\n");
+    }
+    [Theory]
     [InlineData(StripOrientation.Vertical,StripPosition.Right)]
     [InlineData(StripOrientation.Vertical,StripPosition.Left)]
     [InlineData(StripOrientation.Vertical,StripPosition.Center)]

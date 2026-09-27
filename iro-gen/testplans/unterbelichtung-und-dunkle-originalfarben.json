@@ -1,0 +1,806 @@
+{
+  "defaults": {
+    "labels": false,
+    "roundedTop": false,
+    "stripLengthPercent": 70,
+    "height": 1200,
+    "matchingField": 1,
+    "fieldCount": 3,
+    "width": 1600,
+    "colors": {
+      "palette": [
+        {
+          "g": 60,
+          "b": 60,
+          "r": 60
+        },
+        {
+          "g": 100,
+          "b": 100,
+          "r": 100
+        },
+        {
+          "g": 160,
+          "b": 160,
+          "r": 160
+        }
+      ],
+      "anchorField": 1,
+      "coverageBand": "Belichtungsuntersuchung",
+      "targetDeltaE": 0,
+      "wall": {
+        "g": 140,
+        "b": 140,
+        "r": 140
+      }
+    },
+    "gapPercent": 6,
+    "seed": 12345,
+    "stripWidthPercent": 28
+  },
+  "name": "Unterbelichtung: dunkle Originalfarben und offene Belichtungsdiagnose",
+  "cases": [
+    {
+      "count": 1,
+      "options": {
+        "colors": {
+          "palette": [
+            {
+              "g": 60,
+              "b": 60,
+              "r": 60
+            },
+            {
+              "g": 100,
+              "b": 100,
+              "r": 100
+            },
+            {
+              "g": 160,
+              "b": 160,
+              "r": 160
+            }
+          ],
+          "anchorField": 1,
+          "coverageBand": "Dunkle Gegenprobe",
+          "targetDeltaE": 0,
+          "wall": {
+            "g": 10,
+            "b": 10,
+            "r": 10
+          }
+        },
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Dunkle Originalwand 10 - Vertical - SOLL drei Felder messbar",
+      "expected": {
+        "releasedFieldCount": 3,
+        "basis": "Konstruierte homogene Originalfarben ohne Stoerung; unabhängige Dunkelheits-Gegenproben in UnderexposureEvidenceTests. Keine reale Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "verification": "verified",
+        "formatVersion": 1
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "colors": {
+          "palette": [
+            {
+              "g": 60,
+              "b": 60,
+              "r": 60
+            },
+            {
+              "g": 100,
+              "b": 100,
+              "r": 100
+            },
+            {
+              "g": 160,
+              "b": 160,
+              "r": 160
+            }
+          ],
+          "anchorField": 1,
+          "coverageBand": "Dunkle Gegenprobe",
+          "targetDeltaE": 0,
+          "wall": {
+            "g": 30,
+            "b": 30,
+            "r": 30
+          }
+        },
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Dunkle Originalwand 30 - Vertical - SOLL drei Felder messbar",
+      "expected": {
+        "releasedFieldCount": 3,
+        "basis": "Konstruierte homogene Originalfarben ohne Stoerung; unabhängige Dunkelheits-Gegenproben in UnderexposureEvidenceTests. Keine reale Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "verification": "verified",
+        "formatVersion": 1
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -1,
+        "noise": "None",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -1 EV - Rauschen None - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -1,
+        "noise": "Light",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -1 EV - Rauschen Light - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -2,
+        "noise": "None",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -2 EV - Rauschen None - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -2,
+        "noise": "Light",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -2 EV - Rauschen Light - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -3,
+        "noise": "None",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -3 EV - Rauschen None - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -3,
+        "noise": "Light",
+        "orientation": "Vertical",
+        "position": "Right"
+      },
+      "coverRange": false,
+      "name": "Belichtung -3 EV - Rauschen Light - Vertical - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "colors": {
+          "palette": [
+            {
+              "g": 60,
+              "b": 60,
+              "r": 60
+            },
+            {
+              "g": 100,
+              "b": 100,
+              "r": 100
+            },
+            {
+              "g": 160,
+              "b": 160,
+              "r": 160
+            }
+          ],
+          "anchorField": 1,
+          "coverageBand": "Dunkle Gegenprobe",
+          "targetDeltaE": 0,
+          "wall": {
+            "g": 10,
+            "b": 10,
+            "r": 10
+          }
+        },
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Dunkle Originalwand 10 - Horizontal - SOLL drei Felder messbar",
+      "expected": {
+        "releasedFieldCount": 3,
+        "basis": "Konstruierte homogene Originalfarben ohne Stoerung; unabhängige Dunkelheits-Gegenproben in UnderexposureEvidenceTests. Keine reale Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "verification": "verified",
+        "formatVersion": 1
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "colors": {
+          "palette": [
+            {
+              "g": 60,
+              "b": 60,
+              "r": 60
+            },
+            {
+              "g": 100,
+              "b": 100,
+              "r": 100
+            },
+            {
+              "g": 160,
+              "b": 160,
+              "r": 160
+            }
+          ],
+          "anchorField": 1,
+          "coverageBand": "Dunkle Gegenprobe",
+          "targetDeltaE": 0,
+          "wall": {
+            "g": 30,
+            "b": 30,
+            "r": 30
+          }
+        },
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Dunkle Originalwand 30 - Horizontal - SOLL drei Felder messbar",
+      "expected": {
+        "releasedFieldCount": 3,
+        "basis": "Konstruierte homogene Originalfarben ohne Stoerung; unabhängige Dunkelheits-Gegenproben in UnderexposureEvidenceTests. Keine reale Farbgenauigkeitszusage.",
+        "measurementAllowed": true,
+        "verification": "verified",
+        "formatVersion": 1
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -1,
+        "noise": "None",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -1 EV - Rauschen None - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -1,
+        "noise": "Light",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -1 EV - Rauschen Light - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -2,
+        "noise": "None",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -2 EV - Rauschen None - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -2,
+        "noise": "Light",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -2 EV - Rauschen Light - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -3,
+        "noise": "None",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -3 EV - Rauschen None - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    },
+    {
+      "count": 1,
+      "options": {
+        "exposureStops": -3,
+        "noise": "Light",
+        "orientation": "Horizontal",
+        "position": "Bottom"
+      },
+      "coverRange": false,
+      "name": "Belichtung -3 EV - Rauschen Light - Horizontal - SOLL relativen Vergleich erhalten",
+      "expected": {
+        "formatVersion": 3,
+        "verification": "verified",
+        "basis": "Ganzbildweite Generator-Belichtung wirkt identisch auf Wand und Farbstreifen. Für die ausdrücklich gesetzten neutralen sRGB-Werte Wand 140 und Felder 60/100/160 ergibt die vorab festgelegte relative Reihenfolge field-3 vor field-2 vor field-1; geprüft werden Freigabe, sichere geometrische Feldzuordnung und diese Rangfolge im synthetischen Einzelbild. Keine absolute Farb-, Kamera- oder EV-Grenzzusage.",
+        "measurementAllowed": true,
+        "releasedFieldCount": 3,
+        "fields": [
+          {
+            "fieldId": "field-1",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-2",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          },
+          {
+            "fieldId": "field-3",
+            "measurementAllowed": true,
+            "minimumIntersectionOverUnion": 0.9
+          }
+        ],
+        "ranking": {
+          "groups": [
+            [
+              "field-3"
+            ],
+            [
+              "field-2"
+            ],
+            [
+              "field-1"
+            ]
+          ],
+          "tieTolerance": 0
+        }
+      }
+    }
+  ],
+  "formatVersion": 2,
+  "kind": "irogen-test-plan"
+}

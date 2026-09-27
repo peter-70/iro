@@ -20,11 +20,16 @@ public sealed class RgbFrame
     public int Height { get; }
     public int Stride { get; }
     private readonly ReadOnlyMemory<byte> pixels;
-    public ReadOnlyMemory<byte> Pixels => Source == null ? pixels : throw new InvalidOperationException("Gedrehte Analysesicht besitzt keinen interpolierten Farbpuffer.");
+    // Export a detached copy: ReadOnlyMemory alone does not protect its backing array.
+    public ReadOnlyMemory<byte> Pixels => Source == null ? pixels.ToArray() : throw new InvalidOperationException("Gedrehte Analysesicht besitzt keinen interpolierten Farbpuffer.");
     internal RgbFrame? Source { get; }
     internal ImageRotation? Rotation { get; }
     internal RgbFrame(RgbFrame source, ImageRotation rotation)
     {
+        ArgumentNullException.ThrowIfNull(source);
+        ArgumentNullException.ThrowIfNull(rotation);
+        if (source.Source != null || source.Rotation != null || rotation.SourceWidth != source.Width || rotation.SourceHeight != source.Height)
+            throw new ArgumentException("Drehung muss direkt zur unveränderten Originalaufnahme passen.");
         Source = source; Rotation = rotation; Width = rotation.Width; Height = rotation.Height; Stride = checked(Width * 3);
     }
     internal bool IsValidPixel(int x, int y)
@@ -66,7 +71,7 @@ public sealed class RgbFrame
     {
         if (width < 1 || height < 1 || (long)width * height > 12_000_000 || stride < (long)width * 3 || (long)stride * height > pixels.Length)
             throw new ArgumentException("Ungültiger RGB-Puffer: Bildgröße, Stride oder Datenlänge.");
-        Width = width; Height = height; Stride = stride; this.pixels = pixels;
+        Width = width; Height = height; Stride = stride; this.pixels = pixels.Slice(0, checked(stride * height)).ToArray();
     }
     public RgbColor GetPixel(int x, int y)
     {
@@ -76,7 +81,7 @@ public sealed class RgbFrame
             var p = Rotation.ToSource(x + .5, y + .5);
             return IsValidPixel(x, y) ? Source!.GetPixel((int)p.X, (int)p.Y) : default;
         }
-        var data = Pixels.Span; int offset = y * Stride + x * 3;
+        var data = pixels.Span; int offset = y * Stride + x * 3;
         return new(data[offset], data[offset + 1], data[offset + 2]);
     }
 }
@@ -84,7 +89,8 @@ public sealed class RgbFrame
 public readonly record struct RgbColor(byte R, byte G, byte B);
 public readonly record struct LabColor(double L, double A, double B);
 public enum ReferenceMode { SharedAutomaticTrial, AdjacentPerFieldTrial }
-public enum AnalysisHintCode { None, Other, PerspectiveTaper }
+// Additive stable codes. UnevenSurface describes evidence, not its physical cause.
+public enum AnalysisHintCode { None, Other, PerspectiveTaper, UnusableBlur, ChannelLimit, UnevenSurface }
 public enum AnalysisStatus { Measured, PartiallyMeasured, NoPattern, AmbiguousPattern, UnsuitableGeometry, InvalidReference, InvalidFields }
 
 /// <summary>Explicit experimental profile; these thresholds are not a product/device accuracy promise.</summary>

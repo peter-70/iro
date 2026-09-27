@@ -1,6 +1,14 @@
 # Automatische Verhaltenserwartungen im Testwerkzeug
 
-23. September 2026 · Plan 1.33 · IroGen 1.5.0 · Analyse 0.5.4.
+Aktueller Zusatz vom 27. September 2026 · Plan 1.49 · Analyse 0.5.14:
+
+Erwartungsformat **2** ergänzt vollständige Felderwartungen: `fieldId`, `measurementAllowed`, `minimumIntersectionOverUnion` (Standard 0,9; zulässig 0,45 bis 1), optional `deltaE00` und `absoluteTolerance` als Paar. Doppelte, fehlende oder widersprüchliche Einträge sind ungültig. Erwartete gesperrte Felder dürfen unerkannt bleiben; das bestätigt keine Erkennung. Zusätzliche freigegebene Flächen verhindern das Bestehen. Einzelbildzuordnung erst nach der Pixelanalyse; keine Verfolgung über Bilder. Numerische Sollwerte werden ausdrücklich hinterlegt und fachlich begründet, nicht aus nominalen Materialabständen oder aktuellen Ergebnissen übernommen. Details und Grenzen: [Prüfprotokoll mit Befehlen](felderwartungen-pruefung-2026-09-27.md), [ladbarer Drei-Bilder-Plan](../iro-gen/testplans/feldzuordnung-und-messwerte.json).
+
+Äußeres Testplan-/Ergebnisformat bleibt 2, verschachtelte Erwartungsversion 1 bleibt gültig. Fehlende Daten bestehen nicht automatisch. Bestehende Auswertungen ändern sich nicht rückwirkend. Umsetzung und gezielte Prüfung dieses Zusatzes bestanden; vollständige Datenabdeckung und Nutzerabnahme bleiben offen.
+
+## Historischer Stand der ersten Stufe
+
+Die folgenden Abschnitte beschreiben den nachgewiesenen Stand vom 23. September 2026 (Plan 1.33, IroGen 1.5.0, Analyse 0.5.4); seine damalige Einschränkung ohne Feld-/Wertprüfung wird durch den obigen Zusatz erweitert.
 
 ## Umfang und Trennung
 
@@ -48,7 +56,17 @@ Gezielte Tests prüfen falsche Freigaben, falsche Feldanzahlen, falsche/fehlende
 
 - [x] Erste Stufe umgesetzt.
 - [x] Gezielte technische Prüfung bestanden.
-- [ ] Nutzer-Gegenlauf und ausdrückliche Abnahme.
+- [x] Nutzer-Gegenlauf: zehn Erwartungen erfüllt, belegt durch [Bericht vom 23. September 2026](../iro-gen/testplans/iro-testbericht-20260923-133659.md).
+- [ ] Ausdrückliche Nutzerabnahme.
 - [ ] Teilaufgabe erledigt.
 
 Abnahme in Klartext: „IroGen vergleicht die geprüften Freigabe-, Feldanzahl- und Hinweiserwartungen mit den tatsächlichen Ergebnissen. Abweichungen werden verständlich angezeigt und exportiert. Ungeprüfte und historische Fälle werden nicht automatisch als bestanden ausgegeben.“
+
+## Hinweispräzisierung vom 27. September 2026, Plan 1.50
+
+Analyse 0.5.15 ergänzt `UnusableBlur`, `ChannelLimit` und `UnevenSurface` am bestehenden Haupt-Hinweiscode. Bedeutung: belegte unbrauchbare Unschärfe, Farbkanal an der Messgrenze, räumlich ungleichmäßige Messfläche. Keine Ursachenbehauptung für Beleuchtung. Priorität, Sperren und Struktur unverändert; Enums und Schemata additiv erweitert. Frühere Enumnummern erhalten. Ältere Leser ohne diese Erweiterung unterstützen die neuen Codes nicht; vorhandene historische Ergebnisse bleiben unverändert lesbar und werden nicht umbewertet. Fehlender Code bleibt unbekannt, `Other` unbestimmt. [Prüfnachweise und genaue Shellaufrufe](qualitaetsgruende-pruefung-2026-09-27.md).
+
+
+## Rangprüfung vom 27. September 2026, Plan 1.51
+
+Erwartungsformat **3** verlangt zusätzlich `ranking.groups` (nächste Gruppe zuerst; alle erwarteten freigegebenen Felder genau einmal) und `ranking.tieTolerance`. Innerhalb einer Gruppe muss jedes Wertepaar innerhalb der Toleranz liegen, zwischen Gruppen gilt eine Trennung um mehr als die Toleranz. Separat wird die unveränderte Kennzeichnung aller exakten minimalen Werte überprüft. Keine Produktschwelle oder bildübergreifende Bestätigung. `evaluation.ranking` speichert den separaten Status, paarweise Beziehungen/Differenzen und die Korrektheit der Minima-Kennzeichnung. Äußere Testplan-/Ergebnisversion 2 bleibt erhalten; alte verschachtelte Erwartungen 1/2 bleiben lesbar und enthalten keine Rangprüfung. [Vollständiger Vertrag, Tests und Grenzen](rangfolge-pruefung-2026-09-27.md).

@@ -1,0 +1,38 @@
+[
+  {
+    "Path": "src/iro.core/Analysis/RegionSampler.cs",
+    "SHA256": "A3F958B7608594D29B6F5425E3B8B79D247DA81EC88B0CD6448C84855F89CD18"
+  },
+  {
+    "Path": "src/iro.core/Analysis/MeasurementSafety.cs",
+    "SHA256": "E301DD1CB30825EA59942F4941E6C265486151375B300211C935A8DB3DBB8F24"
+  },
+  {
+    "Path": "src/iro.core/Analysis/ImageAnalyzer.cs",
+    "SHA256": "B185579CBD1311EC29DBB519A706B0757163704D37EC746EFD7B05D3E3A4DA70"
+  },
+  {
+    "Path": "src/iro.core/Analysis/AnalysisPresentation.cs",
+    "SHA256": "D2FEE664DF5E917FE0DFF0C931756A490C71FA204B1547B010D6CE7F87246CF6"
+  },
+  {
+    "Path": "src/iro.app/MainPage.xaml",
+    "SHA256": "F49EC9EE4A5970B2D7A682AB6AE8874D72745FCE550250D9F36E873E4783DCA9"
+  },
+  {
+    "Path": "src/iro.app/MainPage.xaml.cs",
+    "SHA256": "D4BBC99BE906080EAD05FE12DFAF960266D0F56826501A03E77990EB539F65D3"
+  },
+  {
+    "Path": "tests/iro.core.tests/MeasurementRuleTests.cs",
+    "SHA256": "78E3C29570BBB35F8F9255CF4713671895D9A8C3456C06B5BAD5EB3798ACDEC4"
+  },
+  {
+    "Path": "tests/abschluss-pruefbestand.json",
+    "SHA256": "D76E8505B14BEC8485CB9C6F10E76A3BBB562B6ECD47D4A0234261D90DD80B93"
+  },
+  {
+    "Path": "tests/Invoke-AbschlussPruefbestand.ps1",
+    "SHA256": "526EED72CE35E2D94EE6485E27673B97F3729924347D5B7B272CC0001C0B17A3"
+  }
+]

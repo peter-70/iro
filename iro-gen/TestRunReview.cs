@@ -34,8 +34,9 @@ public sealed record TestRunRow(
             Expectation.MeasurementAllowed is bool allowed ? allowed ? "Messfreigabe" : "Vollständige Sperre" : null,
             Expectation.ReleasedFieldCount is int count ? $"{count} freigegebene Felder" : null,
             Expectation.RequiredHint is { } required ? "Hinweis erforderlich: " + ExpectationEvaluator.HintText(required) : null,
-            Expectation.ForbiddenHint is { } forbidden ? "Hinweis unzulässig: " + ExpectationEvaluator.HintText(forbidden) : null
-        }.Where(s => s != null));
+            Expectation.ForbiddenHint is { } forbidden ? "Hinweis unzulässig: " + ExpectationEvaluator.HintText(forbidden) : null,
+            Expectation.Ranking?.Description
+        }.Where(s => s != null).Concat(Expectation.Fields?.Select(f => f.Description) ?? []));
     public bool IsProblem => CheckStatus is ExpectationStatus.Failed or ExpectationStatus.Error
         || (CheckStatus != ExpectationStatus.Passed && Verdict != ReviewVerdict.NominalUnauffaellig)
         || Verdict is ReviewVerdict.NominalAbweichend or ReviewVerdict.Fehler;
@@ -132,7 +133,7 @@ public static class TestRunReview
         var verdict = released == 0 ? ReviewVerdict.Abgewiesen
             : expected == 0 || measured == 0 || maxDeviation == null ? ReviewVerdict.OhneSollvergleich
             : maxDeviation > tolerance ? ReviewVerdict.NominalAbweichend
-            : measured < expected || unexpected > 0 ? ReviewVerdict.Teilweise
+            : capture.Analysis?.Status == AnalysisStatus.PartiallyMeasured || measured < expected || unexpected > 0 ? ReviewVerdict.Teilweise
             : ReviewVerdict.NominalUnauffaellig;
 
         string finding = verdict == ReviewVerdict.OhneSollvergleich
@@ -264,6 +265,8 @@ public static class TestRunReview
             if (text.Length == 0 || text == neutral || text == "null") continue;
             set.Add($"{label}: {Strength(text)}");
         }
+        if (options.TryGetProperty("reflectionVeilLevel", out var veil) && veil.TryGetInt32(out int veilLevel) && veilLevel > 0)
+            set.Add($"Gleichmäßiger Reflexschleier: Stufe {veilLevel} ({veilLevel * 4} % Weißmischung)");
         if (options.TryGetProperty("verticalView", out var view) && view.GetString() != "None"
             && options.TryGetProperty("verticalDirection", out var direction))
             set.Add("Blickrichtung: " + (direction.GetString() switch { "FromAbove" => "von oben", "FromBelow" => "von unten", _ => "zufällig oben/unten" }));

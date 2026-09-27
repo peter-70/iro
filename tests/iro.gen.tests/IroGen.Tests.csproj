@@ -15,5 +15,7 @@
     <None Update="ciede2000testdata.txt" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup><None Include="../../src/iro.app/Resources/Raw/test-*.png" Link="%(Filename)%(Extension)" CopyToOutputDirectory="PreserveNewest" /></ItemGroup>
+  <ItemGroup><Compile Include="../fixtures/ReflectionFixture.cs" Link="Fixtures/ReflectionFixture.cs" /></ItemGroup>
+  <ItemGroup><Compile Include="../fixtures/ProjectiveFixture.cs" Link="Fixtures/ProjectiveFixture.cs" /></ItemGroup>
 </Project>
 

@@ -7,6 +7,7 @@ public enum ViewStrength { None, Light, Strong, VeryStrong }
 public enum VerticalViewDirection { Random, FromAbove, FromBelow }
 public enum WallSeparation { None, Small, Greater, Large }
 public enum WallDifference { Exact, Light, Medium, Strong, Opposite }
+public enum ColorProfile { General, Bright, Pale, LowSaturation }
 public enum CameraDistance { Normal, TooClose, TooFar, Near, Nearer, Far, Farther }
 
 public sealed record GeneratorOptions
@@ -27,6 +28,7 @@ public sealed record GeneratorOptions
     public double MarginPercent { get; init; } = 6;
     public double ShadeStep { get; init; } = 5;
     public int MatchingField { get; init; } = 3;
+    public ColorProfile ColorProfile { get; init; }
     public WallDifference WallDifference { get; init; }
     public bool RoundedTop { get; init; } = true;
     public bool VariableFieldHeights { get; init; }
@@ -50,6 +52,7 @@ public sealed record GeneratorOptions
     public Severity Vignette { get; init; }
     public Severity Occlusion { get; init; }
     public Severity Haze { get; init; }
+    public int ReflectionVeilLevel { get; init; }
     public double ExposureStops { get; init; }
 
     public void Validate()
@@ -65,7 +68,7 @@ public sealed record GeneratorOptions
         Range(StripWidthPercent, 5, 95, "Streifenbreite"); Range(StripLengthPercent, 10, 98, "Streifenlänge");
         Range(GapPercent, 0, 15, "Feldabstand"); Range(MarginPercent, 0, 25, "Randabstand");
         Range(ShadeStep, 0.5, 10, "Helligkeitsabstufung"); Range(RotationDegrees, -80, 80, "Drehung");
-        Range(ExposureStops, -3, 3, "Belichtung");
+        Range(ExposureStops, -3, 3, "Belichtung"); Range(ReflectionVeilLevel, 0, 10, "Gleichmäßiger Reflexschleier");
         if (FieldWidthFactors is { } widths)
         {
             if (widths.Length != FieldCount)

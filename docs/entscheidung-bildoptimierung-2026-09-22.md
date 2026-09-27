@@ -1,5 +1,13 @@
 # Entscheidungsprotokoll: Bildoptimierung vor der Farbanalyse
 
+## Verbindliche Präzisierung vom 27. September 2026 – vor allen Verfahrensbewertungen lesen
+
+Iro ist kein absolutes Farbmessgerät. Wand und Farbreferenz stehen im selben Foto unter denselben Aufnahmebedingungen; maßgeblich ist ihre relative Farbbeziehung. Eine global und gleichmäßig auf beide wirkende Veränderung ist deshalb nicht allein wegen absolut geänderter Pixel ein Fehler. Eine Maßnahme ist nur erforderlich, wenn sie einen konkreten Schaden am relativen Vergleich verhindert oder untersucht.
+
+Vor jeder Analyse, Implementierung und Prüfung ist dieser Bezug kurz zu benennen. Nach jedem Test ist festzuhalten, ob Wand und Streifen gleich beeinflusst wurden und der relative Vergleich dennoch funktionierte, oder welcher unterschiedliche Einfluss die Beziehung verfälschte. Keine Korrektur, Warnung, Sperre oder Schwelle allein wegen absoluter Helligkeit, Dunkelheit, Blässe oder Farbverschiebung einführen.
+
+Diese Präzisierung ersetzt pauschale ältere Wertungen in diesem Dokument, soweit sie eine Aufnahme allein aufgrund absoluter Bildmerkmale verwerfen. Sie ändert weder das Verbot getrennter Wand-/Streifenkorrekturen noch die Pflicht, nachweislichen Informationsverlust und unterschiedliche Einflüsse konservativ zu behandeln.
+
 ## 1. Ziel dieses Protokolls
 
 Dieses Protokoll legt fest, welche Bildoptimierungen Iro vor der Analyse verwenden darf und welche Verfahren ausgeschlossen werden müssen.

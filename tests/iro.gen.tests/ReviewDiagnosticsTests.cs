@@ -12,7 +12,8 @@ public class ReviewDiagnosticsTests
     [InlineData(0, ReviewVerdict.NominalUnauffaellig)]
     [InlineData(4, ReviewVerdict.NominalAbweichend)]
     [InlineData(-1, ReviewVerdict.OhneSollvergleich)]
-    public void NominalComparisonsDoNotClaimColorAccuracyOrAcceptance(double deviation, ReviewVerdict expected)
+    [InlineData(0, ReviewVerdict.Teilweise, true)]
+    public void NominalComparisonsDoNotClaimColorAccuracyOrAcceptance(double deviation, ReviewVerdict expected, bool partial = false)
     {
         string root = Path.Combine(Path.GetTempPath(), "iro-review-rules-" + Guid.NewGuid().ToString("N"));
         string folder = Path.Combine(root, "tests", "runs", "iro-run-review");
@@ -21,7 +22,7 @@ public class ReviewDiagnosticsTests
         {
             var region = new RegionMeasurement(new(20, 20, 80, 80), true, null, new(50, 10, 5), 6400, 0, 0, 0);
             var field = new FieldAnalysis("field", region.Bounds, region.Bounds, region, region, 4, true, null, true);
-            var analysis = new ImageAnalysis(ImageAnalyzer.Version, new(), 200, 200, AnalysisStatus.Measured, "Gemessen", [field], []);
+            var analysis = new ImageAnalysis(ImageAnalyzer.Version, new(), 200, 200, partial ? AnalysisStatus.PartiallyMeasured : AnalysisStatus.Measured, partial ? "Angeschnittener Streifen; kein vollständiger Streifenvergleich." : "Gemessen", [field], []);
             var comparisons = deviation < 0 ? Array.Empty<FieldComparison>() : new[]
                 { new FieldComparison("expected", "field", 1, 4 - deviation, 4, deviation, "measured") };
             var run = new AnalysisRun(1, "iro-analysis-run", "iro-run-review", "request", ImageAnalyzer.Version,
@@ -35,6 +36,7 @@ public class ReviewDiagnosticsTests
             Assert.DoesNotContain("Ziel erreicht", report);
             Assert.DoesNotContain("vollständig/genau", report);
             Assert.Contains("keine Abnahme", report);
+            if (partial) { Assert.Contains("Teilweise gemessen", report); Assert.Contains("kein vollständiger Streifenvergleich", report); }
             if (deviation < 0)
             {
                 Assert.Contains("1 Felder freigegeben", row.Finding);
