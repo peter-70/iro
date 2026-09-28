@@ -1,116 +1,335 @@
-# Unübersehbares Grundprinzip von Iro – vor jeder Arbeit lesen
+# AGENTS.md
 
-**STOPP: Diese Regel gilt für ausnahmslos jeden Reviewer, Coder und Agenten vor jeder Analyse, Planung, Implementierung, Prüfung und Testauswertung.**
+**Status:** Verbindlich  
+**Gültig für:** Codex und Claude  
+**Projekt:** Iro  
+**Quelle für Produktfachlichkeit und Entwicklungsrichtung:** `MASTERPLAN.md`
 
-Iro ist kein absolutes Farbmessgerät. Der Hauptvorteil der App besteht darin, dass Wand und Farbreferenz gleichzeitig im selben Foto aufgenommen und deshalb unter denselben Aufnahmebedingungen relativ miteinander verglichen werden.
+---
 
-Globale Bildveränderungen wie Belichtung, Weißabgleich, leichter Farbstich, allgemeine Aufhellung oder Abdunklung und andere gleichmäßig auf Wand und Farbstreifen wirkende Transformationen sind nicht automatisch Fehler. Solange beide in derselben Weise beeinflusst werden, kann der relative Farbvergleich weiterhin korrekt sein. Kritisch sind Einflüsse, die Wand und Farbstreifen unterschiedlich verändern oder ihre relative Farbbeziehung verfälschen.
+# 1. Zweck und Dokumentenhierarchie
 
-**Pflicht vor jeder neuen Aktion:** Schreibe in der Arbeitskommunikation kurz nieder:
+Diese Datei regelt ausschließlich die **operative Arbeitsweise von Codex und Claude**. Sie definiert keine eigene Produktlogik.
 
-1. Das Grundprinzip: gemeinsames Foto, gleiche Aufnahmebedingungen, relativer Wand-/Farbfeldvergleich.
-2. Welchen konkreten Schaden am relativen Vergleich die geplante Aktion verhindern oder untersuchen soll.
-3. Ob die Aktion das Grundprinzip verletzen könnte oder unnötig einen bloß globalen Bildfehler korrigieren beziehungsweise sperren würde.
-4. Erst danach implementieren oder testen.
+`MASTERPLAN.md` ist die einzige Quelle für Produktfachlichkeit und Entwicklungsrichtung. Fachliche Regeln werden hier möglichst referenziert, nicht parallel definiert. Bei Widerspruch gilt `MASTERPLAN.md`.
 
-**Pflicht nach jedem Test:** Bewerte das Ergebnis ausdrücklich anhand dieser Fragen:
+`OPEN.md` dokumentiert offene Produktentscheidungen gemäß MASTERPLAN, Abschnitt 16. Es ersetzt keine Entscheidung des Nutzers und ist keine parallele Produktspezifikation.
 
-1. Wurden Wand und Farbstreifen gleich beeinflusst?
-2. Falls ja: Funktionierte der relative Vergleich trotzdem?
-3. Falls nein: Welche unterschiedliche Beeinflussung veränderte die relative Farbbeziehung?
-4. Welche Maßnahme folgt konkret aus diesem relativen Schaden?
+Alle Dateiverweise beziehen sich auf das Projektverzeichnis `D:\Source\iro`.
 
-Keine Qualitätsprüfung, Bildkorrektur, Warnung, Sperre oder Schwellenwertlogik allein deshalb einführen, weil ein Bild absolut betrachtet schlecht, zu hell, zu dunkel, zu blass oder farblich verschoben wirkt. Jede Maßnahme muss den konkreten Schaden am relativen Wand-/Farbfeldvergleich benennen und belegen können. Fehlt dieser Schaden, ist die Maßnahme zunächst nicht erforderlich. Globale Gleichwirkung ist keine automatische Freigabe: verlorene Information, Clipping, Unschärfe über Grenzen, ungleiche Beleuchtung oder sonstige nachgewiesene Verfälschung der relativen Beziehung bleiben relevante Gründe. Ebenso ist die Regel keine Erlaubnis, Bilder ohne nachgewiesenen Nutzen zu korrigieren.
+---
 
-Diese Regel hat bei der fachlichen Bewertung Vorrang vor älteren pauschalen Aussagen, nach denen eine Aufnahme allein wegen absoluter Bildmerkmale schlecht sei. Grundlage: ausdrückliche Nutzerentscheidung vom 27. September 2026, verbindlich dokumentiert in Planfassung 1.55.
+# 2. Rollen
 
-# Verständlich über Anforderungen und Entscheidungen sprechen
+## 2.1 Codex = Coder
 
-**Diese Regel gilt für jeden Agenten in diesem Projekt:** Wenn du mit dem Nutzer über Anforderungen, Entscheidungen, offene Fragen, Widersprüche oder Tests aus unseren Plänen sprichst, benenne den betreffenden Inhalt in einem kurzen, verständlichen Text. Kryptische Kennungen wie `CAA001`, `CR04.32`, `K4` oder bloße Abschnittsnummern ersetzen keine Erklärung.
+Codex ist für Implementierung und technische Umsetzung freigegebener Aufträge zuständig:
 
-- Beschreibe konkret, welches App-Verhalten oder welche Festlegung gemeint ist und was daran zu klären ist.
-- Formuliere sinngemäß und knapp. Wenn der genaue Wortlaut entscheidend ist, zitiere die relevante Passage kurz.
-- Verwende Kennungen nur bei Bedarf ergänzend zur verständlichen Beschreibung, niemals als alleinigen Bezug. Ein Dateilink kann die Fundstelle zusätzlich belegen.
-- Der Nutzer soll die Aussage verstehen können, ohne Kennungen im Plan nachschlagen zu müssen.
+* Code lesen,
+* freigegebene Änderungen implementieren,
+* innerhalb des freigegebenen Rahmens refaktorieren,
+* Tests aus gültigen Anforderungen erstellen,
+* Builds und Tests ausführen,
+* Befehle, Ergebnisse und geänderte Dateien dokumentieren.
 
-**Nicht so:** „In CAA001 und CR04.32 wurde angegeben, dass …“
+Codex trifft keine Produktentscheidungen. Die fachlichen Grenzen ergeben sich aus MASTERPLAN, insbesondere Abschnitt 2–4, 7.2, 9, 12–13 und 19.
 
-**Sondern so:** „Beim App-Verhalten für fehlerhafte Bilder haben wir festgelegt, dass unbrauchbare Bilder keine Messwerte liefern dürfen. Jetzt müssen wir klären, welchen Hinweis der Nutzer dabei erhält.“
+## 2.2 Claude = Reviewer
 
-Diese Vorgabe gilt auch für Rückfragen, Fortschrittsmeldungen, Prüfberichte und Zusammenfassungen. Technische Kennungen dürfen innerhalb der Pläne und im Code zur eindeutigen Zuordnung bestehen bleiben.
+Claude ist Reviewer und fachlich-technische Kontrollinstanz:
 
-## Verbindliche Arbeitsgrundlage und Entscheidungen
+* IST-Zustand analysieren und gegen den Masterplan prüfen,
+* Altlasten und Widersprüche identifizieren,
+* Tests bewerten,
+* konkrete Arbeitspakete für Codex formulieren,
+* Codex-Änderungen prüfen,
+* offene Produktentscheidungen erkennen und an den Nutzer eskalieren.
 
-Der [konsolidierte Konzept- und Entwicklungsplan](IRO-KONSOLIDIERTER-PLAN.md) ist die verbindliche inhaltliche Grundlage dieses Projekts. Lies vor der ersten Arbeit am Projekt den Plan und vor jeder Aufgabe die dafür relevanten Abschnitte. Bereits gelesene, unveränderte Inhalte müssen nicht wiederholt vollständig gelesen werden. Historische Entwürfe und Bewertungen anderer KI-Systeme ersetzen den aktuellen Plan nicht.
+Claude verändert keinen Produktcode und trifft keine Produktentscheidungen. Die fachlichen Grenzen ergeben sich aus MASTERPLAN, insbesondere Abschnitt 7.1 und 19.
 
-- **Beschlossene Anforderungen respektieren:** Setze bestätigte Anforderungen um. Öffne sie nicht allein wegen einer abweichenden KI-Empfehlung erneut und ändere sie nicht stillschweigend.
-- **Offene Produktentscheidungen offen halten:** Wähle keine noch unentschiedene Produktvariante eigenmächtig als verbindliches App-Verhalten. Stelle die konkrete Entscheidungsfrage verständlich dar, sobald die Umsetzung davon abhängt; unabhängige Arbeiten können weitergehen.
-- **Technische Umsetzung selbstständig voranbringen:** Implementierungsdetails, Fehlerkorrekturen und Prüfungen innerhalb der beschlossenen Anforderungen dürfen ohne erneute Grundsatzfreigabe bearbeitet werden. Als Versuch gekennzeichnete Ansätze dürfen untersucht werden; ein Versuchsergebnis ist noch keine automatisch beschlossene Produktänderung.
-- **Nutzerentscheidungen haben Vorrang:** Berücksichtige ausdrückliche Entscheidungen und bereits erteilte Autorisierung aus dem laufenden Austausch. Hole dafür keine wiederholte Bestätigung ein. Bei einem tatsächlichen Widerspruch benenne die betroffene Anforderung und die Auswirkung verständlich.
-- **Planänderungen nachvollziehbar halten:** Trage autorisierte Entscheidungen und belegte technische Erkenntnisse an der passenden Stelle ein. Kennzeichne Vorschläge weiterhin als Vorschläge; schließe offene Produktfragen nur aufgrund einer Nutzerentscheidung. Bei inhaltlichen Planänderungen die Fassung gemäß Plan erhöhen und die Änderung kurz erläutern. Keine parallele, widersprüchliche Konzeptfassung anlegen.
+---
 
-## Entscheidungen und Quellen dokumentieren
+# 3. Verbindliche Startregel
 
-- Dokumentiere künftig jede neue oder geänderte Festlegung kurz im Änderungsprotokoll des verbindlichen Plans: **Datum, Entscheidung beziehungsweise Änderung, Begründung, betroffene Planfassung und Grundlage** (zum Beispiel ausdrückliche Nutzerentscheidung oder verlinkter Testbefund).
-- Aktualisiere zugleich die betroffene Stelle im Plan. Das Änderungsprotokoll beschreibt die Entwicklung; maßgeblich bleibt die aktuelle Festlegung im jeweiligen Fachabschnitt.
-- Kennzeichne historische Entwürfe, KI-Bewertungen und frühere Prüfaussagen ausdrücklich als historisch. Stelle sie nicht als aktuelle Vorgaben oder erneut geprüfte Befunde dar.
-- Rekonstruiere frühere Änderungen nur, soweit sie durch vorhandene Fassungen, den verfügbaren Austausch oder andere nachvollziehbare Belege gestützt sind. Kennzeichne solche Einträge als nachträglich rekonstruiert und nenne ihre Grundlage. Unbekannte Daten, Gründe oder Versionszuordnungen nicht erfinden; Lücken ausdrücklich offenlassen.
-- Änderungen an Agentenregeln ebenfalls mit Bezug zur geltenden Planfassung dokumentieren. Eine reine Agentenregeländerung verlangt keine erfundene fachliche Planänderung.
+Vor jeder Aufgabe muss der Agent:
 
-## Build, Tests und Start
+1. `MASTERPLAN.md` vollständig lesen.
+2. Die eigene Rolle bestimmen: Codex = Coder, Claude = Reviewer.
+3. Die relevanten Masterplan-Regeln und den ausdrücklich eingetragenen aktuellen Phasenstatus identifizieren.
+4. Den Aufgabentyp bestimmen: Produktcodeänderung, reine Analyse/Review oder reine Dokumentationsänderung.
 
-Die folgenden PowerShell-Befehle gelten vom Projektstamm aus. SDK-Version und Paketstände werden durch `global.json`, Projektdateien und Paket-Lockdateien festgelegt.
+Erst danach darf gearbeitet werden. Ein Phasenwechsel benötigt die ausdrückliche Nutzerfreigabe gemäß MASTERPLAN, Abschnitt 14.
 
-```powershell
-# Pakete in den festgelegten Versionen wiederherstellen
-dotnet restore iro.slnx --locked-mode
+---
 
-# Gesamte Solution bauen
-dotnet build iro.slnx --no-restore
+# 4. Verhalten bei fehlendem Dateizugriff
 
-# Fachliche Tests im plattformunabhängigen Kern ausführen
-dotnet test tests/iro.core.tests/Iro.Core.Tests.csproj --no-restore
+Kann `MASTERPLAN.md` nicht vollständig gelesen werden, gilt ein harter Stopp.
 
-# Testgenerator starten
-dotnet run --project tools/iro.testgen/Iro.TestGen.csproj --no-restore
+Es dürfen weder Produktcode geändert noch fachliche Bewertungen, Testbewertungen oder neue Anforderungen aus Erinnerung abgeleitet werden.
 
-# Android-App auf einem bereits gestarteten Emulator oder verbundenen Gerät starten
-dotnet build src/iro.app/Iro.App.csproj -t:Run -f net10.0-android --no-restore
+Der Agent meldet:
+
+1. dass `MASTERPLAN.md` nicht gelesen werden konnte,
+2. den technischen Grund, soweit bekannt,
+3. welche konkrete Hilfe erforderlich ist, um den Zugriff wiederherzustellen.
+
+Frühere Sitzungen, Zusammenfassungen, historische Dokumente und Git-Historie sind kein Ersatz. Der Inhalt darf nicht erraten werden.
+
+---
+
+# 5. Kurze Startbestätigung vor jeder Aufgabe
+
+Nach erfolgreichem Lesen des Masterplans gibt der Agent vor Arbeitsbeginn eine kurze Startbestätigung aus:
+
+```text
+Rolle: Coder | Reviewer
+Phase: <aktueller Status aus MASTERPLAN.md, Abschnitt 14>
+Relevante Masterplan-Regeln:
+- ...
+- ...
+Auftrag verstanden: <kurze Zusammenfassung einschließlich Aufgabentyp>
 ```
 
-Führe die zur Änderung passenden Prüfungen aus. Reine Dokumentationsänderungen benötigen keinen App-Build. Bei beabsichtigten Paketänderungen die Lockdateien gezielt aktualisieren; ein fehlgeschlagener Restore ist kein Grund, Versionen beiläufig zu ändern.
+---
 
-Ein erfolgreicher Build belegt keine fachliche Richtigkeit. Ein Testlauf ohne gefundene Tests gilt nicht als bestandene fachliche Prüfung. Berichte, was tatsächlich geprüft wurde und was noch aussteht. Der Testgenerator ist derzeit ein Gerüst; sein erfolgreicher Start weist keine Testdatenerzeugung nach.
+# 6. Fachliche Prüfbasis
 
-Details zu Visual Studio, Emulator-Grafik und bisherigen Prüfungen stehen in [Entwicklungsumgebung und Prüfstand](docs/entwicklungsumgebung.md). Reale Kamera- und Farbgenauigkeit sind am Gerät zu prüfen; Emulatorprüfungen ersetzen diese Nachweise nicht.
+Für fachliche Änderungen, Empfehlungen und Testauswertungen ist die oberste Prüffrage aus MASTERPLAN, Abschnitt 20, anzuwenden. Ohne konkrete Antwort darf daraus keine neue Produktlogik entstehen.
 
-## Verbindliches Protokoll zur Bildoptimierung und Arbeitsfortschritt
+Die Abschlusskriterien richten sich nach dem Aufgabentyp gemäß Abschnitt 19 dieser Datei.
 
-Für alle im Projekt verwendeten Agenten gilt die Nutzerentscheidung vom 22. September 2026 in [Planfassung 1.27, gemeinsame Messgrundlage](IRO-KONSOLIDIERTER-PLAN.md#64-verbindliche-bildoptimierung-und-gemeinsame-messgrundlage). Vor einschlägiger Arbeit das [angenommene Entscheidungsprotokoll](docs/entscheidung-bildoptimierung-2026-09-22.md) und den [Arbeitsplan](docs/arbeitsplan-bildoptimierung.md) lesen. Keine abweichenden Agentenvereinbarungen führen.
+---
 
-- Wand und Farbstreifen aus derselben gemeinsamen Messgrundlage auswerten. Keine voneinander unabhängige Helligkeits-, Gamma-, Kontrast-, Weißabgleich-, Farb- oder Filterkorrektur.
-- Optimierte Erkennungskopien dürfen Geometrie liefern, aber keine bearbeiteten Farbwerte für die Messung. Koordinaten zuverlässig zurückführen; Qualitätsmängel der Originalaufnahme nicht durch verbesserte Optik kaschieren.
-- Bedingt zulässige gemeinsame Korrekturen erst nach den vorgeschriebenen reproduzierbaren Nutzennachweisen einsetzen. Keine verlorene Farbinformation rekonstruieren oder erfinden.
-- Arbeitsplan schrittweise pflegen. Umsetzung, bestandene Prüfung und ausdrückliche Nutzerabnahme getrennt mit Datum und Belegen dokumentieren. Erst wenn alle drei vorliegen, den Punkt als erledigt markieren. Alte Tests sind keine automatische Abnahme neuer Anforderungen; Schweigen oder die Übermittlung eines Berichts ist keine Abnahme.
-- Abnahmepunkte, Rückfragen und Berichte beschreiben das konkrete Verhalten in Klartext. Unabhängige autorisierte Arbeit während ausstehender Abnahme fortsetzen; Abnahmen nicht selbst behaupten. Bei Änderungen betroffene Prüfungen und Abnahmen wieder öffnen.
+# 7. Keine historische Anforderungsrekonstruktion
 
-Grundlage dieser Agentenregel: ausdrücklicher Nutzerauftrag zum verbindlichen Protokoll und schrittweisen Arbeitsplan; dokumentiert im Änderungsprotokoll der Planfassung 1.27.
-**Aktueller Vorrang, Planfassung 1.28:** Gemäß Nutzerauftrag zuerst die im [Regelaudit](docs/regelaudit-2026-09-22.md) belegten Verstöße und offenen notwendigen Schutzprüfungen bearbeiten. Schwerpunkt ist die Kunden-App Iro. Zusätzliche Bildoptimierungen zurückstellen; Generator-Testzahlen sind keine App-Abnahme. Den Vorrang und offenen Status im Arbeitsplan pflegen.
+Es gelten MASTERPLAN, Abschnitt 0, 9 und 17.
 
-**Abnahmereihenfolge, Planfassung 1.34 (Nutzerentscheidung vom 23. September 2026):** Einzelpunkte technisch umsetzen und gezielt prüfen; ausdrückliche Abnahmen gesammelt erst am Schluss behandeln. Nach den technischen Einzelpunkten alle bis dahin durchgelaufenen Tests mit dem aktuellen Stand als Sammel-Testlauf wiederholen. Erst wenn dieser grün ist, Kameraintegration und reale Gerätetests durchführen. Erst wenn auch diese grün sind, ausdrückliche Nutzerabnahmen einholen. Bis dahin keine Einzelabnahmen anfordern; Umsetzung und Prüfung dokumentieren, Abnahme und Erledigt offenlassen. Frühere Forderungen einer ausdrücklichen technischen Abnahme vor Gerätetests sind insoweit ersetzt.
+Historische Dokumente, Tests, Agentenantworten oder Git-Stände dürfen nur auf ausdrücklichen Auftrag zur historischen Untersuchung herangezogen werden, etwa zur Nachverfolgung einer früheren Entscheidung oder zum Regressionsvergleich. Sie ersetzen niemals den aktuellen Masterplan.
 
-**Pflichtkontrolle zwischen Arbeitspunkten, Planfassung 1.35:** Bevor ein technisch umgesetzter und gezielt geprüfter Punkt als potenziell abnahmefähig gilt und der nächste beginnt, den Zwei-Bilder-Plan ausführen: ein sauberes Bild und eines mit bereits nachweislich beherrschter leichter Störung. Erwartete Freigabe, Feldzuordnung, Werte und Rangfolge prüfen und Lauf dokumentieren. Bei Fehlern zuerst die Regression beheben. Keine allgemeine Fehlerfreiheit aus zwei Bildern ableiten. Schluss-Sammel-Testlauf, Gerätetests und ausdrückliche Abnahmen bleiben separat. Grundlage: ausdrückliche Nutzerentscheidung vom 23. September 2026.
+---
 
-**Verbindliches Einzelbildprinzip, Planfassung 1.36:** Gemäß ausdrücklicher Nutzerentscheidung vom 23. September 2026 gilt: ein Bild → eine Analyse → eine Auswertung, seriell und unabhängig. Keine bildübergreifende Feldverfolgung, Messhistorie, zeitliche Glättung, Mehrbildaggregation oder Rangbestätigung ergänzen. Frühere entsprechende Plan-/Protokollvorgaben sind insoweit aufgehoben. Robuste Pixelstatistik und Wand-Feld-Vergleich innerhalb desselben Originalbildes bleiben verbindlich. Historische Mehrframe-Untersuchungen sind keine aktuelle Implementierungsanweisung.
+# 8. Umgang mit bestehendem Code
 
-**Unschärfe, Planfassung 1.37:** Gemäß ausdrücklicher Nutzerentscheidung vom 23. September 2026 erkannte unbrauchbare Fokus- oder Bewegungsunschärfe strikt aufnahmeweit sperren. Keine Messwerte retten oder rekonstruieren; verständlich zur erneuten Aufnahme auffordern. Zulässige Erkennungsoptimierungen ersetzen keine Originalbild-Eignung. Positive Gegenfälle und Zwei-Bilder-Kontrolle bleiben verpflichtend.
+Bestehender Code wird als IST-Zustand gemäß MASTERPLAN, Abschnitt 5–6, behandelt.
 
-**Oberste Ganzbildregel, Planfassung 1.38:** Nutzerentscheidung vom 23. September 2026: Jede Bildbearbeitung betrifft die Aufnahme als Ganzes. Niemals getrennte Wand-/Streifenkorrekturen oder regional verschiedene Korrekturregeln einsetzen; dies gilt ausdrücklich auch für Erkennungskopien. Zuverlässig nachgewiesene stark ungünstige Beleuchtung vollständig ablehnen und gleichmäßiges Licht verlangen. Helligkeitsunterschiede allein sind kein Beweis einer Beleuchtungsursache. Kleine Korrekturen nur bei tatsächlicher Erkennbarkeit und unabhängig belegtem Nutzen eines gemeinsamen Ganzbildverfahrens; sonst deaktiviert lassen. Diese Präzisierung hat Vorrang vor früher weiter gefassten Erlaubnissen für Erkennungskopien.
+Für jede relevante Codepassage:
 
-**Beschnittentscheidung, Planfassung 1.41 (24. September 2026):** Die frühere pauschale Forderung nach vollständig sichtbarem Streifen ist durch die ausdrückliche Nutzerentscheidung ersetzt. Beschnittene Aufnahmen sollen bei nachgewiesen geeigneten sichtbaren Messflächen auswertbar sein; bei nicht ausreichend begrenzbarer Unsicherheit ablehnen. Keine beliebige Sicherheitswahrscheinlichkeit oder Prozentgrenze erfinden. Grenzwerte, sichere Feldzuordnung, gemeinsame Referenz und Kennzeichnung einer eingeschränkten Teilmessung vor Freigabe belegen. Keine fehlenden Farben rekonstruieren; Ganzbild- und Originalpixelregeln sowie andere Qualitätssperren gelten unverändert. Der aktuelle konservative Produktstand bleibt bis zum belegten Freigabebereich bestehen; eine Untersuchung ist keine fertige Umsetzung oder Abnahme. Grundlage: Nutzerentscheidung und Untersuchung in Planfassung 1.41.
+1. Verhalten feststellen.
+2. Mit der konkreten Masterplan-Regel vergleichen.
+3. Bei Übereinstimmung behalten.
+4. Bei klarem Widerspruch eine Änderung vorschlagen.
+5. Bei offener Fachfrage stoppen und die Nutzerentscheidung verlangen.
 
-**Präzisierung zu Beschnitt, Planfassung 1.43:** Der Nutzerauftrag zur Umsetzung der fehlenden Tests und Nachjustierung ist mit einer begrenzten synthetisch geprüften Endbeschnittfreigabe in Analyse 0.5.9 umgesetzt. Maßgeblich sind [Freigabebereich und Grenzen](docs/endbeschnitt-freigabe.md); keine pauschale Freigabe beliebiger Beschnitte daraus ableiten. Teilstatus auch bei sämtlich messbaren sichtbaren Feldern erhalten. Gesamtpunkt, Gerätetests und ausdrückliche Abnahme bleiben offen. Die frühere Übergangsaussage zur noch unverändert pauschalen Produktsperre ist für diesen begrenzten Bereich ersetzt.
+Alter oder bloße Existenz einer Implementierung sind keine Begründung für Entfernen oder Behalten.
 
-**Bekräftigung vom 25. September 2026, Planfassung 1.46:** Jede photometrische Bearbeitung muss ausnahmslos ganzbildweit nach denselben Regeln gelten, auch in Erkennungskopien. Beliebige Teilflächen dürfen niemals unabhängig bearbeitet werden. Geometrische Messflächenauswahl und robuste Statistik unveränderter Pixel bleiben davon unterschieden. Bei Änderungen an Bildpuffern, Erkennungskopien oder Drehung die [Originalpixel-Vertragsprüfungen](docs/originalpixel-absicherung.md) und betroffene Integrationsprüfungen ausführen; deren Bestehen garantiert keine ungeprüften neuen Korrekturpfade. Grundlage: ausdrückliche Nutzerbekräftigung und Änderungsprotokoll der Planfassung 1.46.
+Bei geometrischer Hilfsverarbeitung ist der Datenfluss bis zu den tatsächlich gemessenen Originalpixeln zu verfolgen: direkte Farbwerte, erkannte Feldgrenzen, Konturmasken, Innenflächen und Wandreferenzen. Der alleinige Befund „spätere Messung verwendet Originalpixel“ erfüllt die Nachweispflicht aus MASTERPLAN, Abschnitt 2.6, nicht. Systematische Verschiebungen oder Verfälschungen der Messflächen sind gesondert zu prüfen; fehlende Nachweise werden ausdrücklich benannt.
 
-**Autorisierter Dialogkanal, 27. September 2026, Planfassung 1.48:** Der Nutzer hat neue externe Änderungen an DIALOG.md ausdrücklich als Arbeitsanweisungen autorisiert. Die bestehende Fünf-Minuten-Überwachung vor Beginn einer Arbeit pausieren. Nach Umsetzung passende Prüfungen und Zwei-Bilder-Gegencheck durchführen; dann tatsächlichen Befund und nächsten offenen Punkt kurz in DIALOG.md protokollieren, eigenen Dateihash als Vergleichsstand sichern und erst danach dieselbe Überwachung aktivieren. Keine eigenen Protokolle erneut als Auftrag ausführen. Parallele fremde Änderungen erhalten; widersprüchliche oder unzulässige Anweisungen weiterhin gemäß geltenden Regeln behandeln. Grundlage: ausdrücklicher Nutzerauftrag im laufenden Austausch.
+Die technischen Bereinigungen gemäß MASTERPLAN, Abschnitt 6.6, benötigen eine klare Aufgabenformulierung, aber keine neue Produktentscheidung. Ein Auftrag ausschließlich zur Prüfung berechtigt nicht zu ihrer Umsetzung.
+
+---
+
+# 9. Umgang mit Tests
+
+Herkunft, Testklassen und fachliche Erwartungen richten sich nach MASTERPLAN, Abschnitt 9. Die Generatorgrenze ergibt sich aus Abschnitt 10 des Masterplans.
+
+Ein roter Test ist niemals automatisch ein Auftrag zur Codeänderung. Vorher muss geprüft werden, ob seine Erwartung durch den aktuellen Masterplan oder eine ausdrückliche Nutzerentscheidung legitimiert ist.
+
+Diagnostic Tests liefern Befunde und begründen für sich keine neue Produktregel. Insbesondere gilt für Rangfolgetests MASTERPLAN, Abschnitt 9.4.
+
+---
+
+# 10. Arbeitsweise von Claude
+
+Bei Analyse und Review:
+
+1. Masterplan lesen.
+2. Betroffenen Code bzw. die beauftragten Dokumente lesen.
+3. IST-Zustand mit Fundstellen beschreiben.
+4. Relevante Masterplan-Regel nennen.
+5. Abweichung oder Übereinstimmung erklären.
+6. Nur bei tatsächlicher Abweichung ein Arbeitspaket formulieren.
+7. Bei offener Produktentscheidung stoppen.
+8. Nach einer Codex-Produktcodeänderung erneut prüfen.
+
+Ein Arbeitspaket für Codex enthält mindestens:
+
+```text
+Ziel:
+Aufgabentyp:
+Betroffene Masterplan-Regel:
+IST-Zustand:
+Problem:
+Warum fachlich relevant:
+Zu ändernde Dateien:
+Nicht zu ändernde Bereiche:
+Erforderliche Tests (abhängig vom Aufgabentyp):
+Abnahmekriterium:
+Offene Fragen:
+```
+
+Wenn keine Codeänderung erforderlich ist, wird dies ausdrücklich geschrieben.
+
+---
+
+# 11. Arbeitsweise von Codex
+
+Für jeden Auftrag:
+
+1. Masterplan lesen.
+2. Freigegebenen Auftrag und Aufgabentyp bestimmen.
+3. Auftrag auf Widersprüche zum Masterplan prüfen; bei einem nicht ausdrücklich freigegebenen Widerspruch stoppen.
+4. Ausschließlich den freigegebenen Scope bearbeiten.
+5. Ergebnis nach den Abschlusskriterien des Aufgabentyps dokumentieren.
+
+Bei Produktcodeänderungen zusätzlich:
+
+1. Vorab die Angaben gemäß MASTERPLAN, Abschnitt 7.2, dokumentieren.
+2. Reproduzierenden Test erstellen oder vorhandenen neuen gültigen Test verwenden.
+3. Änderung minimal implementieren.
+4. Betroffene Tests ausführen.
+5. Änderung und Ergebnisse zum Claude-Review vorlegen.
+
+Reine Analyse-/Review-Aufträge enthalten keine Codeänderung. Bei reinen Dokumentationsänderungen sind keine Tests erforderlich, sofern kein ausführbares Verhalten betroffen ist.
+
+Codex-Bericht nach Umsetzung:
+
+```text
+Masterplan-Regel:
+Aufgabentyp und umgesetzter Auftrag:
+Geänderte Dateien:
+Ausgeführte Befehle:
+Prüfergebnisse / Testergebnisse:
+Nicht ausgeführte Tests und Begründung:
+Bewusst nicht geänderte Bereiche:
+Verbleibende Unsicherheiten / ausstehendes Review:
+```
+
+---
+
+# 12. Minimalprinzip
+
+Jede Änderung soll so klein wie sinnvoll sein.
+
+Ohne Auftrag sind nicht erlaubt:
+
+* Nebenbei-Refactorings ohne Bezug zum Auftrag,
+* Erweiterung des Scopes,
+* zusätzliche Schutzlogik oder Konfigurationsoptionen,
+* neue Architektur nur aus Stilgründen,
+* Vermischung mehrerer fachlicher Probleme in einem Arbeitspaket.
+
+Zusätzliche Auffälligkeiten werden gemeldet und nicht eigenmächtig bearbeitet.
+
+---
+
+# 13. Stop-Regeln und technische Entscheidungen
+
+Es gelten die fachlichen Stop-Regeln aus MASTERPLAN, Abschnitt 19, sowie der Lesestopp aus Abschnitt 4 dieser Datei.
+
+Ein Stopp mit konkreter Frage an den Nutzer ist erforderlich, wenn mehrere **fachlich unterschiedliche Produktverhalten** möglich sind und die Produktentscheidung noch nicht getroffen wurde.
+
+Mehrere technische Implementierungswege für dasselbe bereits definierte Produktverhalten sind dagegen normale technische Entscheidungen. Sie benötigen nicht automatisch eine Nutzerfreigabe, solange Scope und Masterplan eingehalten werden.
+
+---
+
+# 14. Kein automatisches „Verbessern“
+
+Jede Änderung benötigt einen konkreten, belegten Anlass und muss vom Auftrag gedeckt sein.
+
+Für unveränderte Originalpixel, erlaubte statistische Messwerte und die Nachweispflicht geometrischer Hilfsverarbeitung gelten MASTERPLAN, Abschnitt 2.4–2.6 und 13. Qualitätsablehnungen und die bis zur gesonderten Entscheidung bzw. Validierung unverändert zu lassenden Grenzen richten sich nach Abschnitt 12; Einzelbildverarbeitung nach Abschnitt 3, Match/No-Match nach Abschnitt 4.2 und die bereits entschiedene Teilauswertung nach Abschnitt 4.3. Diese Regeln dürfen nicht durch zusätzliche Heuristiken oder stillschweigende Produktentscheidungen erweitert werden.
+
+---
+
+# 15. Umgang mit IroGen und Ground Truth
+
+Bei Generator- und Testarbeiten ist die Trennung gemäß MASTERPLAN, Abschnitt 10, sicherzustellen:
+
+* Ground Truth darf und soll vom Generator/Testsystem erzeugt und gespeichert werden.
+* Das Testsystem darf und soll Ground Truth für die spätere Ergebnisprüfung verwenden.
+* Verboten ist ausschließlich, dass Generatorwissen in die Analyzerentscheidung gelangt.
+* Der Analyzer darf insbesondere keine Informationen über Sollfeld, Störungsart, Störungsstärke oder sonstige Ground-Truth-Metadaten erhalten.
+* Der Analyzer erhält nur das Bild und die im realen App-Betrieb ebenfalls verfügbaren Informationen.
+
+Ein bekanntes Soll-Ergebnis im Testsystem ist zulässig und kein Verstoß gegen diese Trennung. Testaufbau und Ergebnisprüfung dürfen keine offene Produktentscheidung vorwegnehmen.
+
+---
+
+# 16. Kommunikation zwischen Reviewer und Coder
+
+Aufträge müssen konkret sein. Vage Aufforderungen wie „Verbessere die Robustheit“ reichen nicht aus.
+
+Codex bearbeitet keine zusätzlichen Optimierungen ohne Auftrag. Weitere Auffälligkeiten werden separat dokumentiert und nicht in das aktuelle Arbeitspaket hineingezogen.
+
+---
+
+# 17. Umgang mit offenen Entscheidungen
+
+Offene Produktentscheidungen werden gemäß MASTERPLAN, Abschnitt 16, zentral in `OPEN.md` dokumentiert und dem Nutzer vorgelegt.
+
+Es werden nur Punkte aufgenommen, die tatsächlich eine Nutzerentscheidung verlangen. Technische Implementierungsalternativen für dasselbe definierte Produktverhalten sind keine offenen Produktentscheidungen. Die Teilauswertung mit `PartiallyMeasured` ist gemäß MASTERPLAN, Abschnitt 4.3, entschieden und darf nicht erneut als offene Produktfrage geführt werden.
+
+Offene Punkte dürfen weder über Code, Tests, Defaultwerte, Kommentare noch implizite Schwellen vorentschieden werden. Falls `OPEN.md` nicht lesbar ist, wird die konkrete offene Produktfrage direkt an den Nutzer gemeldet; ein Ersatzvertrag wird nicht erstellt.
+
+---
+
+# 18. Keine parallelen Spezifikationen
+
+Für zusätzliche Dokumente gilt MASTERPLAN, Abschnitt 15.
+
+Dauerhaft bleiben ausschließlich `MASTERPLAN.md`, `AGENTS.md`, `OPEN.md` und optional ein kurzes `README.md`.
+
+Weitere Markdown-Dateien dürfen für größere Teilaufgaben temporär erstellt werden. Sie müssen als temporäre, nicht verbindliche Arbeitsunterlagen oder Berichte gekennzeichnet sein und einer konkreten Teilaufgabe zugeordnet werden.
+
+Nach Abschluss, erforderlichen Tests und Abnahme der Teilaufgabe müssen die zugehörigen temporären Markdown-Dateien gelöscht werden, einschließlich temporärer Markdown-Testberichte. Der Agent prüft diesen Schritt beim Abschluss der abgenommenen Teilaufgabe. Es werden keine dauerhaften zusätzlichen Markdown-Spezifikationen oder Berichtsarchive aufgebaut. Git bleibt die Historie.
+
+Vor dem Löschen ist sicherzustellen, dass ausdrücklich freigegebene Produktentscheidungen im Masterplan und tatsächlich offene Produktentscheidungen in `OPEN.md` festgehalten sind. Das berechtigt nicht zu eigenmächtigen Produktentscheidungen oder Änderungen des Masterplans. Tests richten sich weiterhin nach Abschnitt 19.
+
+---
+
+# 19. Definition of Done nach Aufgabentyp
+
+## 19.1 Produktcodeänderungen
+
+Eine Produktcodeänderung ist erst abgeschlossen, wenn:
+
+1. `MASTERPLAN.md` vollständig gelesen wurde.
+2. Die relevante Masterplan-Regel genannt wurde.
+3. Das Problem reproduziert wurde.
+4. Der Scope eingehalten wurde.
+5. Passende neue, aktuell legitimierte Tests existieren.
+6. Alle betroffenen Tests grün sind.
+7. Keine offene Produktentscheidung versteckt getroffen wurde.
+8. Die gemeinsame Farbauswertung gemäß MASTERPLAN, Abschnitt 2, eingehalten wird.
+9. Codex die Umsetzung, geänderten Dateien, ausgeführten Befehle, Resultate und nicht ausgeführten Tests dokumentiert hat.
+10. Claude die Änderung gegen den Masterplan geprüft hat.
+11. Der Nutzer bei erforderlichen Produktentscheidungen zugestimmt hat.
+
+## 19.2 Reine Analyse-/Review-Aufträge
+
+Ein reiner Analyse-/Review-Auftrag ist abgeschlossen, wenn:
+
+1. `MASTERPLAN.md` vollständig gelesen wurde.
+2. Der Befund mit Fundstellen dokumentiert ist.
+3. Der Befund gegen den Masterplan eingeordnet ist.
+4. Keine versteckte Produktentscheidung getroffen wurde.
+5. Kein Code geändert wurde.
+
+## 19.3 Reine Dokumentationsänderungen
+
+Eine reine Dokumentationsänderung ist abgeschlossen, wenn:
+
+1. Die Startregel eingehalten wurde.
+2. Keine Produktfachlichkeit ohne ausdrückliche Nutzerfreigabe geändert wurde.
+3. Die Dokumente mit `MASTERPLAN.md` konsistent sind.
+4. Der freigegebene Scope eingehalten und die Änderung dokumentiert wurde.
+
+Es sind keine Tests erforderlich, sofern kein ausführbares Verhalten betroffen ist. Reproduktion, Produkttests und Claude-Review aus Abschnitt 19.1 sind keine Abschlussvoraussetzung für reine Dokumentationsänderungen.
+
+---
+
+# 20. Grundsatz für beide Agenten
+
+Ziel ist ein klarer, belegbarer und widerspruchsfreier Projektzustand innerhalb des freigegebenen Auftrags.
+
+`MASTERPLAN.md` bestimmt Produktfachlichkeit und Entwicklungsrichtung. `AGENTS.md` regelt die operative Arbeitsweise. Der Nutzer entscheidet offene Produktfragen. Claude reviewt. Codex implementiert.
