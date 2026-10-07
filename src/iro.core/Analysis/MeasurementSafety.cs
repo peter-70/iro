@@ -1,14 +1,8 @@
 namespace Iro.Core.Analysis;
 
-// Safety policy versioned with ImageAnalyzer.Version. These are conservative 8-bit
-// trial limits, not validated camera exposure thresholds. Inspect retained original
-// pixels: small excluded print/glints do not automatically invalidate a whole frame.
+// Remaining geometry and image-quality trial limits; channel endpoints do not reject measurements.
 internal static class MeasurementSafety
 {
-    internal const double MaximumRetainedEndpointFraction = .02;
-    internal const string ChannelLimitHint = "Farbkanal an der Messgrenze. Beleuchtung und Belichtung prüfen; keine zuverlässige Messung möglich.";
-    internal const string BlurHint = "Bild unbrauchbar: zu unscharf. Bitte erneut aufnehmen. Kamera ruhig halten und neu fokussieren.";
-
     internal const string UnevenSurfaceHint = "Messflächen sind zu ungleichmäßig für einen zuverlässigen Vergleich. Bitte für gleichmäßige Beleuchtung und einheitliche Messflächen sorgen und erneut aufnehmen.";
 
     // Image-space trial criterion, not an estimate of a physical camera angle.
@@ -51,6 +45,29 @@ internal static class MeasurementSafety
     // synthesized fragments. Quality is still checked on original pixels later.
     internal static bool TryGetSingleCropCandidate(Detection detection, int width, int height,
         AnalysisOptions options, out PixelRect crop)
+        => TryGetEndCrop(detection, width, height, options, true, out crop);
+
+    // Excluding a localized remainder is distinct from admitting it for measurement.
+    // Reuse the existing end/gap/size tests; only the crop-to-anchor edge agreement
+    // is unnecessary when the crop is NOT measured. No fragmented/additional rests.
+    internal static bool TryGetExcludedEndCrop(Detection detection, int width, int height,
+        AnalysisOptions options, bool hasRotation, out PixelRect crop)
+    {
+        crop = default;
+        if (hasRotation || detection.Ambiguous || detection.BorderRegions?.Count != 1
+            || detection.WeakBorderRegions.Count != 0 || detection.Fields.Count < 2
+            || !HasCroppedContinuation(detection)) return false;
+        bool vertical = detection.Orientation == "vertical";
+        var first = detection.Fields[0];
+        if (detection.Fields.Any(field => vertical
+            ? Math.Abs(field.X - first.X) > MaximumCropEdgeDeviation || Math.Abs(field.Right - first.Right) > MaximumCropEdgeDeviation
+            : Math.Abs(field.Y - first.Y) > MaximumCropEdgeDeviation || Math.Abs(field.Bottom - first.Bottom) > MaximumCropEdgeDeviation))
+            return false;
+        return TryGetEndCrop(detection, width, height, options, false, out crop);
+    }
+
+    private static bool TryGetEndCrop(Detection detection, int width, int height,
+        AnalysisOptions options, bool requireCropEdgeAgreement, out PixelRect crop)
     {
         crop = default;
         if (detection.Fields.Count < 2 || detection.Orientation is not ("vertical" or "horizontal")
@@ -71,7 +88,7 @@ internal static class MeasurementSafety
             int cross = vertical ? anchor.Width : anchor.Height;
             if (gap < 0 || gap > cross * .85) return false;
             // Both transverse edges must agree with BOTH intact end anchors.
-            return new[] { detection.Fields[0], detection.Fields[^1] }.All(field => vertical
+            return !requireCropEdgeAgreement || new[] { detection.Fields[0], detection.Fields[^1] }.All(field => vertical
                 ? Math.Abs(field.X - border.X) <= MaximumCropEdgeDeviation && Math.Abs(field.Right - border.Right) <= MaximumCropEdgeDeviation
                 : Math.Abs(field.Y - border.Y) <= MaximumCropEdgeDeviation && Math.Abs(field.Bottom - border.Bottom) <= MaximumCropEdgeDeviation);
         }).ToArray();

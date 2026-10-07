@@ -13,7 +13,11 @@
                 <Button Text="Klares Testbild" CommandParameter="test-normal.png" Clicked="OnTestImageClicked" />
                 <Button Text="Unscharfes Testbild" CommandParameter="test-blur.png" Clicked="OnTestImageClicked" />
             </HorizontalStackLayout>
-            <Image x:Name="TestPreview" HeightRequest="140" Aspect="AspectFit" />
+            <Grid HeightRequest="320">
+                <Image x:Name="TestPreview" Aspect="AspectFit" />
+                <GraphicsView x:Name="AnalysisOverlay" InputTransparent="True" />
+            </Grid>
+            <Label Text="Grün: ausgewertet · Orange gestrichelt: unsicher · Grau: nicht auswertbar. ΔE und Feldnummer entsprechen der Liste." FontSize="14" />
             <ActivityIndicator IsRunning="{Binding IsBusy}" IsVisible="{Binding IsBusy}" />
             <Border Padding="16" Stroke="#92B7AD">
                 <VerticalStackLayout Spacing="8">

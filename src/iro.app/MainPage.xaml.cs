@@ -10,6 +10,8 @@ public partial class MainPage : ContentPage
     {
         InitializeComponent();
         BindingContext = analysis;
+        AnalysisOverlay.Drawable = new AnalysisOverlayDrawable(analysis);
+        analysis.PropertyChanged += (_, _) => AnalysisOverlay.Invalidate();
     }
 
     protected override async void OnAppearing()

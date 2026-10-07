@@ -125,7 +125,7 @@ Alter oder bloße Existenz einer Implementierung sind keine Begründung für Ent
 
 Bei geometrischer Hilfsverarbeitung ist der Datenfluss bis zu den tatsächlich gemessenen Originalpixeln zu verfolgen: direkte Farbwerte, erkannte Feldgrenzen, Konturmasken, Innenflächen und Wandreferenzen. Der alleinige Befund „spätere Messung verwendet Originalpixel“ erfüllt die Nachweispflicht aus MASTERPLAN, Abschnitt 2.6, nicht. Systematische Verschiebungen oder Verfälschungen der Messflächen sind gesondert zu prüfen; fehlende Nachweise werden ausdrücklich benannt.
 
-Die technischen Bereinigungen gemäß MASTERPLAN, Abschnitt 6.6, benötigen eine klare Aufgabenformulierung, aber keine neue Produktentscheidung. Ein Auftrag ausschließlich zur Prüfung berechtigt nicht zu ihrer Umsetzung.
+Die technischen Bereinigungen gemäß MASTERPLAN, Abschnitt 6.6, sind abgeschlossen. Weitere technische Änderungen benötigen einen klaren Auftrag; ein Auftrag ausschließlich zur Prüfung berechtigt nicht zu ihrer Umsetzung.
 
 ---
 
@@ -237,7 +237,7 @@ Mehrere technische Implementierungswege für dasselbe bereits definierte Produkt
 
 Jede Änderung benötigt einen konkreten, belegten Anlass und muss vom Auftrag gedeckt sein.
 
-Für unveränderte Originalpixel, erlaubte statistische Messwerte und die Nachweispflicht geometrischer Hilfsverarbeitung gelten MASTERPLAN, Abschnitt 2.4–2.6 und 13. Qualitätsablehnungen und die bis zur gesonderten Entscheidung bzw. Validierung unverändert zu lassenden Grenzen richten sich nach Abschnitt 12; Einzelbildverarbeitung nach Abschnitt 3, Match/No-Match nach Abschnitt 4.2 und die bereits entschiedene Teilauswertung nach Abschnitt 4.3. Diese Regeln dürfen nicht durch zusätzliche Heuristiken oder stillschweigende Produktentscheidungen erweitert werden.
+Für unveränderte Originalpixel, erlaubte statistische Messwerte und die Nachweispflicht geometrischer Hilfsverarbeitung gelten MASTERPLAN, Abschnitt 2.4–2.6 und 13. Qualitätsablehnungen und die bis zur gesonderten Entscheidung bzw. Validierung unverändert zu lassenden Grenzen richten sich nach Abschnitt 12; Einzelbildverarbeitung nach Abschnitt 3, Match/No-Match nach Abschnitt 4.2 und die bereits entschiedene Teilauswertung nach Abschnitt 4.3 sowie der Ablauf aus automatischer Auswertung, bedingter Bereichsauswahl und Neuaufnahme nach Abschnitt 4.4. Diese Regeln dürfen nicht durch zusätzliche Heuristiken oder stillschweigende Produktentscheidungen erweitert werden.
 
 ---
 
@@ -267,7 +267,7 @@ Codex bearbeitet keine zusätzlichen Optimierungen ohne Auftrag. Weitere Auffäl
 
 Offene Produktentscheidungen werden gemäß MASTERPLAN, Abschnitt 16, zentral in `OPEN.md` dokumentiert und dem Nutzer vorgelegt.
 
-Es werden nur Punkte aufgenommen, die tatsächlich eine Nutzerentscheidung verlangen. Technische Implementierungsalternativen für dasselbe definierte Produktverhalten sind keine offenen Produktentscheidungen. Die Teilauswertung mit `PartiallyMeasured` ist gemäß MASTERPLAN, Abschnitt 4.3, entschieden und darf nicht erneut als offene Produktfrage geführt werden.
+Es werden nur Punkte aufgenommen, die tatsächlich eine Nutzerentscheidung verlangen. Technische Implementierungsalternativen für dasselbe definierte Produktverhalten sind keine offenen Produktentscheidungen. Die Teilauswertung gemäß MASTERPLAN 4.3 und die Bedienentscheidung gemäß MASTERPLAN 4.4 sind entschieden und dürfen nicht erneut als offene Produktfragen geführt werden. Fehlende technische Fähigkeiten sind gemäß MASTERPLAN 5.1 als Umsetzungslücken auszuweisen; nur tatsächlich offene fachliche Detailfragen werden vorgelegt.
 
 Offene Punkte dürfen weder über Code, Tests, Defaultwerte, Kommentare noch implizite Schwellen vorentschieden werden. Falls `OPEN.md` nicht lesbar ist, wird die konkrete offene Produktfrage direkt an den Nutzer gemeldet; ein Ersatzvertrag wird nicht erstellt.
 
@@ -283,11 +283,30 @@ Weitere Markdown-Dateien dürfen für größere Teilaufgaben temporär erstellt 
 
 Nach Abschluss, erforderlichen Tests und Abnahme der Teilaufgabe müssen die zugehörigen temporären Markdown-Dateien gelöscht werden, einschließlich temporärer Markdown-Testberichte. Der Agent prüft diesen Schritt beim Abschluss der abgenommenen Teilaufgabe. Es werden keine dauerhaften zusätzlichen Markdown-Spezifikationen oder Berichtsarchive aufgebaut. Git bleibt die Historie.
 
-Vor dem Löschen ist sicherzustellen, dass ausdrücklich freigegebene Produktentscheidungen im Masterplan und tatsächlich offene Produktentscheidungen in `OPEN.md` festgehalten sind. Das berechtigt nicht zu eigenmächtigen Produktentscheidungen oder Änderungen des Masterplans. Tests richten sich weiterhin nach Abschnitt 19.
+Vor dem Löschen ist sicherzustellen, dass ausdrücklich freigegebene Produktentscheidungen im Masterplan und tatsächlich offene Produktentscheidungen in `OPEN.md` festgehalten sind. Das berechtigt nicht zu eigenmächtigen Produktentscheidungen. Die sachliche Statuspflege richtet sich nach Abschnitt 18.1; Tests richten sich weiterhin nach Abschnitt 19.
 
 ---
 
+## 18.1 Steuerdokumente aktuell halten
+
+Nach jeder abgeschlossenen Implementierung, Analyse, Prüfung oder Testauswertung sind die betroffenen Statusangaben in den Steuerdokumenten mit dem tatsächlich belegten Stand abzugleichen und zu aktualisieren.
+
+Dabei gilt:
+
+* `MASTERPLAN.md`: Entwicklungsstand, erledigte und verbleibende Arbeiten, belegte Befunde und Grenzen der bisherigen Prüfung aktuell halten.
+* `OPEN.md`: Tatsächlich offene Produktentscheidungen aktuell halten; entschiedene Fragen nicht weiterhin als offen führen.
+* `AGENTS.md`: Die verbindliche Arbeitsweise konsistent halten.
+* Überholte oder widersprüchliche Statusangaben korrigieren. Keine zusätzliche parallele Statusdokumentation aufbauen.
+* Implementiert, getestet, geprüft und abgenommen klar unterscheiden. Synthetische Tests, statische Analysen und reale Geräteprüfungen nicht gleichsetzen.
+* Nur tatsächlich durchgeführte Arbeiten und nachgewiesene Ergebnisse als erledigt dokumentieren. Verbleibende Einschränkungen ausdrücklich erhalten.
+* Diese sachliche Statuspflege gehört zum jeweiligen Auftrag und benötigt keine erneute Nutzerfreigabe.
+* Daraus entsteht keine Erlaubnis, Produktanforderungen, Grenzwerte, Prioritäten oder Entwicklungsphasen eigenmächtig zu ändern oder offene Produktentscheidungen selbst zu treffen.
+
+Ein Auftrag ist erst vollständig dokumentiert, wenn die betroffenen Steuerdokumente den belegten Abschlussstand widerspruchsfrei wiedergeben.
+
 # 19. Definition of Done nach Aufgabentyp
+
+Für alle Aufgabentypen gehört die sachliche Statuspflege gemäß Abschnitt 18.1 zum Abschluss. Implementierungs-, Test-, Review- und Abnahmestand sind dabei getrennt auszuweisen.
 
 ## 19.1 Produktcodeänderungen
 

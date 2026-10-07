@@ -13,7 +13,9 @@ public static class IroTestHandoff
     public static string? FindProjectRoot(string start)
     {
         for (var directory = new DirectoryInfo(start); directory != null; directory = directory.Parent)
-            if (File.Exists(Path.Combine(directory.FullName, "iro.slnx")) && File.Exists(Path.Combine(directory.FullName, "IRO-KONSOLIDIERTER-PLAN.md")))
+            if (File.Exists(Path.Combine(directory.FullName, "iro.slnx")) &&
+                File.Exists(Path.Combine(directory.FullName, "iro-gen", "IroGen.csproj")) &&
+                File.Exists(Path.Combine(directory.FullName, "src", "iro.analysis", "Iro.Analysis.csproj")))
                 return directory.FullName;
         return null;
     }

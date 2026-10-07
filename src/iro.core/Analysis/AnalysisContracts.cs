@@ -129,12 +129,12 @@ public sealed record AnalysisOptions
     }
 }
 
+// NearLimitFraction is diagnostic only; it does not establish clipping or unusable color information.
 public sealed record RegionMeasurement(PixelRect Bounds, bool IsUsable, string? Reason, LabColor? Lab,
     int SampleCount, double RejectedFraction, double ChannelMad, double NearLimitFraction)
 {
     public IReadOnlyList<PixelPoint>? Polygon { get; init; }
     public double? SpatialDeltaE { get; init; }
-    internal bool HasUnresolvedChannels { get; init; }
 }
 public sealed record FieldAnalysis(string FieldId, PixelRect Bounds, PixelRect InnerBounds, RegionMeasurement Measurement,
     RegionMeasurement? Reference, double? DeltaE00, bool MeasurementAllowed, string? Hint, bool IsNearest)
@@ -143,9 +143,13 @@ public sealed record FieldAnalysis(string FieldId, PixelRect Bounds, PixelRect I
     public IReadOnlyList<PixelPoint>? InnerPolygon { get; init; }
     public double? SurfaceSpatialDeltaE { get; init; }
 }
+// A localized candidate is not a recognized/measured field and carries no color value.
+public sealed record UncertainRegion(string RegionId, PixelRect Bounds, string Reason);
+
 public sealed record ImageAnalysis(string AnalyzerVersion, AnalysisOptions Options, int Width, int Height,
     AnalysisStatus Status, string Hint, IReadOnlyList<FieldAnalysis> Fields, IReadOnlyList<string> Diagnostics)
 {
+    public IReadOnlyList<UncertainRegion> UncertainRegions { get; init; } = [];
     public double StraighteningDegrees { get; init; }
     [System.Text.Json.Serialization.JsonIgnore(Condition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull)]
     public AnalysisHintCode? HintCode { get; init; }

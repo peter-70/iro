@@ -84,11 +84,11 @@ public sealed class AnalysisRunner(IPngAnalysisApi? api = null)
                     throw new ArgumentException("PNG-Abmessungen passen nicht zur Aufnahmebeschreibung.");
                 var comparisons = CompareAfterAnalysis(metadata, analysis);
                 int unmatched = analysis.Fields.Count(f => comparisons.All(c => c.DetectedFieldId != f.FieldId));
-                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, analysis, comparisons: comparisons) });
+                captures.Add(new(captureId, hash, null, analysis, comparisons, unmatched) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, analysis, comparisons: comparisons, captureId: captureId) });
             }
             catch (OperationCanceledException) { cancelled = true; break; }
             catch (Exception error) when (error is IOException or ArgumentException or JsonException or InvalidOperationException or NotSupportedException or KeyNotFoundException or FormatException or UnauthorizedAccessException or System.Runtime.InteropServices.COMException)
-            { captures.Add(new(captureId, hash, error.Message, measured, [], measured?.Fields.Count ?? 0) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, measured, error.Message) }); }
+            { captures.Add(new(captureId, hash, error.Message, measured, [], measured?.Fields.Count ?? 0) { Expectation = expectation, Evaluation = ExpectationEvaluator.Evaluate(expectation, measured, error.Message, captureId: captureId) }); }
             progress?.Report(new(captures.Count, entries.Length, captureId));
         }
         var report = new AnalysisRun(2, "iro-analysis-run", runId, requestId, ImageAnalyzer.Version, DateTime.UtcNow.ToString("O"), options,

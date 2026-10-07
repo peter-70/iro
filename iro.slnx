@@ -16,9 +16,6 @@
   <Folder Name="/tests/iro.core.tests/">
     <Project Path="tests/iro.core.tests/Iro.Core.Tests.csproj" />
   </Folder>
-  <Folder Name="/tests/iro.gen.tests/">
-    <Project Path="tests/iro.gen.tests/IroGen.Tests.csproj" />
-  </Folder>
   <Folder Name="/tools/" />
   <Folder Name="/tools/iro.testgen/">
     <Project Path="tools/iro.testgen/Iro.TestGen.csproj" />

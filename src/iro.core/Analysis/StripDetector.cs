@@ -111,13 +111,8 @@ internal static class StripDetector
                     if (source.Y > rotation.SourceHeight - 2 * scale) edges |= 8;
                     sourceEdges[y * width + x] = edges;
                 }
-                // Symmetric small box average reduces isolated sensor noise, never enlarges evidence.
-                int rr = 0, gg = 0, bb = 0, n = 0;
-                int radius = scale >= 2 ? 1 : 0;
-                for (int yy = Math.Max(0, py - radius); yy <= Math.Min(image.Height - 1, py + radius); yy++)
-                for (int xx = Math.Max(0, px - radius); xx <= Math.Min(image.Width - 1, px + radius); xx++)
-                { if (!image.IsValidPixel(xx, yy)) continue; var p = image.GetPixel(xx, yy); rr += p.R; gg += p.G; bb += p.B; n++; }
-                pixels[y * width + x] = new((byte)(rr / n), (byte)(gg / n), (byte)(bb / n));
+                // Detection geometry must be derived from unmodified source pixels.
+                pixels[y * width + x] = image.GetPixel(px, py);
             }
         }
         var seen = new bool[pixels.Length]; var queue = new int[pixels.Length];

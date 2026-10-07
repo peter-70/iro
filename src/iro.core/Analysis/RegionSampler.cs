@@ -37,13 +37,12 @@ public static class RegionSampler
         int mad = Median(deviations, samples.Count);
         // Explicit MAD=0 handling: a small quantization/noise floor, never division by zero.
         double tolerance = Math.Max(4, 3 * mad);
-        int retained = 0, retainedAtLimit = 0;
+        int retained = 0;
         double lr = 0, lg = 0, lb = 0;
         foreach (var p in samples)
         {
             if (Math.Max(Math.Abs(p.R - mr), Math.Max(Math.Abs(p.G - mg), Math.Abs(p.B - mb))) > tolerance) continue;
             lr += ColorMath.Decode(p.R); lg += ColorMath.Decode(p.G); lb += ColorMath.Decode(p.B); retained++;
-            if (p.R is 0 or 255 || p.G is 0 or 255 || p.B is 0 or 255) retainedAtLimit++;
         }
         // Central histogram means tolerate print/outliers without the discontinuous
         // median jump of a balanced two-tone texture. Used only for quality, not the measured color.
@@ -68,13 +67,11 @@ public static class RegionSampler
         for (int bIndex = a + 1; bIndex < tileColors.Length; bIndex++)
             spatialDelta = Math.Max(spatialDelta, ColorMath.DeltaE00(tileColors[a], tileColors[bIndex]));
         double rejected = 1 - retained / (double)samples.Count;
-        bool unresolvedChannels = retained > 0 && retainedAtLimit / (double)retained > MeasurementSafety.MaximumRetainedEndpointFraction;
         string? reason = Math.Min(bounds.Width, bounds.Height) < 20 || retained < options.MinimumSamples ? "Zu wenig nutzbare Bildfläche." :
-            unresolvedChannels ? MeasurementSafety.ChannelLimitHint :
-            spatialDelta > options.MaximumSpatialDeltaE ? "Messfläche räumlich ungleichmäßig. Gleichmäßigeres Licht und eine einheitliche Fläche verwenden." :
-            mad > options.MaximumChannelMad || rejected > options.MaximumOutlierFraction ? "Messfläche durch Flecken, Reflexe oder ungleichmäßiges Licht gestört." : null;
+            spatialDelta > options.MaximumSpatialDeltaE ? "Die Messfläche weist räumlich unterschiedliche Farbwerte auf und wird nicht ausgewertet." :
+            mad > options.MaximumChannelMad || rejected > options.MaximumOutlierFraction ? "Die Messfläche weist stark unterschiedliche Farbwerte auf und wird nicht ausgewertet." : null;
         return new(bounds, reason == null, reason, reason == null ? ColorMath.LinearToLab(lr / retained, lg / retained, lb / retained) : null,
-            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta, HasUnresolvedChannels = unresolvedChannels, Polygon = mask == null ? null : ContourMask.Intersect(mask, bounds) };
+            samples.Count, rejected, mad, nearLimits / (double)samples.Count) { SpatialDeltaE = spatialDelta, Polygon = mask == null ? null : ContourMask.Intersect(mask, bounds) };
     }
 }
 

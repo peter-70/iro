@@ -83,10 +83,11 @@ public sealed record ExpectationEvaluation(ExpectationStatus Status, string Deta
 public static class ExpectationEvaluator
 {
     public static ExpectationEvaluation Evaluate(BehaviorExpectation? expected, ImageAnalysis? actual, string? error = null,
-        IReadOnlyList<FieldComparison>? comparisons = null)
+        IReadOnlyList<FieldComparison>? comparisons = null, string? captureId = null)
     {
         if (error != null) return new(ExpectationStatus.Error, "Prüfung nicht möglich: " + error);
         if (expected == null) return new(ExpectationStatus.NotEvaluated, "Keine Verhaltenserwartung hinterlegt.");
+        if (RetiredExpectations.Contains(captureId)) return new(ExpectationStatus.NotEvaluated, RetiredExpectations.Reason);
         try { expected.Validate(); }
         catch (ArgumentException e) { return new(ExpectationStatus.Error, e.Message); }
         if (expected.Verification != "verified")
